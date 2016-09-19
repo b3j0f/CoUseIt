@@ -3,7 +3,7 @@
 
 from sys import argv
 
-def main(env='dev'):
+def main(env='dev', host=None, port=None):
 
     # set configuration
     import config
@@ -25,7 +25,10 @@ def main(env='dev'):
     db.create_all()
 
     # start the server
-    api.app.run()
+    if env == 'prod' and host is None:
+        host = '0.0.0.0'
+
+    api.app.run(host=host, port=port)
 
 
 if __name__ == '__main__':
