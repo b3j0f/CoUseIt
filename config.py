@@ -1,0 +1,27 @@
+class Config(object):
+    DEBUG = False
+    DEVELOPMENT = False
+    TEST = False
+    SECRET_KEY = 'TO CHANGE'
+    EXCLUDE = []  #: modules to not load
+
+    SQLALCHEMY_DATABASE_URI = 'postgresql://costockit:c0st0ck1t@localhost:5432/costockit'
+
+
+class ProductionConfig(Config):
+    pass
+
+
+class DevelopmentConfig(Config):
+    DEVELOPMENT = True
+    DEBUG = True
+
+
+class TestConfig(Config):
+    TEST = True
+    DEBUG = True
+
+    SQLALCHEMY_DATABASE_URI = 'postgresql://costockit:c0st0ck1t@localhost:5432/costockit-test'
+
+
+config = DevelopmentConfig
