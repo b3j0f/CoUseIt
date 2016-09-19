@@ -21,7 +21,7 @@ class TestConfig(Config):
     TEST = True
     DEBUG = True
 
-    SQLALCHEMY_DATABASE_URI = 'postgresql://costockit:c0st0ck1t@localhost:5432/costockit-test'
+    SQLALCHEMY_DATABASE_URI = 'postgresql://costockit_test:costockit_test@localhost:5432/costockit_test'
 
 
 configs = {
