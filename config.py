@@ -9,12 +9,13 @@ class Config(object):
 
 
 class ProductionConfig(Config):
-    pass
+    EXCLUDE = ['test']
 
 
 class DevelopmentConfig(Config):
     DEVELOPMENT = True
     DEBUG = True
+    EXCLUDE = ['test']
 
 
 class TestConfig(Config):
