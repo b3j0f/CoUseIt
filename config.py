@@ -24,4 +24,10 @@ class TestConfig(Config):
     SQLALCHEMY_DATABASE_URI = 'postgresql://costockit:c0st0ck1t@localhost:5432/costockit-test'
 
 
-config = DevelopmentConfig
+configs = {
+    'prod': ProductionConfig,
+    'dev': DevelopmentConfig,
+    'test': TestConfig
+}
+
+config = configs['dev']

@@ -1,5 +1,7 @@
 from config import config
 
+from flask import Flask
+
 from os import walk
 from os.path import join
 
@@ -30,3 +32,18 @@ def import_modules(root='.', exclude=config.EXCLUDE):
                 except (ImportError, ValueError) as exc:
                     #logger.error(exc)
                     print(exc)
+
+
+def get_app(name=__name__, config=config):
+    """Get an instance of Flask with input name and specific configuration.
+
+    :param str name: flask application name. Default is module name.
+    :param type config: flask configuration. Default is application
+        configuration.
+    :rtype: Flask"""
+
+    result = Flask(name)
+
+    result.config.from_object(config)
+
+    return result

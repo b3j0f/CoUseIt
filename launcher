@@ -1,0 +1,35 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+from sys import argv
+
+def main(env='dev'):
+
+    # set configuration
+    import config
+    config.config = config.configs[env]  # with the right environment
+
+    # set flask instance
+    from utils import get_app
+    import api
+    api.app = get_app()
+
+    # load modules
+    from api.utils import import_modules
+    import_modules('api')
+
+    # technical setup
+
+    # database setup
+    from api.db import db
+    db.create_all()
+
+    # start the server
+    api.app.run()
+
+
+if __name__ == '__main__':
+
+    from sys import argv
+
+    main(*argv[1:])

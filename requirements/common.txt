@@ -1,4 +1,4 @@
 flask
 flask-sqlalchemy
-psycopg2
 flask-restless
+psycopg2
