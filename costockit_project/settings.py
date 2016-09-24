@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'account_requests.apps.AccountRequestsConfig',
     'costockit.apps.CostockitConfig',
     'django.contrib.admin',
     'django.contrib.auth',

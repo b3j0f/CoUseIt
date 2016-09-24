@@ -1,0 +1,19 @@
+- model: account_requests.RequestState
+  fields:
+    name: created
+
+- model: account_requests.RequestState
+  fields:
+    name: 'in progress'
+
+- model: account_requests.RequestState
+  fields:
+    name: done
+
+- model: account_requests.RequestState
+  fields:
+    name: canceled
+
+- model: account_requests.RequestState
+  fields:
+    name: refused

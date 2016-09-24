@@ -1,0 +1,15 @@
+- model: account_requests.CRUD
+  fields:
+    name: create
+
+- model: account_requests.CRUD
+  fields:
+    name: read
+
+- model: account_requests.CRUD
+  fields:
+    name: update
+
+- model: account_requests.CRUD
+  fields:
+    name: delete

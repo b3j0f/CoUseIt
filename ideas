@@ -1,0 +1,63 @@
+Anonyme:
+
+	voir produits publics
+	voir stocks publics
+	voir catégories publics
+
+	si autre action souhaitée, proposer de créer un compte avant
+
+Account:
+
+	inscription à la plateforme
+		OAuth2
+
+		ou
+
+		mail (private ?)
+		pseudo
+		password
+
+		option
+			telephone
+
+	connecte à la plateforme
+		OAuth2
+
+		ou
+
+		mail ou pseudo
+		password
+
+	gestion/renouvellement de mot de passe
+
+	modification des propriétés
+
+	durée de session
+
+	fermeture de session
+
+	créer des produits
+
+	créer des stocks
+
+Category
+
+	création liée au role 'category_creator'
+
+Stock
+
+Product
+
+application supplémentaires:
+
+	Filtering by category/stock
+
+		objectif:
+			pull -> accéder à ce qui peut intéresser le plus l'utilisateur
+			push -> notifier l'utilisateur d'un produit qui peut l'intéresser
+
+		Follow : https://github.com/caffeinehit/django-follow
+
+	planning
+
+	historique des transactions techniques (changement de stock, etc.)
