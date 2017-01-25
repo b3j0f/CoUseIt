@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+
+	<h2>Foire aux questions</h2>
+
+	<ul class="collapsible popout" data-collapsible="accordion">
+		<li id="system">
+			<div class="collapsible-header"><i class="material-icons">settings</i>Qu'est-ce qu'un régime politique ?</div>
+			<div class="collapsible-body">
+				<p>Un régime politique est une base stratégique de gouvernance.</p>
+				<p>
+					Par exemple, le régime politique actuel est une démocratie représentative qui permet à une minorité d'invidus d'exercer un pouvoir de décision et d'opréssion sur la majorité des français. Changer de régime politique (<a href="https://www.youtube.com/watch?v=nROeE2gI97c">démocratie directe</a>, <a href="https://www.youtube.com/watch?v=ur3mcGOPaFE">démocratie liquide</a>, monarchie, dictature, <a href="https://fr.wikipedia.org/wiki/Anarchie">anarchie</a>, etc.), c'est dépendre d'autre chose qu'un gouvernement où trônent une minorité politique qui n'est plus reconnue légitime aux yeux de la majorité du peuple pour gouverner sur lui.
+				</p>
+			</div>
+		</li>
+		<li id="forum">
+			<div class="collapsible-header"><i class="material-icons">forum</i>Pourquoi n'y a-t-il pas de forum ?</div>
+			<div class="collapsible-body">
+				<p>
+					Ce site web a pour vocation d'informer et non de créer de réels échanges sur les <a href="/systems">régimes politiques</a>.
+					<br/>
+					De tels échanges sont possibles sur les différents sites de communication des <a href="/systems">régimes politiques</a> proposés.
+					<br/>
+					Donc n'hésitez pas à aller sur ces sites afin d'échanger avec des experts et des contradicteurs de haut rang.
+				</p>
+			</div>
+		</li>
+		<li id="privacy">
+			<div class="collapsible-header"><i class="material-icons">lock</i>Que fait-on de mes données personnelles ?</div>
+			<div class="collapsible-body">
+				<p>
+					Seul votre email vous est demandé pour suivre la newsletter du site (vous informer des nouveautés du site (<a href="/systems">régimes</a>/<a href="/surveys">sondages</a>/<a href="/vote#offices">bureaux de vote</a>), ou pour créer/modifier/supprimer des régimes/sondages/bureaux de vote.
+				</p>
+			</div>
+		</li>
+		<li id="donation">
+			<div class="collapsible-header"><i class="material-icons">card_giftcard</i>À quoi servent les dons liberapay ?</div>
+			<div class="collapsible-body">
+				<p>
+					Les dons liberapay sont utilisés par l'association pour payer les serveurs qui hébergent le site, la boîte email, la base de donnée, le certificat de sécurité et d'authenticité, ainsi que le nom de domaine et les autres services à venir...
+				</p>
+				<p>
+					Actuellement, les dépenses s'élèvent à :
+					<ol>
+						<li>Nom de domaine : 1€ / an</li>
+						<li>Serveurs : 3€ / mois</li>
+						<li>Communication : bénévolat</li>
+						<li>Développement : bénévolat</li>
+						<li>Maintenance : bénévolat</li>
+					</ol>
+				</p>
+			</div>
+		</li>
+		<li id="office">
+			<div class="collapsible-header"><i class="material-icons">account_balance</i>Pourquoi faire des votes à l'extérieur de la plateforme ?</div>
+			<div class="collapsible-body">
+				<p>
+					Pour deux raisons :
+					<ol>
+						<li>
+							Tout le monde n'a pas accès à internet,
+						</li>
+						<li>
+							Les votes physiques permettent de réduire considérablement les fraudes (usurpation d'idéntité ou compte multiple).
+						</li>
+					</ol>
+				</p>
+			</div>
+		</li>
+		<li id="survey">
+			<div class="collapsible-header"><i class="material-icons">view_list</i>Comment fonctionnent les sondages ?
+			</div>
+			<div class="collapsible-body">
+				<p>Les sondages s'inspirent des méthodes de vote connues aujourd'hui, qui mériteraient d'être utilisées aujourd'hui car le moins démocratique est celui que nous pratiquons au cours des élections présidentielles, législatives et régionales.
+				</p>
+				<ul class="collapsible" data-collapsible="expandable">
+					<li>
+						<div class="collapsible-header">
+							binaire/approbation
+						</div>
+						<div class="collapsible-body">
+							<p>
+								Le moins démocratique et pourtant le seul organisé par l'État pour les référendums et les élections présidentielles et législatives.
+								<br/>
+								Impose une opinion radicale et totale pour une seule proposition (binaire par les citoyens) ou plusieurs (approbation utilisé par les parlementaires).
+								<a target="_blank" href="http://www.votedevaleur.org/co/voteBinaire.html">Détails...</a>
+							</p>
+						</div>
+					</li>
+					<li>
+						<div class="collapsible-header">
+							classement
+						</div>
+						<div class="collapsible-body">
+							<p>
+								Utilisé dans les jeux de hasard comme la loterie (eh oui, la loterie est plus démocratique que le vote binaire...).
+								<br/>
+								Permet de classer les propositions par ordre de préférence.
+								<a target="_blank" href="http://www.votedevaleur.org/co/voteParClassement.html">Détails...</a>
+							</p>
+						</div>
+					</li>
+					<li>
+						<div class="collapsible-header">
+							notation/jugement majoritaire
+						</div>
+						<div class="collapsible-body">
+							<p>
+								Non utilisé alors qu'il est le plus démocratique.
+								<br/>
+								Permet de faire un jugement de valeur sur l'ensemble des propositions, et non comme dans pour le vote binaire, de donner une opinion radicale pour une seule proposition.<br/>Contrairement au vote binaire, il évite les votes tactiques, utiles, par élimination, et de mettre en retrait les petits partis ou en avant les gros partis.<br/>
+								La notation est une note (entre 0 et 20 par exemple), alors que le jugement est une appréciation (parfait, Très bien, bien, normal, passable, mauvais, à rejeter). Ce dernier est celui utilisé par cette plateforme.
+								<a target="_blank" href="http://www.votedevaleur.org/co/voteParNotation.html">Détails...</a>
+							</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</li>
+	</ul>
+
+</div>
+
+{% endblock %}

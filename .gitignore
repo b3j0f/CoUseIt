@@ -92,3 +92,7 @@ ENV/
 db.sqlite*
 
 node_modules/
+
+private_settings.py
+
+migrations/

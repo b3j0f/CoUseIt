@@ -1,0 +1,19 @@
+- model: couseit.Status
+  fields:
+    name: PENDING
+    description: waiting for beeing approved, canceled or declined.
+
+- model: couseit.Status
+  fields:
+    name: APPROVED
+    description: approved by product owners/suppliers
+
+- model: couseit.Status
+  fields:
+    name: CANCELED
+    description: canceled by product users
+
+- model: couseit.Status
+  fields:
+    name: DECLINED
+    description: declined by product owners/suppliers

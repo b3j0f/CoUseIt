@@ -5,3 +5,4 @@ markdown
 django-filter
 pyyaml
 django-cors-headers
+django-gravatar2
