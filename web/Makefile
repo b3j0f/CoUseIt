@@ -3,7 +3,7 @@ BIND := 127.0.0.1:8000
 SETTINGS := DJANGO_SETTINGS_MODULE="couseit.settings.$(PLATFORM)"
 
 .PHONY: all
-all: migrations fixtures
+all: migrations migrate fixtures
 
 .PHONY: migrations
 migrations:
@@ -15,7 +15,7 @@ migrate: migrations
 
 .PHONY: fixtures
 fixtures:
-	$(SETTINGS) python manage.py loaddata forbiddendomains
+	$(SETTINGS) python manage.py loaddata forbiddendomains status categories properties
 
 .PHONY: superuser
 superuser:

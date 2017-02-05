@@ -1,0 +1,335 @@
+- model: product.parentcategory
+  fields:
+    name: vehicule
+
+- model: product.category
+  fields:
+    name: voiture
+    parent: vehicule
+
+- model: product.category
+  fields:
+    name: moto
+    parent: vehicule
+
+- model: product.category
+  fields:
+    name: caravaning
+    parent: vehicule
+
+- model: product.category
+  fields:
+    name: utilitaire
+    parent: vehicule
+
+- model: product.category
+  fields:
+    name: équipement auto
+    parent: vehicule
+
+- model: product.category
+  fields:
+    name: équipement moto
+    parent: vehicule
+
+- model: product.category
+  fields:
+    name: équipement caravaning
+    parent: vehicule
+
+- model: product.category
+  fields:
+    name: nautisme
+    parent: vehicule
+
+- model: product.category
+  fields:
+    name: équipement nautisme
+    parent: vehicule
+
+- model: product.parentcategory
+  fields:
+    name: immobilier
+
+- model: product.category
+  fields:
+    name: vente immobilière
+    parent: immobilier
+
+- model: product.category
+  fields:
+    name: location
+    parent: immobilier
+
+- model: product.category
+  fields:
+    name: colocation
+    parent: immobilier
+
+- model: product.category
+  fields:
+    name: bureau et commerce
+    parent: immobilier
+
+- model: product.parentcategory
+  fields:
+    name: vacance
+
+- model: product.category
+  fields:
+    name: gîte
+    parent: vacance
+
+- model: product.category
+  fields:
+    name: chambre d'hôte
+    parent: vacance
+
+- model: product.category
+  fields:
+    name: camping
+    parent: vacance
+
+- model: product.category
+  fields:
+    name: hôtel
+    parent: vacance
+
+- model: product.category
+  fields:
+    name: insolite
+    parent: vacance
+
+- model: product.parentcategory
+  fields:
+    name: multimedia
+
+- model: product.category
+  fields:
+    name: informatique
+    parent: multimedia
+
+- model: product.category
+  fields:
+    name: jeu vidéo
+    parent: multimedia
+
+- model: product.category
+  fields:
+    name: image et son
+    parent: multimedia
+
+- model: product.category
+  fields:
+    name: téléphonie
+    parent: multimedia
+
+- model: product.parentcategory
+  fields:
+    name: loisir
+
+- model: product.category
+  fields:
+    name: DVD / films
+    parent: loisir
+
+- model: product.category
+  fields:
+    name: CD / musique
+    parent: loisir
+
+- model: product.category
+  fields:
+    name: livres
+    parent: loisir
+
+- model: product.category
+  fields:
+    name: animaux
+    parent: loisir
+
+- model: product.category
+  fields:
+    name: vélos
+    parent: loisir
+
+- model: product.category
+  fields:
+    name: sports / hobbies
+    parent: loisir
+
+- model: product.category
+  fields:
+    name: instruments de musique
+    parent: loisir
+
+- model: product.category
+  fields:
+    name: collection
+    parent: loisir
+
+- model: product.category
+  fields:
+    name: jeux / jouets
+    parent: loisir
+
+- model: product.category
+  fields:
+    name: vins / gastronomie
+    parent: loisir
+
+- model: product.parentcategory
+  fields:
+    name: matériel professionnel
+
+- model: product.category
+  fields:
+    name: matériel agricole
+    parent: matériel professionnel
+
+- model: product.category
+  fields:
+    name: transport / manutention
+    parent: matériel professionnel
+
+- model: product.category
+  fields:
+    name: BTP / chantier gros-oeuvre
+    parent: matériel professionnel
+
+- model: product.category
+  fields:
+    name: outillage / matériaux 2nd-oeuvre
+    parent: matériel professionnel
+
+- model: product.category
+  fields:
+    name: équipements industriels
+    parent: matériel professionnel
+
+- model: product.category
+  fields:
+    name: restauration / hôtellerie
+    parent: matériel professionnel
+
+- model: product.category
+  fields:
+    name: fournitures de bureau
+    parent: matériel professionnel
+
+- model: product.category
+  fields:
+    name: commerces / marchés
+    parent: matériel professionnel
+
+- model: product.category
+  fields:
+    name: matériel Médical
+    parent: matériel professionnel
+
+- model: product.parentcategory
+  fields:
+    name: service
+
+- model: product.category
+  fields:
+    name: prestations de services
+    parent: service
+
+- model: product.category
+  fields:
+    name: billetterie
+    parent: service
+
+- model: product.category
+  fields:
+    name: événement
+    parent: service
+
+- model: product.category
+  fields:
+    name: cours particulier
+    parent: service
+
+- model: product.category
+  fields:
+    name: covoiturage
+    parent: service
+
+- model: product.parentcategory
+  fields:
+    name: maison
+
+- model: product.category
+  fields:
+    name: ameublement
+    parent: maison
+
+- model: product.category
+  fields:
+    name: électroménager
+    parent: maison
+
+- model: product.category
+  fields:
+    name: arts de la table
+    parent: maison
+
+- model: product.category
+  fields:
+    name: décoration
+    parent: maison
+
+- model: product.category
+  fields:
+    name: linge de maison
+    parent: maison
+
+- model: product.category
+  fields:
+    name: bricolage
+    parent: maison
+
+- model: product.category
+  fields:
+    name: jardinage
+    parent: maison
+
+- model: product.category
+  fields:
+    name: vêtements
+    parent: maison
+
+- model: product.category
+  fields:
+    name: chaussures
+    parent: maison
+
+- model: product.category
+  fields:
+    name: accessoires / Bagagerie
+    parent: maison
+
+- model: product.category
+  fields:
+    name: montres / Bijoux
+    parent: maison
+
+- model: product.category
+  fields:
+    name: équipement bébé
+    parent: maison
+
+- model: product.category
+  fields:
+    name: vêtements bébé
+    parent: maison
+
+- model: product.parentcategory
+  fields:
+    name: autre
+
+- model: product.category
+  fields:
+    name: autre
+    parent: autre

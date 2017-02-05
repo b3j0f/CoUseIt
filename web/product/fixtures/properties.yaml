@@ -1,0 +1,142 @@
+- model: product.typeproperty
+  fields:
+    name: prix
+    values: euros
+    parentcategories: vehicule, immobilier, vacance, multimedia, loisir, matériel professionnel, service, maison, autre
+
+- model: product.typeproperty
+  fields:
+    name: kilomètres
+    unit: km
+    parentcategories: vehicule
+    categories: voiture, moto, caravaning, utilitaire
+
+- model: product.typeproperty
+  fields:
+    name: marque voiture
+    values: audi|bmw|citroen|fiat|tesla|ford|mercedes|opel|peugeot|renault|volkswagen
+    categories: voiture
+
+- model: product.typeproperty
+  fields:
+    name: modèle/marque voiture/audi
+    values: a1|a2|a3|tt|a4|a5|a6
+    categories: voiture
+
+- model: product.typeproperty
+  fields:
+    name: modèle/marque voiture/tesla
+    values: s|x|3
+    categories: voiture
+
+- model: product.typeproperty
+  fields:
+    name: marque moto
+    values: yamaha|harley davidson
+    categories: moto
+
+- model: product.typeproperty
+  fields:
+    name: modèle moto/yamaha
+    values: 1|2
+    categories: moto
+
+- model: product.typeproperty
+  fields:
+    name: modèle moto/harley davidson
+    values: 1|2
+    categories: moto
+
+- model: product.typeproperty
+  fields:
+    name: année
+    values: +1960-2017
+    categories: voiture, moto, caravaning, utilitaire
+
+- model: product.typeproperty
+  fields:
+    name: carburant
+    values: essence|diesel|GPL|électrique|autre
+    categories: voiture, moto, utilitaire
+
+- model: product.typeproperty
+  fields:
+    name: boîte de vitesse
+    values: manual|automatic
+    categories: voiture, moto
+
+- model: product.typeproperty
+  fields:
+    name: cylindrée
+    unit: cm3
+    categories: moto
+
+- model: product.typeproperty
+  fields:
+    name: surface
+    unit: m2
+    parentcategories: immobilier
+
+- model: product.typeproperty
+  fields:
+    name: pièce
+    unit: pièces
+    parentcategories: immobilier
+
+- model: product.typeproperty
+  fields:
+    name: classe d'énergie
+    values: A|B|C|D|E|F|G|H|I|vierge
+    parentcategories: immobilier
+
+- model: product.typeproperty
+  fields:
+    name: GES
+    values: A|B|C|D|E|F|G|H|I|vierge
+    parentcategories: immobilier
+
+- model: product.typeproperty
+  fields:
+    name: meublé
+    values: oui|non
+    categories: location
+
+- model: product.typeproperty
+  fields:
+    name: type de logement
+    values: maison|appartement|terrain|parking|autre
+    categories: vente immobilière, location
+
+- model: product.typeproperty
+  fields:
+    name: capacité personnes
+    unit: personnes
+    parentcategories: vacance
+
+- model: product.typeproperty
+  fields:
+    name: piscine
+    values: oui|non
+
+- model: product.typeproperty
+  fields:
+    name: type vêtements
+    values: femme|homme|enfant
+    categories: chaussure
+
+- model: product.typeproperty
+  fields:
+    name: pointure
+    values: 16-+50
+    categories: chaussure
+
+- model: product.typeproperty
+  fields:
+    name: taille bébé
+    values: 0-36
+    unit: mois
+
+- model: product.typeproperty
+  fields:
+    name: type animal
+    values: chien|chat|autre|accessoire

@@ -3,17 +3,22 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect
+from django.db.models import F, FloatField, Sum, Q
 from django.contrib.auth.models import User
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 
 from account.models import Account
-from product.models import Product
+from product.models import (
+    Product, Using, Stat, Share, Give, ParentCategory
+)
 from stock.models import Stock
+
+from .utils import sendemail
 
 from uuid import uuid4 as uuid
 
-from .utils import sendemail
+from time import time
 
 
 def basecontext(request, page='home', tableofcontents=False):
@@ -27,7 +32,8 @@ def basecontext(request, page='home', tableofcontents=False):
 
     result = {
         'productcount': productcount, 'stockcount': stockcount,
-        'accountcount': accountcount, 'page': page,
+        'accountcount': accountcount,
+        'page': page,
         'tableofcontents': tableofcontents,
         'next': request.GET.get('next', page),
         'host': settings.HOST, 'api': settings.API
@@ -192,23 +198,55 @@ def getuserid(request):
     return result
 
 
-def productsview(request):
-    """Product view."""
-    context = basecontext(request, 'products')
-    context['products'] = Product.objects.all()
-    return render(request, 'products.html', context=context)
+def appcontext(request, page='home', tableofcontents=False):
+    """Get app context.
+
+    :rtype: dict
+    """
+    result = basecontext(request, page, tableofcontents)
+    result['parentcategories'] = ParentCategory.objects.select_related(
+        'categories'
+    )
+    return result
+
+
+def giveview(request):
+    """Give view."""
+    now = time()
+    count = request.GET.get('count', 50)
+    start = request.GET.get('start', 0) * count
+    context = appcontext(request, 'give')
+    print(Product.objects.filter(gives__isnull=False))
+    product_ids = Give.objects.filter(
+        Q(endts__isnull=True) | Q(endts__gte=now)
+    ).distinct('products__id')[start: count]
+    context['products'] = Product.objects.filter(
+        id__in=product_ids
+    ).select_related('gives', 'location')
+    return render(request, 'give.html', context=context)
 
 
 def shareview(request):
     """Shared product view."""
-    context = basecontext(request, 'share')
+    now = time()
+    count = request.GET.get('count', 50)
+    start = request.GET.get('start', 0) * count
+    context = appcontext(request, 'share')
+    print(Product.objects.filter(gives__isnull=False))
+    product_ids = Share.objects.filter(
+        Q(endts__isnull=True) | Q(endts__gte=now)
+    ).distinct('products__id')[start: count]
+    context['products'] = Product.objects.filter(
+        id__in=product_ids
+    ).select_related('shares', 'location')
+    return render(request, 'share.html', context=context)
 
 
-def stocksview(request):
-    """Need locations view."""
-    context = basecontext(request, 'stocks')
+def stockview(request):
+    """Stock view."""
+    context = basecontext(request, 'stock')
     context['stocks'] = Stock.objects.order_by('-datetime')
-    return render(request, 'stocks.html', context=context)
+    return render(request, 'stock.html', context=context)
 
 
 def accountview(request):
@@ -220,7 +258,6 @@ def accountview(request):
 def homeview(request):
     """Home view."""
     context = basecontext(request, 'home')
-
     return render(request, 'home.html', context=context)
 
 
@@ -231,6 +268,19 @@ def faqview(request):
 
 
 def aboutview(request):
-    """about view."""
+    """About view."""
     context = basecontext(request, 'about', True)
     return render(request, 'about.html', context=context)
+
+
+def statsview(request):
+    """Stat view."""
+    context = basecontext(request, 'stats', True)
+    context['stats'] = Stat.objects.all()
+    context['ownercount'] = Account.objects.filter(ownes=None).count()
+    context['suppliercount'] = Account.objects.filter(supplies=None).count()
+    context['usercount'] = Account.objects.filter(uses=None).count()
+    context['duration'] = Using.objects.aggregate(
+        duration=Sum(F('endts') - F('startts')), output_field=FloatField()
+    )['duration']
+    return render(request, 'stats.html', context=context)

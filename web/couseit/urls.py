@@ -20,7 +20,7 @@ from django.contrib import admin
 
 from .views import (
     homeview, aboutview, loginview, logoutview, resetpwdview,
-    accountview, productsview, stocksview, faqview
+    accountview, giveview, stockview, faqview, shareview, statsview
 )
 
 urlpatterns = [
@@ -41,8 +41,10 @@ urlpatterns = [
     url(r'^logout', logoutview),
     url(r'^resetpwd', resetpwdview),
     url(r'^account', accountview),
-    url(r'^products', productsview),
-    url(r'^stocks', stocksview)
-]# + static(
-#    settings.STATIC_URL, document_root=settings.STATIC_ROOT
-#)# + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    url(r'^give', giveview),
+    url(r'^share', shareview),
+    url(r'^stock', stockview),
+    url(r'^stats', statsview)
+] + static(
+    settings.STATIC_URL, document_root=settings.STATIC_ROOT
+) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
