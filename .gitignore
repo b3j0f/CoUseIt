@@ -94,6 +94,7 @@ db.sqlite*
 node_modules/
 
 private_settings.py
+local.py
 
 migrations/
 www/

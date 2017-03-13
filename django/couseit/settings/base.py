@@ -12,11 +12,11 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 import os
 
-from .private_settings import (
-    PHOST,
-    PSECRET_KEY, PreCAPTCHA_SECRET_KEY,
-    PEMAIL_HOST, PEMAIL_PORT, PEMAIL_HOST_USER, PEMAIL_HOST_PASSWORD,
-    PEMAIL_USE_TLS, PEMAIL_USE_SSL
+from .local import (
+    HOST,
+    SECRET_KEY, reCAPTCHA_SECRET_KEY,
+    EMAIL_HOST, EMAIL_PORT, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD,
+    EMAIL_USE_TLS, EMAIL_USE_SSL
 )
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -29,23 +29,23 @@ BASE_DIR = os.path.dirname(
 )
 
 # site url
-HOST = PHOST
+HOST = HOST
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = PSECRET_KEY
+SECRET_KEY = SECRET_KEY
 
 ALLOWED_HOSTS = ['*']
 
 # EMAIL PART
-EMAIL_HOST = PEMAIL_HOST
-EMAIL_PORT = PEMAIL_PORT
-EMAIL_HOST_USER = PEMAIL_HOST_USER
-EMAIL_HOST_PASSWORD = PEMAIL_HOST_PASSWORD
-EMAIL_USE_TLS = PEMAIL_USE_TLS
-EMAIL_USE_SSL = PEMAIL_USE_SSL
+EMAIL_HOST = EMAIL_HOST
+EMAIL_PORT = EMAIL_PORT
+EMAIL_HOST_USER = EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
+EMAIL_USE_TLS = EMAIL_USE_TLS
+EMAIL_USE_SSL = EMAIL_USE_SSL
 
 # Application definition
 
@@ -115,10 +115,9 @@ DATABASES = {
     }
 }
 
-HOST = PHOST
+HOST = HOST
 
-API_PATH = 'api/rest/v1'
-API = '{0}/{1}'.format(HOST, API_PATH)
+API = 'api/rest/v1'
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
@@ -165,7 +164,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 # reCaptcha
 reCAPTCHA_SITE_KEY = '6Ld9dA4UAAAAADMvh_ZnhfJp4P2hNUgE_fcSdDZt'
-reCAPTCHA_SECRET_KEY = PreCAPTCHA_SECRET_KEY
+reCAPTCHA_SECRET_KEY = reCAPTCHA_SECRET_KEY
 
 # Authentication system
 LOGIN_URL = '/accounts/login/'
