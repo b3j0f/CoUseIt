@@ -1,0 +1,29 @@
+- model: product.category
+  fields:
+    name: camping
+    parent: vacance
+
+- model: product.category
+  fields:
+    name: emplacement
+    parent: camping
+
+- model: product.category
+  fields:
+    name: caravane
+    parent: camping
+
+- model: product.category
+  fields:
+    name: caravane résidentielle
+    parent: camping
+
+- model: product.category
+  fields:
+    name: mobilhome
+    parent: camping
+
+- model: product.category
+  fields:
+    name: bungalow
+    parent: camping

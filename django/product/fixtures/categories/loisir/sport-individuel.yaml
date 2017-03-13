@@ -1,0 +1,94 @@
+- model: product.category
+  fields:
+    name: sport individuel
+    parent: loisir
+
+- model: product.category
+  fields:
+    name: fitness
+    parent: sport individuel
+
+- model: product.category
+  fields:
+    name: musculation
+    parent: sport individuel
+
+- model: product.category
+  fields:
+    name: tennis
+    parent: sport individuel
+
+- model: product.category
+  fields:
+    name: ping-pong
+    parent: sport individuel
+
+- model: product.category
+  fields:
+    name: table ping-pong
+    parent: sport individuel
+
+- model: product.category
+  fields:
+    name: golf
+    parent: sport individuel
+
+- model: product.category
+  fields:
+    name: boxe
+    parent: sport individuel
+
+- model: product.category
+  fields:
+    name: arts martiaux
+    parent: sport individuel
+
+- model: product.category
+  fields:
+    name: sport de combat
+    parent: sport individuel
+
+- model: product.category
+  fields:
+    name: sport moteur
+    parent: sport individuel
+
+- model: product.category
+  fields:
+    name: vélo d'intérieur
+    parent: sport individuel
+
+- model: product.category
+  fields:
+    name: plongée
+    parent: sport individuel
+
+- model: product.category
+  fields:
+    name: badmington
+    parent: sport individuel
+
+- model: product.category
+  fields:
+    name: danse
+    parent: sport individuel
+
+- model: product.category
+  fields:
+    name: raquette
+    parent: sport individuel
+
+- model: product.category
+  fields:
+    name: squash
+    parent: sport individuel
+
+- model: product.category
+  fields:
+    name: gymnastique
+    parent: sport individuel
+
+- model: product.category
+  fields:
+    name: aérobic
+    parent: sport individuel

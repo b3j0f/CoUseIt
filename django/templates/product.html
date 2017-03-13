@@ -1,0 +1,25 @@
+{% load static %}
+
+<div class="card sticky-action {% size %}">
+	<div class="card-image">
+		<div class="carousel">
+			{% for media in product.medias.all %}
+			<a class="carousel-item materialboxed" data-caption="{{ product.name }}" href="#one!"><img src="{{ media.url }}" /></a>
+			{% empty %}
+			<img src="{% static 'img/' %}{{ product.category.name }}.jpg" />
+			{% endfor %}
+		</div>
+		<span class="card-title truncate">{% product.name %}</span>
+	</div>
+	<div class="card-content">
+	<span class="card-title activator grey-text text-darken-4">{{ product.shortdescription }}<i class="material-icons right">more_vert</i></span>
+		<span class="truncate">{% product.shortdescription %}</span>
+		{% include 'supply.html' with product=product %}
+	</div>
+	<div class="card-action">
+	</div>
+	<div class="card-reveal">
+		<span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+		<p>{{ product.description }}</p>
+	</div>
+</div>

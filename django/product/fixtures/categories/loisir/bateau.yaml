@@ -1,0 +1,59 @@
+- model: product.category
+  fields:
+    name: bateau
+    parent: loisir
+
+- model: product.category
+  fields:
+    name: bateau à moteur
+    parent: bateau
+
+- model: product.category
+  fields:
+    name: canoe kayak
+    parent: bateau
+
+- model: product.category
+  fields:
+    name: voilier
+    parent: bateau
+
+- model: product.category
+  fields:
+    name: scooter des mers
+    parent: bateau
+
+- model: product.category
+  fields:
+    name: péniche
+    parent: bateau
+
+- model: product.category
+  fields:
+    name: bateau pneumatique
+    parent: bateau
+
+- model: product.category
+  fields:
+    name: bateau électrique
+    parent: bateau
+
+- model: product.category
+  fields:
+    name: barque
+    parent: bateau
+
+- model: product.category
+  fields:
+    name: aviron
+    parent: bateau
+
+- model: product.category
+  fields:
+    name: pédalo
+    parent: bateau
+
+- model: product.category
+  fields:
+    name: char à voile
+    parent: bateau

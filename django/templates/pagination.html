@@ -1,0 +1,31 @@
+{% if pages %}
+
+<ul class="pagination">
+	<li class="waves-effect{% if page == 0 %} disabled{% endif %}">
+		<a href="/{{ url }}?page={{ 0 }}&query={{ query }}">
+			<i class="material-icons">first_page</i>
+		</a>
+	</li>
+	<li class="waves-effect{% if page == 0 %} disabled{% endif %}">
+		<a href="/{{ url }}?prev&page={{ page }}&query={{ query }}">
+			<i class="material-icons">chevron_left</i>
+		</a>
+	</li>
+	{% for p in pages %}
+	<li class="waves-effect{% if page == p %} active{% endif %}">
+		<a href="/{{ url }}?next&page={{ p }}&query={{ query }}">{{ p }}</a>
+	</li>
+	{% endfor %}
+	<li class="waves-effect">
+		<a href="/{{ url }}?prev&page={{ page }}&query={{ query }}">
+			<i class="material-icons">chevron_right</i>
+		</a>
+	</li>
+	<li class="waves-effect{% if page == 1 %} disabled{% endif %}">
+		<a href="/{{ url }}?{{ pages|length }}&page={{ p }}&query={{ query }}">
+			<i class="material-icons">last_page</i>
+		</a>
+	</li>
+</ul>
+
+{% endif %}

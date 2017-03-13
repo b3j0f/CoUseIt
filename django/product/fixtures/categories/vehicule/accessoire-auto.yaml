@@ -1,0 +1,84 @@
+- model: product.category
+  fields:
+    name: accessoire auto
+    parent: vehicule
+
+- model: product.category
+  fields:
+    name: coffre de toit
+    parent: accessoire auto
+
+- model: product.category
+  fields:
+    name: galerie
+    parent: accessoire auto
+
+- model: product.category
+  fields:
+    name: barres de toit
+    parent: accessoire auto
+
+- model: product.category
+  fields:
+    name: porte-skis
+    parent: accessoire auto
+
+- model: product.category
+  fields:
+    name: outils
+    parent: accessoire auto
+
+- model: product.category
+  fields:
+    name: booster
+    parent: accessoire auto
+
+- model: product.category
+  fields:
+    name: porte-vélo
+    parent: accessoire auto
+
+- model: product.category
+  fields:
+    name: chaines
+    parent: accessoire auto
+
+- model: product.category
+  fields:
+    name: siège extra
+    parent: accessoire auto
+
+- model: product.category
+  fields:
+    name: treuil
+    parent: accessoire auto
+
+- model: product.category
+  fields:
+    name: plaques de désensablement
+    parent: accessoire auto
+
+- model: product.category
+  fields:
+    name: sono
+    parent: accessoire auto
+
+- model: product.category
+  fields:
+    name: vidéo et écran embarqué
+    parent: accessoire auto
+
+- model: product.category
+  fields:
+    name: valise diagnostique
+    parent: accessoire auto
+
+- model: product.category
+  fields:
+    name: parking
+    parent: accessoire auto
+
+- model: product.category
+  fields:
+    name: avertisseur de radars
+    parent: accessoire auto

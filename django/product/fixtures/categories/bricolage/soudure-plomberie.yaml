@@ -1,0 +1,54 @@
+- model: product.category
+  fields:
+    name: soudure/plomberie
+    parent: bricolage
+
+- model: product.category
+  fields:
+    name: détartrage
+    parent: soudure/plomberie
+
+- model: product.category
+  fields:
+    name: groupe de soudure
+    parent: soudure/plomberie
+
+- model: product.category
+  fields:
+    name: cintreuse
+    parent: soudure/plomberie
+
+- model: product.category
+  fields:
+    name: obturateur canalisation
+    parent: soudure/plomberie
+
+- model: product.category
+  fields:
+    name: chalumeau
+    parent: soudure/plomberie
+
+- model: product.category
+  fields:
+    name: gèle-tube
+    parent: soudure/plomberie
+
+- model: product.category
+  fields:
+    name: plieuse à zinc
+    parent: soudure/plomberie
+
+- model: product.category
+  fields:
+    name: taillant
+    parent: soudure/plomberie
+
+- model: product.category
+  fields:
+    name: zingueur
+    parent: soudure/plomberie
+
+- model: product.category
+  fields:
+    name: scie abrasive
+    parent: soudure/plomberie

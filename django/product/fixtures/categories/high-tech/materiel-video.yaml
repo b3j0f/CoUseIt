@@ -1,0 +1,84 @@
+- model: product.category
+  fields:
+    name: matériel vidéo
+    parent: high-tech
+
+- model: product.category
+  fields:
+    name: caméra HD
+    parent: matériel vidéo
+
+- model: product.category
+  fields:
+    name: caméra argentique
+    parent: matériel vidéo
+
+- model: product.category
+  fields:
+    name: camescope
+    parent: matériel vidéo
+
+- model: product.category
+  fields:
+    name: projecteur
+    parent: matériel vidéo
+
+- model: product.category
+  fields:
+    name: vidéo numérique
+    parent: matériel vidéo
+
+- model: product.category
+  fields:
+    name: vidéo analogique
+    parent: matériel vidéo
+
+- model: product.category
+  fields:
+    name: télévision
+    parent: matériel vidéo
+
+- model: product.category
+  fields:
+    name: écran
+    parent: matériel vidéo
+
+- model: product.category
+  fields:
+    name: lecteur vidéo
+    parent: matériel vidéo
+
+- model: product.category
+  fields:
+    name: toile
+    parent: matériel vidéo
+
+- model: product.category
+  fields:
+    name: connectique
+    parent: matériel vidéo
+
+- model: product.category
+  fields:
+    name: magnétoscope
+    parent: matériel vidéo
+
+- model: product.category
+  fields:
+    name: enregistreur DVD
+    parent: matériel vidéo
+
+- model: product.category
+  fields:
+    name: caméra 35 mm
+    parent: matériel vidéo
+
+- model: product.category
+  fields:
+    name: home cinéma
+    parent: matériel vidéo
+
+- model: product.category
+  fields:
+    name: télévision satellite
+    parent: matériel vidéo

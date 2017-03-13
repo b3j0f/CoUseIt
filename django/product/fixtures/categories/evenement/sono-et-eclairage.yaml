@@ -1,0 +1,109 @@
+- model: product.category
+  fields:
+    name: sono et éclairage
+    parent: évènement
+
+- model: product.category
+  fields:
+    name: matériel sono
+    parent: sono et éclairage
+
+- model: product.category
+  fields:
+    name: matériel éclairage
+    parent: sono et éclairage
+
+- model: product.category
+  fields:
+    name: armoire électrique
+    parent: sono et éclairage
+
+- model: product.category
+  fields:
+    name: enceinte
+    parent: sono et éclairage
+
+- model: product.category
+  fields:
+    name: micro
+    parent: sono et éclairage
+
+- model: product.category
+  fields:
+    name: effets spéciaux
+    parent: sono et éclairage
+
+- model: product.category
+  fields:
+    name: matériel DJ
+    parent: sono et éclairage
+
+- model: product.category
+  fields:
+    name: spots
+    parent: sono et éclairage
+
+- model: product.category
+  fields:
+    name: table de mixage
+    parent: sono et éclairage
+
+- model: product.category
+  fields:
+    name: structure lumière
+    parent: sono et éclairage
+
+- model: product.category
+  fields:
+    name: kits audio
+    parent: sono et éclairage
+
+- model: product.category
+  fields:
+    name: ampli
+    parent: sono et éclairage
+
+- model: product.category
+  fields:
+    name: stroboscope
+    parent: sono et éclairage
+
+- model: product.category
+  fields:
+    name: boule à facettes
+    parent: sono et éclairage
+
+- model: product.category
+  fields:
+    name: karaoké
+    parent: sono et éclairage
+
+- model: product.category
+  fields:
+    name: lumière noire
+    parent: sono et éclairage
+
+- model: product.category
+  fields:
+    name: guirlande lumineuse
+    parent: sono et éclairage
+
+- model: product.category
+  fields:
+    name: néons
+    parent: sono et éclairage
+
+- model: product.category
+  fields:
+    name: talkie-walkie
+    parent: sono et éclairage
+
+- model: product.category
+  fields:
+    name: porte-voix
+    parent: sono et éclairage
+
+- model: product.category
+  fields:
+    name: tourne-disque
+    parent: sono et éclairage

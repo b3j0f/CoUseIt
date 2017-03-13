@@ -1,0 +1,114 @@
+- model: product.category
+  fields:
+    name: puériculture
+    parent: maison
+
+- model: product.category
+  fields:
+    name: vêtements grossesse
+    parent: puériculture
+
+- model: product.category
+  fields:
+    name: vêtements bébé
+    parent: puériculture
+
+- model: product.category
+  fields:
+    name: lit bébé
+    parent: puériculture
+
+- model: product.category
+  fields:
+    name: berceau
+    parent: puériculture
+
+- model: product.category
+  fields:
+    name: poussette
+    parent: puériculture
+
+- model: product.category
+  fields:
+    name: landau / nacelle
+    parent: puériculture
+
+- model: product.category
+  fields:
+    name: couffin
+    parent: puériculture
+
+- model: product.category
+  fields:
+    name: siège-auto
+    parent: puériculture
+
+- model: product.category
+  fields:
+    name: porte-bébé
+    parent: puériculture
+
+- model: product.category
+  fields:
+    name: siège de table
+    parent: puériculture
+
+- model: product.category
+  fields:
+    name: réhausseur
+    parent: puériculture
+
+- model: product.category
+  fields:
+    name: table haute
+    parent: puériculture
+
+- model: product.category
+  fields:
+    name: parc
+    parent: puériculture
+
+- model: product.category
+  fields:
+    name: balancelle
+    parent: puériculture
+
+- model: product.category
+  fields:
+    name: mobiles
+    parent: puériculture
+
+- model: product.category
+  fields:
+    name: trotteur
+    parent: puériculture
+
+- model: product.category
+  fields:
+    name: transat
+    parent: puériculture
+
+- model: product.category
+  fields:
+    name: babyphone
+    parent: puériculture
+
+- model: product.category
+  fields:
+    name: chauffe biberons
+    parent: puériculture
+
+- model: product.category
+  fields:
+    name: stérilisateur
+    parent: puériculture
+
+- model: product.category
+  fields:
+    name: biberons
+    parent: puériculture
+
+- model: product.category
+  fields:
+    name: tire-lait
+    parent: puériculture

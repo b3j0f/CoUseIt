@@ -1,0 +1,134 @@
+- model: product.category
+  fields:
+    name: jeu divers
+    parent: loisir
+
+- model: product.category
+  fields:
+    name: jeux de société
+    parent: jeu divers
+
+- model: product.category
+  fields:
+    name: jeux d'extérieur
+    parent: jeu divers
+
+- model: product.category
+  fields:
+    name: jeux électronique
+    parent: jeu divers
+
+- model: product.category
+  fields:
+    name: casino
+    parent: jeu divers
+
+- model: product.category
+  fields:
+    name: machines à sous
+    parent: jeu divers
+
+- model: product.category
+  fields:
+    name: poker
+    parent: jeu divers
+
+- model: product.category
+  fields:
+    name: billard
+    parent: jeu divers
+
+- model: product.category
+  fields:
+    name: baby-foot
+    parent: jeu divers
+
+- model: product.category
+  fields:
+    name: flipper
+    parent: jeu divers
+
+- model: product.category
+  fields:
+    name: kicker
+    parent: jeu divers
+
+- model: product.category
+  fields:
+    name: arcade
+    parent: jeu divers
+
+- model: product.category
+  fields:
+    name: flèches
+    parent: jeu divers
+
+- model: product.category
+  fields:
+    name: cible
+    parent: jeu divers
+
+- model: product.category
+  fields:
+    name: scrapbooking
+    parent: jeu divers
+
+- model: product.category
+  fields:
+    name: pétanque
+    parent: jeu divers
+
+- model: product.category
+  fields:
+    name: puzzle
+    parent: jeu divers
+
+- model: product.category
+  fields:
+    name: légo
+    parent: jeu divers
+
+- model: product.category
+  fields:
+    name: playmobil
+    parent: jeu divers
+
+- model: product.category
+  fields:
+    name: meccano
+    parent: jeu divers
+
+- model: product.category
+  fields:
+    name: poupée
+    parent: jeu divers
+
+- model: product.category
+  fields:
+    name: marionnette
+    parent: jeu divers
+
+- model: product.category
+  fields:
+    name: loto
+    parent: jeu divers
+
+- model: product.category
+  fields:
+    name: circuit électrique
+    parent: jeu divers
+
+- model: product.category
+  fields:
+    name: objet téléguidé
+    parent: jeu divers
+
+- model: product.category
+  fields:
+    name: modélisme
+    parent: jeu divers
+
+- model: product.category
+  fields:
+    name: tir à l'arc
+    parent: jeu divers

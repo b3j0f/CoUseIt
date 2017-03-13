@@ -1,0 +1,8 @@
+django
+django-address
+djangorestframework
+markdown
+django-filter
+pyyaml
+django-cors-headers
+

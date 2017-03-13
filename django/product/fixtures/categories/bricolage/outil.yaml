@@ -1,0 +1,119 @@
+- model: product.category
+  fields:
+    name: outil
+    parent: bricolage
+
+- model: product.category
+  fields:
+    name: scie
+    parent: outil
+
+- model: product.category
+  fields:
+    name: tronçonneuse
+    parent: outil
+
+- model: product.category
+  fields:
+    name: marteau
+    parent: outil
+
+- model: product.category
+  fields:
+    name: forage
+    parent: outil
+
+- model: product.category
+  fields:
+    name: perceuse
+    parent: outil
+
+- model: product.category
+  fields:
+    name: rabot
+    parent: outil
+
+- model: product.category
+  fields:
+    name: découpeuse
+    parent: outil
+
+- model: product.category
+  fields:
+    name: pelle
+    parent: outil
+
+- model: product.category
+  fields:
+    name: maçonnerie
+    parent: outil
+
+- model: product.category
+  fields:
+    name: escabeau
+    parent: outil
+
+- model: product.category
+  fields:
+    name: perforateur
+    parent: outil
+
+- model: product.category
+  fields:
+    name: pinces
+    parent: outil
+
+- model: product.category
+  fields:
+    name: visseuse-dévisseuse
+    parent: outil
+
+- model: product.category
+  fields:
+    name: clé et jeu de clé
+    parent: outil
+
+- model: product.category
+  fields:
+    name: établi
+    parent: outil
+
+- model: product.category
+  fields:
+    name: touret
+    parent: outil
+
+- model: product.category
+  fields:
+    name: tire-fort
+    parent: outil
+
+- model: product.category
+  fields:
+    name: massicot
+    parent: outil
+
+- model: product.category
+  fields:
+    name: cutter
+    parent: outil
+
+- model: product.category
+  fields:
+    name: hache
+    parent: outil
+
+- model: product.category
+  fields:
+    name: fourche
+    parent: outil
+
+- model: product.category
+  fields:
+    name: seau
+    parent: outil
+
+- model: product.category
+  fields:
+    name: niveau
+    parent: outil

@@ -1,0 +1,79 @@
+- model: product.category
+  fields:
+    name: btp
+    parent: bricolage
+
+- model: product.category
+  fields:
+    name: mobilier chantier
+    parent: btp
+
+- model: product.category
+  fields:
+    name: marteau-piqueur
+    parent: btp
+
+- model: product.category
+  fields:
+    name: compacteur
+    parent: btp
+
+- model: product.category
+  fields:
+    name: dumper
+    parent: btp
+
+- model: product.category
+  fields:
+    name: bétonnière
+    parent: btp
+
+- model: product.category
+  fields:
+    name: aiguille vibrante
+    parent: btp
+
+- model: product.category
+  fields:
+    name: trancheuse de sol
+    parent: btp
+
+- model: product.category
+  fields:
+    name: règle
+    parent: btp
+
+- model: product.category
+  fields:
+    name: compresseur
+    parent: btp
+
+- model: product.category
+  fields:
+    name: pelleteuse
+    parent: btp
+
+- model: product.category
+  fields:
+    name: sablage
+    parent: btp
+
+- model: product.category
+  fields:
+    name: tracteur
+    parent: btp
+
+- model: product.category
+  fields:
+    name: excavatrice
+    parent: btp
+
+- model: product.category
+  fields:
+    name: bétonnière
+    parent: btp
+
+- model: product.category
+  fields:
+    name: porte taillant
+    parent: btp

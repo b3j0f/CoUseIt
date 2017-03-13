@@ -1,0 +1,39 @@
+- model: product.category
+  fields:
+    name: console de jeu
+    parent: high-tech
+
+- model: product.category
+  fields:
+    name: PC
+    parent: console de jeu
+
+- model: product.category
+  fields:
+    name: Mac
+    parent: console de jeu
+
+- model: product.category
+  fields:
+    name: SNK
+    parent: console de jeu
+
+- model: product.category
+  fields:
+    name: Séga
+    parent: console de jeu
+
+- model: product.category
+  fields:
+    name: Sony
+    parent: console de jeu
+
+- model: product.category
+  fields:
+    name: Nintendo
+    parent: console de jeu
+
+- model: product.category
+  fields:
+    name: Microsoft
+    parent: console de jeu

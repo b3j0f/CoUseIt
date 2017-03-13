@@ -1,0 +1,34 @@
+- model: product.category
+  fields:
+    name: remorque
+    parent: vehicule
+
+- model: product.category
+  fields:
+    name: déchargement
+    parent: remorque
+
+- model: product.category
+  fields:
+    name: bagagère
+    parent: remorque
+
+- model: product.category
+  fields:
+    name: moto
+    parent: remorque
+
+- model: product.category
+  fields:
+    name: porte voiture
+    parent: remorque
+
+- model: product.category
+  fields:
+    name: animaux
+    parent: remorque
+
+- model: product.category
+  fields:
+    name: bateau
+    parent: remorque

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="section scrollspy" id="owns" name="Mes biens">
+
+	{% for own in owns %}
+	{% include 'product.html' with product=own %}
+	{% endfor %}
+
+</div>
+
+<div class="section scrollspy" id="owns" name="Mes biens">
+</div>
+
+<div class="section scrollspy" id="owns" name="Mes biens">
+</div>
+
+{% endblock %}
+
+{% block script %}
+
+{% include 'account.js' %}
+
+{% endblock %}

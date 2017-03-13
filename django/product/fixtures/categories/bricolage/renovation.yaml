@@ -1,0 +1,64 @@
+- model: product.category
+  fields:
+    name: rénovation
+    parent: bricolage
+
+- model: product.category
+  fields:
+    name: décolleuse
+    parent: rénovation
+
+- model: product.category
+  fields:
+    name: décapeuse
+    parent: rénovation
+
+- model: product.category
+  fields:
+    name: ponceuse
+    parent: rénovation
+
+- model: product.category
+  fields:
+    name: pistolet peinture
+    parent: rénovation
+
+- model: product.category
+  fields:
+    name: pinceaux
+    parent: rénovation
+
+- model: product.category
+  fields:
+    name: bordureuse
+    parent: rénovation
+
+- model: product.category
+  fields:
+    name: cloueuse
+    parent: rénovation
+
+- model: product.category
+  fields:
+    name: agrafeuse
+    parent: rénovation
+
+- model: product.category
+  fields:
+    name: cireuse
+    parent: rénovation
+
+- model: product.category
+  fields:
+    name: lisseuse
+    parent: rénovation
+
+- model: product.category
+  fields:
+    name: talocheuse
+    parent: rénovation
+
+- model: product.category
+  fields:
+    name: gratte papier
+    parent: rénovation

@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="section" id="filter">
+	<div class="row">
+		<div class="card">
+			<div class="card-content">
+				<i class="material-icons">search</i>
+				<div class="row">
+					<div class="col s12">
+						<select id="category" onchange="return true;updateProperties(this)" multiple>
+							{% for category in categories %}
+							<option value="{{ category.name }}">
+								{{ category.name }}
+							</option>
+							{% endfor %}
+						</select>
+					</div>
+					<div class="col s12">
+						<div id="categories"></div>
+					</div>
+					<div class="col s12">
+						<ul class="tabs">
+							{% for category in topcategories %}
+							<li class="tab col s2"><a href="#{{ category.name }}">{{ category.name }}</a></li>
+							{% endfor %}
+						</ul>
+					</div>
+					<div class="col s12">
+						<a class="btn btn-block" onclick="toggleProperties()">
+							<i class="material-icons left togglepropertiesicons">keyboard_arrow_down</i>
+							Propriétés
+							<i class="material-icons right togglepropertiesicons">keyboard_arrow_down</i>
+						</a>
+					</div>
+				</div>
+				<div class="row hide" id="property-filter">
+					<p>Propriétés</p>
+					<div id="properties">
+						{% for category in parentcategories %}
+						{% for category in category.categories.all %}
+						{% for propertywvalues in category.allpropertieswvalues %}
+
+						{% endfor %}
+						{% endfor %}
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+	$( document ).ready(function(){
+		$('#categories').material_chip({
+			placeholder: 'Tapez une catégorie',
+			secondaryPlaceholder: '+catégorie',
+			autocompleteData: {
+				{% for category in categories %}
+				'{{ category.name }}': null,
+				{% endfor %}
+			}
+		});
+	});
+</script>
+
+{% include 'pagination.html' %}
+
+{% include 'products.html' %}
+
+{% include 'pagination.html' %}
+
+{% endblock %}
+
+{% block script %}
+
+{% include 'give.js' %}
+
+{% endblock %}

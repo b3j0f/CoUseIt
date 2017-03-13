@@ -1,0 +1,109 @@
+- model: product.category
+  fields:
+    name: cuisine
+    parent: évènement
+
+- model: product.category
+  fields:
+    name: appareil à crêpes
+    parent: évènement
+
+- model: product.category
+  fields:
+    name: appareil à fondue
+    parent: évènement
+
+- model: product.category
+  fields:
+    name: appareil à raclette
+    parent: évènement
+
+- model: product.category
+  fields:
+    name: pierrade
+    parent: évènement
+
+- model: product.category
+  fields:
+    name: barbecue
+    parent: évènement
+
+- model: product.category
+  fields:
+    name: grill
+    parent: évènement
+
+- model: product.category
+  fields:
+    name: plancha
+    parent: évènement
+
+- model: product.category
+  fields:
+    name: barbe à papa
+    parent: évènement
+
+- model: product.category
+  fields:
+    name: hot-dog
+    parent: évènement
+
+- model: product.category
+  fields:
+    name: corn flakes
+    parent: évènement
+
+- model: product.category
+  fields:
+    name: cuisson
+    parent: évènement
+
+- model: product.category
+  fields:
+    name: réfrigérateur
+    parent: évènement
+
+- model: product.category
+  fields:
+    name: ustensiles
+    parent: évènement
+
+- model: product.category
+  fields:
+    name: tireuse à bière
+    parent: évènement
+
+- model: product.category
+  fields:
+    name: trancheur
+    parent: évènement
+
+- model: product.category
+  fields:
+    name: machine à glaces
+    parent: évènement
+
+- model: product.category
+  fields:
+    name: salamandre
+    parent: évènement
+
+- model: product.category
+  fields:
+    name: thermoverseur
+    parent: évènement
+
+- model: product.category
+  fields:
+    name: congélateur
+    parent: évènement
+
+- model: product.category
+  fields:
+    name: moules
+    parent: évènement
+
+- model: product.category
+  fields:
+    name: machine à glaçons
+    parent: évènement

@@ -1,0 +1,44 @@
+- model: product.category
+  fields:
+    name: auto
+    parent: vehicule
+
+- model: product.category
+  fields:
+    name: tourisme
+    parent: auto
+
+- model: product.category
+  fields:
+    name: 4x4
+    parent: auto
+
+- model: product.category
+  fields:
+    name: sport
+    parent: auto
+
+- model: product.category
+  fields:
+    name: sans-permis
+    parent: auto
+
+- model: product.category
+  fields:
+    name: ancienne
+    parent: auto
+
+- model: product.category
+  fields:
+    name: évènement
+    parent: auto
+
+- model: product.category
+  fields:
+    name: avec chauffeur
+    parent: auto
+
+- model: product.category
+  fields:
+    name: limousine
+    parent: auto

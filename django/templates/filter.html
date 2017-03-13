@@ -1,0 +1,54 @@
+<div class="row">
+
+	<div class="col s4">
+		<span>Je cherche</span>
+	</div>
+
+	<div class="col s6">
+		{% include 'categories.html' with parentcategories=parentcategories %}
+	</div>
+
+	<div class="col s1">
+		<a class="btn-floating btn-large waves-effect waves-light" id="addfilter"><i class="material-icons">add</i></a>
+		<a class="btn-floating btn-large waves-effect waves-light hide" id="removefilter"><i class="material-icons">less</i></a>
+	</div>
+
+</div>
+
+<div class="row hide">
+
+	<div class="col s12">
+		<div id="keywords" class="chips">
+		</div>
+	</div>
+
+	<div class="col s12">
+		<input id="date" type="date" class="datepicker">
+	</div>
+
+	{% for category in categorys %}
+	{% for childcategory in category.categories %}
+
+	<div class="properties hide" id="properties-{{ childcategory.id }}">
+
+		{% for property in childcategory.properties %}
+
+		{% if property.values %}
+
+		<select multiple id="property-{{ property.id }}" class="property">
+			{% for value in property.allvalues %}
+			<option value="value">value</option>
+			{% endfor %}
+			{% endfor %}
+		</select>
+
+		{% endif %}
+
+		{% endfor %}
+
+	</div>
+
+	{% endfor %}
+	{% endfor %}
+
+</div>

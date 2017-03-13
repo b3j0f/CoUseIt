@@ -1,0 +1,39 @@
+- model: product.category
+  fields:
+    name: mesure/détection
+    parent: bricolage
+
+- model: product.category
+  fields:
+    name: laser
+    parent: mesure/détection
+
+- model: product.category
+  fields:
+    name: détecteurs
+    parent: mesure/détection
+
+- model: product.category
+  fields:
+    name: multifaisceaux
+    parent: mesure/détection
+
+- model: product.category
+  fields:
+    name: compressiomètre
+    parent: mesure/détection
+
+- model: product.category
+  fields:
+    name: théodolite
+    parent: mesure/détection
+
+- model: product.category
+  fields:
+    name: sonomètre
+    parent: mesure/détection
+
+- model: product.category
+  fields:
+    name: hygromètre
+    parent: mesure/détection

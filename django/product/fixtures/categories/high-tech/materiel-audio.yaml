@@ -1,0 +1,59 @@
+- model: product.category
+  fields:
+    name: matériel audio
+    parent: high-tech
+
+- model: product.category
+  fields:
+    name: son numérique
+    parent: matériel audio
+
+- model: product.category
+  fields:
+    name: audio analogique
+    parent: matériel audio
+
+- model: product.category
+  fields:
+    name: casque
+    parent: matériel audio
+
+- model: product.category
+  fields:
+    name: écouteur
+    parent: matériel audio
+
+- model: product.category
+  fields:
+    name: chaîne hifi
+    parent: matériel audio
+
+- model: product.category
+  fields:
+    name: lecteur CD
+    parent: matériel audio
+
+- model: product.category
+  fields:
+    name: lecteur MP3 / MP4
+    parent: matériel audio
+
+- model: product.category
+  fields:
+    name: dictaphone
+    parent: matériel audio
+
+- model: product.category
+  fields:
+    name: radio
+    parent: matériel audio
+
+- model: product.category
+  fields:
+    name: radio-cassette
+    parent: matériel audio
+
+- model: product.category
+  fields:
+    name: walkman cassette
+    parent: matériel audio
