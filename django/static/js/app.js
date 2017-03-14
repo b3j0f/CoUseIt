@@ -62,4 +62,20 @@ $( document ).ready(function(){
 		offset: $('nav')[0].clientHeight + 10
 	});
 	Materialize.updateTextFields();
+	$('.dropify').dropify({
+		messages: {
+			'default': 'Glissez ici un fichier ou cliquez',
+			'replace': 'Glissez ici un fichier ou cliquez',
+			'remove':  'Supprimer',
+			'error':   'Ooops, une erreur est arrivée.'
+		},
+		error: {
+			'fileSize': 'La taille du fichier doit être inférieur à {{ value }}.',
+			'minWidth': 'La largeur de l\'image doit être supérieure à {{ value }}px.',
+			'maxWidth': 'La largeur de l\'image doit être inférieure à {{ value }}px.',
+			'minHeight': 'La hauteur de l\'image doit être supérieure à {{ value }}px.',
+			'maxHeight': 'La hauteur de l\'image doit être inférieure à {{ value }}px.',
+			'imageFormat': 'Le format de l\'image doit être de type {{ value }}.'
+		}
+	});
 });

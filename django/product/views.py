@@ -62,10 +62,9 @@ class ConditionViewSet(ModelViewSet):
     serializer_class = ConditionSerializer
     filter_fields = {
         'id': ['exact'],
-        'supply': ['exact'],
-        'name': ['exact', 'iexact'],
-        'quantity': ['exact', 'gte', 'lte'],
-        'description': ['iexact']
+        'name': ['exact', 'icontains'],
+        'amount': ['exact', 'gte', 'lte'],
+        'description': ['icontains']
     }
 
 
@@ -120,7 +119,7 @@ class ProposalViewSet(ModelViewSet):
         'request': ['exact'],
         'condition': ['exact'],
         'quantity': ['exact', 'gte', 'lte'],
-        'description': ['iexact']
+        'description': ['icontains']
     }
 
 
@@ -130,8 +129,10 @@ class CategoryViewSet(ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
     filter_fields = {
-        'name': ['exact', 'iregex'],
-        'parent': ['exact']
+        'name': ['exact', 'icontains'],
+        'parent': ['exact'],
+        'description': ['icontains'],
+        'children': ['exact']
     }
 
 
@@ -142,16 +143,13 @@ class ProductViewSet(ModelViewSet):
     serializer_class = ProductSerializer
     filter_fields = {
         'id': ['exact'],
-        'name': ['exact', 'iregex'],
-        'description': ['iregex'],
+        'name': ['exact', 'icontains'],
+        'description': ['icontains'],
         'owners': ['exact'],
         'suppliers': ['exact'],
-        'usings': ['exact'],
         'users': ['exact'],
-        'categories': ['exact', 'iregex'],
+        'categories': ['exact', 'icontains'],
         'stock': ['exact'],
-        'conditions': ['exact'],
-        'requests': ['exact'],
         'states': ['exact'],
         'locations': ['exact']
     }
@@ -165,5 +163,5 @@ class StateViewSet(ModelViewSet):
     serializer_class = StateSerializer
     filter_fields = {
         'name': ['exact'],
-        'description': ['iregex']
+        'description': ['icontains']
     }

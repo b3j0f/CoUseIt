@@ -1,25 +1,61 @@
 {% load static %}
 
-<div class="card sticky-action {% size %}">
-	<div class="card-image">
+<div id="{{ product.id }}" class="card sticky-action {% size %}">
+	<div class="card-image" id="{{ product.id }}-image">
+		{% if product.medias.all %}
 		<div class="carousel">
 			{% for media in product.medias.all %}
 			<a class="carousel-item materialboxed" data-caption="{{ product.name }}" href="#one!"><img src="{{ media.url }}" /></a>
-			{% empty %}
-			<img src="{% static 'img/' %}{{ product.category.name }}.jpg" />
 			{% endfor %}
 		</div>
+		{% else %}
+		<img src="{% static 'img/' %}{{ product.category.name }}.jpg" />
+		{% endfor %}
 		<span class="card-title truncate">{% product.name %}</span>
 	</div>
-	<div class="card-content">
-	<span class="card-title activator grey-text text-darken-4">{{ product.shortdescription }}<i class="material-icons right">more_vert</i></span>
+	<div class="card-content" id="{{ product.id }}-content">
+		<span class="card-title activator grey-text text-darken-4">{{ product.shortdescription }}<i class="material-icons right">more_vert</i></span>
 		<span class="truncate">{% product.shortdescription %}</span>
 		{% include 'supply.html' with product=product %}
 	</div>
-	<div class="card-action">
+	<div class="card-action" id="{{ product.id }}-action">
+		{% if product.available %}
+		<ul class="collapsible" data-collapsible="accordion">
+			{% if product.gives.all %}
+			<li id="{{ product.id }}-give">
+				<div class="collapsible-header"><img class="responsive-img teal" src="{% static 'img/home-delivery-service.svg' %}" />Don/Troc/Vente</div>
+				<div class="collapsible-body">
+					<ul class="collection">
+						{% for give in product.gives.all %}
+						{% include 'conditions.html' with conditionset=give.conditions.all %}
+						{% endfor %}
+					</ul>
+				</div>
+			</li>
+			{% endif %}
+			{% if product.shares.all %}
+			<li id="{{ product.id }}-share">
+				<div class="collapsible-header"><img class="responsive-img teal" src="{% static 'img/race-chronometer.svg' %}" />Prêt/Location</div>
+				<div class="collapsible-body">
+					{% for share in product.shares.all %}
+					<ul class="collapsible" data-collapsible="accordion">
+						<li id="{{ product.id }}-share-{{ share.id }}">
+							{% include 'conditions.html' with conditionset=share.days %}
+							{% include 'conditions.html' with conditionset=share.weeks %}
+							{% include 'conditions.html' with conditionset=share.weekends %}
+							{% include 'conditions.html' with conditionset=share.months %}
+							{% include 'conditions.html' with conditionset=share.years %}
+						</li>
+					</ul>
+				</div>
+			</li>
+			{% endif %}
+		</div>
+		{% endif %}
 	</div>
-	<div class="card-reveal">
-		<span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+	<div class="card-reveal" id="{{ product.id }}-reveal">
+		<span class="card-title grey-text text-darken-4">{{ product.name }}<i class="material-icons right">close</i></span>
+		<span>{{ product.shortdescription }}</span>
 		<p>{{ product.description }}</p>
 	</div>
 </div>

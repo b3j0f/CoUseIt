@@ -95,6 +95,15 @@ class Supply(MessageElement):
 
 
 @python_2_unicode_compatible
+class ConditionSet(models.Model):
+    """Use condition set."""
+
+    def __str__(self):
+        """Representation."""
+        return tostr(self, 'conditions')
+
+
+@python_2_unicode_compatible
 class Condition(models.Model):
     """Use condition item."""
 
@@ -102,13 +111,14 @@ class Condition(models.Model):
         """Meta class."""
 
         default_related_name = 'conditions'
-        unique_together = ['name']
         verbose_name = 'condition'
+        order_with_respect_to = 'conditionset'
         verbose_name_plural = 'conditions'
 
     name = models.CharField(max_length=50)
     amount = models.FloatField(default=1, blank=True)
     description = models.TextField(blank=True, default=None, null=True)
+    conditionset = models.ForeignKey(ConditionSet, related_name='conditions')
 
     def __str__(self):
         """Representation."""
@@ -120,11 +130,11 @@ class Share(Supply):
 
     product = models.ForeignKey(Product, related_name='shares')
 
-    days = models.ManyToManyField(Condition, related_name='+')
-    weeks = models.ManyToManyField(Condition, related_name='+')
-    weekends = models.ManyToManyField(Condition, related_name='+')
-    months = models.ManyToManyField(Condition, related_name='+')
-    years = models.ManyToManyField(Condition, related_name='+')
+    days = models.ManyToManyField(ConditionSet, related_name='+')
+    weeks = models.ManyToManyField(ConditionSet, related_name='+')
+    weekends = models.ManyToManyField(ConditionSet, related_name='+')
+    months = models.ManyToManyField(ConditionSet, related_name='+')
+    years = models.ManyToManyField(ConditionSet, related_name='+')
 
     class Meta:
         """Meta class."""
@@ -139,7 +149,7 @@ class Give(Supply):
     """Give condition."""
 
     product = models.ForeignKey(Product, related_name='gives')
-    conditions = models.ManyToManyField(Condition, related_name='+')
+    conditions = models.ManyToManyField(ConditionSet, related_name='+')
 
     class Meta:
         """Meta class."""
@@ -212,10 +222,10 @@ class Proposal(models.Model):
 class State(models.Model):
     """Product state."""
 
-    detail = models.TextField(null=True, blank=True)
+    detail = models.TextField(null=True, blank=True, default=None)
     datetime = models.DateTimeField()
     product = models.ForeignKey(
-        Product, related_name='states', null=True, blank=True
+        Product, related_name='states', null=True, blank=True, default=None
     )
 
     def __str__(self):
@@ -443,14 +453,14 @@ class VEvent(models.Model):
 class Location(Duration):
     """Product location."""
 
-    product = models.OneToOneField(Product)
+    product = models.ForeignKey(Product, related_name='locations')
     longitude = models.FloatField()
     latitude = models.FloatField()
     address = AddressField()
 
     def __str__(self):
         """Representation."""
-        return tostr(self, 'product', 'address', 'latitude', 'longitude')
+        return tostr(self, 'address', 'latitude', 'longitude')
 
 
 @python_2_unicode_compatible

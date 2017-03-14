@@ -20,10 +20,38 @@ from django.contrib import admin
 
 from django.shortcuts import render
 
+from rest_framework.routers import DefaultRouter
+
 from .views import (
     homeview, aboutview, loginview, logoutview, resetpwdview,
     accountview, giveview, stockview, faqview, shareview, statsview
 )
+
+from account.views import UserViewSet, AccountViewSet
+from product.views import (
+    CategoryViewSet, ProductViewSet, SupplyViewSet, ConditionViewSet,
+    StateViewSet, RequestViewSet, UsingViewSet, MediaViewSet, LocationViewSet,
+    ProposalViewSet, GiveViewSet, ShareViewSet
+)
+from stock.views import StockViewSet, CapacityViewSet
+
+router = DefaultRouter()
+router.register(r'users', UserViewSet)
+router.register(r'accounts', AccountViewSet)
+router.register(r'categories', CategoryViewSet)
+router.register(r'products', ProductViewSet)
+router.register(r'states', StateViewSet)
+router.register(r'conditions', ConditionViewSet)
+router.register(r'requests', RequestViewSet)
+router.register(r'usings', UsingViewSet)
+router.register(r'locations', LocationViewSet)
+router.register(r'supplyings', SupplyViewSet)
+router.register(r'medias', MediaViewSet)
+router.register(r'proposals', ProposalViewSet)
+router.register(r'gives', GiveViewSet)
+router.register(r'shares', ShareViewSet)
+router.register(r'stocks', StockViewSet)
+router.register(r'capatities', CapacityViewSet)
 
 urlpatterns = [
     url(
@@ -32,9 +60,7 @@ urlpatterns = [
     ),
     url(r'^admin/', admin.site.urls, name='admin'),
     url(r'^auth/', include('django.contrib.auth.urls'), name='auth'),
-    url(r'^{0}'.format(settings.API), include('account.urls'), name='account'),
-    url(r'^{0}'.format(settings.API), include('product.urls'), name='product'),
-    url(r'^{0}'.format(settings.API), include('stock.urls'), name='stock'),
+    url(r'^{0}/'.format(settings.API), include(router.urls), name='api'),
     url(r'^$', homeview),
     url(r'^home$', homeview),
     url(r'^faq', faqview),

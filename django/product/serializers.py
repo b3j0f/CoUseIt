@@ -2,7 +2,7 @@
 
 from .models import (
     Product, Location, Media, Supply, Condition, Request, State, Using,
-    Category, Proposal, Share, Give, VEvent, Duration, Give, Share
+    Category, Proposal, Share, Give, VEvent, Duration
 )
 
 from rest_framework.serializers import HyperlinkedModelSerializer
@@ -74,24 +74,6 @@ class SupplySerializer(HyperlinkedModelSerializer):
         fields = ['products', 'dates']
 
 
-class GiveSerializer(SupplySerializer):
-    """Give serializer."""
-
-    class Meta(SupplySerializer.Meta):
-        """Give serializer meta class."""
-
-        model = Give
-
-
-class ShareSerializer(SupplySerializer):
-    """Share serializer."""
-
-    class Meta(SupplySerializer.Meta):
-        """Share serializer meta class."""
-
-        model = Share
-
-
 class ConditionSerializer(HyperlinkedModelSerializer):
     """Condition serializer."""
 
@@ -101,7 +83,7 @@ class ConditionSerializer(HyperlinkedModelSerializer):
         """Condition serializer meta class."""
 
         model = Condition
-        fields = ['supply', 'name', 'quantity', 'description']
+        fields = ['name', 'amount', 'description']
 
 
 class RequestSerializer(HyperlinkedModelSerializer):
@@ -145,7 +127,7 @@ class CategorySerializer(HyperlinkedModelSerializer):
         """Category serializer meta class."""
 
         model = Category
-        fields = ['name', 'parent', 'children']
+        fields = ['name', 'parent', 'description', 'children']
 
 
 class ShareSerializer(SupplySerializer):

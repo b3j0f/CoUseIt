@@ -1,7 +1,10 @@
+# coding: utf8
 """Utilities module."""
 from __future__ import unicode_literals
 
 from inspect import isroutine
+
+from six import string_types
 
 
 def getprop(obj, name):
@@ -11,7 +14,8 @@ def getprop(obj, name):
         obj = getattr(obj, prop)
         if isroutine(obj):
             obj = obj()
-        result = str(obj)
+        if not isinstance(obj, string_types):
+            result = str(obj)
     return result
 
 
