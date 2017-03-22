@@ -337,8 +337,14 @@ def accountview(request):
 
 def homeview(request):
     """Home view."""
-    context = basecontext(request, 'home')
+    context = basecontext(request, 'home', True)
     return render(request, 'home.html', context=context)
+
+
+def editview(request):
+    """Home view."""
+    context = basecontext(request, 'edit', True)
+    return render(request, 'edit.html', context=context)
 
 
 def faqview(request):

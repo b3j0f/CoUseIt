@@ -1,0 +1,53 @@
+- model: product.category
+  fields:
+    name: bricolage
+
+- model: product.category
+  fields:
+    name: btp
+    parent: bricolage
+
+- model: product.category
+  fields:
+    name: chauffage-climatisateur
+    parent: bricolage
+
+- model: product.category
+  fields:
+    name: élèvation
+    parent: bricolage
+
+- model: product.category
+  fields:
+    name: entretien
+    parent: bricolage
+
+- model: product.category
+  fields:
+    name: jardinage
+    parent: bricolage
+
+- model: product.category
+  fields:
+    name: manutention
+    parent: bricolage
+
+- model: product.category
+  fields:
+    name: mesure-détection
+    parent: bricolage
+
+- model: product.category
+  fields:
+    name: outil
+    parent: bricolage
+
+- model: product.category
+  fields:
+    name: rénovation
+    parent: bricolage
+
+- model: product.category
+  fields:
+    name: soudure-plomberie
+    parent: bricolage

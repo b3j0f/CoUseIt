@@ -79,23 +79,20 @@
         <li><a href="/give" class="waves-effect{% if page == 'give' %} active{% endif %}">Échanges</a></li>
         <li><a href="/share" class="waves-effect{% if page == 'share' %} active{% endif %}">Emprunts</a></li>
         <li><a href="/stock" class="waves-effect{% if page == 'stock' %} active{% endif %}">Stocks</a></li>
-        <li class="divider"></li>
-        <li><a href="/stats" class="waves-effect{% if page == 'stats' %} active{% endif %}">Statistiques</a></li>
-        <li><a href="/faq" class="waves-effect{% if page == 'faq' %} active{% endif %}">FAQ</a></li>
-        <li><a href="/about" class="waves-effect{% if page == 'about' %} active{% endif %}">À propos</a></li>
+        <li><a href="/add" class="waves-effect{% if page == 'add' %} active{% endif %}">Proposer produit/stock</a></li>
     </ul>
 
     <div class="navbar-fixed">
         <nav>
             <div class="nav-wrapper">
-                <a href="/" class="brand-logo{% if page == 'home' %} active{% endif %}"><i class="large material-icons"></i>Co Use It</a>
+                <a href="/" class="brand-logo{% if page == 'home' %} active{% endif %}">
+                    Co Use It
+                </a>
                 <ul id="nav-lechangement" class="right hide-on-med-and-down">
                     <li class="{% if page == 'give' %}active{% endif %}"><a href="/give">Échanges</a></li>
                     <li class="{% if page == 'share' %}active{% endif %}"><a href="/share">Emprunts</a></li>
                     <li class="{% if page == 'stock' %}active{% endif %}"><a href="/stock">Stocks</a></li>
-                    <li class="{% if page == 'stats' %}active{% endif %}"><a href="/stats">Statistiques</a></li>
-                    <li class="{% if page == 'faq' %}active{% endif %}"><a href="/faq">FAQ</a></li>
-                    <li class="{% if page == 'about' %}active{% endif %}"><a href="/about">À propos</a></li>
+                    <li><a href="/edit" class="waves-effect{% if page == 'edit' %} active{% endif %}">Proposer produit/stock</a></li>
                     {% if user.is_authenticated %}
                     <!-- Dropdown Trigger -->
                     <li class="{% if page == 'account' %}active{% endif %}"><a class="dropdown-button" href="#!" data-activates="usermenu">{{ user.email }}<i class="material-icons right">arrow_drop_down</i></a></li>
@@ -136,7 +133,7 @@
 
     {% endif %}
 
-    <div class="container">
+    <div class="container loader">
 
         {% if tableofcontents %}
         <div class="row">
@@ -155,7 +152,11 @@
             {% block rightmenu %}
             <div class="col l2 m3 hide-on-small-only container">
                 <div class="rightmenu">
-                    Nous supporter :
+                    <ul>
+                        <li>
+                            <a href="/edit" class="btn-floating btn-large red"><i class="material-icons">add</i></a>
+                        </li>
+                    </ul>
                     <script src="https://liberapay.com/lechangement/widgets/receiving.js"></script>
                     <ul class="section table-of-contents">
                         {% block tableofcontents %}
@@ -230,6 +231,15 @@
                 <h5 class="white-text">Liens</h5>
                 <ul>
                     <li>
+                        <a href="/stats">Statistiques</a>
+                    </li>
+                    <li>
+                        <a href="/about">À propos</a>
+                    </li>
+                    <li>
+                        <a href="/faq">FAQ</a>
+                    </li>
+                    <li>
                         <!-- Place this tag where you want the button to render. -->
                         <a class="github-button" href="https://github.com/b3j0f/lechangement/subscription" data-style="mega" data-count-href="/b3j0f/lechangement/watchers" data-count-api="/repos/b3j0f/lechangement#subscribers_count" data-count-aria-label="# watchers on GitHub" aria-label="Watch b3j0f/lechangement on GitHub">Sources</a>
                     </li>
@@ -255,10 +265,10 @@
     </div>
     <div class="footer-copyright">
         <div class="row container">
-            <div class="col s6">
+            <div class="col s12 m2 l4">
                 <p><a rel="license" class="left" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
             </div>
-            <div class="col s6">
+            <div class="col m10 l8">
                 <p class="hide-on-small-only">Ce site est sous licence <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a></p>
             </div>
         </div>

@@ -1,3 +1,4 @@
+# coding: utf-8
 """Model module."""
 from __future__ import unicode_literals
 

@@ -1,21 +1,25 @@
 {% load static %}
 
-<div id="{{ product.id }}" class="card sticky-action {% size %}">
+<div id="{{ product.id }}" class="card sticky-action{% if size %} {{ size }}{% endif %}">
 	<div class="card-image" id="{{ product.id }}-image">
-		{% if product.medias.all %}
+		{% if product.medias.all or edit %}
 		<div class="carousel">
 			{% for media in product.medias.all %}
-			<a class="carousel-item materialboxed" data-caption="{{ product.name }}" href="#one!"><img src="{{ media.url }}" /></a>
+			<a class="carousel-item materialboxed" data-caption="{{ product.name }}" href="#one!">
+				<img src="{{ media.url }}" />
+			</a>
 			{% endfor %}
 		</div>
 		{% else %}
 		<img src="{% static 'img/' %}{{ product.category.name }}.jpg" />
-		{% endfor %}
-		<span class="card-title truncate">{% product.name %}</span>
+		{% endif %}
+		<span class="card-title truncate black-text name" id="{{ product.id }}-title">{{ product.name }}</span>
 	</div>
-	<div class="card-content" id="{{ product.id }}-content">
-		<span class="card-title activator grey-text text-darken-4">{{ product.shortdescription }}<i class="material-icons right">more_vert</i></span>
-		<span class="truncate">{% product.shortdescription %}</span>
+	<div class="card-content activator" id="{{ product.id }}-content">
+		<span class="activator grey-text text-darken-4">
+			<div class="shortdescription truncate">{{ product.shortdescription }}</div>
+			<i class="material-icons right">more_vert</i>
+		</span>
 		{% include 'supply.html' with product=product %}
 	</div>
 	<div class="card-action" id="{{ product.id }}-action">
@@ -47,6 +51,7 @@
 							{% include 'conditions.html' with conditionset=share.years %}
 						</li>
 					</ul>
+					{% endfor %}
 				</div>
 			</li>
 			{% endif %}
@@ -54,8 +59,11 @@
 		{% endif %}
 	</div>
 	<div class="card-reveal" id="{{ product.id }}-reveal">
-		<span class="card-title grey-text text-darken-4">{{ product.name }}<i class="material-icons right">close</i></span>
-		<span>{{ product.shortdescription }}</span>
-		<p>{{ product.description }}</p>
+		<span class="card-title grey-text text-darken-4">
+			<div class="name">{{ product.name }}</div>
+			<i class="material-icons right">close</i>
+		</span>
+		<span class="shortdescription">{{ product.shortdescription }}</span>
+		<p class="description">{{ product.description }}</p>
 	</div>
 </div>

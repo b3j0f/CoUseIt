@@ -1,0 +1,43 @@
+- model: product.category
+  fields:
+    name: évènement
+
+- model: product.category
+  fields:
+    name: animation
+    parent: évènement
+
+- model: product.category
+  fields:
+    name: cuisine
+    parent: évènement
+
+- model: product.category
+  fields:
+    name: mobilier
+    parent: évènement
+
+- model: product.category
+  fields:
+    name: réception
+    parent: évènement
+
+- model: product.category
+  fields:
+    name: salle
+    parent: évènement
+
+- model: product.category
+  fields:
+    name: sécurité
+    parent: évènement
+
+- model: product.category
+  fields:
+    name: sono et éclairage
+    parent: évènement
+
+- model: product.category
+  fields:
+    name: vêtement de soirée
+    parent: évènement

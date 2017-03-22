@@ -1,4 +1,5 @@
-"""simpleneed URL Configuration.
+# coding: utf-8
+"""CoUseIt URL Configuration.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.10/topics/http/urls/
@@ -23,7 +24,7 @@ from django.shortcuts import render
 from rest_framework.routers import DefaultRouter
 
 from .views import (
-    homeview, aboutview, loginview, logoutview, resetpwdview,
+    homeview, aboutview, loginview, logoutview, resetpwdview, editview,
     accountview, giveview, stockview, faqview, shareview, statsview
 )
 
@@ -73,6 +74,7 @@ urlpatterns = [
     url(r'^share', shareview),
     url(r'^stock', stockview),
     url(r'^stats', statsview),
+    url(r'^edit', editview),
     url('test', lambda request: render(request, 'test.html'))
 ] + static(
     settings.STATIC_URL, document_root=settings.STATIC_ROOT
