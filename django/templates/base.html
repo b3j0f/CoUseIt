@@ -137,7 +137,7 @@
 
         {% if tableofcontents %}
         <div class="row">
-            <div class="col l10 m9 s12">
+            <div class="col l11 m9 s12">
                 {% endif %}
 
                 {% block content %}
@@ -150,12 +150,13 @@
             {% if tableofcontents %}
 
             {% block rightmenu %}
-            <div class="col l2 m3 hide-on-small-only container">
+            <div class="col l1 m3 hide-on-small-only container">
                 <div class="rightmenu">
-                    <ul>
+                    <ul>{% if page != 'edit' %}
                         <li>
                             <a href="/edit" class="btn-floating btn-large red"><i class="material-icons">add</i></a>
                         </li>
+                        {% endif %}
                     </ul>
                     <script src="https://liberapay.com/lechangement/widgets/receiving.js"></script>
                     <ul class="section table-of-contents">

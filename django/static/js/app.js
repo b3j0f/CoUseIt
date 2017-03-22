@@ -61,5 +61,6 @@ $( document ).ready(function(){
 		bottom: $('footer')[0].offsetTop,
 		offset: $('nav')[0].clientHeight + 10
 	});
+	$('.maxlength').characterCounter();
 	Materialize.updateTextFields();
 });

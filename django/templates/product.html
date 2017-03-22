@@ -2,11 +2,11 @@
 
 <div id="{{ product.id }}" class="card sticky-action{% if size %} {{ size }}{% endif %}">
 	<div class="card-image" id="{{ product.id }}-image">
-		{% if product.medias.all or edit %}
+		{% if product.medias.all or not product %}
 		<div class="carousel">
 			{% for media in product.medias.all %}
-			<a class="carousel-item materialboxed" data-caption="{{ product.name }}" href="#one!">
-				<img src="{{ media.url }}" />
+			<a class="carousel-item" data-caption="{{ product.name }}" href="#one!">
+				<img src="{{ media.url }}" class="responsive-img" />
 			</a>
 			{% endfor %}
 		</div>
@@ -16,7 +16,7 @@
 		<span class="card-title truncate black-text name" id="{{ product.id }}-title">{{ product.name }}</span>
 	</div>
 	<div class="card-content activator" id="{{ product.id }}-content">
-		<span class="activator grey-text text-darken-4">
+		<span class="card-title activator grey-text text-darken-4">
 			<div class="shortdescription truncate">{{ product.shortdescription }}</div>
 			<i class="material-icons right">more_vert</i>
 		</span>
@@ -64,6 +64,7 @@
 			<i class="material-icons right">close</i>
 		</span>
 		<span class="shortdescription">{{ product.shortdescription }}</span>
+		<div class="divider"></div>
 		<p class="description">{{ product.description }}</p>
 	</div>
 </div>

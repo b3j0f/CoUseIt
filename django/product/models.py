@@ -36,8 +36,10 @@ class Product(MessageElement):
 
     name = models.CharField(db_index=True, max_length=50, blank=False)
     created = models.DateTimeField(blank=True)
-    shortdescription = models.TextField(blank=True, null=True)
-    description = models.TextField(blank=True, null=True)
+    shortdescription = models.CharField(
+        blank=True, null=True, max_length=120
+    )
+    description = models.CharField(blank=True, null=True, max_length=255)
     owners = models.ManyToManyField(
         Account, related_name='ownes', blank=False
     )

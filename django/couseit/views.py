@@ -343,7 +343,7 @@ def homeview(request):
 
 def editview(request):
     """Home view."""
-    context = basecontext(request, 'edit', True)
+    context = basecontext(request, 'edit', False)
     return render(request, 'edit.html', context=context)
 
 

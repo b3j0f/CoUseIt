@@ -1,3 +1,5 @@
+$('')
+
 function adddropify() {
     var id = 'medias-' + new Date().getTime();
     $('#medias .row')[0].insertAdjacentHTML(
@@ -38,8 +40,6 @@ function adddropify() {
     });
 }
 
-adddropify();
-
 function refreshcarousel() {
     $('.carousel').remove();
     document.getElementById('-image').insertAdjacentHTML(
@@ -63,7 +63,7 @@ function refreshcarousel() {
     ids_files.forEach(function(id_file) {
         carousel.insertAdjacentHTML(
             'beforeend',
-            '<a id="carousel-' + id_file[0] + '" class="carousel-item materialboxed" data-caption="' + document.getElementById('name').value + '" href="#one!"><img class="responsive-img" src="' + id_file[1] + '" /></a>'
+            '<a id="carousel-' + id_file[0] + '" class="carousel-item" data-caption="' + document.getElementById('name').value + '" href="#one!"><img class="responsive-img" src="' + id_file[1] + '" /></a>'
             );
     });
     $('.carousel').carousel(
@@ -82,3 +82,13 @@ function updateProperty(name) {
         demos[i].innerHTML = document.getElementById(name).value;
     }
 }
+
+{% for media in product.medias.all %}
+
+adddropify();
+
+{% empty %}
+
+adddropify();
+
+{% endfor %}
