@@ -7,91 +7,96 @@
 <div class="row">
 	<div class="col s12">
 		<ul class="tabs">
-			<li class="tab col s6"><a class="active" href="#edit1">Édition</a></li>
-			<li class="tab col s6"><a class="active" href="#demo1">Aperçu</a></li>
+			<li class="tab col s6"><a class="active" href="#edit">Édition</a></li>
+			<li class="tab col s6"><a class="active" href="#demo">Aperçu</a></li>
 		</ul>
 	</div>
 </div>
 
-<form method="post" enctype="multipart/form-data" action={{ url }}>
-	{% csrf_token %}
-	<div class="row">
-		<div class="col l12">
-			<div class="row card" id="edit1">
+<div id="edit">
+	<form method="post" enctype="multipart/form-data" action={{ url }}>
+		{% csrf_token %}
+		<input type="hidden" name="id" value="{{ product.id }}" />
+		<div class="row">
+			<div class="col l12">
+				<div class="row card">
 
-				<div class="input-field col s3">
-					<select name="type">
-						<option value="product" selected>Bien</option>
-						<option value="stock">Stock</option>
-					</select>
-					<label>Type</label>
-				</div>
-
-				<div class="col s9 input-field">
-					<i class="material-icons prefix">title</i>
-					<input type="text" name="name" placeholder="Appareil photo Nikon D80" id="name" onchange="updateProperty('name')" value="{{ product.id }}" class="maxlength" data-length="50" />
-					<label for="name">Nom</label>
-				</div>
-
-				<div class="col s12 input-field">
-					<i class="material-icons left">subtitles</i>
-					<input type="text" name="shortdescription" placeholder="10 millions de pixels, carte mémoire 2 Go" id="shortdescription" onchange="updateProperty('shortdescription')" value="{{ product.shortdescription }}" data-length="120" class="maxlength" />
-					<label for="shortdescription">Description courte</label>
-				</div>
-
-				<div class="col s12 input-field">
-					<i class="material-icons left">description</i>
-					<textarea id="description" name="description" class="materialize-textarea maxlength" onchange="updateProperty('description')" data-length="255">{{ product.description }}</textarea>
-					<label for="textarea1">Description</label>
-				</div>
-
-				<div class="col s12 input-field" id="medias">
-					<h5>
-						<i class="material-icons left">add_a_photo</i>
-						Photos
-					</h5>
-					<div class="row">
+					<div class="input-field col s3">
+						<select name="type">
+							<option value="product" selected>Bien</option>
+							<option value="stock">Stock</option>
+						</select>
+						<label>Type</label>
 					</div>
-				</div>
 
-				<div class="col s12">
-					<ul class="collapsible" data-collapsible="expandable">
-						<li>
-							<div class="collapsible-header"><i class="material-icons">filter_drama</i>Conditions de vente</div>
-							<div class="collapsible-body">
-								<ul class="collection">
-									<li class="collection-item">
-									</li>
-								</ul>
-							</div>
-						</li>
-						<li>
-							<div class="collapsible-header"><i class="material-icons">place</i>Conditions de prêt</div>
-							<div class="collapsible-body">
-								<ul class="collection">
-									<li class="collection-item">
-									</li>
-								</ul>
-							</div>
-						</li>
-					</ul>
-				</div>
+					<div class="col s9 input-field">
+						<i class="material-icons prefix">title</i>
+						<input type="text" name="name" placeholder="Appareil photo Nikon D80" id="name" onchange="updateProperty('name')" value="{{ product.id }}" class="maxlength" data-length="50" />
+						<label for="name">Nom</label>
+					</div>
 
-				<div class="col s12 input-field">
-					<input type="date" class="datepicker" id="startdate" name="startdate" />
-					<label for="start">Disponibilité</label>
+					<div class="col s12 input-field">
+						<i class="material-icons left">subtitles</i>
+						<input type="text" name="shortdescription" placeholder="10 millions de pixels, carte mémoire 2 Go" id="shortdescription" onchange="updateProperty('shortdescription')" value="{{ product.shortdescription }}" data-length="120" class="maxlength" />
+						<label for="shortdescription">Description courte</label>
+					</div>
+
+					<div class="col s12 input-field">
+						<i class="material-icons left">description</i>
+						<textarea id="description" name="description" class="materialize-textarea maxlength" onchange="updateProperty('description')" data-length="255">{{ product.description }}</textarea>
+						<label for="textarea1">Description</label>
+					</div>
+
+					<div class="col s12 input-field" id="medias">
+						<h5>
+							<i class="material-icons left">add_a_photo</i>
+							Photos
+						</h5>
+						<div class="row">
+						</div>
+					</div>
+
+					<div class="col s12">
+						<ul class="collapsible" data-collapsible="expandable">
+							<li>
+								<div class="collapsible-header"><i class="material-icons">filter_drama</i>Conditions de vente</div>
+								<div class="collapsible-body">
+									<ul class="collection">
+										<li class="collection-item">
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li>
+								<div class="collapsible-header"><i class="material-icons">place</i>Conditions de prêt</div>
+								<div class="collapsible-body">
+									<ul class="collection">
+										<li class="collection-item">
+										</li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</div>
+
+					<div class="col s12 input-field">
+						<input type="date" class="datepicker" id="startdate" name="startdate" />
+						<label for="start">Disponibilité</label>
+					</div>
 				</div>
 			</div>
 		</div>
+	</form>
+</div>
 
-		<div class="demo container col l12" id="demo1">
-			{% include 'product.html' %}
-		</div>
+<div class="row" id="demo">
+	<div class="col s12">
+		{% include 'product.html' %}
 	</div>
-</form>
+</div>
 
 <script type="text/javascript">
-	{% include 'medias.js' %}
+	{% include 'edit.js' %}
 </script>
 
 {% endblock %}

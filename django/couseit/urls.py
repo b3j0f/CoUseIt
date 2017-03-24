@@ -25,7 +25,7 @@ from rest_framework.routers import DefaultRouter
 
 from .views import (
     homeview, aboutview, loginview, logoutview, resetpwdview, editview,
-    accountview, giveview, stockview, faqview, shareview, statsview
+    accountview, giveview, stockview, faqview, shareview, statsview, searchview
 )
 
 from account.views import UserViewSet, AccountViewSet
@@ -75,6 +75,7 @@ urlpatterns = [
     url(r'^stock', stockview),
     url(r'^stats', statsview),
     url(r'^edit', editview),
+    url(r'^search', searchview),
     url('test', lambda request: render(request, 'test.html'))
 ] + static(
     settings.STATIC_URL, document_root=settings.STATIC_ROOT

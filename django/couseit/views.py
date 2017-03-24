@@ -359,6 +359,12 @@ def aboutview(request):
     return render(request, 'about.html', context=context)
 
 
+def searchview(request):
+    """Search view."""
+    context = basecontext(request, 'search')
+    return render(request, 'search.html', context=context)
+
+
 def statsview(request):
     """Stat view."""
     context = basecontext(request, 'stats', True)
