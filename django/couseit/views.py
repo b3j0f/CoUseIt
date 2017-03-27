@@ -12,7 +12,7 @@ from account.models import Account
 from product.models import (
     Product, Using, Stat, Share, Give, Category
 )
-from stock.models import Stock
+from stock.models import Stock, Stocking
 
 from .utils import sendemail
 
@@ -223,7 +223,7 @@ def getproductsfromsupply(request, supplytype, query=None):
     simplename = supplytype.__name__.lower()
     return render(
         request,
-        '{0}.html'.format(simplename),
+        'search.html',
         context=appcontext(request, page=simplename)
     )
     basequery = Q(requests=None) | Q(requests__accepted=None)
@@ -309,7 +309,7 @@ def getproductsfromsupply(request, supplytype, query=None):
         id__in=product_ids
     )
 
-    return render(request, '{0}.html'.format(simplename), context=context)
+    return render(request, 'search.html'.format(simplename), context=context)
 
 
 def giveview(request):
@@ -324,6 +324,7 @@ def shareview(request):
 
 def stockview(request):
     """Stock view."""
+    return getproductsfromsupply(request, Stocking)
     context = basecontext(request, 'stock')
     context['stocks'] = Stock.objects.order_by('-datetime')
     return render(request, 'stock.html', context=context)
@@ -361,7 +362,7 @@ def aboutview(request):
 
 def searchview(request):
     """Search view."""
-    context = basecontext(request, 'search')
+    context = basecontext(request, 'search', True)
     return render(request, 'search.html', context=context)
 
 

@@ -98,9 +98,9 @@
         <li><a class="waves-effect waves-light btn" href="/login?next={{ next }}">Connexion</a></li>
         {% endif %}
         <li class="divider"></li>
-        <li><a href="/give" class="waves-effect{% if page == 'give' %} active{% endif %}">Échanges</a></li>
-        <li><a href="/share" class="waves-effect{% if page == 'share' %} active{% endif %}">Emprunts</a></li>
-        <li><a href="/stock" class="waves-effect{% if page == 'stock' %} active{% endif %}">Stocks</a></li>
+        <li><a href="/give" class="waves-effect{% if page == 'give' %} active{% endif %}">Échanger</a></li>
+        <li><a href="/share" class="waves-effect{% if page == 'share' %} active{% endif %}">Emprunter</a></li>
+        <li><a href="/stock" class="waves-effect{% if page == 'stock' %} active{% endif %}">Stocker</a></li>
         <li><a href="/add" class="waves-effect{% if page == 'add' %} active{% endif %}">Proposer produit/stock</a></li>
     </ul>
 
@@ -111,9 +111,9 @@
                     Co Use It
                 </a>
                 <ul id="nav-lechangement" class="right hide-on-med-and-down">
-                    <li class="{% if page == 'give' %}active{% endif %}"><a href="/give">Échanges</a></li>
-                    <li class="{% if page == 'share' %}active{% endif %}"><a href="/share">Emprunts</a></li>
-                    <li class="{% if page == 'stock' %}active{% endif %}"><a href="/stock">Stocks</a></li>
+                    <li class="{% if page == 'give' %}active{% endif %}"><a href="/give">Échanger</a></li>
+                    <li class="{% if page == 'share' %}active{% endif %}"><a href="/share">Emprunter</a></li>
+                    <li class="{% if page == 'stock' %}active{% endif %}"><a href="/stock">Stocker</a></li>
                     <li><a href="/edit" class="waves-effect{% if page == 'edit' %} active{% endif %}">Proposer produit/stock</a></li>
                     {% if user.is_authenticated %}
                     <!-- Dropdown Trigger -->
