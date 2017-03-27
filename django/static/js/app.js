@@ -37,9 +37,7 @@ window.twttr = (function(d, s, id) {
 })();
 
 $( document ).ready(function(){
-	$('.dropdown-button').dropdown({
-		constrain_width: false
-	});
+	$('.dropdown-button').dropdown();
 	$('.button-collapse').sideNav();
 	$('.tooltipped').tooltip(
 	{
