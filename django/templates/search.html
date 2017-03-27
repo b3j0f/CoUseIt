@@ -7,7 +7,7 @@
 <div class="section scrollspy" id="search" name="Recherche">
 
 	<h1>
-		Rechercher un {% if page == 'give' %}échange{% elif page == 'share' %}emprunt{% else %}stock{% endif %}
+		{% if page == 'give' %}Don, troc ou vente{% elif page == 'share' %}Emprunt ou location{% else %}Stock{% endif %}
 	</h1>
 
 	<form action="/search" method="post" accept-charset="utf-8">

@@ -53,8 +53,9 @@ class Capacity(models.Model):
     """Product stock capacity."""
 
     categories = models.ManyToManyField(
-        Category, blank=False, related_name='capacities'
+        Category, blank=True, related_name='capacities'
     )
+    name = models.CharField(max_length=50, blank=False, null=False)
     amount = models.FloatField(blank=False, null=False)
     stock = models.OneToOneField(Stock, blank=False, related_name='capacities')
 

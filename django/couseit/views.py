@@ -224,7 +224,7 @@ def getproductsfromsupply(request, supplytype, query=None):
     return render(
         request,
         'search.html',
-        context=appcontext(request, page=simplename)
+        context=appcontext(request, page=simplename, tableofcontents=True)
     )
     basequery = Q(requests=None) | Q(requests__accepted=None)
     query = basequery if query is None else (basequery | query)

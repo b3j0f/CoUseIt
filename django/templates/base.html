@@ -92,16 +92,16 @@
 
     <ul class="side-nav" id="mobile-menu">
         {% if user.is_authenticated %}
-        <li><a class="waves-effect waves-light {% if page == 'account' %} active{% endif %}" href="/account">{{ user.email }}</a></li>
+        <li class="{% if page == 'account' %}active{% endif %}"><a class="waves-effect waves-light" href="/account">{{ user.email }}</a></li>
         <li><a class="waves-effect waves-light btn" href="/logout?next={{ next }}">Déconnexion</a></li>
         {% else %}
         <li><a class="waves-effect waves-light btn" href="/login?next={{ next }}">Connexion</a></li>
         {% endif %}
         <li class="divider"></li>
-        <li><a href="/give" class="waves-effect{% if page == 'give' %} active{% endif %}">Échanger</a></li>
-        <li><a href="/share" class="waves-effect{% if page == 'share' %} active{% endif %}">Emprunter</a></li>
-        <li><a href="/stock" class="waves-effect{% if page == 'stock' %} active{% endif %}">Stocker</a></li>
-        <li><a href="/add" class="waves-effect{% if page == 'add' %} active{% endif %}">Proposer produit/stock</a></li>
+        <li class="{% if page == 'give' %}active{% endif %}"><a href="/give" class="waves-effect">Échanger</a></li>
+        <li class="{% if page == 'share' %}active{% endif %}"><a href="/share" class="waves-effect">Emprunter</a></li>
+        <li class="{% if page == 'stocking' %}active{% endif %}"><a href="/stock" class="waves-effect">Stocker</a></li>
+        <li class="{% if page == 'edit' %}active{% endif %}"><a href="/edit" class="waves-effect">Proposer produit/stock</a></li>
     </ul>
 
     <div class="navbar-fixed">
@@ -113,8 +113,8 @@
                 <ul id="nav-lechangement" class="right hide-on-med-and-down">
                     <li class="{% if page == 'give' %}active{% endif %}"><a href="/give">Échanger</a></li>
                     <li class="{% if page == 'share' %}active{% endif %}"><a href="/share">Emprunter</a></li>
-                    <li class="{% if page == 'stock' %}active{% endif %}"><a href="/stock">Stocker</a></li>
-                    <li><a href="/edit" class="waves-effect{% if page == 'edit' %} active{% endif %}">Proposer produit/stock</a></li>
+                    <li class="{% if page == 'stocking' %}active{% endif %}"><a href="/stock">Stocker</a></li>
+                    <li class="{% if page == 'edit' %} active{% endif %}"><a href="/edit">Proposer produit/stock</a></li>
                     {% if user.is_authenticated %}
                     <!-- Dropdown Trigger -->
                     <li class="{% if page == 'account' %}active{% endif %}"><a class="dropdown-button" href="#!" data-activates="usermenu">{{ user.email }}<i class="material-icons right">arrow_drop_down</i></a></li>
@@ -172,11 +172,14 @@
             {% if tableofcontents %}
 
             {% block rightmenu %}
-            <div class="col l1 m3 hide-on-small-only container">
+            <div class="col l1 m3 hide-on-small-only">
                 <div class="rightmenu">
-                    <ul>{% if page != 'edit' %}
+                    <ul>
+                        {% if page != 'edit' %}
                         <li>
-                            <a href="/edit" class="btn-floating btn-large red pulse"><i class="material-icons">add</i></a>
+                            <a href="/edit?type={% if page == 'stocking' %}stock{% else %}product{% endif %}" class="btn-floating btn-large red pulse">
+                                <i class="material-icons">add</i>
+                            </a>
                         </li>
                         {% endif %}
                     </ul>

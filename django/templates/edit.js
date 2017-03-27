@@ -4,7 +4,7 @@ function adddropify() {
     var id = 'medias-' + new Date().getTime();
     $('#medias .row')[0].insertAdjacentHTML(
         'beforeend',
-        '<div class="col m4 s6"><input type="file" multi=true id="'+ id +'" name="media-' + id + '" class="dropify" data-allowed-file-extensions="jpg jpeg" accept=".jpg,.jpeg" capture="true" data-max-file-size-preview="3M" /></div>'
+        '<div class="col l3 m4 s12"><input type="file" multi=true id="'+ id +'" name="media-' + id + '" class="dropify" data-allowed-file-extensions="jpg jpeg" accept=".jpg,.jpeg" capture="true" data-max-file-size-preview="3M" /></div>'
         );
 
     var drEvent = $('#'+id).dropify({
@@ -92,3 +92,22 @@ adddropify();
 adddropify();
 
 {% endfor %}
+
+function changetype() {
+    var type = document.getElementById('type');
+    $('#capacities')[type.value === 'product' ? 'hide' : 'show']();
+}
+
+changetype();
+
+function addcapacity(name, amount) {
+    var id = name ? name : new Date().getTime().toString();
+    var capacities = document.getElementById('capacities');
+    var html = '<div id="' + id + '" class="row">';
+    html += '<a class="btn-floating red" onclick="this.remove();"><i class="material-icons">sub</i></a>';
+    html += '<div class="col s6"><input type="number" value="' + amount + '" name="amount-' + id + '" /></div>';
+    html += '<div class="col s6"><input type="text" value="' + name + '" name="name-' + id + '" /></div>';
+    html += '<a class="btn-floating red" onclick="addcapacity()"><i class="material-icons">add</i></a>';
+    html += '</div>';
+    capacities.insertAdjacentHTML(html);
+}
