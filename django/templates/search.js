@@ -50,20 +50,32 @@ function selectcat(type, elt) {
 		case 'top':
 			if (selectedtop === id) break;
 			selectedtop = id;
-			selectedmid = selectedlow = 'tout';
-			$('.lowcategory').hide();
-			$('#lowcategory').hide();
-			$('.mid').hide();
-			$('.mid.'+id).show();
-			$('#midcategory').show();
+			if (! elt.id) {
+				$('.lowcategory').hide();
+				$('#lowcategory').hide();
+				$('.midcategory').hide();
+				$('#midcategory').hide();
+			} else {
+				selectedmid = selectedlow = 'tout';
+				$('.lowcategory').hide();
+				$('#lowcategory').hide();
+				$('.mid').hide();
+				$('.mid.'+id).show();
+				$('#midcategory').show();
+			}
 			break;
 		case 'mid':
 			if (selectedmid === id) break;
 			selectedmid = id;
-			selectedlow = 'tout';
-			$('.low').hide();
-			$('.low.'+id).show();
-			$('#lowcategory').show();
+			if (! elt.id) {
+				$('.lowcategory').hide();
+				$('#lowcategory').hide();
+			} else {
+				selectedlow = 'tout';
+				$('.low').hide();
+				$('.low.'+id).show();
+				$('#lowcategory').show();
+			}
 			break;
 		case 'low':
 			if (selectedlow === id) break;
