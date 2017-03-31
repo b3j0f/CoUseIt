@@ -2,12 +2,12 @@
 
 from .models import (
     Category, Product, State, Proposal, Location, Supply, Condition, Request,
-    Using, Media, Give, Share
+    Using, Media
 )
 from .serializers import (
     CategorySerializer, ProductSerializer, StateSerializer, ProposalSerializer,
     MediaSerializer, UsingSerializer, RequestSerializer, ConditionSerializer,
-    SupplySerializer, LocationSerializer, GiveSerializer, ShareSerializer
+    SupplySerializer, LocationSerializer
 )
 from .permissions import IsOwnerOrReadOnly, IsSupplierOrReadOnly
 
@@ -37,22 +37,14 @@ class SupplyViewSet(ModelViewSet):
     filter_fields = {
         'id': ['exact'],
         'products': ['exact'],
-        'dates': ['exact']
+        'dates': ['exact'],
+        'name': ['icontains'],
+        'description': ['icontains'],
+        'amount': ['lge', 'lte', 'exact'],
+        'startdate': ['lge', 'lte', 'exact'],
+        'duedate': ['lge', 'lte', 'exact'],
+        'period': ['icontains']
     }
-
-
-class GiveViewSet(SupplyViewSet):
-    """Give view set."""
-
-    queryset = Give.objects.all()
-    serializer_class = GiveSerializer
-
-
-class ShareViewSet(SupplyViewSet):
-    """Share view set."""
-
-    queryset = Share.objects.all()
-    serializer_class = ShareSerializer
 
 
 class ConditionViewSet(ModelViewSet):

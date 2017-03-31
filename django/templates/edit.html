@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
 
 <h2>
@@ -46,21 +48,18 @@
 					<div class="col s12 input-field">
 						<i class="material-icons left">description</i>
 						<textarea id="description" name="description" class="materialize-textarea maxlength" onchange="updateProperty('description')" data-length="255">{{ product.description }}</textarea>
-						<label for="textarea1">Description</label>
+						<label for="description">Description</label>
 					</div>
 
 					<div class="col s12" id="capacities">
 						Capacités
-						<script type="text/javascript" charset="utf-8">
-							{% for capacity in product.capacities %}
-							addcapacity('{{ capacity.name }}', '{{ capacity.amount');
-							{% empty %}
-							addcapacity();
-							{% endfor %}
-						</script>
+						<table class="bordered striped highlight centered responsive-table">
+							<thead><tr><td>Montant</td><td>Catégorie</td><td></td></tr></thead>
+							<tbody id="capacities"></tbody>
+						</table>
 					</div>
 
-					<div class="col s12 input-field" id="medias">
+					<div class="col s12" id="medias">
 						<h5>
 							<i class="material-icons left">add_a_photo</i>
 							Photos
@@ -69,22 +68,153 @@
 						</div>
 					</div>
 
-					<div class="col s12">
+					<div class="col s12" id="conditions">
 						<ul class="collapsible" data-collapsible="expandable">
-							<li>
-								<div class="collapsible-header"><i class="material-icons">filter_drama</i>Conditions d'échange</div>
+							<li id="gives">
+								<div class="collapsible-header">
+									<i class="material-icons">trending_flat</i>
+									Conditions de don
+								</div>
 								<div class="collapsible-body">
 									<ul class="collection">
 										<li class="collection-item">
+											<table class="bordered striped highlight centered">
+												<thead>
+													<tr>
+														<td>Montant</td>
+														<td>Type</td>
+														<td></td>
+													</tr>
+												</thead>
+												<tbody></tbody>
+											</table>
 										</li>
 									</ul>
 								</div>
 							</li>
-							<li>
-								<div class="collapsible-header"><i class="material-icons">place</i>Conditions d'emprunt</div>
+						</ul>
+
+						<ul class="collapsible" data-collapsible="expandable">
+							<li id="shares">
+								<div class="collapsible-header">
+									<i class="material-icons">timer</i>
+									Conditions d'emprunt
+								</div>
 								<div class="collapsible-body">
 									<ul class="collection">
 										<li class="collection-item">
+											<table class="bordered striped highlight centered">
+												<thead>
+													<tr>
+														<td>Montant</td>
+														<td>Type</td>
+														<td>Période</td>
+													</tr>
+												</thead>
+												<tbody></tbody>
+											</table>
+										</li>
+									</ul>
+								</div>
+							</li>
+							<li id="shares">
+								<div class="collapsible-header"><i class="material-icons">place</i>Conditions d'emprunt</div>
+								<div class="collapsible-body">
+									<ul class="collapsible" data-collapsible="expandable">
+										<li id="days">
+											<div class="collapsible-header"><i class="material-icons">place</i>Par jour</div>
+											<div class="collapsible-body">
+												<ul class="collection">
+													<li class="collection-item">
+														<table>
+															<thead>
+																<tr>
+																	<td>Montant</td>
+																	<td>Type</td>
+																	<td></td>
+																</tr>
+															</thead>
+															<tbody></tbody>
+														</table>
+													</li>
+												</ul>
+											</div>
+										</li>
+										<li id="weekends">
+											<div class="collapsible-header"><i class="material-icons">place</i>Par weekend</div>
+											<div class="collapsible-body">
+												<ul class="collection">
+													<li class="collection-item">
+														<table>
+															<thead>
+																<tr>
+																	<td>Montant</td>
+																	<td>Type</td>
+																	<td></td>
+																</tr>
+															</thead>
+															<tbody></tbody>
+														</table>
+													</li>
+												</ul>
+											</div>
+										</li>
+										<li id="weeks">
+											<div class="collapsible-header"><i class="material-icons">place</i>Par semaine</div>
+											<div class="collapsible-body">
+												<ul class="collection">
+													<li class="collection-item">
+														<table>
+															<thead>
+																<tr>
+																	<td>Montant</td>
+																	<td>Type</td>
+																	<td></td>
+																</tr>
+															</thead>
+															<tbody></tbody>
+														</table>
+													</li>
+												</ul>
+											</div>
+										</li>
+										<li id="months">
+											<div class="collapsible-header"><i class="material-icons">place</i>Par mois</div>
+											<div class="collapsible-body">
+												<ul class="collection">
+													<li class="collection-item">
+														<table>
+															<thead>
+																<tr>
+																	<td>Montant</td>
+																	<td>Type</td>
+																	<td></td>
+																</tr>
+															</thead>
+															<tbody></tbody>
+														</table>
+													</li>
+												</ul>
+											</div>
+										</li>
+										<li id="years">
+											<div class="collapsible-header"><i class="material-icons">place</i>Par an</div>
+											<div class="collapsible-body">
+												<ul class="collection">
+													<li class="collection-item">
+														<table>
+															<thead>
+																<tr>
+																	<td>Montant</td>
+																	<td>Type</td>
+																	<td></td>
+																</tr>
+															</thead>
+															<tbody></tbody>
+														</table>
+													</li>
+												</ul>
+											</div>
 										</li>
 									</ul>
 								</div>
@@ -92,10 +222,29 @@
 						</ul>
 					</div>
 
+					<div class="col s12 input-field section">
+						<a class="btn" onclick="geoloc();"><i class="material-icons">my_location</i></a>
+						<input id="address" type="text" name="address" />
+						<label for="address">Adresse</label>
+						<div id="map" class="map"></div>
+					</div>
+
 					<div class="col s12 input-field">
 						<input type="date" class="datepicker" id="startdate" name="startdate" />
 						<label for="start">Disponibilité</label>
+						<ul class="collapsible" data-collapsible="expandable">
+							<li id="shares">
+								<div class="collapsible-header">
+									<i class="material-icons">date_range</i>
+									Planning
+								</div>
+								<div class="collapsible-body">
+									<div class="calendar" id="calendar"></div>
+								</div>
+							</li>
+						</ul>
 					</div>
+
 				</div>
 			</div>
 		</div>

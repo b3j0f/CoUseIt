@@ -2,8 +2,10 @@
 
 from product.views import ProductViewSet
 
-from .models import Stock, Capacity
-from .serializers import StockSerializer, CapacitySerializer
+from .models import Stock, Capacity, Container
+from .serializers import (
+    StockSerializer, CapacitySerializer, ContainerSerializer
+)
 
 from rest_framework.viewsets import ModelViewSet
 
@@ -31,5 +33,16 @@ class CapacityViewSet(ModelViewSet):
     filter_fields = {
         'categories': ['exact'],
         'amount': ['exact', 'lte', 'gte'],
+        'stock': ['exact']
+    }
+
+
+class ContainerViewSet(ModelViewSet):
+    """Container view set."""
+
+    queryset = Container.objects.all()
+    serializer_class = ContainerSerializer
+    filter_fields = {
+        'product': ['exact'],
         'stock': ['exact']
     }

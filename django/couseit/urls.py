@@ -32,7 +32,7 @@ from account.views import UserViewSet, AccountViewSet
 from product.views import (
     CategoryViewSet, ProductViewSet, SupplyViewSet, ConditionViewSet,
     StateViewSet, RequestViewSet, UsingViewSet, MediaViewSet, LocationViewSet,
-    ProposalViewSet, GiveViewSet, ShareViewSet
+    ProposalViewSet
 )
 from stock.views import StockViewSet, CapacityViewSet
 
@@ -49,8 +49,6 @@ router.register(r'locations', LocationViewSet)
 router.register(r'supplyings', SupplyViewSet)
 router.register(r'medias', MediaViewSet)
 router.register(r'proposals', ProposalViewSet)
-router.register(r'gives', GiveViewSet)
-router.register(r'shares', ShareViewSet)
 router.register(r'stocks', StockViewSet)
 router.register(r'capatities', CapacityViewSet)
 

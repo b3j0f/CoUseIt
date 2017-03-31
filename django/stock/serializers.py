@@ -1,6 +1,6 @@
 """Serialization module."""
 
-from .models import Stock, Capacity
+from .models import Stock, Capacity, Container
 
 from product.serializers import ProductSerializer
 
@@ -25,3 +25,13 @@ class CapacitySerializer(HyperlinkedModelSerializer):
 
         model = Capacity
         fields = ['stock', 'categories', 'amount']
+
+
+class ContainerSerializer(HyperlinkedModelSerializer):
+    """Container serializer."""
+
+    class Meta:
+        """Container serializer meta class."""
+
+        model = Container
+        fields = ['product', 'stock']

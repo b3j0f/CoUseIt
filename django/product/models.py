@@ -80,29 +80,43 @@ class Product(MessageElement):
 class Supply(MessageElement):
     """Product use condition."""
 
+    product = models.ForeignKey(Product, related_name='supplyings')
+    name = models.CharField(max_length=50, blank=True, default=None, null=True)
+    description = models.CharField(
+        max_length=255, blank=True, default=None, null=True
+    )
     dates = models.ManyToManyField('VEvent', related_name='+')
     amount = models.IntegerField(default=1, blank=True)
+    startdate = models.DateTimeField(default=None, blank=True, null=True)
+    duedate = models.DateTimeField(default=None, blank=True, null=True)
+    period = models.CharField(
+        default=None, max_length=50, null=True,
+        choices=(
+            ('u', 'unlimited'),
+            ('d', 'days'),
+            ('w', 'weeks'),
+            ('e', 'weekends'),
+            ('m', 'months'),
+            ('y', 'years')
+        )
+    )
 
     class Meta:
         """Meta class."""
 
         default_related_name = 'supplyings'
         get_latest_by = 'dates'
+        order_with_respect_to = 'product'
         verbose_name = 'supply'
         verbose_name_plural = 'supplyings'
 
     def __str__(self):
         """Representation."""
-        return tostr(self, 'dates', 'amount')
-
-
-@python_2_unicode_compatible
-class ConditionSet(models.Model):
-    """Use condition set."""
-
-    def __str__(self):
-        """Representation."""
-        return tostr(self, 'conditions')
+        return tostr(
+            self,
+            'name', 'description', 'dates', 'amount', 'startdate', 'duedate',
+            'period'
+        )
 
 
 @python_2_unicode_compatible
@@ -114,52 +128,17 @@ class Condition(models.Model):
 
         default_related_name = 'conditions'
         verbose_name = 'condition'
-        order_with_respect_to = 'conditionset'
+        order_with_respect_to = 'supply'
         verbose_name_plural = 'conditions'
 
-    name = models.CharField(max_length=50)
+    type = models.CharField(max_length=50)
     amount = models.FloatField(default=1, blank=True)
     description = models.TextField(blank=True, default=None, null=True)
-    conditionset = models.ForeignKey(ConditionSet, related_name='conditions')
+    supply = models.ForeignKey(Supply, related_name='conditions')
 
     def __str__(self):
         """Representation."""
-        return tostr(self, 'name', 'amount', 'description')
-
-
-class Share(Supply):
-    """Share condition."""
-
-    product = models.ForeignKey(Product, related_name='shares')
-
-    days = models.ManyToManyField(ConditionSet, related_name='+')
-    weeks = models.ManyToManyField(ConditionSet, related_name='+')
-    weekends = models.ManyToManyField(ConditionSet, related_name='+')
-    months = models.ManyToManyField(ConditionSet, related_name='+')
-    years = models.ManyToManyField(ConditionSet, related_name='+')
-
-    class Meta:
-        """Meta class."""
-
-        default_related_name = 'shares'
-        order_with_respect_to = 'product'
-        verbose_name = 'share'
-        verbose_name_plural = 'shares'
-
-
-class Give(Supply):
-    """Give condition."""
-
-    product = models.ForeignKey(Product, related_name='gives')
-    conditions = models.ManyToManyField(ConditionSet, related_name='+')
-
-    class Meta:
-        """Meta class."""
-
-        default_related_name = 'gives'
-        order_with_respect_to = 'product'
-        verbose_name = 'give'
-        verbose_name_plural = 'gives'
+        return tostr(self, 'type', 'amount', 'description', 'supply')
 
 
 @python_2_unicode_compatible
@@ -298,6 +277,9 @@ class Category(models.Model):
     name = models.CharField(max_length=50, primary_key=True)
     description = models.CharField(
         max_length=255, blank=True, default=None, null=True
+    )
+    media = models.ForeignKey(
+        Media, blank=True, null=True, default=None, related_name='+'
     )
     parent = models.ForeignKey(
         'self', related_name='children', blank=True, default=None, null=True

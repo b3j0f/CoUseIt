@@ -9,10 +9,8 @@ from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 
 from account.models import Account
-from product.models import (
-    Product, Using, Stat, Share, Give, Category
-)
-from stock.models import Stock, Stocking
+from product.models import Product, Using, Stat, Category
+from stock.models import Stock
 
 from .utils import sendemail
 
@@ -47,7 +45,8 @@ def basecontext(request, page='home', tableofcontents=False):
         'next': request.GET.get('next', page),
         'host': settings.HOST, 'api': settings.API,
         'categories': list(categories),
-        'topcategories': list(Category.objects.filter(parent=None))
+        'topcategories': list(Category.objects.filter(parent=None)),
+        'DEBUG': settings.DEBUG
     }
 
     return result
@@ -218,7 +217,7 @@ def appcontext(request, page='home', tableofcontents=False):
     return result
 
 
-def getproductsfromsupply(request, supplytype, query=None):
+def getproductsfromsupply(request, supplytype, period=None):
     """Get products by supply type."""
     simplename = supplytype.__name__.lower()
     return render(
@@ -314,17 +313,17 @@ def getproductsfromsupply(request, supplytype, query=None):
 
 def giveview(request):
     """Give view."""
-    return getproductsfromsupply(request, Give)
+    return getproductsfromsupply(request)
 
 
 def shareview(request):
     """Shared product view."""
-    return getproductsfromsupply(request, Share)
+    return getproductsfromsupply(request)
 
 
 def stockview(request):
     """Stock view."""
-    return getproductsfromsupply(request, Stocking)
+    return getproductsfromsupply(request)
     context = basecontext(request, 'stock')
     context['stocks'] = Stock.objects.order_by('-datetime')
     return render(request, 'stock.html', context=context)

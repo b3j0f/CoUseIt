@@ -3,6 +3,7 @@ BIND := 127.0.0.1:8000
 SETTINGS := DJANGO_SETTINGS_MODULE="couseit.settings.$(PLATFORM)"
 DJANGO := $(SETTINGS) python manage.py
 LOADDATA := $(DJANGO) loaddata
+PYTHON := python2.7
 
 .PHONY: all
 all: migrations migrate fixtures
@@ -106,10 +107,14 @@ shell:
 install_deps:
 	pip install -r requirements.txt
 
+.PHONY: venv
+venv:
+	virtualenv venv -p $(PYTHON) ; source venv/bin/activate
+
 .PHONY: clean
 clean:
-	rm -rf www/* ; $(DJANGO) dumpdata > dumped ; $(DJANGO) flush ; rm -rf db.sqlite3
+	rm -rf www/*
 
 .PHONY: clean-hard
 clean-hard: clean
-	rm -rf */migrations/0*
+	rm -rf */migrations/0* ; $(DJANGO) dumpdata > dumped ; $(DJANGO) flush ; rm -rf db.sqlite3 ; rm -rf venv

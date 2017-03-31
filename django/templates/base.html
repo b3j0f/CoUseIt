@@ -18,7 +18,7 @@
 
     <!-- c3 -->
     <!--link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.css"-->
-    <link type="text/css" rel="stylesheet" href="{% static 'css/c3.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'css' %}/c3.{% if not DEBUG %}min.{% endif %}css">
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
 
@@ -38,32 +38,32 @@
 
     <!-- nouislider -->
     <!--link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/9.2.0/nouislider.min.css" /-->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/nouislider.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css' %}/nouislider.{% if not DEBUG %}min.{% endif %}css" />
 
     <!--script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/9.2.0/nouislider.min.js"></script-->
-    <script src="{% static 'js/nouislider.js' %}"></script>
+    <script src="{% static 'js' %}/nouislider.{% if not DEBUG %}min.{% endif %}js"></script>
 
     <!-- Let browser know website is optimized for mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
     <!-- Import jQuery before materialize.js -->
     <!--script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script-->
-    <script type="text/javascript" src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js' %}/jquery-2.1.1.{% if not DEBUG %}min.{% endif %}js"></script>
     <!-- Compiled and minified JavaScript -->
     <!--script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script-->
-    <script src="{% static 'js/materialize.min.js' %}"></script>
+    <script src="{% static 'js' %}/materialize.{% if not DEBUG %}min.{% endif %}js"></script>
     <!-- d3 -->
     <!--script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script-->
-    <script type="text/javascript" src="{% static 'js/d3.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js' %}/d3.{% if not DEBUG %}min.{% endif %}js"></script>
     <!-- c3 -->
     <!--script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.js"></script-->
-    <script type="text/javascript" src="{% static 'js/c3.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js' %}/c3.{% if not DEBUG %}min.{% endif %}js"></script>
 
     <!-- dropify -->
     <!--link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.1/css/dropify.min.css" /-->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/dropify.min.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css' %}/dropify.{% if not DEBUG %}min.{% endif %}css" />
     <!--script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.1/js/dropify.min.js" ></script-->
-    <script type="text/javascript" src="{% static 'js/dropify.min.js' %}" ></script>
+    <script type="text/javascript" src="{% static 'js' %}/dropify.{% if not DEBUG %}min.{% endif %}js" ></script>
     <!--link rel="stylesheet" type="text/eot" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.1/fonts/dropify.eot" /-->
     <link rel="stylesheet" type="text/eot" href="{% static 'fonts/dropify.eot' %}" />
     <!--link rel="stylesheet" type="image/svg" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.1/fonts/dropify.svg" /-->
@@ -72,6 +72,14 @@
     <link rel="stylesheet" type="application/font-sfnt" href="{% static 'fonts/dropify.ttf' %}" />
     <!--link rel="stylesheet" type="application/font-woff" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.1/fonts/dropify.woff" /-->
     <link rel="stylesheet" type="application/font-woff" href="{% static 'fonts/dropify.woff' %}" />
+
+    <!-- fullcalendar -->
+    <script type="text/javascript" src="{% static 'js' %}/moment.min.js"></script>
+    <script type="text/javascript" src="{% static 'js' %}/fullcalendar.{% if not DEBUG %}min.{% endif %}js"></script>
+    <script type="text/javascript" src="{% static 'js' %}/gcal.{% if not DEBUG %}min.{% endif %}js"></script>
+    <script type="text/javascript" src="{% static 'js/locale-all.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css' %}/fullcalendar.{% if not DEBUG %}min.{% endif %}css" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css' %}/fullcalendar.print.{% if not DEBUG %}min.{% endif %}css" />
 
     {% endblock %}
 

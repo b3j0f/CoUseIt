@@ -1,4 +1,3 @@
-$('')
 
 function adddropify() {
     var id = 'medias-' + new Date().getTime();
@@ -40,6 +39,16 @@ function adddropify() {
     });
 }
 
+{% for media in product.medias.all %}
+
+adddropify();
+
+{% empty %}
+
+adddropify();
+
+{% endfor %}
+
 function refreshcarousel() {
     $('.carousel').remove();
     document.getElementById('-image').insertAdjacentHTML(
@@ -67,7 +76,7 @@ function refreshcarousel() {
             );
     });
     $('.carousel').carousel(
-        {
+    {
             //shift: 200,
             //fullWidth: true,
             //indicators: true,
@@ -83,31 +92,182 @@ function updateProperty(name) {
     }
 }
 
-{% for media in product.medias.all %}
-
-adddropify();
-
-{% empty %}
-
-adddropify();
-
-{% endfor %}
-
 function changetype() {
     var type = document.getElementById('type');
     $('#capacities')[type.value === 'product' ? 'hide' : 'show']();
+    $('#name')[0].placeholder = (type.value === 'product') ? 'Appareil photo Nikon D80' : 'Garage voiture et moto';
+    $('#shortdescription')[0].placeholder = (type.value === 'product') ? '10 millions de pixels, carte mémoire 2 Go' : '10 places en plein centre ville';
 }
 
 changetype();
 
+var lowcategories = {
+    {% for category in categories %}
+    {% for midcategory in category.children.all %}
+    {% for lowcategory in midcategory.children.all %}
+    '{{ lowcategory.name }}': '{{ lowcategory.media.media.path.url }}',
+    {% endfor %}
+    {% endfor %}
+    {% endfor %}
+};
+
+var lastcapacity;
+
+function updatecapacity(elt) {
+    var capacity = elt.parentNode.parentNode;
+    if (elt.value === '') {
+        var empty = false;
+        elt.parentNode.parentNode.children.forEach({
+            function(child) {
+                empty = (child.children[0] === '');
+            }
+        });
+        if (empty && lastcapacity !== capacity) {
+            capacity.remove();
+        }
+    } else if (capacity === lastcapacity) {
+        addcapacity();
+    }
+}
+
+function deletecapacity(elt) {
+    var capacity = elt.parentNode.parentNode;
+    if (capacity !== lastcapacity) {
+        capacity.remove();
+    }
+}
+
 function addcapacity(name, amount) {
-    var id = name ? name : new Date().getTime().toString();
-    var capacities = document.getElementById('capacities');
-    var html = '<div id="' + id + '" class="row">';
-    html += '<a class="btn-floating red" onclick="this.remove();"><i class="material-icons">sub</i></a>';
-    html += '<div class="col s6"><input type="number" value="' + amount + '" name="amount-' + id + '" /></div>';
-    html += '<div class="col s6"><input type="text" value="' + name + '" name="name-' + id + '" /></div>';
-    html += '<a class="btn-floating red" onclick="addcapacity()"><i class="material-icons">add</i></a>';
-    html += '</div>';
-    capacities.insertAdjacentHTML(html);
+    name = name ? name : '';
+    amount = amount ? amount : 10;
+    var id = 'capacity-' + (name ? name : new Date().getTime().toString());
+    var table = $('#capacities tbody')[0];
+    var html = '<tr id="' + id + '">';
+    html += '<td>';
+    html += '<input onchange="updatecapacity(this);" type="number" value="' + amount + '" name="capacity-amount-' + id + '" />';
+    html += '</td>';
+    html += '<td>';
+    html += '<input placeholder="voiture" onchange="updatecapacity(this);" type="text" value="' + name + '" name="capacity-name-' + id + '" class="autocomplete" />';
+    html += '</td>';
+    html += '<td>';
+    html += '<a class="close btn-floating" onclick="deletecapacity(this);"><i class="material-icons red">close</i></a>';
+    html += '</td>';
+    html += '</tr>';
+    table.insertAdjacentHTML('beforeEnd', html);
+    $('.' + id).autocomplete(
+    {
+        data: lowcategories,
+        minLength: 1
+    });
+    lastcapacity = document.getElementById(id);
+}
+
+$( document ).ready(function(){
+    {% for capacity in product.capacities %}
+    addcapacity('{{ capacity.name }}', '{{ capacity.amount');
+    {% empty %}
+    addcapacity();
+    {% endfor %}
+});
+
+var lastcondition = {};
+
+function updatecondition(kind, elt) {
+    var condition = elt.parentNode.parentNode;
+    if (elt.value === '') {
+        var empty = false;
+        elt.parentNode.parentNode.children.forEach({
+            function(child) {
+                empty = (child.children[0] === '');
+            }
+        });
+        if (empty && lastcondition !== condition) {
+            condition.remove();
+        }
+    } else if (condition === lastcondition) {
+        addcondition(kind);
+    }
+}
+
+function deletecondition(kind, elt) {
+    var condition = elt.parentNode.parentNode;
+    if (condition !== lastcondition[kind]) {
+        condition.remove();
+    }
+}
+
+function addcondition(kind, name, amount) {
+    name = name ? name : '';
+    amount = amount ? amount : 0;
+    var id = kind + '-' + (name ? name : new Date().getTime().toString());
+    var table = $('#'+ kind + 's tbody')[0];
+    var html = '<tr id="' + id + '">';
+    html += '<td>';
+    html += '<input onchange="updatecondition(\'' + kind + '\', this);" type="number" value="' + amount + '" name="' + kind + '-amount-' + id + '" />';
+    html += '</td>';
+    html += '<td>';
+    html += '<input placeholder="carottes" onchange="updatecondition(\'' + kind + '\', this);" type="text" value="' + name + '" name="' + kind + '-name-' + id + '" class="autocomplete" />';
+    html += '</td>';
+    html += '<td>';
+    html += '<a class="close btn-floating" onclick="deletecondition(\'' + kind + '\', this);"><i class="material-icons red">close</i></a>';
+    html += '</td>';
+    html += '</tr>';
+    table.insertAdjacentHTML('beforeEnd', html);
+    $('.' + id).autocomplete(
+    {
+        data: lowcategories,
+        minLength: 1
+    });
+    lastcondition[kind] = document.getElementById(id);
+}
+
+$( document ).ready(function() {
+    {% for give in product.gives.all %}
+    {% for conditionset in give.conditions %}
+    {% for condition in conditionset.conditions.all %}
+    addcondition('give', '{{ conditionset.name }}', '{{ condition.type }}', '{{ condition.amount }}', '{{ condition.duedate }}');
+    {% endfor %}
+    {% endfor %}
+    {% empty %}
+    addconditionset('give');
+    {% endfor %}
+
+    {% for share in product.gives.all %}
+    {% for conditionset in share.conditions %}
+    {% for condition in conditionset.days.all %}
+    addcondition('share', '{{ conditionset.name }}', '{{ condition.type }}', '{{ condition.amount }}', '{{ condition.duedate }}');
+    {% endfor %}
+    {% for condition in conditionset.weeks.all %}
+    addcondition('share', '{{ conditionset.name }}', '{{ condition.type }}', '{{ condition.amount }}', '{{ condition.duedate }}');
+    {% endfor %}
+    {% for condition in conditionset.weekends.all %}
+    addcondition('share', '{{ conditionset.name }}', '{{ condition.type }}', '{{ condition.amount }}', '{{ condition.duedate }}');
+    {% endfor %}
+    {% for condition in conditionset.months.all %}
+    addcondition('share', '{{ conditionset.name }}', '{{ condition.type }}', '{{ condition.amount }}', '{{ condition.duedate }}');
+    {% endfor %}
+    {% for condition in conditionset.years.all %}
+    addcondition('share', '{{ conditionset.name }}', '{{ condition.type }}', '{{ condition.amount }}', '{{ condition.duedate }}');
+    {% endfor %}
+    {% endfor %}
+    {% empty %}
+    addconditionset('share');
+    {% endfor %}
+});
+
+function addset(set, single) {
+    var html = '<table class="bordered striped highlight centered responsiv-table>';
+    html += '<thead>';
+    html += '<tr>';
+    html += '<td>Montant</td>';
+    html += '<td>type</td>';
+    var thirdcolumn = '';
+    if (single) {
+        thirdcolumn = '<a onclick="addset(\'' + set + '\', true);" class="btn-floating red"><i class="material-icons">add</i></a>';
+    }
+    html += '<td>' + thirdcolumn + '</td>';
+    html += '</tr></thead>';
+    html ++ '<tbody></tbody>';
+    html += '</table>'
+    $(set).insertAdjacentHTML('beforeEnd', html);
 }
