@@ -81,6 +81,9 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css' %}/fullcalendar.{% if not DEBUG %}min.{% endif %}css" />
     <link rel="stylesheet" type="text/css" href="{% static 'css' %}/fullcalendar.print.{% if not DEBUG %}min.{% endif %}css" />
 
+    <!-- qrcode -->
+    <script type="text/javascript" src="{% static 'js' %}/qrcode.{% if not DEBUG %}min.{% endif %}js"></script>
+
     {% endblock %}
 
     <div id="fb-root"></div>
@@ -95,6 +98,11 @@
     <ul id="usermenu" class="dropdown-content">
         <li><a href="/account" {% if page == 'account' %}class="active"{% endif %}>Mon compte</a></li>
         <li class="divider"></li>
+        <li><a href="/owns" {% if page == 'owns' %}class="active"{% endif %}>Mes produits</a></li>
+        <li><a href="/supplyings" {% if page == 'supplyings' %}class="active"{% endif %}>Mes offres</a></li>
+        <li><a href="/stocks" {% if page == 'stocks' %}class="active"{% endif %}>Mes stocks</a></li>
+        <li><a href="/requests" {% if page == 'requests' %}class="active"{% endif %}>Mes requêtes</a></li>
+        <li><a href="/proposals" {% if page == 'proposals' %}class="active"{% endif %}>Mes propositions</a></li>
         <li><a href="/logout?next={{ next }}">déconnexion</a></li>
     </ul>
 
@@ -106,9 +114,9 @@
         <li><a class="waves-effect waves-light btn" href="/login?next={{ next }}">Connexion</a></li>
         {% endif %}
         <li class="divider"></li>
-        <li class="{% if page == 'give' %}active{% endif %}"><a href="/give" class="waves-effect">Échanger</a></li>
-        <li class="{% if page == 'share' %}active{% endif %}"><a href="/share" class="waves-effect">Emprunter</a></li>
-        <li class="{% if page == 'stocking' %}active{% endif %}"><a href="/stock" class="waves-effect">Stocker</a></li>
+        <li class="{% if page == 'gives' %}active{% endif %}"><a href="/gives" class="waves-effect">Échanger</a></li>
+        <li class="{% if page == 'shares' %}active{% endif %}"><a href="/shares" class="waves-effect">Emprunter</a></li>
+        <li class="{% if page == 'stocks' %}active{% endif %}"><a href="/stocks" class="waves-effect">Stocker</a></li>
         <li class="{% if page == 'edit' %}active{% endif %}"><a href="/edit" class="waves-effect">Proposer produit/stock</a></li>
     </ul>
 
@@ -119,9 +127,9 @@
                     Co Use It
                 </a>
                 <ul id="nav-lechangement" class="right hide-on-med-and-down">
-                    <li class="{% if page == 'give' %}active{% endif %}"><a href="/give">Échanger</a></li>
-                    <li class="{% if page == 'share' %}active{% endif %}"><a href="/share">Emprunter</a></li>
-                    <li class="{% if page == 'stocking' %}active{% endif %}"><a href="/stock">Stocker</a></li>
+                    <li class="{% if page == 'gives' %}active{% endif %}"><a href="/gives">Échanger</a></li>
+                    <li class="{% if page == 'shares' %}active{% endif %}"><a href="/shares">Emprunter</a></li>
+                    <li class="{% if page == 'stocks' %}active{% endif %}"><a href="/stocks">Stocker</a></li>
                     <li class="{% if page == 'edit' %} active{% endif %}"><a href="/edit">Proposer produit/stock</a></li>
                     {% if user.is_authenticated %}
                     <!-- Dropdown Trigger -->
@@ -167,7 +175,7 @@
 
         {% if tableofcontents %}
         <div class="row">
-            <div class="col l11 m9 s12">
+            <div class="col l11 m10 s12">
                 {% endif %}
 
                 {% block content %}
@@ -180,7 +188,7 @@
             {% if tableofcontents %}
 
             {% block rightmenu %}
-            <div class="col l1 m3 hide-on-small-only">
+            <div class="col l1 m2 hide-on-small-only">
                 <div class="rightmenu">
                     <ul>
                         {% if page != 'edit' %}
@@ -290,14 +298,21 @@
     <div class="footer-copyright">
         <div class="row container">
             <div class="col s12 m2 l4">
-                <p><a rel="license" class="left" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a></p>
-            </div>
-            <div class="col m10 l8">
-                <p class="hide-on-small-only">Ce site est sous licence <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a></p>
-            </div>
+                <p xmlns:dct="http://purl.org/dc/terms/" xmlns:vcard="http://www.w3.org/2001/vcard-rdf/3.0#">
+                  <a target="_blank" rel="license"
+                  href="http://creativecommons.org/publicdomain/zero/1.0/">
+                  <img src="http://i.creativecommons.org/p/zero/1.0/88x31.png" style="border-style: none;" alt="CC0" />
+              </a>
+          </div>
+          <div class="col m10 l8 hide-on-small-only">
+            <p>
+                Ce site appartient au domaine public : <a target="_blank" rel="license"
+                href="http://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0 Universal (CC0 1.0) Public Domain Dedication</a>
+            </p>
         </div>
     </div>
-    {% endblock %}
+</div>
+{% endblock %}
 </footer>
 
 </html>

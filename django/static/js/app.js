@@ -39,21 +39,13 @@ window.twttr = (function(d, s, id) {
 $( document ).ready(function(){
 	$('.dropdown-button').dropdown();
 	$('.button-collapse').sideNav();
-	$('.tooltipped').tooltip(
-	{
-		delay: 50,
-		html: true
-	}
-	);
+	$('.tooltipped').tooltip();
 	$('.parallax').parallax();
 	$('.scrollspy').scrollSpy();
 	$('select').material_select();
 	$('.modal').modal();
 	$('.collapsible').collapsible();
-	$('.datepicker').pickadate({
-                selectMonths: true, // Creates a dropdown to control month
-                selectYears: 2 // Creates a dropdown of 15 years to control year
-            });
+	$('.datepicker').pickadate();
 	$('.rightmenu').pushpin({
 		top: $('nav')[0].clientHeight + 10,
 		bottom: $('footer')[0].offsetTop,

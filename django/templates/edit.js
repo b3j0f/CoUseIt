@@ -271,3 +271,7 @@ function addset(set, single) {
     html += '</table>'
     $(set).insertAdjacentHTML('beforeEnd', html);
 }
+
+{% include 'categories.js' %}
+
+{% include 'map.js' %}

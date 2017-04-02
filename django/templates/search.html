@@ -7,24 +7,12 @@
 <div class="section scrollspy" id="search" name="Recherche">
 
 	<h1>
-		{% if page == 'give' %}Don, troc ou vente{% elif page == 'share' %}Emprunt ou location{% else %}Stockage{% endif %}
+		{% if page == 'gives' %}Don, troc ou vente{% elif page == 'shares' %}Emprunt ou location{% else %}Stockage{% endif %}
 	</h1>
 
 	<form action="/search" method="post" accept-charset="utf-8">
 		<div class="card row">
-			<div class="col s12 center">
-				<nav>
-					Catégorie
-					<a class="breadcrumb dropdown-button" id="topcategory" href="#" data-activates="topcategories" data-beloworigin="true" data-hover="true" name="topcategory">Tout</a>
-					<ul name="topcategories" id="topcategories" class="dropdown-content">
-					</ul>
-					<a class="breadcrumb dropdown-button" id="midcategory" href="#" data-activates="midcategories" data-hover="true">Tout</a>
-					<ul name="midcategories" id="midcategories" class="dropdown-content">
-					</ul>
-					<a class="breadcrumb dropdown-button" id="lowcategory" href="#" data-activates="lowcategories" data-hover="true">Tout</a>
-					<ul name="lowcategories" id="lowcategories" class="dropdown-content">
-					</ul>
-				</nav>
+			<div class="col s12 center" id="categories">
 			</div>
 			<div class="col l6 s12 input-field">
 				<div class="row">
@@ -33,20 +21,28 @@
 						<label for="keywords">Quoi ?</label>
 					</div>
 				</div>
+
 				<div class="col s8 input-field">
 					<input type="text" name="where" id="where" placeholder="17 rue d'arras, Lille" />
 					<label for="where">Où ?</label>
 				</div>
-				<div class="col s3 input-field">
+				<div class="col s2 input-field">
 					<input type="number" name="perimeter" min="1" id="perimeter" value="5" />
 					<label for="perimeter">Périmètre (km)</label>
 				</div>
+				<div class="col s1 input-field">
+					<a onclick="getCurrentPosition();" class="btn-floating waves-effect waves-white">
+						<i class="material-icons">my_location</i>
+					</a>
+				</div>
+
 				<div class="col s6 input-field">
 					<input type="date" class="datepicker" id="when" name="when" />
 					<label for="when">Quand ?</label>
 				</div>
 				<div class="col s6">
-					<a class="btn btn-block" name="periods" id="periods">Périodes
+					<a class="btn btn-block waves-effect waves-white" name="periods" id="periods">
+						Périodes
 					</a>
 				</div>
 			</div>

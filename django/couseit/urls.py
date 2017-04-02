@@ -25,7 +25,8 @@ from rest_framework.routers import DefaultRouter
 
 from .views import (
     homeview, aboutview, loginview, logoutview, resetpwdview, editview,
-    accountview, giveview, stockview, faqview, shareview, statsview, searchview
+    accountview, givesview, stocksview, faqview, sharesview, statsview,
+    searchview
 )
 
 from account.views import UserViewSet, AccountViewSet
@@ -68,9 +69,9 @@ urlpatterns = [
     url(r'^logout', logoutview),
     url(r'^resetpwd', resetpwdview),
     url(r'^account', accountview),
-    url(r'^give', giveview),
-    url(r'^share', shareview),
-    url(r'^stock', stockview),
+    url(r'^gives', givesview),
+    url(r'^shares', sharesview),
+    url(r'^stocks', stocksview),
     url(r'^stats', statsview),
     url(r'^edit', editview),
     url(r'^search', searchview),

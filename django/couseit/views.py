@@ -3,7 +3,7 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect
-from django.db.models import F, Sum, Q
+from django.db.models import F, Sum
 from django.contrib.auth.models import User
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
@@ -19,6 +19,21 @@ from uuid import uuid4 as uuid
 from collections import namedtuple
 
 CatPropValues = namedtuple('CatPropValues', ('name', 'propvalues'))
+
+
+def requirelogin(func=None):
+    """Decorator for requiring login."""
+    nextpage = func.__name__[:-len('view')]
+
+    def _requirelogin(request):
+        """Local require login."""
+        if isinstance(request.user, User):
+            return func(request)
+
+        else:
+            return redirect('login.html?next={0}'.format(nextpage))
+
+    return _requirelogin
 
 
 def basecontext(request, page='home', tableofcontents=False):
@@ -217,122 +232,35 @@ def appcontext(request, page='home', tableofcontents=False):
     return result
 
 
-def getproductsfromsupply(request, supplytype, period=None):
+def getproductsfromsupply(request, page):
     """Get products by supply type."""
-    simplename = supplytype.__name__.lower()
     return render(
         request,
         'search.html',
-        context=appcontext(request, page=simplename, tableofcontents=True)
-    )
-    basequery = Q(requests=None) | Q(requests__accepted=None)
-    query = basequery if query is None else (basequery | query)
-
-    supplyings = supplytype.objects.filter(
-        query
-    )
-    try:
-        product_ids = supplyings.distinct('supplied__id')[start: count]
-
-    except:
-        product_ids = []
-
-        for supplying in supplyings:
-            for product in supplying.supplied.all():
-
-                if product.id not in product_ids:
-                    product_ids.add(product.id)
-
-                if len(product_ids) > (start + count):
-                    break
-
-            if len(product_ids) > (start + count):
-                break
-
-        product_ids = product_ids[start:]
-
-    count = request.GET.get('count', 50)
-    page = request.GET.get('page', 0)
-
-    start = request.GET.get('start', 0)
-    context = appcontext(request, simplename)
-
-    total = 0
-    page = start * count
-
-    try:
-        product_ids = supplyings.distinct('supplied__id')[start: count]
-
-    except:
-        product_ids = set()
-
-        for supplying in supplyings:
-            for product in supplying.supplied.all():
-
-                if product.id not in product_ids:
-                    product_ids.add(product.id)
-
-                if len(product_ids) > (start + count):
-                    break
-
-            if len(product_ids) > (start + count):
-                break
-
-        product_ids = product_ids[start:]
-
-    if settings.DEBUG:
-        product_ids = []
-
-        for supplying in supplyings:
-            for product in supplying.supplied.all():
-
-                if product.id not in product_ids:
-                    product_ids.add(product.id)
-
-                if len(product_ids) > (start + count):
-                    break
-
-            if len(product_ids) > (start + count):
-                break
-
-        product_ids = product_ids[start:]
-
-    else:
-        product_ids = supplyings.distinct('supplied__id')[start: count]
-
-    query = Product.objects.filter(id__in=product_ids)
-
-    context['pages'] = list(range(total / count))
-
-    context['products'] = Product.objects.filter(
-        id__in=product_ids
+        context=appcontext(request, page=page, tableofcontents=True)
     )
 
-    return render(request, 'search.html'.format(simplename), context=context)
 
-
-def giveview(request):
+def givesview(request):
     """Give view."""
-    return getproductsfromsupply(request)
+    return getproductsfromsupply(request, page='gives')
 
 
-def shareview(request):
+def sharesview(request):
     """Shared product view."""
-    return getproductsfromsupply(request)
+    return getproductsfromsupply(request, page='shares')
 
 
-def stockview(request):
+def stocksview(request):
     """Stock view."""
-    return getproductsfromsupply(request)
-    context = basecontext(request, 'stock')
-    context['stocks'] = Stock.objects.order_by('-datetime')
-    return render(request, 'stock.html', context=context)
+    return getproductsfromsupply(request, page='stocks')
 
 
+@requirelogin
 def accountview(request):
     """Supply locations view."""
-    context = basecontext(request, 'account')
-    return render(request, 'acount.html', context=context)
+    context = basecontext(request, 'account', True)
+    return render(request, 'account.html', context=context)
 
 
 def homeview(request):
@@ -341,6 +269,7 @@ def homeview(request):
     return render(request, 'home.html', context=context)
 
 
+@requirelogin
 def editview(request):
     """Home view."""
     context = basecontext(request, 'edit', False)
