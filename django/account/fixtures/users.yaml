@@ -10,7 +10,6 @@
     is_staff: true
     is_active: true
 
-- model: roles.UserProfile
+- model: account.Account
   fields:
     user: 1
-    id: 1

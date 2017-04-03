@@ -9,8 +9,7 @@ from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 
 from account.models import Account
-from product.models import Product, Using, Stat, Category
-from stock.models import Stock
+from product.models import Product, Using, Stat, Category, Stock
 
 from .utils import sendemail
 
@@ -44,13 +43,22 @@ def basecontext(request, page='home', tableofcontents=False):
     productcount = Product.objects.count()
     stockcount = Stock.objects.count()
     accountcount = Account.objects.count()
-    categories = Category.objects.all()
 
+    categories = []
     catpropvalues = []
 
-    for category in Category.objects.filter(parent=None):
-        propvalues = category.allpropertieswvalues
-        catpropvalues.append(CatPropValues(category.name, propvalues))
+    topcategories = []
+    lowcategories = []
+
+    for category in Category.objects.all():
+        categories.append(category)
+        if category.parent is None:
+            propvalues = category.allpropertieswvalues
+            catpropvalues.append(CatPropValues(category.name, propvalues))
+            topcategories.append(category)
+
+        elif category.children.count() == 0:
+            lowcategories.append(category)
 
     result = {
         'productcount': productcount, 'stockcount': stockcount,
@@ -60,7 +68,8 @@ def basecontext(request, page='home', tableofcontents=False):
         'next': request.GET.get('next', page),
         'host': settings.HOST, 'api': settings.API,
         'categories': list(categories),
-        'topcategories': list(Category.objects.filter(parent=None)),
+        'topcategories': topcategories,
+        'lowcategories': lowcategories,
         'DEBUG': settings.DEBUG
     }
 

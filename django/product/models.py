@@ -287,7 +287,7 @@ class Category(models.Model):
 
     def __str__(self):
         """Representation."""
-        return tostr(self, 'name', 'description', 'children')
+        return tostr(self, 'name', 'description')
 
     @property
     def allproperties(self):
@@ -486,6 +486,21 @@ class WordsByProduct(models.Model):
     def __str__(self):
         """Representation."""
         return self.word
+
+
+@python_2_unicode_compatible
+class Stock(Product):
+    """Product stock model."""
+
+    parent = models.ForeignKey(
+        'self', blank=True, default=None, related_name='stocks'
+    )
+    pamount = models.IntegerField(default=1, blank=True)
+    pcategory = models.ForeignKey(Category, blank=True)
+
+    def __str__(self):
+        """Representation."""
+        return tostr(self, 'name', 'address', 'parent')
 
 
 @receiver(post_save, sender=Product)

@@ -33,9 +33,8 @@ from account.views import UserViewSet, AccountViewSet
 from product.views import (
     CategoryViewSet, ProductViewSet, SupplyViewSet, ConditionViewSet,
     StateViewSet, RequestViewSet, UsingViewSet, MediaViewSet, LocationViewSet,
-    ProposalViewSet
+    ProposalViewSet, StockViewSet
 )
-from stock.views import StockViewSet, CapacityViewSet
 
 router = DefaultRouter()
 router.register(r'users', UserViewSet)
@@ -51,7 +50,6 @@ router.register(r'supplyings', SupplyViewSet)
 router.register(r'medias', MediaViewSet)
 router.register(r'proposals', ProposalViewSet)
 router.register(r'stocks', StockViewSet)
-router.register(r'capatities', CapacityViewSet)
 
 urlpatterns = [
     url(

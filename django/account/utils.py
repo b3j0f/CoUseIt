@@ -14,8 +14,7 @@ def getprop(obj, name):
         obj = getattr(obj, prop)
         if isroutine(obj):
             obj = obj()
-        if not isinstance(obj, string_types):
-            result = str(obj)
+        result = obj if isinstance(obj, string_types) else str(obj)
     return result
 
 

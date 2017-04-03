@@ -2,16 +2,18 @@
 
 from .models import (
     Category, Product, State, Proposal, Location, Supply, Condition, Request,
-    Using, Media
+    Using, Media, Stock
 )
 from .serializers import (
     CategorySerializer, ProductSerializer, StateSerializer, ProposalSerializer,
     MediaSerializer, UsingSerializer, RequestSerializer, ConditionSerializer,
-    SupplySerializer, LocationSerializer
+    SupplySerializer, LocationSerializer, StockSerializer
 )
 from .permissions import IsOwnerOrReadOnly, IsSupplierOrReadOnly
 
 from rest_framework.viewsets import ModelViewSet
+
+from copy import deepcopy
 
 
 class LocationViewSet(ModelViewSet):
@@ -146,6 +148,19 @@ class ProductViewSet(ModelViewSet):
         'locations': ['exact']
     }
     permission_classes = (IsOwnerOrReadOnly, IsSupplierOrReadOnly)
+
+
+class StockViewSet(ProductViewSet):
+    """Stock view set."""
+
+    queryset = Stock.objects.all()
+    serializer_class = StockSerializer
+    filter_fields = deepcopy(ProductViewSet.filter_fields)
+    filter_fields.update({
+        'products': ['exact'],
+        'capacities': ['exact'],
+        'parent': ['exact']
+    })
 
 
 class StateViewSet(ModelViewSet):

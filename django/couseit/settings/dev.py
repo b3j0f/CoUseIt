@@ -14,6 +14,15 @@ DATABASES = {
     }
 }
 
+INSTALLED_APPS += [
+    'django_extensions'
+]
+
+GRAPH_MODELS = {
+    'all_applications': True,
+    'group_models': True,
+}
+
 # Set the email backend to a console backend since we cannot send email from
 # this application
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

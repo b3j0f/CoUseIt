@@ -90,6 +90,7 @@ ENV/
 
 # database
 db.sqlite*
+dumped
 
 node_modules/
 

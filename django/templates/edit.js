@@ -2,7 +2,7 @@
 function adddropify() {
     var id = 'medias-' + new Date().getTime();
     $('#medias .row')[0].insertAdjacentHTML(
-        'beforeend',
+        'beforeEnd',
         '<div class="col l3 m4 s12"><input type="file" multi=true id="'+ id +'" name="media-' + id + '" class="dropify" data-allowed-file-extensions="jpg jpeg" accept=".jpg,.jpeg" capture="true" data-max-file-size-preview="3M" /></div>'
         );
 
@@ -52,7 +52,7 @@ adddropify();
 function refreshcarousel() {
     $('.carousel').remove();
     document.getElementById('-image').insertAdjacentHTML(
-        'beforeend',
+        'beforeEnd',
         '<div class="carousel"></div>'
         );
     var carousel = $('.carousel')[0];
@@ -71,7 +71,7 @@ function refreshcarousel() {
     }
     ids_files.forEach(function(id_file) {
         carousel.insertAdjacentHTML(
-            'beforeend',
+            'beforeEnd',
             '<a id="carousel-' + id_file[0] + '" class="carousel-item" data-caption="' + document.getElementById('name').value + '" href="#one!"><img class="responsive-img" src="' + id_file[1] + '" /></a>'
             );
     });
@@ -87,7 +87,7 @@ function refreshcarousel() {
 
 function updateProperty(name) {
     var demos = $('.' + name);
-    for (var i = 0; i<demos.length; i++) {
+    for (var i = 0; i < demos.length; i++) {
         demos[i].innerHTML = document.getElementById(name).value;
     }
 }
@@ -102,14 +102,44 @@ function changetype() {
 changetype();
 
 var lowcategories = {
-    {% for category in categories %}
-    {% for midcategory in category.children.all %}
-    {% for lowcategory in midcategory.children.all %}
+    //{% for lowcategory in lowcategories %}
     '{{ lowcategory.name }}': '{{ lowcategory.media.media.path.url }}',
-    {% endfor %}
-    {% endfor %}
-    {% endfor %}
+    //{% endfor %}
 };
+
+function newentryset(parentid, entryid, additional) {
+    if (entryid === undefined) {
+        entryid = new Date().getTime();
+    }
+    var html = '<table class="bordered striped highlight centered" id="entry-'+ entryid + '"><thead><tr>';
+    html += '<td>Type</td><td>Montant</td>';
+    html += '<td>' + (additional ? ('<a onclick="newentryset(\'' + parentid + '\', undefined, true);" class="btn-floating blue" ><i class="material-icons">add</i></a>') : '') + '</td>';
+    html += '</tr></thead>';
+    html += '<tbody id="entry-content-' + new Date().getTime() + '"></tbody></table>';
+    document.getElementById(parentid).insertAdjacentHTML(
+        'beforeEnd',
+        html
+    );
+}
+
+function newEntry(entrysetid, entryid, type, amount) {
+    if (entryid === undefined) {
+        entryid = new Date().getTime();
+    }
+    var html = '<tr id="">';
+    html += '<td><input type="text" name="entry-type-' + entryid + '" value="' + type +'" placeholder="€, voiture, ..." /></td>';
+    html += '<td><input type="number" name="entry-amount-' + entryid + '" value="' + amount + '" placeholder="10" /></td>';
+    html += '<td><a onclick="removeEntry(this);" class="btn-floating red"><i class="material-icons">remove</i></a></td></tr>';
+    document.getElementById(entryid)
+}
+
+function removeEntry(elt) {
+    var body = elt.parentNode.parentNode.parentNode;
+    elt.remove();
+    if (body.childElementCount === 0) {
+        newEntry(body.parentNode.id);
+    }
+}
 
 var lastcapacity;
 
@@ -221,6 +251,8 @@ function addcondition(kind, name, amount) {
     lastcondition[kind] = document.getElementById(id);
 }
 
+function addconditionset() {}
+
 $( document ).ready(function() {
     {% for give in product.gives.all %}
     {% for conditionset in give.conditions %}
@@ -254,7 +286,7 @@ $( document ).ready(function() {
     addconditionset('share');
     {% endfor %}
 });
-
+/*
 function addset(set, single) {
     var html = '<table class="bordered striped highlight centered responsiv-table>';
     html += '<thead>';
@@ -270,7 +302,7 @@ function addset(set, single) {
     html ++ '<tbody></tbody>';
     html += '</table>'
     $(set).insertAdjacentHTML('beforeEnd', html);
-}
+}*/
 
 {% include 'categories.js' %}
 

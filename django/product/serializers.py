@@ -2,7 +2,7 @@
 
 from .models import (
     Product, Location, Media, Supply, Condition, Request, State, Using,
-    Category, Proposal, VEvent, Duration
+    Category, Proposal, VEvent, Duration, Stock
 )
 
 from rest_framework.serializers import HyperlinkedModelSerializer
@@ -39,6 +39,18 @@ class ProductSerializer(HyperlinkedModelSerializer):
             'id', 'name', 'description',
             'owners', 'suppliers', 'users', 'usings', 'categories',
             'states', 'supplies', 'requests', 'locations'
+        ]
+
+
+class StockSerializer(ProductSerializer):
+    """Stock serializer."""
+
+    class Meta:
+        """Stock serializer meta class."""
+
+        model = Stock
+        fields = ProductSerializer.Meta.fields + [
+            'parent', 'pamount', 'pcategory'
         ]
 
 

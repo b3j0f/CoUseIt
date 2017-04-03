@@ -10,7 +10,7 @@ all: migrations migrate fixtures
 
 .PHONY: migrations
 migrations:
-	$(DJANGO) makemigrations account product stock
+	$(DJANGO) makemigrations account product
 
 .PHONY: migrate
 migrate: migrations
@@ -105,11 +105,17 @@ shell:
 
 .PHONY: install_deps
 install_deps:
-	pip install -r requirements.txt
+	pip install -r requirements/$(PLATFORM).txt
 
 .PHONY: venv
 venv:
-	virtualenv venv -p $(PYTHON) ; source venv/bin/activate
+	virtualenv venv -p $(PYTHON)
+	source venv/bin/activate
+
+.PHONY: graph_models # require dev environment
+graph_models:
+	$(DJANGO) graph_models -a > graph_models.dot
+	$(DJANGO) graph_models -a -g -o graph_models.png
 
 .PHONY: clean
 clean:

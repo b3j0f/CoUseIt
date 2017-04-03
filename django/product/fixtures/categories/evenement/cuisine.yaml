@@ -6,104 +6,104 @@
 - model: product.category
   fields:
     name: appareil à crêpes
-    parent: évènement
+    parent: cuisine
 
 - model: product.category
   fields:
     name: appareil à fondue
-    parent: évènement
+    parent: cuisine
 
 - model: product.category
   fields:
     name: appareil à raclette
-    parent: évènement
+    parent: cuisine
 
 - model: product.category
   fields:
     name: pierrade
-    parent: évènement
+    parent: cuisine
 
 - model: product.category
   fields:
     name: barbecue
-    parent: évènement
+    parent: cuisine
 
 - model: product.category
   fields:
     name: grill
-    parent: évènement
+    parent: cuisine
 
 - model: product.category
   fields:
     name: plancha
-    parent: évènement
+    parent: cuisine
 
 - model: product.category
   fields:
     name: barbe à papa
-    parent: évènement
+    parent: cuisine
 
 - model: product.category
   fields:
     name: hot-dog
-    parent: évènement
+    parent: cuisine
 
 - model: product.category
   fields:
     name: corn flakes
-    parent: évènement
+    parent: cuisine
 
 - model: product.category
   fields:
     name: cuisson
-    parent: évènement
+    parent: cuisine
 
 - model: product.category
   fields:
     name: réfrigérateur
-    parent: évènement
+    parent: cuisine
 
 - model: product.category
   fields:
     name: ustensiles
-    parent: évènement
+    parent: cuisine
 
 - model: product.category
   fields:
     name: tireuse à bière
-    parent: évènement
+    parent: cuisine
 
 - model: product.category
   fields:
     name: trancheur
-    parent: évènement
+    parent: cuisine
 
 - model: product.category
   fields:
     name: machine à glaces
-    parent: évènement
+    parent: cuisine
 
 - model: product.category
   fields:
     name: salamandre
-    parent: évènement
+    parent: cuisine
 
 - model: product.category
   fields:
     name: thermoverseur
-    parent: évènement
+    parent: cuisine
 
 - model: product.category
   fields:
     name: congélateur
-    parent: évènement
+    parent: cuisine
 
 - model: product.category
   fields:
     name: moules
-    parent: évènement
+    parent: cuisine
 
 - model: product.category
   fields:
     name: machine à glaçons
-    parent: évènement
+    parent: cuisine

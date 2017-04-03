@@ -15,9 +15,9 @@ document.getElementById('categories').innerHTML =
 var topcategories = {};
 var midcategories = {};
 
-var toplis = '<li class="topall active"><a onclick="selectcat(\'top\', this);">Tout</a></li>';
-var midlis = '<li class="midall active"><a onclick="selectcat(\'mid\', this);">Tout</a></li>';
-var lowlis = '<li class="lowall active"><a onclick="selectcat(\'low\', this);">Tout</a></li>';
+var toplis = '<li id="topall" class="active"><a onclick="selectcat(\'top\', this);">Tout</a></li>';
+var midlis = '<li id="midall" class="active"><a onclick="selectcat(\'mid\', this);">Tout</a></li>';
+var lowlis = '<li id="lowall" class="active"><a onclick="selectcat(\'low\', this);">Tout</a></li>';
 
 {% for topcategory in topcategories %}
 var topcat = '{{ topcategory.name }}'.replace('/', '-');
@@ -55,9 +55,9 @@ var selectedtop = 'tout';
 var selectedmid = 'tout';
 var selectedlow = 'tout';
 
-var lasttop = $('.topall')[0];
-var lastmid = $('.midall')[0];
-var lastlow = $('.lowall')[0];
+var lasttop = $('#topall');
+var lastmid = $('#midall');
+var lastlow = $('#lowall');
 
 $('#midcategory').hide();
 $('#lowcategory').hide();
@@ -68,17 +68,14 @@ function selectcat(type, elt) {
 		case 'top':
 			if (selectedtop === id) break;
 			selectedtop = id;
-			$(lasttop).removeClass('active');
-			lasttop = elt.parentNode;
-			$(lasttop).addClass('active');
+			lasttop.removeClass('active');
+			lasttop = $(elt.parentNode);
+			lasttop.addClass('active');
 			if (! elt.id) {
 				$('.lowcategory').hide();
 				$('#lowcategory').hide();
 				$('.midcategory').hide();
 				$('#midcategory').hide();
-				lastmid.removeClass('active');
-				lastmid = $('.mid.all')[0];
-				$(lastmid).addClass('active');
 			} else {
 				selectedmid = selectedlow = 'tout';
 				$('.lowcategory').hide();
@@ -87,32 +84,35 @@ function selectcat(type, elt) {
 				$('.mid.'+id).show();
 				$('#midcategory').show();
 			}
+			lastmid.removeClass('active');
+			lastmid = $('#midall');
+			lastmid.addClass('active');
 			break;
 		case 'mid':
 			if (selectedmid === id) break;
 			selectedmid = id;
-			$(lastmid).removeClass('active');
-			lastmid = elt.parentNode;
-			$(lastmid).addClass('active');
+			lastmid.removeClass('active');
+			lastmid = $(elt.parentNode);
+			lastmid.addClass('active');
 			if (! elt.id) {
 				$('.lowcategory').hide();
 				$('#lowcategory').hide();
-				lastlow.removeClass('active');
-				lastlow = $('.mid.all')[0];
-				$(lastlow).addClass('active');
 			} else {
 				selectedlow = 'tout';
 				$('.low').hide();
 				$('.low.'+id).show();
 				$('#lowcategory').show();
 			}
+			lastlow.removeClass('active');
+			lastlow = $('#lowall');
+			lastlow.addClass('active');
 			break;
 		case 'low':
 			if (selectedlow === id) break;
 			selectedlow = id;
-			$(lastlow).removeClass('active');
-			lastlow = elt.parentNode;
-			$(lastlow).addClass('active');
+			lastlow.removeClass('active');
+			lastlow = $(elt.parentNode);
+			lastlow.addClass('active');
 	};
 	$('#topcategory')[0].innerHTML = selectedtop;
 	$('#midcategory')[0].innerHTML = selectedmid;
