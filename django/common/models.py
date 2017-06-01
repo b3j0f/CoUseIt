@@ -115,10 +115,10 @@ class Supply(MessageElement):
 
     peruser = models.BooleanField(default=False, blank=True)
     minusers = models.IntegerField(default=1, blank=True)
-    maxusers = models.IntegerField(default=None, null=True, blank=True)
-    bid = models.BooleanField(default=False, blank=True)
-    minduration = models.IntegerField(null=True, default=None, blank=True)
-    maxduration = models.IntegerField(null=True, default=None, blank=True)
+    maxusers = models.IntegerField(default=1, blank=True)
+    bid = models.BooleanField(default=True, blank=True)
+
+    public = models.BooleanField(default=True, blank=True)
 
     class Meta:
         """Meta class."""
@@ -133,6 +133,20 @@ class Supply(MessageElement):
         """Representation."""
         return tostr(self, 'common', 'name', 'description', 'amount')
 
+    @property
+    def objective(self):
+        """Get objective."""
+        result = {}
+
+        for cond in self.conditions:
+            if cond.kind in result:
+                result[cond.kind] += cond.amount
+
+            else:
+                result[cond.kind] = cond.amount
+
+        return result
+
 
 class Give(Supply):
     """Give model."""
@@ -140,6 +154,9 @@ class Give(Supply):
 
 class Share(Supply):
     """Share model."""
+
+    minduration = models.IntegerField(null=True, default=None, blank=True)
+    maxduration = models.IntegerField(null=True, default=None, blank=True)
 
     period = models.CharField(
         default=None, max_length=50, null=True,
@@ -155,8 +172,19 @@ class Share(Supply):
 
 
 @python_2_unicode_compatible
+class Currency(models.Model):
+    """Currency model."""
+
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        """Representation."""
+        return self.name
+
+
+@python_2_unicode_compatible
 class Condition(models.Model):
-    """Use condition item."""
+    """Supply condition item."""
 
     class Meta:
         """Meta class."""
@@ -166,7 +194,8 @@ class Condition(models.Model):
         order_with_respect_to = 'supply'
         verbose_name_plural = 'conditions'
 
-    type = models.CharField(max_length=50)
+    currency = models.ForeignKey(Currency, blank=True, default=None)
+    metric = models.CharField(max_length=50, blank=True, default=None)
     amount = models.FloatField(default=1, blank=True)
     description = models.TextField(blank=True, default=None, null=True)
     supply = models.ForeignKey(Supply, related_name='conditions', null=True)
@@ -176,7 +205,12 @@ class Condition(models.Model):
 
     def __str__(self):
         """Representation."""
-        return tostr(self, 'type', 'amount', 'description', 'supply')
+        return tostr(self, 'supply', 'amount', 'metric')
+
+    @property
+    def kind(self):
+        """Get kind."""
+        return self.currency if self.currency else self.metric
 
 
 @python_2_unicode_compatible
@@ -201,13 +235,30 @@ class Request(MessageElement):
     supplyer = models.ForeignKey(
         Account, blank=True, null=True, related_name='answers'
     )
-    amount = models.IntegerField(default=1, blank=True)
+
+    common_amount = models.IntegerField(default=1, blank=True)
+
+    # 4 choices of supplyments
+
+    # specific common
     supplyment = models.ForeignKey(
-        Supply, blank=False, null=False, related_name='requests'
+        Supply, blank=True, default=None, related_name='requests'
     )
+    # money/metric quantity
+    currency = models.ForeignKey(Currency, blank=True, default=None)
+    metric = models.CharField(max_length=50, default=None, blank=True)
+    amount = models.FloatField(default=None, blank=True)
+    # description common type
+    description = models.CharField(blank=True, default=None, max_length=255)
+    # category common type
+    category = models.ForeignKey(
+        'Category', blank=True, default=None, related_name='requests'
+    )
+
     accounts = models.ManyToManyField(Account, related_name='requests')
     frominterval = models.DateTimeField(blank=True, null=True)
     tointerval = models.DateTimeField(blank=True, null=True)
+
     public = models.BooleanField(default=True, null=False)
 
     @property
@@ -223,6 +274,60 @@ class Request(MessageElement):
         """Representation."""
         return tostr(self, 'accounts', '')
 
+    @property
+    def kind(self):
+        """Get kind."""
+        return self.currency if self.currency else self.metric
+
+    @property
+    def objective(self):
+        """Objective."""
+        result = None
+
+        if self.supplyment:
+            result = self.supplyment.objective
+
+        else:
+            result = {self.kind: self.amount}
+
+        if self.common_amount > 1:
+            for key in result:
+                result[key] *= self.common_amount
+
+        return result
+
+    @property
+    def current_amount(self):
+        """Current amount."""
+        result = {}
+
+        for proposal in self.proposals:
+            for cond in proposal.condition:
+                key = cond.currency if cond.currency else cond.metric
+                if key in result:
+                    result[key] += proposal.amount
+                else:
+                    result[key] = proposal.amount
+
+        return result
+
+    @property
+    def succeedpct(self):
+        """Get succeed pct."""
+        objective = self.objective
+        total = sum(objective.keys())
+
+        current_amount = self.current_amount
+
+        diff = 0
+
+        for key in objective:
+            objamount = objective[key]
+            if key in current_amount:
+                diff += min(objamount, current_amount[key])
+
+        return diff * 100 / total
+
 
 @python_2_unicode_compatible
 class Proposal(models.Model):
@@ -230,12 +335,12 @@ class Proposal(models.Model):
 
     request = models.ForeignKey(Request, related_name='proposals')
     condition = models.ForeignKey(Condition, related_name='proposals')
-    quantity = models.FloatField(default=1, blank=True)
+    amount = models.FloatField(default=1, blank=True)
     description = models.TextField(blank=True, default=None)
 
     def __str__(self):
         """Representation."""
-        return tostr(self, 'request', 'condition', 'quantity', 'description')
+        return tostr(self, 'request', 'condition', 'amount', 'description')
 
 
 @python_2_unicode_compatible

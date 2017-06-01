@@ -4,7 +4,7 @@ from django.contrib import admin
 
 from .models import (
     Location, Product, Media, Supply, Condition, Request, State, Using,
-    Category, VEvent, Stock, Service
+    Category, VEvent, Stock, Service, Give, Share
 )
 
 # Register your models here.
@@ -20,3 +20,5 @@ admin.site.register(State)
 admin.site.register(Using)
 admin.site.register(Category)
 admin.site.register(VEvent)
+admin.site.register(Give)
+admin.site.register(Share)
