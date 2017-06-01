@@ -12,13 +12,6 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 import os
 
-from .local import (
-    HOST,
-    SECRET_KEY, reCAPTCHA_SECRET_KEY,
-    EMAIL_HOST, EMAIL_PORT, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD,
-    EMAIL_USE_TLS, EMAIL_USE_SSL
-)
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(
     os.path.dirname(
@@ -28,24 +21,25 @@ BASE_DIR = os.path.dirname(
     )
 )
 
-# site url
-HOST = HOST
+# site url for mailing users
+HOST = os.getenv('HOST', 'http://localhost:8000')
+API = 'api/rest/v1'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = SECRET_KEY
+SECRET_KEY = os.getenv('SECRET_KEY', 'This is the secret key')
 
 ALLOWED_HOSTS = ['*']
 
 # EMAIL PART
-EMAIL_HOST = EMAIL_HOST
-EMAIL_PORT = EMAIL_PORT
-EMAIL_HOST_USER = EMAIL_HOST_USER
-EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
-EMAIL_USE_TLS = EMAIL_USE_TLS
-EMAIL_USE_SSL = EMAIL_USE_SSL
+EMAIL_HOST = os.getenv('EMAIL_HOST', '')
+EMAIL_PORT = os.getenv('EMAIL_PORT', 0)
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', 'couseit')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', '')
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', True)
+EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL', True)
 
 # Application definition
 
@@ -113,10 +107,6 @@ DATABASES = {
     }
 }
 
-HOST = HOST
-
-API = 'api/rest/v1'
-
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
 
@@ -162,7 +152,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 # reCaptcha
 reCAPTCHA_SITE_KEY = '6Ld9dA4UAAAAADMvh_ZnhfJp4P2hNUgE_fcSdDZt'
-reCAPTCHA_SECRET_KEY = reCAPTCHA_SECRET_KEY
+reCAPTCHA_SECRET_KEY = os.getenv('reCAPTCHA_SECRET_KEY', '')
 
 # Authentication system
 LOGIN_URL = '/accounts/login/'

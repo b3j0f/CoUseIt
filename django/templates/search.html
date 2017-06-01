@@ -7,8 +7,11 @@
 <div class="section scrollspy" id="search" name="Recherche">
 
 	<h1>
-		{% if page == 'gives' %}Don, troc ou vente{% elif page == 'shares' %}Emprunt ou location{% else %}Stockage{% endif %}
+		{% if page == 'gives' %}Co-Buy It{% elif page == 'shares' %}Co-Share It{% else %}Co-Stock It{% endif %}
 	</h1>
+	<h5>
+		{% if page == 'gives' %}Don, achat et vente{% elif page == 'shares' %}Emprunt et location{% else %}Stockage{% endif %}
+	</h5>
 
 	<form action="/search" method="post" accept-charset="utf-8">
 		<div class="card row">

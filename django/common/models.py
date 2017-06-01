@@ -112,17 +112,7 @@ class Supply(MessageElement):
     amount = models.IntegerField(default=1, blank=True)
     startdate = models.DateTimeField(default=None, blank=True, null=True)
     duedate = models.DateTimeField(default=None, blank=True, null=True)
-    period = models.CharField(
-        default=None, max_length=50, null=True,
-        choices=(
-            ('u', 'unlimited'),
-            ('d', 'days'),
-            ('w', 'weeks'),
-            ('e', 'weekends'),
-            ('m', 'months'),
-            ('y', 'years')
-        )
-    )
+
     peruser = models.BooleanField(default=False, blank=True)
     minusers = models.IntegerField(default=1, blank=True)
     maxusers = models.IntegerField(default=None, null=True, blank=True)
@@ -142,6 +132,26 @@ class Supply(MessageElement):
     def __str__(self):
         """Representation."""
         return tostr(self, 'common', 'name', 'description', 'amount')
+
+
+class Give(Supply):
+    """Give model."""
+
+
+class Share(Supply):
+    """Share model."""
+
+    period = models.CharField(
+        default=None, max_length=50, null=True,
+        choices=(
+            ('u', 'unlimited'),
+            ('d', 'days'),
+            ('w', 'weeks'),
+            ('e', 'weekends'),
+            ('m', 'months'),
+            ('y', 'years')
+        )
+    )
 
 
 @python_2_unicode_compatible

@@ -124,21 +124,21 @@
         <li><a class="waves-effect waves-light btn" href="/login?next={{ next }}">Connexion</a></li>
         {% endif %}
         <li class="divider"></li>
-        <li class="{% if page == 'changes' %}active{% endif %}"><a href="/changes" class="waves-effect">Échanges</a></li>
-        <li class="{% if page == 'stocks' %}active{% endif %}"><a href="/stocks" class="waves-effect">Stocks</a></li>
-        <li class="{% if page == 'services' %}active{% endif %}"><a href="/services" class="waves-effect">Services</a></li>
+        <li class="{% if page == 'gives' %}active{% endif %} purple"><a href="/gives" class="waves-effect">Co-Buy It</a></li>
+        <li class="{% if page == 'shares' %}active{% endif %} blue"><a href="/shares" class="waves-effect">Co-Share It</a></li>
+        <li class="{% if page == 'stocks' %}active{% endif %} teal"><a href="/stocks" class="waves-effect">Co-Stock It</a></li>
     </ul>
 
     <div class="navbar-fixed">
         <nav>
             <div class="nav-wrapper">
                 <a href="/" class="brand-logo{% if page == 'home' %} active{% endif %}">
-                    Co Use It
+                    Co-Use It
                 </a>
                 <ul id="nav-lechangement" class="right hide-on-med-and-down">
-                    <li class="{% if page == 'changes' %}active{% endif %}"><a href="/changes">Échanges</a></li>
-                    <li class="{% if page == 'stocks' %}active{% endif %}"><a href="/stocks">Stocks</a></li>
-                    <li class="{% if page == 'services' %}active{% endif %}"><a href="/services">Services</a></li>
+                    <li class="{% if page == 'gives' %}active{% endif %} purple"><a href="/gives">Co-Buy It</a></li>
+                    <li class="{% if page == 'shares' %}active{% endif %} blue"><a href="/shares">Co-Share It</a></li>
+                    <li class="{% if page == 'stocks' %}active{% endif %} teal"><a href="/stocks">Co-Stock It</a></li>
                     {% if user.is_authenticated %}
                     <!-- Dropdown Trigger -->
                     <li class="{% if page == 'account' %}active{% endif %}"><a class="dropdown-button" href="#!" data-activates="usermenu">{{ user.email }}<i class="material-icons right">arrow_drop_down</i></a></li>

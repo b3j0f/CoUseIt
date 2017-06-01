@@ -9,7 +9,9 @@ from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 
 from account.models import Account
-from common.models import Product, Using, Stat, Category, Stock, Service
+from common.models import (
+    Product, Using, Stat, Category, Stock, Service, Give, Share
+)
 
 from .utils import sendemail
 
@@ -257,12 +259,12 @@ def getcommons(request, cls, page):
 
 def givesview(request):
     """Give view."""
-    return getcommons(request, page='gives')
+    return getcommons(request, Give, page='gives')
 
 
 def sharesview(request):
     """Shared product view."""
-    return getcommons(request, page='shares')
+    return getcommons(request, Share, page='shares')
 
 
 def productsview(request):
