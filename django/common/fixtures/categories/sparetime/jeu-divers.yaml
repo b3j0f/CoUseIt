@@ -1,0 +1,161 @@
+- model: common.category
+  fields:
+    name: jeu divers
+    types: product
+    parent: loisir
+
+- model: common.category
+  fields:
+    name: jeux de société
+    types: product
+    parent: jeu divers
+
+- model: common.category
+  fields:
+    name: jeux d'extérieur
+    types: product
+    parent: jeu divers
+
+- model: common.category
+  fields:
+    name: jeux électronique
+    types: product
+    parent: jeu divers
+
+- model: common.category
+  fields:
+    name: casino
+    types: product
+    parent: jeu divers
+
+- model: common.category
+  fields:
+    name: machines à sous
+    types: product
+    parent: jeu divers
+
+- model: common.category
+  fields:
+    name: poker
+    types: product
+    parent: jeu divers
+
+- model: common.category
+  fields:
+    name: billard
+    types: product
+    parent: jeu divers
+
+- model: common.category
+  fields:
+    name: baby-foot
+    types: product
+    parent: jeu divers
+
+- model: common.category
+  fields:
+    name: flipper
+    types: product
+    parent: jeu divers
+
+- model: common.category
+  fields:
+    name: kicker
+    types: product
+    parent: jeu divers
+
+- model: common.category
+  fields:
+    name: arcade
+    types: product
+    parent: jeu divers
+
+- model: common.category
+  fields:
+    name: flèches
+    types: product
+    parent: jeu divers
+
+- model: common.category
+  fields:
+    name: cible
+    types: product
+    parent: jeu divers
+
+- model: common.category
+  fields:
+    name: scrapbooking
+    types: product
+    parent: jeu divers
+
+- model: common.category
+  fields:
+    name: pétanque
+    types: product
+    parent: jeu divers
+
+- model: common.category
+  fields:
+    name: puzzle
+    types: product
+    parent: jeu divers
+
+- model: common.category
+  fields:
+    name: légo
+    types: product
+    parent: jeu divers
+
+- model: common.category
+  fields:
+    name: playmobil
+    types: product
+    parent: jeu divers
+
+- model: common.category
+  fields:
+    name: meccano
+    types: product
+    parent: jeu divers
+
+- model: common.category
+  fields:
+    name: poupée
+    types: product
+    parent: jeu divers
+
+- model: common.category
+  fields:
+    name: marionnette
+    types: product
+    parent: jeu divers
+
+- model: common.category
+  fields:
+    name: loto
+    types: product
+    parent: jeu divers
+
+- model: common.category
+  fields:
+    name: circuit électrique
+    types: product
+    parent: jeu divers
+
+- model: common.category
+  fields:
+    name: objet téléguidé
+    types: product
+    parent: jeu divers
+
+- model: common.category
+  fields:
+    name: modélisme
+    types: product
+    parent: jeu divers
+
+- model: common.category
+  fields:
+    name: tir à l'arc
+    types: product
+    parent: jeu divers

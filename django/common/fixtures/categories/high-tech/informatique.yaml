@@ -1,0 +1,107 @@
+- model: common.category
+  fields:
+    name: informatique
+    types: product
+    parent: high-tech
+
+- model: common.category
+  fields:
+    name: ordinateur de bureau
+    types: product
+    parent: informatique
+
+- model: common.category
+  fields:
+    name: ordinateur portable
+    types: product
+    parent: informatique
+
+- model: common.category
+  fields:
+    name: imprimante
+    types: product
+    parent: informatique
+
+- model: common.category
+  fields:
+    name: scanner
+    types: product
+    parent: informatique
+
+- model: common.category
+  fields:
+    name: routeur
+    types: product
+    parent: informatique
+
+- model: common.category
+  fields:
+    name: écran
+    types: product
+    parent: informatique
+
+- model: common.category
+  fields:
+    name: disque dur externe
+    types: product
+    parent: informatique
+
+- model: common.category
+  fields:
+    name: graveur
+    types: product
+    parent: informatique
+
+- model: common.category
+  fields:
+    name: souris
+    types: product
+    parent: informatique
+
+- model: common.category
+  fields:
+    name: clef usb
+    types: product
+    parent: informatique
+
+- model: common.category
+  fields:
+    name: clavier
+    types: product
+    parent: informatique
+
+- model: common.category
+  fields:
+    name: photocopieuse
+    types: product
+    parent: informatique
+
+- model: common.category
+  fields:
+    name: modem
+    types: product
+    parent: informatique
+
+- model: common.category
+  fields:
+    name: webcam
+    types: product
+    parent: informatique
+
+- model: common.category
+  fields:
+    name: antenne
+    types: product
+    parent: informatique
+
+- model: common.category
+  fields:
+    name: casque
+    types: product
+    parent: informatique
+
+- model: common.category
+  fields:
+    name: micro
+    types: product
+    parent: informatique

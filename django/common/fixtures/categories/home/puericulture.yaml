@@ -1,0 +1,137 @@
+- model: common.category
+  fields:
+    name: puériculture
+    types: product
+    parent: maison
+
+- model: common.category
+  fields:
+    name: vêtements grossesse
+    types: product
+    parent: puériculture
+
+- model: common.category
+  fields:
+    name: vêtements bébé
+    types: product
+    parent: puériculture
+
+- model: common.category
+  fields:
+    name: lit bébé
+    types: product
+    parent: puériculture
+
+- model: common.category
+  fields:
+    name: berceau
+    types: product
+    parent: puériculture
+
+- model: common.category
+  fields:
+    name: poussette
+    types: product
+    parent: puériculture
+
+- model: common.category
+  fields:
+    name: landau / nacelle
+    types: product
+    parent: puériculture
+
+- model: common.category
+  fields:
+    name: couffin
+    types: product
+    parent: puériculture
+
+- model: common.category
+  fields:
+    name: siège-auto
+    types: product
+    parent: puériculture
+
+- model: common.category
+  fields:
+    name: porte-bébé
+    types: product
+    parent: puériculture
+
+- model: common.category
+  fields:
+    name: siège de table
+    types: product
+    parent: puériculture
+
+- model: common.category
+  fields:
+    name: réhausseur
+    types: product
+    parent: puériculture
+
+- model: common.category
+  fields:
+    name: table haute
+    types: product
+    parent: puériculture
+
+- model: common.category
+  fields:
+    name: parc
+    types: product
+    parent: puériculture
+
+- model: common.category
+  fields:
+    name: balancelle
+    types: product
+    parent: puériculture
+
+- model: common.category
+  fields:
+    name: mobiles
+    types: product
+    parent: puériculture
+
+- model: common.category
+  fields:
+    name: trotteur
+    types: product
+    parent: puériculture
+
+- model: common.category
+  fields:
+    name: transat
+    types: product
+    parent: puériculture
+
+- model: common.category
+  fields:
+    name: babyphone
+    types: product
+    parent: puériculture
+
+- model: common.category
+  fields:
+    name: chauffe biberons
+    types: product
+    parent: puériculture
+
+- model: common.category
+  fields:
+    name: stérilisateur
+    types: product
+    parent: puériculture
+
+- model: common.category
+  fields:
+    name: biberons
+    types: product
+    parent: puériculture
+
+- model: common.category
+  fields:
+    name: tire-lait
+    types: product
+    parent: puériculture

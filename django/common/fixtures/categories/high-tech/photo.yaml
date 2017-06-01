@@ -1,0 +1,137 @@
+- model: common.category
+  fields:
+    name: photo
+    types: product
+    parent: high-tech
+
+- model: common.category
+  fields:
+    name: objectif
+    types: product
+    parent: photo
+
+- model: common.category
+  fields:
+    name: réflex numérique
+    types: product
+    parent: photo
+
+- model: common.category
+  fields:
+    name: réflex argentique
+    types: product
+    parent: photo
+
+- model: common.category
+  fields:
+    name: accessoire lumière
+    types: product
+    parent: photo
+
+- model: common.category
+  fields:
+    name: support
+    types: product
+    parent: photo
+
+- model: common.category
+  fields:
+    name: trépied
+    types: product
+    parent: photo
+
+- model: common.category
+  fields:
+    name: polaroïd/ instantané
+    types: product
+    parent: photo
+
+- model: common.category
+  fields:
+    name: compact numérique
+    types: product
+    parent: photo
+
+- model: common.category
+  fields:
+    name: compact argentique
+    types: product
+    parent: photo
+
+- model: common.category
+  fields:
+    name: alimentation
+    types: product
+    parent: photo
+
+- model: common.category
+  fields:
+    name: réflecteur / diffuseur
+    types: product
+    parent: photo
+
+- model: common.category
+  fields:
+    name: carte mémoire
+    types: product
+    parent: photo
+
+- model: common.category
+  fields:
+    name: viseur
+    types: product
+    parent: photo
+
+- model: common.category
+  fields:
+    name: mémoire
+    types: product
+    parent: photo
+
+- model: common.category
+  fields:
+    name: moteur
+    types: product
+    parent: photo
+
+- model: common.category
+  fields:
+    name: caisson
+    types: product
+    parent: photo
+
+- model: common.category
+  fields:
+    name: jumelles
+    types: product
+    parent: photo
+
+- model: common.category
+  fields:
+    name: longue-vue
+    types: product
+    parent: photo
+
+- model: common.category
+  fields:
+    name: station d'accueil
+    types: product
+    parent: photo
+
+- model: common.category
+  fields:
+    name: télescope tt terrain
+    types: product
+    parent: photo
+
+- model: common.category
+  fields:
+    name: cyclo
+    types: product
+    parent: photo
+
+- model: common.category
+  fields:
+    name: oculaires
+    types: product
+    parent: photo

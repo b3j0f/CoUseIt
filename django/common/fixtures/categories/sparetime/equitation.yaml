@@ -1,0 +1,41 @@
+- model: common.category
+  fields:
+    name: équitation
+    types: product
+    parent: loisir
+
+- model: common.category
+  fields:
+    name: cheval
+    types: product
+    parent: équitation
+
+- model: common.category
+  fields:
+    name: selle
+    types: product
+    parent: équitation
+
+- model: common.category
+  fields:
+    name: tondeuse pour cheval
+    types: product
+    parent: équitation
+
+- model: common.category
+  fields:
+    name: écurie
+    types: product
+    parent: équitation
+
+- model: common.category
+  fields:
+    name: bombe
+    types: product
+    parent: équitation
+
+- model: common.category
+  fields:
+    name: cravache
+    types: product
+    parent: équitation

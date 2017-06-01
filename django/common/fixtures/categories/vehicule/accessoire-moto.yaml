@@ -1,0 +1,17 @@
+- model: common.category
+  fields:
+    name: accessoire moto
+    types: product
+    parent: vehicule
+
+- model: common.category
+  fields:
+    name: casque
+    types: product
+    parent: accessoire moto
+
+- model: common.category
+  fields:
+    name: anti-vol
+    types: product
+    parent: accessoire moto

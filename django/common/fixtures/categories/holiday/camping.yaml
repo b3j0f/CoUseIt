@@ -1,0 +1,35 @@
+- model: common.category
+  fields:
+    name: camping
+    types: product
+    parent: vacance
+
+- model: common.category
+  fields:
+    name: emplacement
+    types: product
+    parent: camping
+
+- model: common.category
+  fields:
+    name: caravane
+    types: product
+    parent: camping
+
+- model: common.category
+  fields:
+    name: caravane résidentielle
+    types: product
+    parent: camping
+
+- model: common.category
+  fields:
+    name: mobilhome
+    types: product
+    parent: camping
+
+- model: common.category
+  fields:
+    name: bungalow
+    types: product
+    parent: camping

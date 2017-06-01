@@ -1,0 +1,101 @@
+- model: common.category
+  fields:
+    name: accessoire auto
+    types: product
+    parent: vehicule
+
+- model: common.category
+  fields:
+    name: coffre de toit
+    types: product
+    parent: accessoire auto
+
+- model: common.category
+  fields:
+    name: galerie
+    types: product
+    parent: accessoire auto
+
+- model: common.category
+  fields:
+    name: barres de toit
+    types: product
+    parent: accessoire auto
+
+- model: common.category
+  fields:
+    name: porte-skis
+    types: product
+    parent: accessoire auto
+
+- model: common.category
+  fields:
+    name: outils
+    types: product
+    parent: accessoire auto
+
+- model: common.category
+  fields:
+    name: booster
+    types: product
+    parent: accessoire auto
+
+- model: common.category
+  fields:
+    name: porte-vélo
+    types: product
+    parent: accessoire auto
+
+- model: common.category
+  fields:
+    name: chaines
+    types: product
+    parent: accessoire auto
+
+- model: common.category
+  fields:
+    name: siège extra
+    types: product
+    parent: accessoire auto
+
+- model: common.category
+  fields:
+    name: treuil
+    types: product
+    parent: accessoire auto
+
+- model: common.category
+  fields:
+    name: plaques de désensablement
+    types: product
+    parent: accessoire auto
+
+- model: common.category
+  fields:
+    name: sono
+    types: product
+    parent: accessoire auto
+
+- model: common.category
+  fields:
+    name: vidéo et écran embarqué
+    types: product
+    parent: accessoire auto
+
+- model: common.category
+  fields:
+    name: valise diagnostique
+    types: product
+    parent: accessoire auto
+
+- model: common.category
+  fields:
+    name: parking
+    types: product
+    parent: accessoire auto
+
+- model: common.category
+  fields:
+    name: avertisseur de radars
+    types: product
+    parent: accessoire auto

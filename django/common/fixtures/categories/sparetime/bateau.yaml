@@ -1,0 +1,71 @@
+- model: common.category
+  fields:
+    name: bateau
+    types: product
+    parent: loisir
+
+- model: common.category
+  fields:
+    name: bateau à moteur
+    types: product
+    parent: bateau
+
+- model: common.category
+  fields:
+    name: canoe kayak
+    types: product
+    parent: bateau
+
+- model: common.category
+  fields:
+    name: voilier
+    types: product
+    parent: bateau
+
+- model: common.category
+  fields:
+    name: scooter des mers
+    types: product
+    parent: bateau
+
+- model: common.category
+  fields:
+    name: péniche
+    types: product
+    parent: bateau
+
+- model: common.category
+  fields:
+    name: bateau pneumatique
+    types: product
+    parent: bateau
+
+- model: common.category
+  fields:
+    name: bateau électrique
+    types: product
+    parent: bateau
+
+- model: common.category
+  fields:
+    name: barque
+    types: product
+    parent: bateau
+
+- model: common.category
+  fields:
+    name: aviron
+    types: product
+    parent: bateau
+
+- model: common.category
+  fields:
+    name: pédalo
+    types: product
+    parent: bateau
+
+- model: common.category
+  fields:
+    name: char à voile
+    types: product
+    parent: bateau

@@ -1,0 +1,29 @@
+- model: common.category
+  fields:
+    name: appartement
+    types: product
+    parent: vacance
+
+- model: common.category
+  fields:
+    name: studio
+    types: product
+    parent: appartement
+
+- model: common.category
+  fields:
+    name: 2/3 pièces
+    types: product
+    parent: appartement
+
+- model: common.category
+  fields:
+    name: 4/5 pièces
+    types: product
+    parent: appartement
+
+- model: common.category
+  fields:
+    name: 5 pièces et +
+    types: product
+    parent: appartement

@@ -1,0 +1,53 @@
+- model: common.category
+  fields:
+    name: moto-scooter
+    types: product
+    parent: vehicule
+
+- model: common.category
+  fields:
+    name: moto
+    types: product
+    parent: moto-scooter
+
+- model: common.category
+  fields:
+    name: scooter
+    types: product
+    parent: moto-scooter
+
+- model: common.category
+  fields:
+    name: sans-permis
+    types: product
+    parent: moto-scooter
+
+- model: common.category
+  fields:
+    name: mini-moto
+    types: product
+    parent: moto-scooter
+
+- model: common.category
+  fields:
+    name: mobylette
+    types: product
+    parent: moto-scooter
+
+- model: common.category
+  fields:
+    name: segway
+    types: product
+    parent: moto-scooter
+
+- model: common.category
+  fields:
+    name: side-car
+    types: product
+    parent: moto-scooter
+
+- model: common.category
+  fields:
+    name: quad
+    types: product
+    parent: moto-scooter

@@ -1,0 +1,53 @@
+- model: common.category
+  fields:
+    name: maintenance
+    types: product
+    parent: DIY
+
+- model: common.category
+  fields:
+    name: nettoyeur haute pression
+    types: product
+    parent: maintenance
+
+- model: common.category
+  fields:
+    name: aspirateur
+    types: product
+    parent: maintenance
+
+- model: common.category
+  fields:
+    name: citerne
+    types: product
+    parent: maintenance
+
+- model: common.category
+  fields:
+    name: shampouineuse
+    types: product
+    parent: maintenance
+
+- model: common.category
+  fields:
+    name: pompe
+    types: product
+    parent: maintenance
+
+- model: common.category
+  fields:
+    name: déboucheur canalisations
+    types: product
+    parent: maintenance
+
+- model: common.category
+  fields:
+    name: tuyaux
+    types: product
+    parent: maintenance
+
+- model: common.category
+  fields:
+    name: générateur eau chaude
+    types: product
+    parent: maintenance

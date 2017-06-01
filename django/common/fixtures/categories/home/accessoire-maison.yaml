@@ -1,0 +1,59 @@
+- model: common.category
+  fields:
+    name: accessoire maison
+    types: product
+    parent: maison
+
+- model: common.category
+  fields:
+    name: éveil
+    types: product
+    parent: accessoire maison
+
+- model: common.category
+  fields:
+    name: bain
+    types: product
+    parent: accessoire maison
+
+- model: common.category
+  fields:
+    name: toilette
+    types: product
+    parent: accessoire maison
+
+- model: common.category
+  fields:
+    name: linge lit
+    types: product
+    parent: accessoire maison
+
+- model: common.category
+  fields:
+    name: linge bain
+    types: product
+    parent: accessoire maison
+
+- model: common.category
+  fields:
+    name: jouets
+    types: product
+    parent: accessoire maison
+
+- model: common.category
+  fields:
+    name: vaisselle
+    types: product
+    parent: accessoire maison
+
+- model: common.category
+  fields:
+    name: tente de plage
+    types: product
+    parent: accessoire maison
+
+- model: common.category
+  fields:
+    name: coussin d'allaitement
+    types: product
+    parent: accessoire maison

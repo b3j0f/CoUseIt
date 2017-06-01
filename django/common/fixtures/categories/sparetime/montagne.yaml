@@ -1,0 +1,47 @@
+- model: common.category
+  fields:
+    name: montagne
+    types: product
+    parent: loisir
+
+- model: common.category
+  fields:
+    name: équipement montagne
+    types: product
+    parent: montagne
+
+- model: common.category
+  fields:
+    name: équipement randonnée
+    types: product
+    parent: montagne
+
+- model: common.category
+  fields:
+    name: tente
+    types: product
+    parent: montagne
+
+- model: common.category
+  fields:
+    name: ski randonnée
+    types: product
+    parent: montagne
+
+- model: common.category
+  fields:
+    name: arva
+    types: product
+    parent: montagne
+
+- model: common.category
+  fields:
+    name: crampon
+    types: product
+    parent: montagne
+
+- model: common.category
+  fields:
+    name: piolet
+    types: product
+    parent: montagne

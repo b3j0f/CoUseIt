@@ -1,0 +1,59 @@
+- model: common.category
+  fields:
+    name: manutention
+    types: product
+    parent: DIY
+
+- model: common.category
+  fields:
+    name: chariot
+    types: product
+    parent: manutention
+
+- model: common.category
+  fields:
+    name: lève-matériaux
+    types: product
+    parent: manutention
+
+- model: common.category
+  fields:
+    name: diable
+    types: product
+    parent: manutention
+
+- model: common.category
+  fields:
+    name: brouette
+    types: product
+    parent: manutention
+
+- model: common.category
+  fields:
+    name: transpalette
+    types: product
+    parent: manutention
+
+- model: common.category
+  fields:
+    name: convoyeur
+    types: product
+    parent: manutention
+
+- model: common.category
+  fields:
+    name: grue
+    types: product
+    parent: manutention
+
+- model: common.category
+  fields:
+    name: treuil
+    types: product
+    parent: manutention
+
+- model: common.category
+  fields:
+    name: palan
+    types: product
+    parent: manutention

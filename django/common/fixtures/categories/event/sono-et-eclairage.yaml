@@ -1,0 +1,131 @@
+- model: common.category
+  fields:
+    name: sono et éclairage
+    types: product
+    parent: évènement
+
+- model: common.category
+  fields:
+    name: matériel sono
+    types: product
+    parent: sono et éclairage
+
+- model: common.category
+  fields:
+    name: matériel éclairage
+    types: product
+    parent: sono et éclairage
+
+- model: common.category
+  fields:
+    name: armoire électrique
+    types: product
+    parent: sono et éclairage
+
+- model: common.category
+  fields:
+    name: enceinte
+    types: product
+    parent: sono et éclairage
+
+- model: common.category
+  fields:
+    name: micro
+    types: product
+    parent: sono et éclairage
+
+- model: common.category
+  fields:
+    name: effets spéciaux
+    types: product
+    parent: sono et éclairage
+
+- model: common.category
+  fields:
+    name: matériel DJ
+    types: product
+    parent: sono et éclairage
+
+- model: common.category
+  fields:
+    name: spots
+    types: product
+    parent: sono et éclairage
+
+- model: common.category
+  fields:
+    name: table de mixage
+    types: product
+    parent: sono et éclairage
+
+- model: common.category
+  fields:
+    name: structure lumière
+    types: product
+    parent: sono et éclairage
+
+- model: common.category
+  fields:
+    name: kits audio
+    types: product
+    parent: sono et éclairage
+
+- model: common.category
+  fields:
+    name: ampli
+    types: product
+    parent: sono et éclairage
+
+- model: common.category
+  fields:
+    name: stroboscope
+    types: product
+    parent: sono et éclairage
+
+- model: common.category
+  fields:
+    name: boule à facettes
+    types: product
+    parent: sono et éclairage
+
+- model: common.category
+  fields:
+    name: karaoké
+    types: product
+    parent: sono et éclairage
+
+- model: common.category
+  fields:
+    name: lumière noire
+    types: product
+    parent: sono et éclairage
+
+- model: common.category
+  fields:
+    name: guirlande lumineuse
+    types: product
+    parent: sono et éclairage
+
+- model: common.category
+  fields:
+    name: néons
+    types: product
+    parent: sono et éclairage
+
+- model: common.category
+  fields:
+    name: talkie-walkie
+    types: product
+    parent: sono et éclairage
+
+- model: common.category
+  fields:
+    name: porte-voix
+    types: product
+    parent: sono et éclairage
+
+- model: common.category
+  fields:
+    name: tourne-disque
+    types: product
+    parent: sono et éclairage

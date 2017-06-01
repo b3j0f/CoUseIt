@@ -1,0 +1,101 @@
+- model: common.category
+  fields:
+    name: matériel médical
+    types: product
+    parent: maison
+
+- model: common.category
+  fields:
+    name: lit médicalisé
+    types: product
+    parent: matériel médical
+
+- model: common.category
+  fields:
+    name: fauteuil roulant
+    types: product
+    parent: matériel médical
+
+- model: common.category
+  fields:
+    name: table roulante
+    types: product
+    parent: matériel médical
+
+- model: common.category
+  fields:
+    name: déambulateur
+    types: product
+    parent: matériel médical
+
+- model: common.category
+  fields:
+    name: élévateur bain
+    types: product
+    parent: matériel médical
+
+- model: common.category
+  fields:
+    name: bequilles
+    types: product
+    parent: matériel médical
+
+- model: common.category
+  fields:
+    name: attelles
+    types: product
+    parent: matériel médical
+
+- model: common.category
+  fields:
+    name: ceinture
+    types: product
+    parent: matériel médical
+
+- model: common.category
+  fields:
+    name: collier cervical
+    types: product
+    parent: matériel médical
+
+- model: common.category
+  fields:
+    name: humidificateur
+    types: product
+    parent: matériel médical
+
+- model: common.category
+  fields:
+    name: pied à perfusion
+    types: product
+    parent: matériel médical
+
+- model: common.category
+  fields:
+    name: tensiomètre
+    types: product
+    parent: matériel médical
+
+- model: common.category
+  fields:
+    name: thermomètre
+    types: product
+    parent: matériel médical
+
+- model: common.category
+  fields:
+    name: inhalateur
+    types: product
+    parent: matériel médical
+
+- model: common.category
+  fields:
+    name: bouillotte
+    types: product
+    parent: matériel médical
+
+- model: common.category
+  fields:
+    name: couverture chauffante
+    types: product
+    parent: matériel médical

@@ -1,0 +1,23 @@
+- model: common.category
+  fields:
+    name: gîte et chambre d'hôte
+    types: product
+    parent: vacance
+
+- model: common.category
+  fields:
+    name: gîte
+    types: product
+    parent: gîte et chambre d'hôte
+
+- model: common.category
+  fields:
+    name: chambre d'hôte
+    types: product
+    parent: gîte et chambre d'hôte
+
+- model: common.category
+  fields:
+    name: auberge
+    types: product
+    parent: gîte et chambre d'hôte

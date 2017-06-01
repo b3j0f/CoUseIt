@@ -61,3 +61,8 @@ application supplémentaires:
 	planning
 
 	historique des transactions techniques (changement de stock, etc.)
+
+Automatiser les achats en gérant le pot commun et en permettant ensuite aux revendeurs de finaliser la transaction
+	- ce mode "pull" nous permet de quantifier le volume des transactions avec la plateforme et nous évite de faire du spécifique par revendeur.
+
+

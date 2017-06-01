@@ -1,0 +1,131 @@
+- model: common.category
+  fields:
+    name: cuisine
+    types: product
+    parent: évènement
+
+- model: common.category
+  fields:
+    name: appareil à crêpes
+    types: product
+    parent: cuisine
+
+- model: common.category
+  fields:
+    name: appareil à fondue
+    types: product
+    parent: cuisine
+
+- model: common.category
+  fields:
+    name: appareil à raclette
+    types: product
+    parent: cuisine
+
+- model: common.category
+  fields:
+    name: pierrade
+    types: product
+    parent: cuisine
+
+- model: common.category
+  fields:
+    name: barbecue
+    types: product
+    parent: cuisine
+
+- model: common.category
+  fields:
+    name: grill
+    types: product
+    parent: cuisine
+
+- model: common.category
+  fields:
+    name: plancha
+    types: product
+    parent: cuisine
+
+- model: common.category
+  fields:
+    name: barbe à papa
+    types: product
+    parent: cuisine
+
+- model: common.category
+  fields:
+    name: hot-dog
+    types: product
+    parent: cuisine
+
+- model: common.category
+  fields:
+    name: corn flakes
+    types: product
+    parent: cuisine
+
+- model: common.category
+  fields:
+    name: cuisson
+    types: product
+    parent: cuisine
+
+- model: common.category
+  fields:
+    name: réfrigérateur
+    types: product
+    parent: cuisine
+
+- model: common.category
+  fields:
+    name: ustensiles
+    types: product
+    parent: cuisine
+
+- model: common.category
+  fields:
+    name: tireuse à bière
+    types: product
+    parent: cuisine
+
+- model: common.category
+  fields:
+    name: trancheur
+    types: product
+    parent: cuisine
+
+- model: common.category
+  fields:
+    name: machine à glaces
+    types: product
+    parent: cuisine
+
+- model: common.category
+  fields:
+    name: salamandre
+    types: product
+    parent: cuisine
+
+- model: common.category
+  fields:
+    name: thermoverseur
+    types: product
+    parent: cuisine
+
+- model: common.category
+  fields:
+    name: congélateur
+    types: product
+    parent: cuisine
+
+- model: common.category
+  fields:
+    name: moules
+    types: product
+    parent: cuisine
+
+- model: common.category
+  fields:
+    name: machine à glaçons
+    types: product
+    parent: cuisine

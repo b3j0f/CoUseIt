@@ -61,7 +61,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'address',
     'account',
-    'product'
+    'common'
 ]
 
 SITE_ID = 1

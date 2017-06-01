@@ -1,0 +1,143 @@
+- model: common.category
+  fields:
+    name: outil
+    types: product
+    parent: DIY
+
+- model: common.category
+  fields:
+    name: scie
+    types: product
+    parent: outil
+
+- model: common.category
+  fields:
+    name: tronçonneuse
+    types: product
+    parent: outil
+
+- model: common.category
+  fields:
+    name: marteau
+    types: product
+    parent: outil
+
+- model: common.category
+  fields:
+    name: forage
+    types: product
+    parent: outil
+
+- model: common.category
+  fields:
+    name: perceuse
+    types: product
+    parent: outil
+
+- model: common.category
+  fields:
+    name: rabot
+    types: product
+    parent: outil
+
+- model: common.category
+  fields:
+    name: découpeuse
+    types: product
+    parent: outil
+
+- model: common.category
+  fields:
+    name: pelle
+    types: product
+    parent: outil
+
+- model: common.category
+  fields:
+    name: maçonnerie
+    types: product
+    parent: outil
+
+- model: common.category
+  fields:
+    name: escabeau
+    types: product
+    parent: outil
+
+- model: common.category
+  fields:
+    name: perforateur
+    types: product
+    parent: outil
+
+- model: common.category
+  fields:
+    name: pinces
+    types: product
+    parent: outil
+
+- model: common.category
+  fields:
+    name: visseuse-dévisseuse
+    types: product
+    parent: outil
+
+- model: common.category
+  fields:
+    name: clé et jeu de clé
+    types: product
+    parent: outil
+
+- model: common.category
+  fields:
+    name: établi
+    types: product
+    parent: outil
+
+- model: common.category
+  fields:
+    name: touret
+    types: product
+    parent: outil
+
+- model: common.category
+  fields:
+    name: tire-fort
+    types: product
+    parent: outil
+
+- model: common.category
+  fields:
+    name: massicot
+    types: product
+    parent: outil
+
+- model: common.category
+  fields:
+    name: cutter
+    types: product
+    parent: outil
+
+- model: common.category
+  fields:
+    name: hache
+    types: product
+    parent: outil
+
+- model: common.category
+  fields:
+    name: fourche
+    types: product
+    parent: outil
+
+- model: common.category
+  fields:
+    name: seau
+    types: product
+    parent: outil
+
+- model: common.category
+  fields:
+    name: niveau
+    types: product
+    parent: outil

@@ -1,0 +1,113 @@
+- model: common.category
+  fields:
+    name: sport individuel
+    types: product
+    parent: loisir
+
+- model: common.category
+  fields:
+    name: fitness
+    types: product
+    parent: sport individuel
+
+- model: common.category
+  fields:
+    name: musculation
+    types: product
+    parent: sport individuel
+
+- model: common.category
+  fields:
+    name: tennis
+    types: product
+    parent: sport individuel
+
+- model: common.category
+  fields:
+    name: ping-pong
+    types: product
+    parent: sport individuel
+
+- model: common.category
+  fields:
+    name: table ping-pong
+    types: product
+    parent: sport individuel
+
+- model: common.category
+  fields:
+    name: golf
+    types: product
+    parent: sport individuel
+
+- model: common.category
+  fields:
+    name: boxe
+    types: product
+    parent: sport individuel
+
+- model: common.category
+  fields:
+    name: arts martiaux
+    types: product
+    parent: sport individuel
+
+- model: common.category
+  fields:
+    name: sport de combat
+    types: product
+    parent: sport individuel
+
+- model: common.category
+  fields:
+    name: sport moteur
+    types: product
+    parent: sport individuel
+
+- model: common.category
+  fields:
+    name: vélo d'intérieur
+    types: product
+    parent: sport individuel
+
+- model: common.category
+  fields:
+    name: plongée
+    types: product
+    parent: sport individuel
+
+- model: common.category
+  fields:
+    name: badmington
+    types: product
+    parent: sport individuel
+
+- model: common.category
+  fields:
+    name: danse
+    types: product
+    parent: sport individuel
+
+- model: common.category
+  fields:
+    name: raquette
+    types: product
+    parent: sport individuel
+
+- model: common.category
+  fields:
+    name: squash
+    types: product
+    parent: sport individuel
+
+- model: common.category
+  fields:
+    name: gymnastique
+    types: product
+    parent: sport individuel
+
+- model: common.category
+  fields:
+    name: aérobic
+    types: product
+    parent: sport individuel

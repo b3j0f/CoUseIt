@@ -1,0 +1,107 @@
+- model: common.category
+  fields:
+    name: instrument de musique
+    types: product
+    parent: loisir
+
+- model: common.category
+  fields:
+    name: piano
+    types: product
+    parent: instrument de musique
+
+- model: common.category
+  fields:
+    name: clavier
+    types: product
+    parent: instrument de musique
+
+- model: common.category
+  fields:
+    name: instruments à cordes
+    types: product
+    parent: instrument de musique
+
+- model: common.category
+  fields:
+    name: instruments à vent
+    types: product
+    parent: instrument de musique
+
+- model: common.category
+  fields:
+    name: guitare classique
+    types: product
+    parent: instrument de musique
+
+- model: common.category
+  fields:
+    name: guitare folk
+    types: product
+    parent: instrument de musique
+
+- model: common.category
+  fields:
+    name: guitare électrique
+    types: product
+    parent: instrument de musique
+
+- model: common.category
+  fields:
+    name: basse
+    types: product
+    parent: instrument de musique
+
+- model: common.category
+  fields:
+    name: batterie
+    types: product
+    parent: instrument de musique
+
+- model: common.category
+  fields:
+    name: percussions
+    types: product
+    parent: instrument de musique
+
+- model: common.category
+  fields:
+    name: cuivres
+    types: product
+    parent: instrument de musique
+
+- model: common.category
+  fields:
+    name: accordéon
+    types: product
+    parent: instrument de musique
+
+- model: common.category
+  fields:
+    name: harmonica
+    types: product
+    parent: instrument de musique
+
+- model: common.category
+  fields:
+    name: luthérie
+    types: product
+    parent: instrument de musique
+
+- model: common.category
+  fields:
+    name: méthodes
+    types: product
+    parent: instrument de musique
+
+- model: common.category
+  fields:
+    name: partitions
+    types: product
+    parent: instrument de musique
+
+- model: common.category
+  fields:
+    name: métronome
+    types: product
+    parent: instrument de musique

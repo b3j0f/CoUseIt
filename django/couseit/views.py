@@ -9,7 +9,7 @@ from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 
 from account.models import Account
-from product.models import Product, Using, Stat, Category, Stock
+from common.models import Product, Using, Stat, Category, Stock, Service
 
 from .utils import sendemail
 
@@ -241,28 +241,43 @@ def appcontext(request, page='home', tableofcontents=False):
     return result
 
 
-def getproductsfromsupply(request, page):
+def getcommons(request, cls, page):
     """Get products by supply type."""
-    return render(
-        request,
-        'search.html',
-        context=appcontext(request, page=page, tableofcontents=True)
-    )
+    # prepare objecs
+    categories = Category.objects.filter(types__contains=page)
+    commons = cls.objects.filter()
+
+    # prepare context
+    context = appcontext(request, page=page, tableofcontents=True)
+    context['categories'] = categories
+    context['commons'] = commons
+
+    return render(request, 'search.html', context=context)
 
 
 def givesview(request):
     """Give view."""
-    return getproductsfromsupply(request, page='gives')
+    return getcommons(request, page='gives')
 
 
 def sharesview(request):
     """Shared product view."""
-    return getproductsfromsupply(request, page='shares')
+    return getcommons(request, page='shares')
+
+
+def productsview(request):
+    """Product view."""
+    return getcommons(request, Product, page='products')
 
 
 def stocksview(request):
     """Stock view."""
-    return getproductsfromsupply(request, page='stocks')
+    return getcommons(request, Stock, page='stocks')
+
+
+def servicesview(request):
+    """Service view."""
+    return getcommons(request, Service, page='services')
 
 
 @requirelogin

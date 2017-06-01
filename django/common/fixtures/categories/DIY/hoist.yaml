@@ -1,0 +1,47 @@
+- model: common.category
+  fields:
+    name: hoist
+    types: product
+    parent: DIY
+
+- model: common.category
+  fields:
+    name: scaffolding
+    types: product
+    parent: hoist
+
+- model: common.category
+  fields:
+    name: cherry picker
+    types: product
+    parent: hoist
+
+- model: common.category
+  fields:
+    name: ladder
+    types: product
+    parent: hoist
+
+- model: common.category
+  fields:
+    name: aerial lift truck
+    types: product
+    parent: hoist
+
+- model: common.category
+  fields:
+    name: rig
+    types: product
+    parent: hoist
+
+- model: common.category
+  fields:
+    name: toucan
+    types: product
+    parent: hoist
+
+- model: common.category
+  fields:
+    name: all-terrain telescope
+    types: product
+    parent: hoist

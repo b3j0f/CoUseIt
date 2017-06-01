@@ -1,0 +1,150 @@
+- model: common.category
+  fields:
+    name: électroménager
+    types: product
+    parent: maison
+
+- model: common.category
+  fields:
+    name: machine à café
+    types: product
+    parent: électroménager
+
+- model: common.category
+  fields:
+    name: bouilloire électrique
+    types: product
+    parent: électroménager
+
+- model: common.category
+  fields:
+    name: grille-pain
+    types: product
+    parent: électroménager
+
+- model: common.category
+  fields:
+    name: gaufrier
+    types: product
+    parent: électroménager
+
+- model: common.category
+  fields:
+    name: appareil à raclette
+    types: product
+    parent: électroménager
+
+- model: common.category
+  fields:
+    name: appareil à fondue
+    types: product
+    parent: électroménager
+
+- model: common.category
+  fields:
+    name: plancha
+    types: product
+    parent: électroménager
+
+- model: common.category
+  fields:
+    name: barbecue
+    types: product
+    parent: électroménager
+
+- model: common.category
+  fields:
+    name: robot cooking
+    types: product
+    parent: électroménager
+
+- model: common.category
+  fields:
+    name: cuit-vapeur
+    types: product
+    parent: électroménager
+
+- model: common.category
+  fields:
+    name: mixer
+    types: product
+    parent: électroménager
+
+- model: common.category
+  fields:
+    name: centrifugeuse
+    types: product
+    parent: électroménager
+
+- model: common.category
+  fields:
+    name: presse-agrumes
+    types: product
+    parent: électroménager
+
+- model: common.category
+  fields:
+    name: robot électroménager
+    types: product
+    parent: électroménager
+
+- model: common.category
+  fields:
+    name: plaque de cuisson
+    types: product
+    parent: électroménager
+
+- model: common.category
+  fields:
+    name: lave-linge
+    types: product
+    parent: électroménager
+
+- model: common.category
+  fields:
+    name: lave-vaisselle
+    types: product
+    parent: électroménager
+
+- model: common.category
+  fields:
+    name: sèche-linge
+    types: product
+    parent: électroménager
+
+- model: common.category
+  fields:
+    name: nettoyeur vapeur
+    types: product
+    parent: électroménager
+
+- model: common.category
+  fields:
+    name: aspirateur
+    types: product
+    parent: électroménager
+
+- model: common.category
+  fields:
+    name: aspirateur de table
+    types: product
+    parent: électroménager
+
+- model: common.category
+  fields:
+    name: centrale vapeur
+    types: product
+    parent: électroménager
+
+- model: common.category
+  fields:
+    name: fer à repasser
+    types: product
+    parent: électroménager
+
+- model: common.category
+  fields:
+    name: table à repasser
+    types: product
+    parent: électroménager
+

@@ -1,6 +1,6 @@
 """Serialization module."""
 
-from .models import Account
+from .models import Account, Group, Message, MessageElement
 from django.contrib.auth.models import User
 
 from rest_framework.serializers import HyperlinkedModelSerializer
@@ -23,4 +23,37 @@ class UserSerializer(HyperlinkedModelSerializer):
         """User serializer meta class."""
 
         model = User
-        fields = ['account', ]
+        fields = ['account']
+
+
+class GroupSerializer(AccountSerializer):
+    """Group serializer."""
+
+    class Meta:
+        """Group serializer meta class."""
+
+        model = Group
+        fields = [
+            'user', 'avatar', 'relationships', 'name', 'description',
+            'account', 'members'
+        ]
+
+
+class MessageSerializer(HyperlinkedModelSerializer):
+    """Message serializer."""
+
+    class Meta:
+        """Message serializer meta class."""
+
+        model = Message
+        fields = ['account']
+
+
+class MessageElementSerializer(HyperlinkedModelSerializer):
+    """MessageElement serializer."""
+
+    class Meta:
+        """MessageElement serializer meta class."""
+
+        model = MessageElement
+        fields = ['account']

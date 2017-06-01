@@ -1,0 +1,47 @@
+- model: common.category
+  fields:
+    name: mesure/détection
+    types: product
+    parent: DIY
+
+- model: common.category
+  fields:
+    name: laser
+    types: product
+    parent: mesure/détection
+
+- model: common.category
+  fields:
+    name: détecteurs
+    types: product
+    parent: mesure/détection
+
+- model: common.category
+  fields:
+    name: multifaisceaux
+    types: product
+    parent: mesure/détection
+
+- model: common.category
+  fields:
+    name: compressiomètre
+    types: product
+    parent: mesure/détection
+
+- model: common.category
+  fields:
+    name: théodolite
+    types: product
+    parent: mesure/détection
+
+- model: common.category
+  fields:
+    name: sonomètre
+    types: product
+    parent: mesure/détection
+
+- model: common.category
+  fields:
+    name: hygromètre
+    types: product
+    parent: mesure/détection

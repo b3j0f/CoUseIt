@@ -23,6 +23,21 @@ class Account(models.Model):
 
 
 @python_2_unicode_compatible
+class Group(Account):
+    """Account group."""
+
+    name = models.CharField(max_length=50)
+    description = models.CharField(max_length=255)
+    members = models.ManyToManyField(
+        Account, blank=True, default=[], related_name='groups'
+    )
+
+    def __str__(self):
+        """Representation."""
+        return tostr(self, 'name')
+
+
+@python_2_unicode_compatible
 class ForbiddenEmail(models.Model):
     """Forbidden email."""
 

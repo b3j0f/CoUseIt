@@ -1,0 +1,65 @@
+- model: common.category
+  fields:
+    name: réception
+    types: product
+    parent: évènement
+
+- model: common.category
+  fields:
+    name: vaisselle
+    types: product
+    parent: réception
+
+- model: common.category
+  fields:
+    name: étuve
+    types: product
+    parent: réception
+
+- model: common.category
+  fields:
+    name: réchaud
+    types: product
+    parent: réception
+
+- model: common.category
+  fields:
+    name: déco / art de la table
+    types: product
+    parent: réception
+
+- model: common.category
+  fields:
+    name: rangement
+    types: product
+    parent: réception
+
+- model: common.category
+  fields:
+    name: nappe
+    types: product
+    parent: réception
+
+- model: common.category
+  fields:
+    name: plateau
+    types: product
+    parent: réception
+
+- model: common.category
+  fields:
+    name: chariot
+    types: product
+    parent: réception
+
+- model: common.category
+  fields:
+    name: plat
+    types: product
+    parent: réception
+
+- model: common.category
+  fields:
+    name: vestiaire
+    types: product
+    parent: réception

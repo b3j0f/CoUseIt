@@ -1,0 +1,35 @@
+- model: common.category
+  fields:
+    name: GPS
+    types: product
+    parent: high-tech
+
+- model: common.category
+  fields:
+    name: voiture
+    types: product
+    parent: GPS
+
+- model: common.category
+  fields:
+    name: poids lourds
+    types: product
+    parent: GPS
+
+- model: common.category
+  fields:
+    name: moto
+    types: product
+    parent: GPS
+
+- model: common.category
+  fields:
+    name: montagne
+    types: product
+    parent: GPS
+
+- model: common.category
+  fields:
+    name: randonnée
+    types: product
+    parent: GPS

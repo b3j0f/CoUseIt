@@ -1,0 +1,59 @@
+- model: common.category
+  fields:
+    name: vélo
+    types: product
+    parent: loisir
+
+- model: common.category
+  fields:
+    name: accessoires cyclisme
+    types: product
+    parent: vélo
+
+- model: common.category
+  fields:
+    name: VTT
+    types: product
+    parent: vélo
+
+- model: common.category
+  fields:
+    name: VTC
+    types: product
+    parent: vélo
+
+- model: common.category
+  fields:
+    name: vélo de course
+    types: product
+    parent: vélo
+
+- model: common.category
+  fields:
+    name: vélo de ville
+    types: product
+    parent: vélo
+
+- model: common.category
+  fields:
+    name: vélo électrique
+    types: product
+    parent: vélo
+
+- model: common.category
+  fields:
+    name: tandem
+    types: product
+    parent: vélo
+
+- model: common.category
+  fields:
+    name: tricycle
+    types: product
+    parent: vélo
+
+- model: common.category
+  fields:
+    name: BMX
+    types: product
+    parent: vélo

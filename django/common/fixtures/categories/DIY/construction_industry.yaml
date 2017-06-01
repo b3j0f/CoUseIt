@@ -1,0 +1,83 @@
+- model: common.category
+  fields:
+    name: construction industry
+    types: product
+    parent: DIY
+
+- model: common.category
+  fields:
+    name: DIY furniture
+    types: product
+    parent: construction industry
+
+- model: common.category
+  fields:
+    name: jackhammer
+    types: product
+    parent: construction industry
+
+- model: common.category
+  fields:
+    name: compactor
+    types: product
+    parent: construction industry
+
+- model: common.category
+  fields:
+    name: dumper
+    types: product
+    parent: construction industry
+
+- model: common.category
+  fields:
+    name: cement mixer
+    types: product
+    parent: construction industry
+
+- model: common.category
+  fields:
+    name: vibrating needle
+    types: product
+    parent: construction industry
+
+- model: common.category
+  fields:
+    name: ground slicer
+    types: product
+    parent: construction industry
+
+- model: common.category
+  fields:
+    name: ruler
+    types: product
+    parent: construction industry
+
+- model: common.category
+  fields:
+    name: compressor
+    types: product
+    parent: construction industry
+
+- model: common.category
+  fields:
+    name: excavator
+    types: product
+    parent: construction industry
+
+- model: common.category
+  fields:
+    name: sandblasting
+    types: product
+    parent: construction industry
+
+- model: common.category
+  fields:
+    name: tractor
+    types: product
+    parent: construction industry
+
+- model: common.category
+  fields:
+    name: cutter
+    types: product
+    parent: construction industry

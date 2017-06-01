@@ -1,0 +1,89 @@
+- model: common.category
+  fields:
+    name: soins du corps
+    types: product
+    parent: maison
+
+- model: common.category
+  fields:
+    name: épilateur
+    types: product
+    parent: soins du corps
+
+- model: common.category
+  fields:
+    name: rasoir électrique
+    types: product
+    parent: soins du corps
+
+- model: common.category
+  fields:
+    name: lisseur
+    types: product
+    parent: soins du corps
+
+- model: common.category
+  fields:
+    name: fer à friser
+    types: product
+    parent: soins du corps
+
+- model: common.category
+  fields:
+    name: multistyler
+    types: product
+    parent: soins du corps
+
+- model: common.category
+  fields:
+    name: sèche cheveux
+    types: product
+    parent: soins du corps
+
+- model: common.category
+  fields:
+    name: tondeuse cheveux
+    types: product
+    parent: soins du corps
+
+- model: common.category
+  fields:
+    name: pèse-personne
+    types: product
+    parent: soins du corps
+
+- model: common.category
+  fields:
+    name: hydromasseur
+    types: product
+    parent: soins du corps
+
+- model: common.category
+  fields:
+    name: ceinture fitness
+    types: product
+    parent: soins du corps
+
+- model: common.category
+  fields:
+    name: pédiluve
+    types: product
+    parent: soins du corps
+
+- model: common.category
+  fields:
+    name: fauteuil massant
+    types: product
+    parent: soins du corps
+
+- model: common.category
+  fields:
+    name: spa gonflable
+    types: product
+    parent: soins du corps
+
+- model: common.category
+  fields:
+    name: table de massage
+    types: product
+    parent: soins du corps

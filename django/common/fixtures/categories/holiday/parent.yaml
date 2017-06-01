@@ -1,0 +1,4 @@
+- model: common.category
+  fields:
+    name: vacance
+    types: product

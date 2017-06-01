@@ -30,7 +30,7 @@ from .views import (
 )
 
 from account.views import UserViewSet, AccountViewSet
-from product.views import (
+from common.views import (
     CategoryViewSet, ProductViewSet, SupplyViewSet, ConditionViewSet,
     StateViewSet, RequestViewSet, UsingViewSet, MediaViewSet, LocationViewSet,
     ProposalViewSet, StockViewSet

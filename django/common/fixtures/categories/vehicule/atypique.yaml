@@ -1,0 +1,41 @@
+- model: common.category
+  fields:
+    name: atypique
+    types: product
+    parent: vehicule
+
+- model: common.category
+  fields:
+    name: à moteur
+    types: product
+    parent: atypique
+
+- model: common.category
+  fields:
+    name: atypique sans permis
+    types: product
+    parent: atypique
+
+- model: common.category
+  fields:
+    name: Rosalie
+    types: product
+    parent: atypique
+
+- model: common.category
+  fields:
+    name: Tuk Tuk
+    types: product
+    parent: atypique
+
+- model: common.category
+  fields:
+    name: Calèche
+    types: product
+    parent: atypique
+
+- model: common.category
+  fields:
+    name: Pousse-Pousse
+    types: product
+    parent: atypique

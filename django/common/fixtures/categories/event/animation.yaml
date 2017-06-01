@@ -1,0 +1,53 @@
+- model: common.category
+  fields:
+    name: animation
+    types: product
+    parent: évènement
+
+- model: common.category
+  fields:
+    name: chapiteau
+    types: product
+    parent: animation
+
+- model: common.category
+  fields:
+    name: jeu gonflable
+    types: product
+    parent: animation
+
+- model: common.category
+  fields:
+    name: machine à mousse
+    types: product
+    parent: animation
+
+- model: common.category
+  fields:
+    name: babyfoot humain
+    types: product
+    parent: animation
+
+- model: common.category
+  fields:
+    name: statue
+    types: product
+    parent: animation
+
+- model: common.category
+  fields:
+    name: modèle
+    types: product
+    parent: animation
+
+- model: common.category
+  fields:
+    name: trampoline
+    types: product
+    parent: animation
+
+- model: common.category
+  fields:
+    name: toboggan
+    types: product
+    parent: animation

@@ -1,0 +1,47 @@
+- model: common.category
+  fields:
+    name: heating/air-conditionner
+    types: product
+    parent: DIY
+
+- model: common.category
+  fields:
+    name: generator
+    types: product
+    parent: heating/air-conditionner
+
+- model: common.category
+  fields:
+    name: heating
+    types: product
+    parent: heating/air-conditionner
+
+- model: common.category
+  fields:
+    name: dehumidifier
+    types: product
+    parent: heating/air-conditionner
+
+- model: common.category
+  fields:
+    name: air-conditionner
+    types: product
+    parent: heating/air-conditionner
+
+- model: common.category
+  fields:
+    name: fan
+    types: product
+    parent: heating/air-conditionner
+
+- model: common.category
+  fields:
+    name: compressed air
+    types: product
+    parent: heating/air-conditionner
+
+- model: common.category
+  fields:
+    name: hot water generator
+    types: product
+    parent: heating/air-conditionner

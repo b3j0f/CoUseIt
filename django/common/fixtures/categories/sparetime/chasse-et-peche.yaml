@@ -1,0 +1,23 @@
+- model: common.category
+  fields:
+    name: chasse et pêche
+    types: product
+    parent: loisir
+
+- model: common.category
+  fields:
+    name: équipement de pêche
+    types: product
+    parent: chasse et pêche
+
+- model: common.category
+  fields:
+    name: équipement de pêche
+    types: product
+    parent: chasse et pêche
+
+- model: common.category
+  fields:
+    name: canne à pêche
+    types: product
+    parent: chasse et pêche

@@ -1,0 +1,53 @@
+- model: common.category
+  fields:
+    name: sécurité
+    types: product
+    parent: évènement
+
+- model: common.category
+  fields:
+    name: équipement sécurité
+    types: product
+    parent: sécurité
+
+- model: common.category
+  fields:
+    name: barrière
+    types: product
+    parent: sécurité
+
+- model: common.category
+  fields:
+    name: signalsation
+    types: product
+    parent: sécurité
+
+- model: common.category
+  fields:
+    name: extincteur
+    types: product
+    parent: sécurité
+
+- model: common.category
+  fields:
+    name: système d'alarme
+    types: product
+    parent: sécurité
+
+- model: common.category
+  fields:
+    name: caméra de surveillance
+    types: product
+    parent: sécurité
+
+- model: common.category
+  fields:
+    name: détecteur de fumée
+    types: product
+    parent: sécurité
+
+- model: common.category
+  fields:
+    name: file d'attente
+    types: product
+    parent: sécurité

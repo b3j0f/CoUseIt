@@ -1,0 +1,71 @@
+- model: common.category
+  fields:
+    name: sport de glisse
+    types: product
+    parent: loisir
+
+- model: common.category
+  fields:
+    name: ski
+    types: product
+    parent: sport de glisse
+
+- model: common.category
+  fields:
+    name: snowboard
+    types: product
+    parent: sport de glisse
+
+- model: common.category
+  fields:
+    name: rollers
+    types: product
+    parent: sport de glisse
+
+- model: common.category
+  fields:
+    name: sport nautique
+    types: product
+    parent: sport de glisse
+
+- model: common.category
+  fields:
+    name: skateboard
+    types: product
+    parent: sport de glisse
+
+- model: common.category
+  fields:
+    name: surf
+    types: product
+    parent: sport de glisse
+
+- model: common.category
+  fields:
+    name: planche à voile
+    types: product
+    parent: sport de glisse
+
+- model: common.category
+  fields:
+    name: kitesurf
+    types: product
+    parent: sport de glisse
+
+- model: common.category
+  fields:
+    name: wakeboard
+    types: product
+    parent: sport de glisse
+
+- model: common.category
+  fields:
+    name: ski nautique
+    types: product
+    parent: sport de glisse
+
+- model: common.category
+  fields:
+    name: patinage
+    types: product
+    parent: sport de glisse

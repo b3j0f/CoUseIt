@@ -10,7 +10,7 @@ all: migrations migrate fixtures
 
 .PHONY: migrations
 migrations:
-	$(DJANGO) makemigrations account product
+	$(DJANGO) makemigrations account common
 
 .PHONY: migrate
 migrate: migrations
@@ -18,24 +18,24 @@ migrate: migrations
 
 .PHONY: fixtures
 fixtures:
-	$(LOADDATA) categories/bricolage/parent
-	$(LOADDATA) categories/bricolage/btp
-	$(LOADDATA) categories/bricolage/chauffage-climatiseur
-	$(LOADDATA) categories/bricolage/elevation
-	$(LOADDATA) categories/bricolage/entretien
-	$(LOADDATA) categories/bricolage/jardinage
-	$(LOADDATA) categories/bricolage/manutention
-	$(LOADDATA) categories/bricolage/mesure-detection
-	$(LOADDATA) categories/bricolage/outil
-	$(LOADDATA) categories/bricolage/renovation
-	$(LOADDATA) categories/bricolage/soudure-plomberie
+	$(LOADDATA) categories/DIY/parent
+	$(LOADDATA) categories/DIY/construction_industry
+	$(LOADDATA) categories/DIY/heating_air-conditionner
+	$(LOADDATA) categories/DIY/hoist
+	$(LOADDATA) categories/DIY/maintenance
+	$(LOADDATA) categories/DIY/jardinage
+	$(LOADDATA) categories/DIY/manutention
+	$(LOADDATA) categories/DIY/mesure-detection
+	$(LOADDATA) categories/DIY/outil
+	$(LOADDATA) categories/DIY/renovation
+	$(LOADDATA) categories/DIY/soudure-plomberie
 
-	$(LOADDATA) categories/maison/parent
-	$(LOADDATA) categories/maison/accessoire-maison
-	$(LOADDATA) categories/maison/electromenager
-	$(LOADDATA) categories/maison/materiel-medical
-	$(LOADDATA) categories/maison/puericulture
-	$(LOADDATA) categories/maison/soins-du-corps
+	$(LOADDATA) categories/home/parent
+	$(LOADDATA) categories/home/accessoire-maison
+	$(LOADDATA) categories/home/electromenager
+	$(LOADDATA) categories/home/materiel-medical
+	$(LOADDATA) categories/home/puericulture
+	$(LOADDATA) categories/home/soins-du-corps
 
 	$(LOADDATA) categories/vehicule/parent
 	$(LOADDATA) categories/vehicule/auto
@@ -45,25 +45,25 @@ fixtures:
 	$(LOADDATA) categories/vehicule/remorque
 	$(LOADDATA) categories/vehicule/utilitaire
 
-	$(LOADDATA) categories/vacance/parent
-	$(LOADDATA) categories/vacance/appartement
-	$(LOADDATA) categories/vacance/camping-car
-	$(LOADDATA) categories/vacance/camping
-	$(LOADDATA) categories/vacance/gite-et-chambre-d-hote
-	$(LOADDATA) categories/vacance/villa
+	$(LOADDATA) categories/holiday/parent
+	$(LOADDATA) categories/holiday/appartement
+	$(LOADDATA) categories/holiday/camping-car
+	$(LOADDATA) categories/holiday/camping
+	$(LOADDATA) categories/holiday/gite-et-chambre-d-hote
+	$(LOADDATA) categories/holiday/villa
 
-	$(LOADDATA) categories/loisir/parent
-	$(LOADDATA) categories/loisir/bateau
-	$(LOADDATA) categories/loisir/chasse-et-peche
-	$(LOADDATA) categories/loisir/equitation
-	$(LOADDATA) categories/loisir/instrument-de-musique
-	$(LOADDATA) categories/loisir/jeu-divers
-	$(LOADDATA) categories/loisir/montagne
-	$(LOADDATA) categories/loisir/sport-d-equipe
-	$(LOADDATA) categories/loisir/sport-de-glisse
-	$(LOADDATA) categories/loisir/sport-extreme
-	$(LOADDATA) categories/loisir/sport-individuel
-	$(LOADDATA) categories/loisir/velo
+	$(LOADDATA) categories/sparetime/parent
+	$(LOADDATA) categories/sparetime/bateau
+	$(LOADDATA) categories/sparetime/chasse-et-peche
+	$(LOADDATA) categories/sparetime/equitation
+	$(LOADDATA) categories/sparetime/instrument-de-musique
+	$(LOADDATA) categories/sparetime/jeu-divers
+	$(LOADDATA) categories/sparetime/montagne
+	$(LOADDATA) categories/sparetime/sport-d-equipe
+	$(LOADDATA) categories/sparetime/sport-de-glisse
+	$(LOADDATA) categories/sparetime/sport-extreme
+	$(LOADDATA) categories/sparetime/sport-individuel
+	$(LOADDATA) categories/sparetime/velo
 
 	$(LOADDATA) categories/high-tech/parent
 	$(LOADDATA) categories/high-tech/console-de-jeu
@@ -74,15 +74,15 @@ fixtures:
 	$(LOADDATA) categories/high-tech/photo
 	$(LOADDATA) categories/high-tech/telephone-et-PDA
 
-	$(LOADDATA) categories/evenement/parent
-	$(LOADDATA) categories/evenement/animation
-	$(LOADDATA) categories/evenement/cuisine
-	$(LOADDATA) categories/evenement/mobilier
-	$(LOADDATA) categories/evenement/reception
-	$(LOADDATA) categories/evenement/salle
-	$(LOADDATA) categories/evenement/securite
-	$(LOADDATA) categories/evenement/sono-et-eclairage
-	$(LOADDATA) categories/evenement/vetement-de-soiree
+	$(LOADDATA) categories/event/parent
+	$(LOADDATA) categories/event/animation
+	$(LOADDATA) categories/event/cuisine
+	$(LOADDATA) categories/event/mobilier
+	$(LOADDATA) categories/event/reception
+	$(LOADDATA) categories/event/salle
+	$(LOADDATA) categories/event/securite
+	$(LOADDATA) categories/event/sono-et-eclairage
+	$(LOADDATA) categories/event/vetement-de-soiree
 
 	$(LOADDATA) status
 	$(LOADDATA) properties

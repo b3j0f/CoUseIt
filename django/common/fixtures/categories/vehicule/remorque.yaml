@@ -1,0 +1,41 @@
+- model: common.category
+  fields:
+    name: remorque
+    types: product
+    parent: vehicule
+
+- model: common.category
+  fields:
+    name: déchargement
+    types: product
+    parent: remorque
+
+- model: common.category
+  fields:
+    name: bagagère
+    types: product
+    parent: remorque
+
+- model: common.category
+  fields:
+    name: moto
+    types: product
+    parent: remorque
+
+- model: common.category
+  fields:
+    name: porte voiture
+    types: product
+    parent: remorque
+
+- model: common.category
+  fields:
+    name: animaux
+    types: product
+    parent: remorque
+
+- model: common.category
+  fields:
+    name: bateau
+    types: product
+    parent: remorque

@@ -1,0 +1,77 @@
+- model: common.category
+  fields:
+    name: salle
+    types: product
+    parent: évènement
+
+- model: common.category
+  fields:
+    name: salle de réception
+    types: product
+    parent: salle
+
+- model: common.category
+  fields:
+    name: salle de séminaire
+    types: product
+    parent: salle
+
+- model: common.category
+  fields:
+    name: salle de conférence
+    types: product
+    parent: salle
+
+- model: common.category
+  fields:
+    name: salle d'exposition
+    types: product
+    parent: salle
+
+- model: common.category
+  fields:
+    name: salle de danse
+    types: product
+    parent: salle
+
+- model: common.category
+  fields:
+    name: salle atypique
+    types: product
+    parent: salle
+
+- model: common.category
+  fields:
+    name: salle des fêtes
+    types: product
+    parent: salle
+
+- model: common.category
+  fields:
+    name: bureaux
+    types: product
+    parent: salle
+
+- model: common.category
+  fields:
+    name: studio
+    types: product
+    parent: salle
+
+- model: common.category
+  fields:
+    name: discothèque
+    types: product
+    parent: salle
+
+- model: common.category
+  fields:
+    name: auditorium
+    types: product
+    parent: salle
+
+- model: common.category
+  fields:
+    name: garde-meubles
+    types: product
+    parent: salle

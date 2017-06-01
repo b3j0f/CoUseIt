@@ -1,0 +1,4 @@
+- model: common.category
+  fields:
+    name: loisir
+    types: product

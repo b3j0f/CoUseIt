@@ -1,0 +1,53 @@
+- model: common.category
+  fields:
+    name: auto
+    types: product
+    parent: vehicule
+
+- model: common.category
+  fields:
+    name: tourisme
+    types: product
+    parent: auto
+
+- model: common.category
+  fields:
+    name: 4x4
+    types: product
+    parent: auto
+
+- model: common.category
+  fields:
+    name: sport
+    types: product
+    parent: auto
+
+- model: common.category
+  fields:
+    name: sans-permis
+    types: product
+    parent: auto
+
+- model: common.category
+  fields:
+    name: ancienne
+    types: product
+    parent: auto
+
+- model: common.category
+  fields:
+    name: évènement
+    types: product
+    parent: auto
+
+- model: common.category
+  fields:
+    name: avec chauffeur
+    types: product
+    parent: auto
+
+- model: common.category
+  fields:
+    name: limousine
+    types: product
+    parent: auto

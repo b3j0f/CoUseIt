@@ -1,0 +1,59 @@
+- model: common.category
+  fields:
+    name: utilitaire
+    types: product
+    parent: vehicule
+
+- model: common.category
+  fields:
+    name: camion benne
+    types: product
+    parent: utilitaire
+
+- model: common.category
+  fields:
+    name: camionette-fourgon
+    types: product
+    parent: utilitaire
+
+- model: common.category
+  fields:
+    name: camion
+    types: product
+    parent: utilitaire
+
+- model: common.category
+  fields:
+    name: poids lourd
+    types: product
+    parent: utilitaire
+
+- model: common.category
+  fields:
+    name: minibus
+    types: product
+    parent: utilitaire
+
+- model: common.category
+  fields:
+    name: véhicule frigorifique
+    types: product
+    parent: utilitaire
+
+- model: common.category
+  fields:
+    name: camion porte-voiture
+    types: product
+    parent: utilitaire
+
+- model: common.category
+  fields:
+    name: sans permis
+    types: product
+    parent: utilitaire
+
+- model: common.category
+  fields:
+    name: transformé
+    types: product
+    parent: utilitaire

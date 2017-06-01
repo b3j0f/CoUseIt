@@ -1,0 +1,47 @@
+- model: common.category
+  fields:
+    name: sport extrême
+    types: product
+    parent: loisir
+
+- model: common.category
+  fields:
+    name: canyoning
+    types: product
+    parent: sport extrême
+
+- model: common.category
+  fields:
+    name: escalade
+    types: product
+    parent: sport extrême
+
+- model: common.category
+  fields:
+    name: quad
+    types: product
+    parent: sport extrême
+
+- model: common.category
+  fields:
+    name: buggy
+    types: product
+    parent: sport extrême
+
+- model: common.category
+  fields:
+    name: carting
+    types: product
+    parent: sport extrême
+
+- model: common.category
+  fields:
+    name: parapente
+    types: product
+    parent: sport extrême
+
+- model: common.category
+  fields:
+    name: spéléologie
+    types: product
+    parent: sport extrême

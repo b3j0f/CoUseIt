@@ -1,0 +1,101 @@
+- model: common.category
+  fields:
+    name: jardinage
+    types: product
+    parent: DIY
+
+- model: common.category
+  fields:
+    name: motoculteur
+    types: product
+    parent: jardinage
+
+- model: common.category
+  fields:
+    name: tronçonneuse
+    types: product
+    parent: jardinage
+
+- model: common.category
+  fields:
+    name: débroussailleuse
+    types: product
+    parent: jardinage
+
+- model: common.category
+  fields:
+    name: souffleur à feuilles
+    types: product
+    parent: jardinage
+
+- model: common.category
+  fields:
+    name: taille-haies
+    types: product
+    parent: jardinage
+
+- model: common.category
+  fields:
+    name: tarière
+    types: product
+    parent: jardinage
+
+- model: common.category
+  fields:
+    name: tondeuse
+    types: product
+    parent: jardinage
+
+- model: common.category
+  fields:
+    name: broyeur
+    types: product
+    parent: jardinage
+
+- model: common.category
+  fields:
+    name: scarificateur
+    types: product
+    parent: jardinage
+
+- model: common.category
+  fields:
+    name: pulvérisateur
+    types: product
+    parent: jardinage
+
+- model: common.category
+  fields:
+    name: équipement semoir
+    types: product
+    parent: jardinage
+
+- model: common.category
+  fields:
+    name: tondeuse auto-portée
+    types: product
+    parent: jardinage
+
+- model: common.category
+  fields:
+    name: trancheuse
+    types: product
+    parent: jardinage
+
+- model: common.category
+  fields:
+    name: arroseur
+    types: product
+    parent: jardinage
+
+- model: common.category
+  fields:
+    name: arrosoir
+    types: product
+    parent: jardinage
+
+- model: common.category
+  fields:
+    name: déserbeur thermique
+    types: product
+    parent: jardinage

@@ -1,0 +1,107 @@
+- model: common.category
+  fields:
+    name: mobilier
+    types: product
+    parent: évènement
+
+- model: common.category
+  fields:
+    name: mobilier divers
+    types: product
+    parent: mobilier
+
+- model: common.category
+  fields:
+    name: chaise
+    types: product
+    parent: mobilier
+
+- model: common.category
+  fields:
+    name: table
+    types: product
+    parent: mobilier
+
+- model: common.category
+  fields:
+    name: tente réception
+    types: product
+    parent: mobilier
+
+- model: common.category
+  fields:
+    name: plante
+    types: product
+    parent: mobilier
+
+- model: common.category
+  fields:
+    name: poubelle
+    types: product
+    parent: mobilier
+
+- model: common.category
+  fields:
+    name: mange-debout
+    types: product
+    parent: mobilier
+
+- model: common.category
+  fields:
+    name: parasol
+    types: product
+    parent: mobilier
+
+- model: common.category
+  fields:
+    name: meuble jardin
+    types: product
+    parent: mobilier
+
+- model: common.category
+  fields:
+    name: salon et foire
+    types: product
+    parent: mobilier
+
+- model: common.category
+  fields:
+    name: barbecue
+    types: product
+    parent: mobilier
+
+- model: common.category
+  fields:
+    name: parquet
+    types: product
+    parent: mobilier
+
+- model: common.category
+  fields:
+    name: revêtement
+    types: product
+    parent: mobilier
+
+- model: common.category
+  fields:
+    name: lampe
+    types: product
+    parent: mobilier
+
+- model: common.category
+  fields:
+    name: tréteaux
+    types: product
+    parent: mobilier
+
+- model: common.category
+  fields:
+    name: chariot mobile
+    types: product
+    parent: mobilier
+
+- model: common.category
+  fields:
+    name: gradin
+    types: product
+    parent: mobilier

@@ -1,0 +1,135 @@
+- model: common.typeproperty
+  fields:
+    name: kilometers
+    unit: km
+    categories: [vehicule, auto, motorbike, caravanning, utility_vehicule]
+
+- model: common.typeproperty
+  fields:
+    name: make
+    values: audi|bmw|citroen|fiat|tesla|ford|mercedes|opel|peugeot|renault|volkswagen
+    categories: [car]
+
+- model: common.typeproperty
+  fields:
+    name: design/make/audi
+    values: a1|a2|a3|tt|a4|a5|a6
+    categories: [car]
+
+- model: common.typeproperty
+  fields:
+    name: design/car make/tesla
+    values: s|x|3
+    categories: [car]
+
+- model: common.typeproperty
+  fields:
+    name: make motorbike
+    values: yamaha|harley davidson
+    categories: [motorbike]
+
+- model: common.typeproperty
+  fields:
+    name: motorbike design/yamaha
+    values: 1|2
+    categories: [motorbike]
+
+- model: common.typeproperty
+  fields:
+    name: design motorbike/harley davidson
+    values: 1|2
+    categories: [motorbike]
+
+- model: common.typeproperty
+  fields:
+    name: year
+    values: +1960-present
+    categories: [car, motorbike, caravanning, utility vehicule]
+
+- model: common.typeproperty
+  fields:
+    name: fuel
+    values: gas|diesel|LPG|electric|other
+    categories: [car, motorbike, utility vehicule]
+
+- model: common.typeproperty
+  fields:
+    name: boîte de vitesse
+    values: manual|automatic
+    categories: [car, motorbike]
+
+- model: common.typeproperty
+  fields:
+    name: engine size
+    unit: cm3
+    categories: [motorbike]
+
+- model: common.typeproperty
+  fields:
+    name: surface
+    unit: m2
+    categories: [property]
+
+- model: common.typeproperty
+  fields:
+    name: room
+    unit: rooms
+    categories: [property]
+
+- model: common.typeproperty
+  fields:
+    name: classe d'énergie
+    values: A|B|C|D|E|F|G|H|I|vierge
+    categories: [property]
+
+- model: common.typeproperty
+  fields:
+    name: greenhouse gas
+    values: A|B|C|D|E|F|G|H|I|vierge
+    categories: [property]
+
+- model: common.typeproperty
+  fields:
+    name: furnished accomodation
+    values: yes|no
+    categories: [location]
+
+- model: common.typeproperty
+  fields:
+    name: accomodation type
+    values: house|appartement|terrain|parking|other
+    categories: [vente immobilière, location]
+
+- model: common.typeproperty
+  fields:
+    name: people capacity
+    unit: people
+    categories: [vacance]
+
+- model: common.typeproperty
+  fields:
+    name: swimming pool
+    values: yes|no
+
+- model: common.typeproperty
+  fields:
+    name: clothes type
+    values: woman|man|child
+    categories: [shoe]
+
+- model: common.typeproperty
+  fields:
+    name: shoe size
+    values: 16-+50
+    categories: [shoe]
+
+- model: common.typeproperty
+  fields:
+    name: baby size
+    values: 0-36
+    unit: mois
+
+- model: common.typeproperty
+  fields:
+    name: animal type
+    values: chien|chat|other|accessoire
