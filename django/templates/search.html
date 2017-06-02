@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% load static %}
+{% load static i18n %}
 
 {% block content %}
 
@@ -10,7 +10,7 @@
 		{% if action == 'give' %}Co-Buy It{% elif action == 'share' %}Co-Share It{% else %}Co-Stock It{% endif %}
 	</h1>
 	<h5>
-		{% if action == 'give' %}Don, achat et vente{% elif action == 'share' %}Emprunt et location{% else %}Stockage{% endif %}
+		{% if action == 'give' %}{% trans 'Give, buy and sell' %}{% elif action == 'share' %}{% trans 'Borrow and rent' %}{% else %}{% trans 'Stock' %}{% endif %}
 	</h5>
 
 	<form action="/search" method="post" accept-charset="utf-8">
