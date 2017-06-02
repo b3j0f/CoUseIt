@@ -53,4 +53,5 @@ $( document ).ready(function(){
 	});
 	$('.maxlength').characterCounter();
 	Materialize.updateTextFields();
+	$('.tabs').tabs({swipeable: true, responsiveThreshold: true});
 });

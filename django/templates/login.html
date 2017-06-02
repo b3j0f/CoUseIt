@@ -1,19 +1,20 @@
 {% extends "base.html" %}
+{% load i18n %}
 {% block content %}
 
 <div class="container">
 
-  <h1 class="header">Connexion</h1>
+  <h1 class="header">{% trans 'Log/sign in' %}</h1>
 
   {% if user.is_authenticated %}
 
-  Vous êtes déjà connecté en tant que {{ user.email }}.
+  {% trans '' %}Vous êtes déjà connecté en tant que {{ user.email }}.
 
   Voulez-vous vous <a href="/logout">déconnecter</a> ?
 
   {% else %}
 
-  <p class="subheader">Le compte est nécessaire pour créer, modifier et supprimer des régimes, des sondages et des bureaux de vote.</p>
+  <p class="subheader">{% trans 'You must have an account in order to add products and make proposals.' %}</p>
 
   <div class="row">
 
@@ -23,19 +24,19 @@
         <div class="input-field col s8">
           <i class="material-icons prefix">email</i>
           <input id="email" type="email" class="validate" name="email"/>
-          <label for="email" data-error="non conforme">Email</label>
+          <label for="email" data-error="non conforme">{% trans 'Email' %}</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s8">
           <i class="material-icons prefix">lock</i>
           <input id="password" type="password" class="validate" name="password" />
-          <label for="password">Mot de passe</label>
+          <label for="password">{% trans 'Password' %}</label>
         </div>
       </div>
 
       <input class="btn" type="submit" value="Connexion" />
-      <a href="/resetpwd" class="btn waves-effect waves-light">Mot de passe perdu ?</a>
+      <a href="/resetpwd" class="btn waves-effect waves-light">{% trans 'Lost password ?' %}</a>
       <input type="hidden" name="next" value="{{ next }}" />
 
       <div class="g-recaptcha" data-sitekey="{{ captcha }}"></div>

@@ -46,6 +46,13 @@ var types = {
     }
 };
 
+var commontype = action == 'stock' ? 'stock' : 'product';
+for(var _type in types) {
+    $('.' + _type).hide();
+}
+var type = types[commontype];
+$('.' + type).show();
+
 var common = {
     name: '{{ common.name }}',
     shortdescription: '{{ common.shortdescription }}',

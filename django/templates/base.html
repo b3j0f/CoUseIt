@@ -105,10 +105,12 @@
     {% block navbar %}
 
     <ul id="usermenu" class="dropdown-content">
-        <li><a href="/account" {% if page == 'account' %}class="active"{% endif %}>{% trans 'My account' %}</a></li>
+        <li>
+        <a href="/account" {% if page == 'account' %}class="active"{% endif %}>{% trans 'My account' %}</a>
+        </li>
         <li class="divider"></li>
-        <li><a href="/owns" {% if page == 'owns' %}class="active"{% endif %}>{% trans 'My goods' %}</a></li>
-        <li><a href="/supplyings" {% if page == 'supplyings' %}class="active"{% endif %}>{% trans 'My buyings' %}</a></li>
+        <li><a href="/goods" {% if page == 'goods' %}class="active"{% endif %}>{% trans 'My goods' %}</a></li>
+        <li><a href="/supplyings" {% if page == 'supplyings' %}class="active"{% endif %}>{% trans 'My supplyings' %}</a></li>
         <li><a href="/stocks" {% if page == 'stocks' %}class="active"{% endif %}>{% trans 'My stocks' %}</a></li>
         <li><a href="/requests" {% if page == 'requests' %}class="active"{% endif %}>{% trans 'My requests' %}</a></li>
         <li><a href="/proposals" {% if page == 'proposals' %}class="active"{% endif %}>{% trans 'My proposals' %}</a></li>
@@ -254,7 +256,7 @@
     <div class="container">
         <div class="row">
             <div class="col l6 s12">
-                {% trans 'give' %}
+                {% trans 'Give' %}
                 <script src="https://liberapay.com/lechangement/widgets/receiving.js"></script>
                 <form name="newsletter" id="newsletter" action="/newsletter" method="post">
                     <div class="input-field col s8">

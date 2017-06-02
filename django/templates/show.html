@@ -14,6 +14,43 @@
 		<input type="hidden" name="id" value="{{ common.id }}" />
 		<input type="hidden" name="type" />
 		<input type="hidden" name="owners" />
+
+		<div class="section commons scrollspy" name="{% trans 'commons' %}" id="commons">
+			<h5>{% trans 'Choose' %} {% if action == 'stock' %}{% trans 'stocks' %}{% else %}{% trans 'products' %}{% endif %}</h5>
+			<div class="divider"></div>
+			<div class="row">
+				<div class="col s12">
+					<ul id="tabs-common" class="tabs">
+						<li class="tab col s6"><a href="#new-common">{% trans 'new' %} {% if action == 'stock' %}{% trans 'stock' %}{% else %}{% trans 'product' %}{% endif %}</a></li>
+						<li class="tab col s6"><a {% if user.commons.count %}class="active"{% endif %} href="#select-common">{% trans 'select' %}  {% if action == 'stock' %}{% trans 'stock' %}{% else %}{% trans 'product' %}{% endif %}</a></li>
+					</ul>
+				</div>
+
+				<div id="new-common" class="col s12">
+					<div class="row">
+						<div class="col s8 l9 input-field">
+							<i class="material-icons prefix">title</i>
+							<input type="text" name="name" id="name" onchange="updateProperty('name')" value="{{ common.id }}" class="maxlength" data-length="50" />
+							<label for="name">{% trans 'Name' %}</label>
+						</div>
+					</div>
+				</div>
+				<div id="select-common" class="col s12">
+					{% for common in user.account.commons %}
+					{% include 'common.html' %}
+					{% empty %}
+					{% trans 'You don\'t have any ' %}
+					{% if action == 'stock' %}{% trans 'stock' %}{% else %}{% trans 'product' %}{% endif %}
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+
+		<div class="section conditions scrollspy" name="{% trans 'conditions' %}" id="conditions">
+			<h5>{% trans 'Conditions' %}</h5>
+			<div class="divider"></div>
+		</div>
+
 		<div class="row">
 			<div class="col l12">
 				<div class="row card-panel">

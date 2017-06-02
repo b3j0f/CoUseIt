@@ -279,7 +279,9 @@ def homeview(request):
 @requirelogin
 def showview(request, action='give'):
     """Show view."""
-    context = appcontext(request, page='show', action=action)
+    context = appcontext(
+        request, page='show', action=action, tableofcontents=True
+    )
     return render(request, 'show.html', context=context)
 
 
