@@ -1,5 +1,7 @@
 {% load static %}
 
+{% load i18n %}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -105,23 +107,22 @@
     {% block navbar %}
 
     <ul id="usermenu" class="dropdown-content">
-        <li><a href="/account" {% if page == 'account' %}class="active"{% endif %}>Mon compte</a></li>
+        <li><a href="/account" {% if page == 'account' %}class="active"{% endif %}>{% trans 'My account' %}</a></li>
         <li class="divider"></li>
-        <li><a href="/owns" {% if page == 'owns' %}class="active"{% endif %}>Mes produits</a></li>
-        <li><a href="/supplyings" {% if page == 'supplyings' %}class="active"{% endif %}>Mes offres</a></li>
-        <li><a href="/stocks" {% if page == 'stocks' %}class="active"{% endif %}>Mes stocks</a></li>
-        <li><a href="/requests" {% if page == 'requests' %}class="active"{% endif %}>Mes requêtes</a></li>
-        <li><a href="/proposals" {% if page == 'proposals' %}class="active"{% endif %}>Mes propositions</a></li>
-        <li><a href="/services" {% if page == 'services' %}class="active"{% endif %}>Mes services</a></li>
-        <li><a href="/logout?next={{ next }}">déconnexion</a></li>
+        <li><a href="/owns" {% if page == 'owns' %}class="active"{% endif %}>{% trans 'goods' %}</a></li>
+        <li><a href="/supplyings" {% if page == 'supplyings' %}class="active"{% endif %}>{% trans 'My buyings' %}</a></li>
+        <li><a href="/stocks" {% if page == 'stocks' %}class="active"{% endif %}>{% trans 'My stocks' %}</a></li>
+        <li><a href="/requests" {% if page == 'requests' %}class="active"{% endif %}>{% trans 'My requests' %}</a></li>
+        <li><a href="/proposals" {% if page == 'proposals' %}class="active"{% endif %}>{% trans 'My proposals' %}</a></li>
+        <li><a href="/logout?next={{ next }}">{% trans 'logout' %}</a></li>
     </ul>
 
     <ul class="side-nav" id="mobile-menu">
         {% if user.is_authenticated %}
         <li class="{% if page == 'account' %}active{% endif %}"><a class="waves-effect waves-light" href="/account">{{ user.email }}</a></li>
-        <li><a class="waves-effect waves-light btn" href="/logout?next={{ next }}">Déconnexion</a></li>
+        <li><a class="waves-effect waves-light btn" href="/logout?next={{ next }}">{% trans 'logout '%}</a></li>
         {% else %}
-        <li><a class="waves-effect waves-light btn" href="/login?next={{ next }}">Connexion</a></li>
+        <li><a class="waves-effect waves-light btn" href="/login?next={{ next }}">{% trans 'log/sign in' %}</a></li>
         {% endif %}
         <li class="divider"></li>
         <li class="{% if page == 'gives' %}active{% endif %} purple"><a href="/gives" class="waves-effect">Co-Buy It</a></li>
@@ -143,7 +144,7 @@
                     <!-- Dropdown Trigger -->
                     <li class="{% if page == 'account' %}active{% endif %}"><a class="dropdown-button" href="#!" data-activates="usermenu">{{ user.email }}<i class="material-icons right">arrow_drop_down</i></a></li>
                     {% else %}
-                    <li><a class="waves-effect waves-light btn" href="/login?next={{ next }}">Connexion</a></li>
+                    <li><a class="waves-effect waves-light btn" href="/login?next={{ next }}">{% trans 'Log/sign in' %}</a></li>
                     {% endif %}
                 </ul>
                 <a href="#" data-activates="mobile-menu" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -254,13 +255,13 @@
     <div class="container">
         <div class="row">
             <div class="col l6 s12">
-                Nous soutenir
+                {% trans 'give' %}
                 <script src="https://liberapay.com/lechangement/widgets/receiving.js"></script>
                 <form name="newsletter" id="newsletter" action="/newsletter" method="post">
                     <div class="input-field col s8">
                         <i class="material-icons prefix">email</i>
                         <input id="email" type="email" class="validate" name="email" />
-                        <label for="email" class="white-text">Newsletter</label>
+                        <label for="email" class="white-text">{% trans 'Newsletter' %}</label>
                     </div>
                     <div class="col s2">
                         <input type="submit" class="btn waves-effect waves-light hide-on-small-only" value="Me tenir informé" />
@@ -268,20 +269,19 @@
                 </form>
             </div>
             <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Liens</h5>
                 <ul>
                     <li>
-                        <a href="/stats">Statistiques</a>
+                        <a href="/stats">{% trans 'Statistics' %}</a>
                     </li>
                     <li>
-                        <a href="/about">À propos</a>
+                        <a href="/about">{% trans 'About' %}</a>
                     </li>
                     <li>
-                        <a href="/faq">FAQ</a>
+                        <a href="/faq">{% trans 'FAQ' %}</a>
                     </li>
                     <li>
                         <!-- Place this tag where you want the button to render. -->
-                        <a class="github-button" href="https://github.com/b3j0f/lechangement/subscription" data-style="mega" data-count-href="/b3j0f/lechangement/watchers" data-count-api="/repos/b3j0f/lechangement#subscribers_count" data-count-aria-label="# watchers on GitHub" aria-label="Watch b3j0f/lechangement on GitHub">Sources</a>
+                        <a class="github-button" href="https://github.com/b3j0f/lechangement/subscription" data-style="mega" data-count-href="/b3j0f/lechangement/watchers" data-count-api="/repos/b3j0f/lechangement#subscribers_count" data-count-aria-label="# watchers on GitHub" aria-label="Watch b3j0f/lechangement on GitHub">{% trans 'Sources' %}</a>
                     </li>
                     <li>
                         <a class="twitter-follow-button"
@@ -291,13 +291,13 @@
                         <g:follow href="https://plus.google.com/communities/114161877128649492848"></g:follow>
                     </li>
                     <li>
-                        Photos : <a href="https://pixabay.com/" target="_blank">https://pixabay.com/</a>
+                        {% trans 'Pictures' %} : <a href="https://pixabay.com/" target="_blank">https://pixabay.com/</a>
                     </li>
                     <li>
-                        Icônes <a href="http://www.flaticon.com/" target="_blank">http://www.flaticon.com/</a>
+                        {% trans 'Icons' %} <a href="http://www.flaticon.com/" target="_blank">http://www.flaticon.com/</a>
                     </li>
                     <li>
-                        Logo : <a href="https://logomakr.com" target="_blank">https://logomakr.com</a>
+                        {% trans 'Logo' %} <a href="https://logomakr.com" target="_blank">https://logomakr.com</a>
                     </li>
                 </ul>
             </div>
@@ -314,7 +314,7 @@
           </div>
           <div class="col m10 l8 hide-on-small-only">
             <p>
-                Ce site appartient au domaine public : <a target="_blank" rel="license"
+                {% trans 'This site belongs to the public domain' %} <a target="_blank" rel="license"
                 href="http://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0 Universal (CC0 1.0) Public Domain Dedication</a>
             </p>
         </div>
