@@ -34,6 +34,7 @@ def requirelogin(func=None):
 
     def _requirelogin(request, action=None, *args, **kwargs):
         """Local require login."""
+        print(request)
         if request.user.is_authenticated():
             return func(request, action=action, *args, **kwargs)
 
@@ -265,7 +266,7 @@ def appcontext(request, page='home', action=None, tableofcontents=False):
 
 @requirelogin
 def accountview(request):
-    """Supply locations view."""
+    """Account locations view."""
     context = appcontext(request, page='account', tableofcontents=True)
     return render(request, 'account.html', context=context)
 
@@ -277,12 +278,12 @@ def homeview(request):
 
 
 @requirelogin
-def showview(request, action='give'):
-    """Show view."""
+def editview(request, action=None):
+    """Edit view."""
     context = appcontext(
-        request, page='show', action=action, tableofcontents=True
+        request, page='edit', action=action, tableofcontents=True
     )
-    return render(request, 'show.html', context=context)
+    return render(request, 'edit.html', context=context)
 
 
 def faqview(request):

@@ -1,243 +1,58 @@
-{% extends 'base.html' %}
+{% load static %}
 
-{% load static i18n %}
-
-{% block content %}
-
-<h2>
-	{% if common %}{% trans 'Modify' %}{% else %}{% trans 'Add' %}{% endif %} {{ action }}
-</h2>
-
-<div id="edit">
-	<form method="post" enctype="multipart/form-data" action="/{{ action }}/show">
-		{% csrf_token %}
-		<input type="hidden" name="id" value="{{ common.id }}" />
-		<input type="hidden" name="type" />
-		<input type="hidden" name="owners" />
-
-		<div class="section commons scrollspy" name="{% trans 'commons' %}" id="commons">
-			<h5>{% trans 'Choose' %} {% if action == 'stock' %}{% trans 'stocks' %}{% else %}{% trans 'products' %}{% endif %}</h5>
-			<div class="divider"></div>
-			<div class="row">
-				<div class="col s12">
-					<ul id="tabs-common" class="tabs">
-						<li class="tab col s6"><a href="#new-common">{% trans 'new' %} {% if action == 'stock' %}{% trans 'stock' %}{% else %}{% trans 'product' %}{% endif %}</a></li>
-						<li class="tab col s6"><a {% if user.commons.count %}class="active"{% endif %} href="#select-common">{% trans 'select' %}  {% if action == 'stock' %}{% trans 'stock' %}{% else %}{% trans 'product' %}{% endif %}</a></li>
-					</ul>
-				</div>
-
-				<div id="new-common" class="col s12">
-					<div class="row">
-						<div class="col s8 l9 input-field">
-							<i class="material-icons prefix">title</i>
-							<input type="text" name="name" id="name" onchange="updateProperty('name')" value="{{ common.id }}" class="maxlength" data-length="50" />
-							<label for="name">{% trans 'Name' %}</label>
-						</div>
-					</div>
-				</div>
-				<div id="select-common" class="col s12">
-					{% for common in user.account.commons %}
-					{% include 'common.html' %}
-					{% empty %}
-					{% trans 'You don\'t have any ' %}
-					{% if action == 'stock' %}{% trans 'stock' %}{% else %}{% trans 'product' %}{% endif %}
-					{% endfor %}
-				</div>
+<div class="col l3 m4 s6">
+	<div id="{{ common.id }}" class="card sticky-action{% if size %} {{ size }}{% endif %}">
+		<div class="card-image" id="{{ common.id }}-image">
+			{% if common.medias.all or not common %}
+			<div class="carousel carousel-slider" data-indicators="true" data-fullWidth="true">
+				{% for media in common.medias.all %}
+				<img src="{{ forloop.first.url }}" class="responsive-img" />
+				<a class="carousel-item" data-caption="{{ common.name }}" href="#one!">
+					<img src="{{ media.url }}" class="responsive-img" />
+				</a>
+				{% endfor %}
 			</div>
+			{% else %}
+			<img src="{% static 'img/' %}{{ common.category.name }}.jpg" />
+			{% endif %}
+			<span class="card-title truncate black-text name" id="{{ common.id }}-title">{{ common.name }}</span>
 		</div>
-
-		<div class="section conditions scrollspy" name="{% trans 'conditions' %}" id="conditions">
-			<h5>{% trans 'Conditions' %}</h5>
-			<div class="divider"></div>
+		<div class="card-content activator" id="{{ common.id }}-content">
+			<span class="card-title activator grey-text text-darken-4">
+				<div class="shortdescription truncate">{{ common.shortdescription }}</div>
+				<i class="material-icons right">more_vert</i>
+			</span>
 		</div>
-
-		<div class="row">
-			<div class="col l12">
-				<div class="row card-panel">
-
-					<div class="col s12 center" id="categories">
-					</div>
-
-					<div class="col s8 l9 input-field">
-						<i class="material-icons prefix">title</i>
-						<input type="text" name="name" id="name" onchange="updateProperty('name')" value="{{ common.id }}" class="maxlength" data-length="50" />
-						<label for="name">{% trans 'Name' %}</label>
-					</div>
-
-					<div class="col s4 l3 input-field">
-						<input type="checkbox" id="pro" name="pro" {% if common.professional %}checked="true"{% endif %}/>
-						<label for="pro">{% trans 'Professionnal' %}</label>
-					</div>
-
-					<div class="col s12 input-field">
-						<div class="chips" id="owners"></div>
-						<label for="owners">{% trans 'Owners' %}</label>
-					</div>
-
-					<div class="input-field col s6 m2 l1">
-						<input id="amount" type="number" min="1" value="{% if common.amount %}{{ common.amount }}{% else %}1{% endif %}" name="amount" />
-						<label for="amount">{% trans 'Quantity' %}</label>
-					</div>
-
-					<div class="col s12 input-field">
-						<i class="material-icons left">subtitles</i>
-						<input type="text" name="shortdescription" placeholder="10 millions de pixels, carte mémoire 2 Go" id="shortdescription" onchange="updateProperty('shortdescription')" value="{{ common.shortdescription }}" data-length="120" class="maxlength" />
-						<label for="shortdescription">{% trans 'Short description' %}</label>
-					</div>
-
-					<div class="col s12 input-field">
-						<i class="material-icons left">description</i>
-						<textarea id="description" name="description" class="materialize-textarea maxlength" onchange="updateProperty('description')" data-length="255">{{ common.description }}</textarea>
-						<label for="description">{% trans 'Description' %}</label>
-					</div>
-
-					<div class="col s12" id="medias">
-						<h5>
-							<i class="material-icons left">add_a_photo</i>
-							{% trans 'Pictures/Videos' %}
-						</h5>
-						<div class="row">
-						</div>
-					</div>
-
-					<div class="col s12 input-field">
-						{% trans 'Number of ' %}
-						{% if action == 'give' %}
-						{% trans 'Default number of buyers' %}
-						{% else %}
-						{% trans 'Default number of users' %}
-						{% endif %}
-						<div class="row">
-							<div class="col s12 input-field">
-								<input type="number" name="min" placeholder="1" value="1" />
-								<label>min</label>
-							</div>
-							<div class="col s12 input-field">
-								<input type="number" name="max" placeholder="infinity" />
-								<label>max</label>
-							</div>
-						</div>
-					</div>
-
-					<div class="service col s12 input-field">
-						Durée par défaut :
-						<input type="number" name="minduration" placeholder="1" value="1" id="minduration" />
-						<label for="minduration">Minimum</label>
-						<input type="number" name="maxduration" placeholder="1" value="1" id="maxduration" />
-						<label for="maxduration">Maximum</label>
-					</div>
-
-					<div class="col s12 section stock" id="conditions">
-						<ul class="collapsible stock" data-collapsible="expandable">
-							<li id="capacities" class="stock">
-								<div class="collapsible-header">
-									<i class="material-icons">move_to_inbox</i>
-									Capacités
-								</div>
-								<div class="collapsible-body">
-									<ul class="collection">
-										<li class="collection-item">
-										</li>
-									</ul>
-								</div>
-							</li>
-						</ul>
-						<ul class="collapsible common stock" data-collapsible="expandable">
-							<li id="gives">
-								<div class="collapsible-header">
-									<i class="material-icons">trending_flat</i>
-									<div id="givecount">0</div>
-									conditions d'acquisition
-								</div>
-								<div class="collapsible-body">
-									<ul class="collection">
-										<li class="collection-item">
-										</li>
-									</ul>
-								</div>
-								<a class="btn-block waves-effect waves-light" onclick="newSupply('give');">
-									<i class="material-icons">add</i>
-								</a>
-							</li>
-						</ul>
-						<ul class="collapsible common stock service" data-collapsible="expandable">
-							<li id="shares">
-								<div class="collapsible-header">
-									<i class="material-icons">trending_flat</i>
-									<div id="sharecount">0</div>
-									Conditions d'utilisation
-								</div>
-								<div class="collapsible-body">
-									<ul class="collection">
-										<li class="collection-item">
-										</li>
-									</ul>
-								</div>
-								<a class="btn-block waves-effect waves-light" onclick="newSupply('share');">
-									<i class="material-icons">add</i>
-								</a>
-							</li>
-						</ul>
-					</div>
-
-					<div class="col s12 input-field section">
-						<h5>
-							<i class="material-icons left">location_on</i>
-							Adresse
-						</h5>
-						<div class="row">
-							<div class="col s1">
-								<a class="btn-floating left tooltipped" data-tooltip="Géolocalisation" onclick="geoloc();">
-									<i class="material-icons left">my_location</i>
-								</a>
-							</div>
-							<div class="col s11">
-								<input id="address" type="text" placeholder="55 rue du chat, Miaou-ville" name="address" />
-							</div>
-						</div>
-						<div id="map" class="map"></div>
-					</div>
-
-					<div class="divider"></div>
-
-					<div class="col s12 input-field section">
-						<input type="date" class="datepicker" id="startdate" name="startdate" />
-						<label for="start">Disponibilité</label>
-						<ul class="collapsible" data-collapsible="expandable">
-							<li id="shares">
-								<div class="collapsible-header">
-									<i class="material-icons">date_range</i>
-									Planning
-								</div>
-								<div class="collapsible-body">
-									<div class="calendar" id="calendar"></div>
-								</div>
-							</li>
-						</ul>
-					</div>
-					<div class="col s12">
-						<a class="btn-block waves-effect waves-light update" href="demo">Modifier</a>
-						<a class="btn-block waves-effect waves-light add" href="demo">Ajouter</a>
-					</div>
-				</div>
+		<div class="card-action supplyings" id="{{ common.id }}-action">
+			{% if common.available %}
+			{% if action == 'give' %}
+			{% include 'showsupply.html' with supplyings=common.gives.all %}
+			{% elif action == 'share' %}
+			{% include 'showsupply.html' with supplyings=common.shares.all %}
+			{% endif %}
+			{% endif %}
+		</div>
+	</div>
+	<div class="card-reveal" id="{{ common.id }}-reveal">
+		<span class="card-title grey-text text-darken-4">
+			<div class="name">
+				{{ common.name }}
 			</div>
-		</div>
-		<div class="modal" id="demo">
-			<div class="modal-content">
-				<div class="row">
-					{% include 'common.html' %}
-				</div>
-			</div>
-			<div class="modal-footer">
-				<button class="modal-action modal-close waves-effect waves-green btn-flat">Oui</button>
-				<a class="modal-close waves-red btn-flat">Non</a>
-			</div>
-		</div>
-	</form>
+			<i class="material-icons right">close</i>
+		</span>
+		<span class="shortdescription">
+			{{ common.shortdescription }}
+		</span>
+		<div class="divider"></div>
+		<p class="description">
+			{{ common.description }}
+		</p>
+		<div id="qrcode-{{ common.id }}"></div>
+		<script type="text/javascript">
+			new QRCode(
+				document.getElementById('qrcode-{{ common.id }}'),
+				'/common/{{ common.id }}'
+				);
+		</script>
+	</div>
 </div>
-
-<script type="text/javascript">
-	{% include 'show.js' %}
-</script>
-
-{% endblock %}

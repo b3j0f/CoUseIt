@@ -24,7 +24,7 @@ from django.shortcuts import render
 from rest_framework.routers import DefaultRouter
 
 from .views import (
-    homeview, aboutview, loginview, logoutview, resetpwdview, showview,
+    homeview, aboutview, loginview, logoutview, resetpwdview, editview,
     accountview, faqview, statsview, searchview
 )
 
@@ -67,7 +67,7 @@ urlpatterns = [
     url(r'^resetpwd', resetpwdview),
     url(r'^account', accountview),
     url(r'^stats', statsview),
-    url(r'^(?P<action>\w+)/show', showview),
+    url(r'^(?P<action>\w+)/edit', editview),
     url(r'^(?P<action>\w+)/(search)?', searchview),
 ] + static(
     settings.STATIC_URL, document_root=settings.STATIC_ROOT

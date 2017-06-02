@@ -4,7 +4,7 @@
 
 {% block content %}
 
-<div class="section scrollspy" id="search" name="Recherche">
+<div class="section scrollspy" id="search" name="{% trans 'Search' %}">
 
 	<h1>
 		{% if action == 'give' %}Co-Buy It{% elif action == 'share' %}Co-Share It{% else %}Co-Stock It{% endif %}
@@ -21,17 +21,17 @@
 				<div class="row">
 					<div class="col s12 input-field">
 						<input type="text" name="keywords" id="keywords" placeholder="appareil photo nikon 87XZ" />
-						<label for="keywords">Quoi ?</label>
+						<label for="keywords">{% trans 'What ?' %}</label>
 					</div>
 				</div>
 
 				<div class="col s8 input-field">
 					<input type="text" name="where" id="where" placeholder="17 rue d'arras, Lille" />
-					<label for="where">Où ?</label>
+					<label for="where">{% trans 'Where ?' %}</label>
 				</div>
 				<div class="col s2 input-field">
 					<input type="number" name="perimeter" min="1" id="perimeter" value="5" />
-					<label for="perimeter">Périmètre (km)</label>
+					<label for="perimeter">{% trans 'Perimeter' %}</label>
 				</div>
 				<div class="col s1 input-field">
 					<a onclick="getCurrentPosition();" class="btn-floating waves-effect waves-white">
@@ -41,11 +41,11 @@
 
 				<div class="col s6 input-field">
 					<input type="date" class="datepicker" id="when" name="when" />
-					<label for="when">Quand ?</label>
+					<label for="when">{% trans 'When ?' %}</label>
 				</div>
 				<div class="col s6">
 					<a class="btn btn-block waves-effect waves-white" name="periods" id="periods">
-						Périodes
+						{% trans 'Periods' %}
 					</a>
 				</div>
 			</div>
@@ -57,15 +57,15 @@
 					<li id="name">
 						<div class="collapsible-header center">
 							<i class="material-icons left">settings</i>
-							Affiner la recherche
+							{% trans 'Specific search' %}
 						</div>
 						<div class="collapsible-body">
 							<div class="row">
 								<div class="col s12 m6">
-									<h5>Propriétés</h5>
+									<h5>{% trans 'Properties' %}</h5>
 								</div>
 								<div class="col s12 m6">
-									<h5>Conditions</h5>
+									<h5>{% trans 'Conditions' %}</h5>
 								</div>
 							</div>
 						</div>
@@ -76,8 +76,8 @@
 	</form>
 </div>
 
-<div class="section scrollspy" id="result" name="résultats">
-	<h1>Résultats</h1>
+<div class="section scrollspy" id="result" name="{% trans 'Results' %}">
+	<h1>{% trans 'Results' %}</h1>
 	{% include 'pagination.html' with pages=pages %}
 	<div id="results" class="row">
 		{% for product in products %}

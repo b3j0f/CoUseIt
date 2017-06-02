@@ -1,0 +1,14 @@
+{% for supply in supplyings %}
+<div class="collapsible-header {{ action }}-{{ supply.id }}">
+	<a href="/proposal/{{ supply.id }}">{{ supply.name }} {{ supply.period }} / {{ supply.conditions.all.0.amount }} {{ supply.conditions.all.0.kind }} </a>
+</div>
+<div class="collapsible-body">
+	<ul class="collection">
+		{% for condition in supply.conditions.all %}
+		{% for key, value in condition.objective.items %}
+		key - value
+		{% endfor %}
+		{% endfor %}
+	</ul>
+</div>
+{% endfor %}
