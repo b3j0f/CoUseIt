@@ -32,16 +32,16 @@ def requirelogin(func=None):
     """Decorator for requiring login."""
     nextpage = func.__name__[:-len('view')]
 
-    def _requirelogin(request, action=None, *args, **kwargs):
+    def _requirelogin(request, *args, **kwargs):
         """Local require login."""
-        print(request)
         if request.user.is_authenticated():
-            return func(request, action=action, *args, **kwargs)
+            return func(request, *args, **kwargs)
 
         else:
-            if action:
-                next = '{0}/{1}'.format(action, nextpage)
-            return redirect('/login?next={0}'.format(next))
+            npage = nextpage
+            if 'action' in kwargs:
+                npage = '{0}/{1}'.format(kwargs['action'], nextpage)
+            return redirect('/login?next={0}'.format(npage))
 
     return _requirelogin
 
@@ -96,7 +96,7 @@ def basecontext(request, page='home', action=None, tableofcontents=False):
 
 
 def rendernextpage(request, context):
-    """Redirect to the nextage."""
+    """Redirect to the nextpage."""
     nextpage = context.pop('next', 'home') or 'home'
     return render(request, '{0}.html'.format(nextpage), context=context)
 
@@ -146,8 +146,6 @@ def loginview(request):
 def logoutview(request):
     """Login view."""
     logout(request)
-    context = basecontext(request)
-    context['successes'] = ['Vous êtes déconnecté !']
     return redirect('/{0}'.format(request.GET.get('next', '')))
 
 
