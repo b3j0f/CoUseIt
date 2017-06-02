@@ -1,6 +1,4 @@
-{% load static %}
-
-{% load i18n %}
+{% load static i18n %}
 
 <!DOCTYPE html>
 <html>
@@ -109,11 +107,12 @@
     <ul id="usermenu" class="dropdown-content">
         <li><a href="/account" {% if page == 'account' %}class="active"{% endif %}>{% trans 'My account' %}</a></li>
         <li class="divider"></li>
-        <li><a href="/owns" {% if page == 'owns' %}class="active"{% endif %}>{% trans 'goods' %}</a></li>
+        <li><a href="/owns" {% if page == 'owns' %}class="active"{% endif %}>{% trans 'My goods' %}</a></li>
         <li><a href="/supplyings" {% if page == 'supplyings' %}class="active"{% endif %}>{% trans 'My buyings' %}</a></li>
         <li><a href="/stocks" {% if page == 'stocks' %}class="active"{% endif %}>{% trans 'My stocks' %}</a></li>
         <li><a href="/requests" {% if page == 'requests' %}class="active"{% endif %}>{% trans 'My requests' %}</a></li>
         <li><a href="/proposals" {% if page == 'proposals' %}class="active"{% endif %}>{% trans 'My proposals' %}</a></li>
+        <li class="divider"></li>
         <li><a href="/logout?next={{ next }}">{% trans 'logout' %}</a></li>
     </ul>
 
@@ -125,9 +124,9 @@
         <li><a class="waves-effect waves-light btn" href="/login?next={{ next }}">{% trans 'log/sign in' %}</a></li>
         {% endif %}
         <li class="divider"></li>
-        <li class="{% if page == 'gives' %}active{% endif %} purple"><a href="/gives" class="waves-effect">Co-Buy It</a></li>
-        <li class="{% if page == 'shares' %}active{% endif %} blue"><a href="/shares" class="waves-effect">Co-Share It</a></li>
-        <li class="{% if page == 'stocks' %}active{% endif %} teal"><a href="/stocks" class="waves-effect">Co-Stock It</a></li>
+        <li class="{% if action == 'give' %}active{% endif %} purple"><a href="/give/" class="waves-effect">Co-Buy It</a></li>
+        <li class="{% if action == 'share' %}active{% endif %} blue"><a href="/share/" class="waves-effect">Co-Share It</a></li>
+        <li class="{% if action == 'stock' %}active{% endif %} teal"><a href="/stock/" class="waves-effect">Co-Stock It</a></li>
     </ul>
 
     <div class="navbar-fixed">
@@ -137,9 +136,9 @@
                     Co-Use It
                 </a>
                 <ul id="nav-lechangement" class="right hide-on-med-and-down">
-                    <li class="{% if page == 'gives' %}active{% endif %} purple"><a href="/gives">Co-Buy It</a></li>
-                    <li class="{% if page == 'shares' %}active{% endif %} blue"><a href="/shares">Co-Share It</a></li>
-                    <li class="{% if page == 'stocks' %}active{% endif %} teal"><a href="/stocks">Co-Stock It</a></li>
+                    <li class="{% if action == 'give' %}active{% endif %} purple"><a href="/give/">Co-Buy It</a></li>
+                    <li class="{% if action == 'share' %}active{% endif %} blue"><a href="/share/">Co-Share It</a></li>
+                    <li class="{% if action == 'stock' %}active{% endif %} teal"><a href="/stock/">Co-Stock It</a></li>
                     {% if user.is_authenticated %}
                     <!-- Dropdown Trigger -->
                     <li class="{% if page == 'account' %}active{% endif %}"><a class="dropdown-button" href="#!" data-activates="usermenu">{{ user.email }}<i class="material-icons right">arrow_drop_down</i></a></li>
@@ -200,9 +199,9 @@
             <div class="col l1 m2 hide-on-small-only">
                 <div class="rightmenu">
                     <ul>
-                        {% if page != 'edit' %}
+                        {% if page == 'search' %}
                         <li>
-                            <a href="/edit?type={{ page }}" class="btn-floating btn-large red pulse">
+                            <a href="/{{ action }}/show" class="btn-floating btn-large red pulse">
                                 <i class="material-icons">add</i>
                             </a>
                         </li>

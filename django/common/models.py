@@ -115,7 +115,7 @@ class Supply(MessageElement):
 
     peruser = models.BooleanField(default=False, blank=True)
     minusers = models.IntegerField(default=1, blank=True)
-    maxusers = models.IntegerField(default=1, blank=True)
+    maxusers = models.IntegerField(default=float('inf'), blank=True)
     bid = models.BooleanField(default=True, blank=True)
 
     public = models.BooleanField(default=True, blank=True)

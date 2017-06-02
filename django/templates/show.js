@@ -6,6 +6,25 @@ $('.update').show();
 $('.add').show();
 {% endif %}
 
+var action = '{{ action }}';
+
+var actions = {
+    give: {
+
+    },
+    share: {
+
+    },
+    stock: {
+
+    }
+}
+
+for(var _action in actions) {
+    $('.' + _action).hide();
+}
+$('.'+action).show();
+
 var types = {
     product: {
         translation: 'produit',
@@ -26,12 +45,6 @@ var types = {
         description: ''
     }
 };
-
-var typesul = document.getElementById('types');
-for(var type in types) {
-    var html = '<li><a onclick="changeType(\'' + type + '\');">' + types[type].translation + '</a></li>'
-    typesul.insertAdjacentHTML('beforeEnd', html);
-}
 
 var common = {
     name: '{{ common.name }}',
@@ -216,25 +229,6 @@ var defaultproperties = {
         service: ''
     }
 };
-
-function changeType(type) {
-    dtype = types[type];
-    document.getElementById('type').innerHTML = dtype.translation;
-    document.getElementsByName('type')[0].setAttribute('value', type);
-
-    for(var _type in types) {
-        $('.' + _type).hide();
-    }
-    $('.' + type).show();
-    for(var property in dtype) {
-        var elt = document.getElementById(property);
-        if (elt) {
-            elt.setAttribute('placeholder', dtype[property]);
-        }
-    }
-}
-
-changeType('product');
 
 var lowcategories = {
     //{% for lowcategory in lowcategories %}

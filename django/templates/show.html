@@ -1,19 +1,15 @@
 {% extends 'base.html' %}
 
-{% load static %}
+{% load static i18n %}
 
 {% block content %}
 
 <h2>
-	{% if common %}Modification{% else %}Ajout{% endif %} de <a class="dropdown-button btn-flat" data-constrainWidth="false" data-activates="types" data-hover="true" id="type"></a>
-
-	<ul id='types' class='dropdown-content'>
-	</ul>
-
+	{% if common %}{% trans 'Modify' %}{% else %}{% trans 'Add' %}{% endif %} {{ action }}
 </h2>
 
 <div id="edit">
-	<form method="post" enctype="multipart/form-data" action="{{ url }}">
+	<form method="post" enctype="multipart/form-data" action="/{{ action }}/show">
 		{% csrf_token %}
 		<input type="hidden" name="id" value="{{ common.id }}" />
 		<input type="hidden" name="type" />
@@ -28,51 +24,62 @@
 					<div class="col s8 l9 input-field">
 						<i class="material-icons prefix">title</i>
 						<input type="text" name="name" id="name" onchange="updateProperty('name')" value="{{ common.id }}" class="maxlength" data-length="50" />
-						<label for="name">Nom</label>
+						<label for="name">{% trans 'Name' %}</label>
 					</div>
 
 					<div class="col s4 l3 input-field">
 						<input type="checkbox" id="pro" name="pro" {% if common.professional %}checked="true"{% endif %}/>
-      					<label for="pro">Professionnel</label>
+						<label for="pro">{% trans 'Professionnal' %}</label>
 					</div>
 
 					<div class="col s12 input-field">
 						<div class="chips" id="owners"></div>
-						<label for="owners">Propriétaires</label>
+						<label for="owners">{% trans 'Owners' %}</label>
 					</div>
 
 					<div class="input-field col s6 m2 l1">
 						<input id="amount" type="number" min="1" value="{% if common.amount %}{{ common.amount }}{% else %}1{% endif %}" name="amount" />
-						<label for="amount">Quantité</label>
+						<label for="amount">{% trans 'Quantity' %}</label>
 					</div>
 
 					<div class="col s12 input-field">
 						<i class="material-icons left">subtitles</i>
 						<input type="text" name="shortdescription" placeholder="10 millions de pixels, carte mémoire 2 Go" id="shortdescription" onchange="updateProperty('shortdescription')" value="{{ common.shortdescription }}" data-length="120" class="maxlength" />
-						<label for="shortdescription">Description courte</label>
+						<label for="shortdescription">{% trans 'Short description' %}</label>
 					</div>
 
 					<div class="col s12 input-field">
 						<i class="material-icons left">description</i>
 						<textarea id="description" name="description" class="materialize-textarea maxlength" onchange="updateProperty('description')" data-length="255">{{ common.description }}</textarea>
-						<label for="description">Description</label>
+						<label for="description">{% trans 'Description' %}</label>
 					</div>
 
 					<div class="col s12" id="medias">
 						<h5>
 							<i class="material-icons left">add_a_photo</i>
-							Photos
+							{% trans 'Pictures/Videos' %}
 						</h5>
 						<div class="row">
 						</div>
 					</div>
 
 					<div class="col s12 input-field">
-						Nombre d'acquéreurs/utilisateurs par défaut :
-						<input type="number" name="min" placeholder="1" value="1" />
-						<label>min</label>
-						<input type="number" name="max" placeholder="infinity" />
-						<label>max</label>
+						{% trans 'Number of ' %}
+						{% if action == 'give' %}
+						{% trans 'Default number of buyers' %}
+						{% else %}
+						{% trans 'Default number of users' %}
+						{% endif %}
+						<div class="row">
+							<div class="col s12 input-field">
+								<input type="number" name="min" placeholder="1" value="1" />
+								<label>min</label>
+							</div>
+							<div class="col s12 input-field">
+								<input type="number" name="max" placeholder="infinity" />
+								<label>max</label>
+							</div>
+						</div>
 					</div>
 
 					<div class="service col s12 input-field">
@@ -193,7 +200,7 @@
 </div>
 
 <script type="text/javascript">
-	{% include 'edit.js' %}
+	{% include 'show.js' %}
 </script>
 
 {% endblock %}

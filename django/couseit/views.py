@@ -3,14 +3,14 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect
-from django.db.models import F, Sum
+from django.db.models import F, Sum, Q
 from django.contrib.auth.models import User
 from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 
 from account.models import Account
 from common.models import (
-    Product, Using, Stat, Category, Stock, Service, Give, Share
+    Product, Using, Stat, Category, Stock, Give, Share
 )
 
 from .utils import sendemail
@@ -21,23 +21,31 @@ from collections import namedtuple
 
 CatPropValues = namedtuple('CatPropValues', ('name', 'propvalues'))
 
+_MODELSBYACTION = {
+    'give': Give,
+    'share': Share,
+    'stock': Stock
+}
+
 
 def requirelogin(func=None):
     """Decorator for requiring login."""
     nextpage = func.__name__[:-len('view')]
 
-    def _requirelogin(request):
+    def _requirelogin(request, action=None, *args, **kwargs):
         """Local require login."""
-        if isinstance(request.user, User):
-            return func(request)
+        if request.user.is_authenticated():
+            return func(request, action=action, *args, **kwargs)
 
         else:
-            return redirect('login.html?next={0}'.format(nextpage))
+            if action:
+                next = '{0}/{1}'.format(action, nextpage)
+            return redirect('/login?next={0}'.format(next))
 
     return _requirelogin
 
 
-def basecontext(request, page='home', tableofcontents=False):
+def basecontext(request, page='home', action=None, tableofcontents=False):
     """Get base context.
 
     :rtype: dict
@@ -62,13 +70,21 @@ def basecontext(request, page='home', tableofcontents=False):
         elif category.children.count() == 0:
             lowcategories.append(category)
 
+    if 'next' in request.GET:
+        nextpage = request.GET['next']
+
+    else:
+        nextpage = page
+        if action:
+            nextpage = '{0}/{1}'.format(action, nextpage)
+
     result = {
+        'action': action, 'page': page,
         'productcount': productcount, 'stockcount': stockcount,
         'accountcount': accountcount, 'catpropvalues': catpropvalues,
-        'page': page,
         'tableofcontents': tableofcontents,
-        'next': request.GET.get('next', page),
-        'host': settings.HOST, 'api': settings.API,
+        'next': nextpage,
+        'api': settings.API,
         'categories': list(categories),
         'topcategories': topcategories,
         'lowcategories': lowcategories,
@@ -86,7 +102,7 @@ def rendernextpage(request, context):
 
 def loginview(request):
     """Login view."""
-    username = email = request.POST.get('email')
+    email = request.POST.get('email')
 
     context = basecontext(request, 'login')
 
@@ -94,25 +110,27 @@ def loginview(request):
 
     if email is not None:
         password = request.POST.get('password')
-        user = authenticate(username=username, password=password)
+        user = authenticate(username=email, password=password)
 
         if user is None:
             try:
-                user = User.objects.get(email=email, username=username)
+                user = User.objects.get(Q(email=email) | Q(username=email))
 
             except User.DoesNotExist:
-                user = User(email=email, username=username)
+                user = User(email=email, username=email)
                 user.set_password(password)
                 user.save()
                 account = Account(user=user)
                 account.save()
 
             else:
-                context['errors'] = ['Mauvais mot de passe !']
-                context['csrf_token'] = request.POST['csrfmiddlewaretoken']
-                context['username'] = username
-                context['email'] = email
-                user = None
+                user = authenticate(username=user.username, password=password)
+
+                if user is None:
+                    context['errors'] = ['Mauvais mot de passe !']
+                    context['csrf_token'] = request.POST['csrfmiddlewaretoken']
+                    context['email'] = email
+                    user = None
 
     if user is None:
         result = render(request, 'login.html', context)
@@ -138,7 +156,7 @@ def resetpwdview(request):
 
     lost_key = request.GET.get('lost_key', request.POST.get('lost_key'))
 
-    context = basecontext(request, 'resetpwd')
+    context = basecontext(request, page='resetpwd')
 
     if lost_key is None:
         result = render(request, 'resetpwd.html', context=context)
@@ -234,95 +252,60 @@ def getuserid(request):
     return result
 
 
-def appcontext(request, page='home', tableofcontents=False):
+def appcontext(request, page='home', action=None, tableofcontents=False):
     """Get app context.
 
     :rtype: dict
     """
-    result = basecontext(request, page, tableofcontents)
+    result = basecontext(
+        request, page=page, action=action, tableofcontents=tableofcontents
+    )
     return result
-
-
-def getcommons(request, cls, page):
-    """Get products by supply type."""
-    # prepare objecs
-    categories = Category.objects.filter(types__contains=page)
-    commons = cls.objects.filter()
-
-    # prepare context
-    context = appcontext(request, page=page, tableofcontents=True)
-    context['categories'] = categories
-    context['commons'] = commons
-
-    return render(request, 'search.html', context=context)
-
-
-def givesview(request):
-    """Give view."""
-    return getcommons(request, Give, page='gives')
-
-
-def sharesview(request):
-    """Shared product view."""
-    return getcommons(request, Share, page='shares')
-
-
-def productsview(request):
-    """Product view."""
-    return getcommons(request, Product, page='products')
-
-
-def stocksview(request):
-    """Stock view."""
-    return getcommons(request, Stock, page='stocks')
-
-
-def servicesview(request):
-    """Service view."""
-    return getcommons(request, Service, page='services')
 
 
 @requirelogin
 def accountview(request):
     """Supply locations view."""
-    context = basecontext(request, 'account', True)
+    context = appcontext(request, page='account', tableofcontents=True)
     return render(request, 'account.html', context=context)
 
 
 def homeview(request):
     """Home view."""
-    context = basecontext(request, 'home', True)
+    context = basecontext(request, page='home')
     return render(request, 'home.html', context=context)
 
 
 @requirelogin
-def editview(request):
-    """Home view."""
-    context = basecontext(request, 'edit', False)
-    return render(request, 'edit.html', context=context)
+def showview(request, action='give'):
+    """Show view."""
+    context = appcontext(request, page='show', action=action)
+    return render(request, 'show.html', context=context)
 
 
 def faqview(request):
     """Faq view."""
-    context = basecontext(request, 'faq')
+    context = basecontext(request, page='faq')
     return render(request, 'faq.html', context=context)
 
 
 def aboutview(request):
     """About view."""
-    context = basecontext(request, 'about', True)
+    context = basecontext(request, page='about', tableofcontents=True)
     return render(request, 'about.html', context=context)
 
 
-def searchview(request):
+def searchview(request, action='give'):
     """Search view."""
-    context = basecontext(request, 'search', True)
+    context = appcontext(
+        request, page='search', action=action, tableofcontents=True
+    )
     return render(request, 'search.html', context=context)
 
 
 def statsview(request):
     """Stat view."""
-    context = basecontext(request, 'stats', True)
+    context = basecontext(request, page='stats', tableofcontents=True)
     context['stats'] = Stat.objects.all()
     context['ownercount'] = Account.objects.filter(ownes=None).count()
     context['suppliercount'] = Account.objects.filter(supplies=None).count()

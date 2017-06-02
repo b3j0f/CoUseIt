@@ -24,9 +24,8 @@ from django.shortcuts import render
 from rest_framework.routers import DefaultRouter
 
 from .views import (
-    homeview, aboutview, loginview, logoutview, resetpwdview, editview,
-    accountview, givesview, stocksview, faqview, sharesview, statsview,
-    searchview
+    homeview, aboutview, loginview, logoutview, resetpwdview, showview,
+    accountview, faqview, statsview, searchview
 )
 
 from account.views import UserViewSet, AccountViewSet
@@ -67,13 +66,14 @@ urlpatterns = [
     url(r'^logout', logoutview),
     url(r'^resetpwd', resetpwdview),
     url(r'^account', accountview),
-    url(r'^gives', givesview),
-    url(r'^shares', sharesview),
-    url(r'^stocks', stocksview),
     url(r'^stats', statsview),
-    url(r'^edit', editview),
-    url(r'^search', searchview),
-    url('test', lambda request: render(request, 'test.html'))
+    url(r'^(?P<action>\w+)/show', showview),
+    url(r'^(?P<action>\w+)/(search)?', searchview),
 ] + static(
     settings.STATIC_URL, document_root=settings.STATIC_ROOT
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+if settings.DEBUG:
+    urlpatterns.append(
+        url('test', lambda request: render(request, 'test.html'))
+    )
