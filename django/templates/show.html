@@ -1,37 +1,35 @@
 {% load static %}
 
-<div class="col l3 m4 s6">
-	<div id="{{ common.id }}" class="card sticky-action{% if size %} {{ size }}{% endif %}">
-		<div class="card-image" id="{{ common.id }}-image">
-			{% if common.medias.all or not common %}
-			<div class="carousel carousel-slider" data-indicators="true" data-fullWidth="true">
-				{% for media in common.medias.all %}
-				<img src="{{ forloop.first.url }}" class="responsive-img" />
-				<a class="carousel-item" data-caption="{{ common.name }}" href="#one!">
-					<img src="{{ media.url }}" class="responsive-img" />
-				</a>
-				{% endfor %}
-			</div>
-			{% else %}
-			<img src="{% static 'img/' %}{{ common.category.name }}.jpg" />
-			{% endif %}
-			<span class="card-title truncate black-text name" id="{{ common.id }}-title">{{ common.name }}</span>
+<div id="{{ common.id }}" class="card sticky-action{% if size %} {{ size }}{% endif %}">
+	<div class="card-image" id="{{ common.id }}-image">
+		{% if common.medias.all or not common %}
+		<div class="carousel carousel-slider" data-indicators="true" data-fullWidth="true">
+			{% for media in common.medias.all %}
+			<img src="{{ forloop.first.url }}" class="responsive-img" />
+			<a class="carousel-item" data-caption="{{ common.name }}" href="#one!">
+				<img src="{{ media.url }}" class="responsive-img" />
+			</a>
+			{% endfor %}
 		</div>
-		<div class="card-content activator" id="{{ common.id }}-content">
-			<span class="card-title activator grey-text text-darken-4">
-				<div class="shortdescription truncate">{{ common.shortdescription }}</div>
-				<i class="material-icons right">more_vert</i>
-			</span>
-		</div>
-		<div class="card-action supplyings" id="{{ common.id }}-action">
-			{% if common.available %}
-			{% if action == 'give' %}
-			{% include 'showsupply.html' with supplyings=common.gives.all %}
-			{% elif action == 'share' %}
-			{% include 'showsupply.html' with supplyings=common.shares.all %}
-			{% endif %}
-			{% endif %}
-		</div>
+		{% else %}
+		<img src="{% static 'img/' %}{{ common.category.name }}.jpg" />
+		{% endif %}
+		<span class="card-title truncate black-text name" id="{{ common.id }}-title">{{ common.name }}</span>
+	</div>
+	<div class="card-content activator" id="{{ common.id }}-content">
+		<span class="card-title activator grey-text text-darken-4">
+			<div class="shortdescription truncate">{{ common.shortdescription }}</div>
+			<i class="material-icons right">more_vert</i>
+		</span>
+	</div>
+	<div class="card-action supplyings" id="{{ common.id }}-action">
+		{% if common.available %}
+		{% if action == 'give' %}
+		{% include 'showsupply.html' with supplyings=common.gives.all %}
+		{% elif action == 'share' %}
+		{% include 'showsupply.html' with supplyings=common.shares.all %}
+		{% endif %}
+		{% endif %}
 	</div>
 	<div class="card-reveal" id="{{ common.id }}-reveal">
 		<span class="card-title grey-text text-darken-4">

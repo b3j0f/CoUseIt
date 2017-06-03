@@ -1,3 +1,5 @@
+{% load i18n %}
+
 $('.add').hide();
 $('.update').hide();
 {% if common %}
@@ -10,47 +12,46 @@ var action = '{{ action }}';
 
 var actions = {
     give: {
-
+        translation: '{% trans 'give' %}',
     },
     share: {
-
+        translation: '{% trans 'share' %}',
     },
     stock: {
-
+        translation: '{% trans 'stock' %}',
     }
 }
 
 for(var _action in actions) {
     $('.' + _action).hide();
 }
-$('.'+action).show();
+$('.' + action).show();
 
 var types = {
     product: {
-        translation: 'produit',
-        name: 'Appareil photo Nikon D80',
+        translation: '{% trans 'product' %}',
+        name: '{% trans 'Picture camera Nikon D80' %}',
         shortdescription: '',
         description: ''
     },
     stock: {
-        translation: 'stock',
+        translation: '{% trans 'stock' %}',
         name: '',
         shortdescription: '',
         description: ''
     },
     service: {
-        translation: 'service',
+        translation: '{% trans 'service' %}',
         name: '',
         shortdescription: '',
         description: ''
     }
 };
 
-var commontype = action == 'stock' ? 'stock' : 'product';
+var type = '{{ commontype }}';
 for(var _type in types) {
     $('.' + _type).hide();
 }
-var type = types[commontype];
 $('.' + type).show();
 
 var common = {
@@ -62,6 +63,21 @@ var common = {
     users: [{% for user in common.users.all %}'{{ user.id }}', {% endfor %}],
     category: '{{ common.category }}',
     professional: {% if common.professional %}true{% else %}false{% endif %}
+};
+
+var owner_material_chip = {
+    placeholder: '{% trans '+pseudo' %}',
+    secondaryPlaceholder: '{% trans '+pseudo' %}',
+    data: [],
+    autocompleteOptions: {
+        data: {
+            {% for account in accounts %}
+            '{{ account.user.name }}': '{{ account.avatar.furl }}'
+            {% endfor %}
+        },
+        limit: Infinity,
+        minLength: 1
+    }
 };
 
 {% if common %}
@@ -142,18 +158,18 @@ function adddropify() {
 
     var drEvent = $('#'+id).dropify({
         messages: {
-            'default': 'Glissez-déposez un fichier ici ou cliquez',
-            'replace': 'Glissez-déposez un fichier ici ou cliquez pour remplacer',
-            'remove':  'Supprimer',
-            'error':   'Ooops, une erreur est arrivée.'
+            'default': '{% trans 'Slide-put a file here or click' %}',
+            'replace': '{% trans 'Slide-put a file here or click for replacing' %}',
+            'remove':  '{% trans 'Remove' %}',
+            'error':   '{% trans 'Ooops, an error append.' %}'
         },
         error: {
-            'fileSize': 'La taille du fichier doit être inférieur à {{ value }}.',
-            'minWidth': 'La largeur de l\'image doit être supérieure à {{ value }}px.',
-            'maxWidth': 'La largeur de l\'image doit être inférieure à {{ value }}px.',
-            'minHeight': 'La hauteur de l\'image doit être supérieure à {{ value }}px.',
-            'maxHeight': 'La hauteur de l\'image doit être inférieure à {{ value }}px.',
-            'imageFormat': 'Le format de l\'image doit être de type {{ value }}.'
+            'fileSize': '{% blocktrans %}The file size must be lower than {{ value }} {% endblocktrans %}.',
+            'minWidth': '{% blocktrans %}The image width must be greater than {{ value }} px {% endblocktrans %}.',
+            'maxWidth': '{% blocktrans %}The image width must be lower than {{ value }} px {% endblocktrans %}.',
+            'minHeight': '{% blocktrans %}The image height must be greater than {{ value }} px {% endblocktrans %}.',
+            'maxHeight': '{% blocktrans %}The image height must be lower than {{ value }} px {% endblocktrans %}.',
+            'imageFormat': '{% blocktrans %}The image format must be of type {{ value }} {% endblocktrans %}.'
         }
     });
 
@@ -363,12 +379,12 @@ function newId() {
     return new Date().getTime();
 }
 
-function select(commonid) {
+function selectCommon(commonid) {
     var dom = document.getElementById('select-common-' + commonid);
     var selection = document.getElementById('select-commons');
-    var children = selection.children[0];
-    if (children !== undefined) {
-        dom.appendChild(children);
+    var child = selection.children[1];
+    if (child !== undefined) {
+        dom.appendChild(child);
     }
     selection.appendChild(dom);
     document.getElementById('id').setAttribute('value', commonid);

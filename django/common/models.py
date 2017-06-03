@@ -78,7 +78,7 @@ class Common(MessageElement):
 class Product(Common):
     """Product model."""
 
-    amount = models.IntegerField(default=1, blank=True)
+    quantity = models.IntegerField(default=1, blank=True)
 
     tostock = models.BooleanField(default=False, blank=True, db_index=True)
 

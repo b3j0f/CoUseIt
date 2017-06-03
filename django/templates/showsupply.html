@@ -1,6 +1,7 @@
 {% for supply in supplyings %}
 <div class="collapsible-header {{ action }}-{{ supply.id }}">
-	<a href="/proposal/{{ supply.id }}">{{ supply.name }} {{ supply.period }} / {{ supply.conditions.all.0.amount }} {{ supply.conditions.all.0.kind }} </a>
+	<a href="/proposal/{{ supply.id }}">{{ supply.name }} {{ supply.period }} / {{ supply.conditions.all.0.amount }} {{ supply.conditions.all.0.kind }}</a>
+	<span class="new badge" data-badge-caption="{% trans 'total' %}">{{ supply.conditions.count }}</span>
 </div>
 <div class="collapsible-body">
 	<ul class="collection">

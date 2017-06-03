@@ -95,6 +95,10 @@
 
     {% endblock %}
 
+    {% if action %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/' %}{{ action }}.css" />
+    {% endif %}
+
     <div id="fb-root"></div>
 
 </head>
@@ -106,9 +110,15 @@
 
     <ul id="usermenu" class="dropdown-content">
         <li>
-        <a href="/account" {% if page == 'account' %}class="active"{% endif %}>{% trans 'My account' %}</a>
+            <a href="/account" {% if page == 'account' %}class="active"{% endif %}>{% trans 'My account' %}</a>
         </li>
         <li class="divider"></li>
+        <li>
+            <a href="/messages" {% if page == 'messages' %}class="active"{% endif %}>
+                {% trans 'My messages' %}
+                {% if messagecount %}<span class="new badge" data-badge-caption="{% trans 'new' %}">{{ messagecount }}</span>{% endif %}
+            </a>
+        </li>
         <li><a href="/goods" {% if page == 'goods' %}class="active"{% endif %}>{% trans 'My goods' %}</a></li>
         <li><a href="/supplyings" {% if page == 'supplyings' %}class="active"{% endif %}>{% trans 'My supplyings' %}</a></li>
         <li><a href="/stocks" {% if page == 'stocks' %}class="active"{% endif %}>{% trans 'My stocks' %}</a></li>

@@ -14,6 +14,7 @@
 		<input type="hidden" name="id" value="{{ common.id }}" />
 		<input type="hidden" name="type" />
 		<input type="hidden" name="owners" />
+
 		<div class="section commons scrollspy" name="{% trans 'Commons' %}" id="commons">
 			<h5>
 				{% trans 'Choose' %} {% if action == 'stock' %}{% trans 'stocks' %}{% else %}{% trans 'products' %}{% endif %}
@@ -37,18 +38,28 @@
 				<div id="new-common" class="col s12">
 					<div class="row">
 						<div class="col l12">
-							<div class="row card-panel">
+							<div class="row">
 								<div class="col s12 center" id="categories"></div>
 
-								<div class="col s8 l9 input-field">
+								<div class="col s12 input-field">
 									<i class="material-icons prefix">title</i>
 									<input type="text" name="name" id="name" onchange="updateProperty('name')" value="{{ common.id }}" class="maxlength" data-length="50" />
 									<label for="name">{% trans 'Name' %}</label>
 								</div>
 
-								<div class="col s4 l3 input-field">
+								<div class="col s2 input-field">
+									<input id="quantity" type="number" min="1" value="{% if common.quantity %}{{ common.quantity }}{% else %}1{% endif %}" name="quantity" />
+									<label for="quantity">{% trans 'Quantity' %}</label>
+								</div>
+
+								<div class="col s4 input-field">
+									<input type="checkbox" id="public" name="public" {% if common.public or not common %}checked="true"{% endif %}/>
+									<label for="public">{% trans 'Public' %}</label>
+								</div>
+
+								<div class="col s6 input-field">
 									<input type="checkbox" id="pro" name="pro" {% if common.professional %}checked="true"{% endif %}/>
-									<label for="pro">{% trans 'Professionnal' %}</label>
+									<label for="pro">{% trans 'Professional' %}</label>
 								</div>
 
 								<div class="col s12 input-field">
@@ -56,12 +67,7 @@
 									<label for="owners">{% trans 'Owners' %}</label>
 								</div>
 
-								<div class="input-field col s6 m2 l1">
-									<input id="amount" type="number" min="1" value="{% if common.amount %}{{ common.amount }}{% else %}1{% endif %}" name="amount" />
-									<label for="amount">{% trans 'Quantity' %}</label>
-								</div>
-
-								<div class="col s12 input-field">
+								<div class="col s10 input-field">
 									<i class="material-icons left">subtitles</i>
 									<input type="text" name="shortdescription" placeholder="10 millions de pixels, carte mémoire 2 Go" id="shortdescription" onchange="updateProperty('shortdescription')" value="{{ common.shortdescription }}" data-length="120" class="maxlength" />
 									<label for="shortdescription">{% trans 'Short description' %}</label>
@@ -89,11 +95,11 @@
 									{% trans 'Default number of users' %}
 									{% endif %}
 									<div class="row">
-										<div class="col s12 input-field">
+										<div class="col s2 input-field">
 											<input type="number" name="min" placeholder="1" value="1" />
 											<label>{% trans 'min' %}</label>
 										</div>
-										<div class="col s12 input-field">
+										<div class="col s2 input-field">
 											<input type="number" name="max" placeholder="infinity" />
 											<label>{% trans 'max' %}</label>
 										</div>
@@ -203,7 +209,9 @@
 
 				<div id="select-common" class="col s12">
 					<div class="row">
-						<div class="col s12 row" id="select-commons"></div>
+						<div class="col s12 row" id="select-commons">
+							<h5>{% blocktrans %}Selected {{ commontype }}{% endblocktrans %}</h5>
+						</div>
 						{% for common in user.account.commons %}
 						<div class="col s4" id="select-common-{{ common.id }}">
 							<div class="card">
@@ -222,8 +230,8 @@
 			</div>
 		</div>
 
-		<div class="section conditions scrollspy" name="{% trans 'Conditions' %}" id="conditions">
-			<h5>{% trans 'Conditions' %}</h5>
+		<div class="section conditions scrollspy" name="{% blocktrans with action=action.title %}{{ action }} conditions{% endblocktrans %}" id="conditions">
+			<h5>{% blocktrans with action=action.title %}{{ action }} conditions{% endblocktrans %}</h5>
 			<div class="divider"></div>
 		</div>
 

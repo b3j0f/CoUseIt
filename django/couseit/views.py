@@ -79,13 +79,14 @@ def basecontext(request, page='home', action=None, tableofcontents=False):
         if action:
             nextpage = '/{0}{1}'.format(action, nextpage)
 
+    commontype = 'stock' if action == 'stock' else 'product'
+
     result = {
-        'action': action, 'page': page,
+        'action': action, 'page': page, 'next': nextpage, 'api': settings.API,
+        'commontype': commontype,
         'productcount': productcount, 'stockcount': stockcount,
         'accountcount': accountcount, 'catpropvalues': catpropvalues,
         'tableofcontents': tableofcontents,
-        'next': nextpage,
-        'api': settings.API,
         'categories': list(categories),
         'topcategories': topcategories,
         'lowcategories': lowcategories,
@@ -296,11 +297,14 @@ def aboutview(request):
     return render(request, 'about.html', context=context)
 
 
-def searchview(request, action='give'):
+def searchview(request, action):
     """Search view."""
+    model = _MODELSBYACTION[action]
+    commons = model.objects.all()
     context = appcontext(
         request, page='search', action=action, tableofcontents=True
     )
+    context['commons'] = commons
     return render(request, 'search.html', context=context)
 
 
