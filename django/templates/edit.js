@@ -363,6 +363,17 @@ function newId() {
     return new Date().getTime();
 }
 
+function select(commonid) {
+    var dom = document.getElementById('select-common-' + commonid);
+    var selection = document.getElementById('select-commons');
+    var children = selection.children[0];
+    if (children !== undefined) {
+        dom.appendChild(children);
+    }
+    selection.appendChild(dom);
+    document.getElementById('id').setAttribute('value', commonid);
+}
+
 {% include 'categories.js' %}
 
 {% include 'map.js' %}

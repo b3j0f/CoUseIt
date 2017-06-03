@@ -203,11 +203,11 @@
 
 				<div id="select-common" class="col s12">
 					<div class="row">
-						<div class=""></div>
+						<div class="col s12 row" id="select-commons"></div>
 						{% for common in user.account.commons %}
-						<div class="col s4">
+						<div class="col s4" id="select-common-{{ common.id }}">
 							<div class="card">
-								<div class="card-image" onclick="select({{ common.id }});">
+								<div class="card-image" onclick="selectCommon('{{ common.id }}');">
 									<img src="{{ common.brochure.furl }}" />
 									<span class="card-title">{{ common.name }}</span>
 								</div>

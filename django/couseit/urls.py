@@ -67,8 +67,8 @@ urlpatterns = [
     url(r'^resetpwd', resetpwdview),
     url(r'^account', accountview),
     url(r'^stats', statsview),
-    url(r'^(?P<action>\w+)/edit', editview),
-    url(r'^(?P<action>\w+)/(search)?', searchview),
+    url(r'^(?P<action>(give)|(share)|(stock))/edit', editview),
+    url(r'^(?P<action>(give)|(share)|(stock))/(search)?', searchview),
 ] + static(
     settings.STATIC_URL, document_root=settings.STATIC_ROOT
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

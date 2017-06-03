@@ -30,7 +30,7 @@ _MODELSBYACTION = {
 
 def requirelogin(func=None):
     """Decorator for requiring login."""
-    nextpage = func.__name__[:-len('view')]
+    page = func.__name__[:-len('view')]
 
     def _requirelogin(request, *args, **kwargs):
         """Local require login."""
@@ -38,10 +38,10 @@ def requirelogin(func=None):
             return func(request, *args, **kwargs)
 
         else:
-            npage = nextpage
+            nextpage = '/{0}'.format(page)
             if 'action' in kwargs:
-                npage = '{0}/{1}'.format(kwargs['action'], nextpage)
-            return redirect('/login?next={0}'.format(npage))
+                nextpage = '/{0}{1}'.format(kwargs['action'], nextpage)
+            return redirect('/login?next={0}'.format(nextpage))
 
     return _requirelogin
 
@@ -75,9 +75,9 @@ def basecontext(request, page='home', action=None, tableofcontents=False):
         nextpage = request.GET['next']
 
     else:
-        nextpage = page
+        nextpage = '/{0}'.format(page)
         if action:
-            nextpage = '{0}/{1}'.format(action, nextpage)
+            nextpage = '/{0}{1}'.format(action, nextpage)
 
     result = {
         'action': action, 'page': page,
@@ -138,7 +138,7 @@ def loginview(request):
 
     else:
         login(request, user, 'django.contrib.auth.backends.ModelBackend')
-        result = redirect('/{0}'.format(request.GET.get('next', '')))
+        result = redirect('{0}'.format(request.GET.get('next', '')))
 
     return result
 
@@ -146,7 +146,7 @@ def loginview(request):
 def logoutview(request):
     """Login view."""
     logout(request)
-    return redirect('/{0}'.format(request.GET.get('next', '')))
+    return redirect('{0}'.format(request.GET.get('next', '')))
 
 
 def resetpwdview(request):
