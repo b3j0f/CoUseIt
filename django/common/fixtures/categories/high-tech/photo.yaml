@@ -12,19 +12,19 @@
 
 - model: common.category
   fields:
-    name: réflex numérique
+    name: reflex_numerique
     types: product
     parent: photo
 
 - model: common.category
   fields:
-    name: réflex argentique
+    name: reflex_argentique
     types: product
     parent: photo
 
 - model: common.category
   fields:
-    name: accessoire lumière
+    name: accessoire_lumiere
     types: product
     parent: photo
 
@@ -36,25 +36,25 @@
 
 - model: common.category
   fields:
-    name: trépied
+    name: trepied
     types: product
     parent: photo
 
 - model: common.category
   fields:
-    name: polaroïd/ instantané
+    name: polaroïd_/_instantane
     types: product
     parent: photo
 
 - model: common.category
   fields:
-    name: compact numérique
+    name: compact_numerique
     types: product
     parent: photo
 
 - model: common.category
   fields:
-    name: compact argentique
+    name: compact_argentique
     types: product
     parent: photo
 
@@ -66,13 +66,13 @@
 
 - model: common.category
   fields:
-    name: réflecteur / diffuseur
+    name: reflecteur_/_diffuseur
     types: product
     parent: photo
 
 - model: common.category
   fields:
-    name: carte mémoire
+    name: carte_memoire
     types: product
     parent: photo
 
@@ -84,7 +84,7 @@
 
 - model: common.category
   fields:
-    name: mémoire
+    name: memoire
     types: product
     parent: photo
 
@@ -114,13 +114,13 @@
 
 - model: common.category
   fields:
-    name: station d'accueil
+    name: docking_station
     types: product
     parent: photo
 
 - model: common.category
   fields:
-    name: télescope tt terrain
+    name: telescope_tt_terrain
     types: product
     parent: photo
 

@@ -6,13 +6,13 @@
 
 - model: common.category
   fields:
-    name: à moteur
+    name: à_moteur
     types: product
     parent: atypique
 
 - model: common.category
   fields:
-    name: atypique sans permis
+    name: atypique_sans_permis
     types: product
     parent: atypique
 
@@ -24,13 +24,13 @@
 
 - model: common.category
   fields:
-    name: Tuk Tuk
+    name: Tuk_Tuk
     types: product
     parent: atypique
 
 - model: common.category
   fields:
-    name: Calèche
+    name: Caleche
     types: product
     parent: atypique
 

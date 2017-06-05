@@ -8,12 +8,23 @@ from django.utils.encoding import python_2_unicode_compatible
 from .utils import tostr
 
 
+class Media(models.Model):
+    """Media."""
+
+    media = models.FileField(blank=True, default=None)
+    url = models.CharField(max_length=255, blank=True, default=None)
+
+    def furl(self):
+        """Get final url."""
+        return self.url if self.media is None else self.media.url
+
+
 @python_2_unicode_compatible
 class Account(models.Model):
     """CoUseIt account."""
 
     user = models.OneToOneField(User, primary_key=True)
-    avatar = models.FileField()
+    avatar = models.OneToOneField(Media, blank=True, default=None)
     relationships = models.ManyToManyField('self')
     lost_key = models.CharField(max_length=255)
 

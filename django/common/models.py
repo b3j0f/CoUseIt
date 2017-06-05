@@ -10,13 +10,89 @@ from django.conf import settings
 
 from address.models import AddressField
 
-from account.models import Account, MessageElement, tostr
+from account.models import Account, MessageElement, tostr, Media
 
 from time import time
 
 from datetime import date
 
 from collections import namedtuple
+
+
+@python_2_unicode_compatible
+class Category(models.Model):
+    """Common category model.
+
+    Unique name per parent.
+
+    Only categories without children can be associated to a common.
+    """
+
+    class Meta:
+        """Meta class."""
+
+        default_related_name = 'categories'
+        verbose_name = 'category'
+        verbose_name_plural = 'categories'
+
+    name = models.CharField(max_length=50, primary_key=True)
+    description = models.CharField(
+        max_length=255, blank=True, default=None, null=True
+    )
+    types = models.CharField(max_length=50)
+    media = models.ForeignKey(
+        Media, blank=True, null=True, default=None, related_name='+'
+    )
+    parent = models.ForeignKey(
+        'self', related_name='children', blank=True, default=None, null=True
+    )
+
+    def __str__(self):
+        """Representation."""
+        return tostr(self, 'name', 'description')
+
+    @property
+    def allproperties(self):
+        """Get all properties from this parent category and this.
+
+        rtype: list
+        """
+        result = list(self.properties.all())
+
+        if self.parent is not None:
+            result = self.parent.allproperties + result
+
+        return result
+
+    @property
+    def allpropertieswvalues(self):
+        """Get all property values."""
+        result = []
+
+        for prop in self.allproperties:
+
+            if prop.values is None:
+                properties = prop.properties.filter(common__category=self)
+
+                if settings.DEBUG:
+                    values = sorted(set(prop.value for prop in properties))
+
+                else:
+                    values = list(
+                        properties.order_by('value').distinct('value')
+                    )
+
+            else:
+                values = prop.allvalues
+
+            result.append(PropertyProps(prop.name, prop.unit, values))
+
+        return result
+
+    @property
+    def display_name(self):
+        """Get display name."""
+        return self.name.replace('_', ' ')
 
 
 @python_2_unicode_compatible
@@ -50,10 +126,14 @@ class Common(MessageElement):
         Account, related_name='uses', blank=True
     )
     category = models.ForeignKey(
-        'Category', related_name='commons', blank=False, null=False,
+        Category, related_name='commons', blank=False, null=False,
         db_index=True
     )
     professional = models.BooleanField(db_index=True, blank=True, default=True)
+
+    medias = models.ManyToManyField(
+        Media, blank=True, default=[], related_name='+'
+    )
 
     def __str__(self):
         """Representation."""
@@ -91,7 +171,7 @@ class Stock(Product):
     )
     pamount = models.IntegerField(default=1, blank=True)
     pcategory = models.ForeignKey(
-        'Category', blank=True, null=False, db_index=True
+        Category, blank=True, null=False, db_index=True
     )
 
 
@@ -252,7 +332,7 @@ class Request(MessageElement):
     description = models.CharField(blank=True, default=None, max_length=255)
     # category common type
     category = models.ForeignKey(
-        'Category', blank=True, default=None, related_name='requests'
+        Category, blank=True, default=None, related_name='requests'
     )
 
     accounts = models.ManyToManyField(Account, related_name='requests')
@@ -352,6 +432,9 @@ class State(models.Model):
     product = models.ForeignKey(
         Product, related_name='states', null=True, blank=True, default=None
     )
+    medias = models.ManyToManyField(
+        Media, blank=True, default=[], related_name='+'
+    )
 
     def __str__(self):
         """Representation."""
@@ -392,91 +475,6 @@ class Enjoynment(models.Model):
     def __str__(self):
         """Representation."""
         return tostr(self, 'account', 'request', 'value')
-
-
-class Media(models.Model):
-    """Media."""
-
-    media = models.FileField()
-    common = models.ForeignKey(Common, related_name='medias')
-    state = models.ForeignKey(State, related_name='medias')
-
-
-@python_2_unicode_compatible
-class Category(models.Model):
-    """Common category model.
-
-    Unique name per parent.
-
-    Only categories without children can be associated to a common.
-    """
-
-    class Meta:
-        """Meta class."""
-
-        default_related_name = 'categories'
-        verbose_name = 'category'
-        verbose_name_plural = 'categories'
-
-    name = models.CharField(max_length=50, primary_key=True)
-    description = models.CharField(
-        max_length=255, blank=True, default=None, null=True
-    )
-    types = models.CharField(max_length=50)
-    media = models.ForeignKey(
-        Media, blank=True, null=True, default=None, related_name='+'
-    )
-    parent = models.ForeignKey(
-        'self', related_name='children', blank=True, default=None, null=True
-    )
-
-    def __str__(self):
-        """Representation."""
-        return tostr(self, 'name', 'description')
-
-    @property
-    def allproperties(self):
-        """Get all properties from this parent category and this.
-
-        rtype: list
-        """
-        result = list(self.properties.all())
-
-        if self.parent is not None:
-            result = self.parent.allproperties + result
-
-        return result
-
-    @property
-    def allpropertieswvalues(self):
-        """Get all property values."""
-        result = []
-
-        for prop in self.allproperties:
-
-            if prop.values is None:
-                properties = prop.properties.filter(common__category=self)
-
-                if settings.DEBUG:
-                    values = sorted(set(prop.value for prop in properties))
-
-                else:
-                    values = list(
-                        properties.order_by('value').distinct('value')
-                    )
-
-            else:
-                values = prop.allvalues
-
-            result.append(PropertyProps(prop.name, prop.unit, values))
-
-        return result
-
-    @property
-    def display_name(self):
-        """Get display name."""
-        return self.name.replace('_', ' ')
-
 
 PropertyProps = namedtuple('PropertyProps', ('name', 'unit', 'values'))
 

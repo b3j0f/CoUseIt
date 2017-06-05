@@ -1,101 +1,101 @@
 - model: common.category
   fields:
-    name: matériel médical
+    name: medical_device
     types: product
     parent: maison
 
 - model: common.category
   fields:
-    name: lit médicalisé
+    name: lit_medicalise
     types: product
-    parent: matériel médical
+    parent: medical_device
 
 - model: common.category
   fields:
-    name: fauteuil roulant
+    name: fauteuil_roulant
     types: product
-    parent: matériel médical
+    parent: medical_device
 
 - model: common.category
   fields:
-    name: table roulante
+    name: table_roulante
     types: product
-    parent: matériel médical
+    parent: medical_device
 
 - model: common.category
   fields:
-    name: déambulateur
+    name: deambulateur
     types: product
-    parent: matériel médical
+    parent: medical_device
 
 - model: common.category
   fields:
-    name: élévateur bain
+    name: elevateur_bain
     types: product
-    parent: matériel médical
+    parent: medical_device
 
 - model: common.category
   fields:
     name: bequilles
     types: product
-    parent: matériel médical
+    parent: medical_device
 
 - model: common.category
   fields:
     name: attelles
     types: product
-    parent: matériel médical
+    parent: medical_device
 
 - model: common.category
   fields:
     name: ceinture
     types: product
-    parent: matériel médical
+    parent: medical_device
 
 - model: common.category
   fields:
-    name: collier cervical
+    name: collier_cervical
     types: product
-    parent: matériel médical
+    parent: medical_device
 
 - model: common.category
   fields:
     name: humidificateur
     types: product
-    parent: matériel médical
+    parent: medical_device
 
 - model: common.category
   fields:
-    name: pied à perfusion
+    name: pied_à_perfusion
     types: product
-    parent: matériel médical
+    parent: medical_device
 
 - model: common.category
   fields:
-    name: tensiomètre
+    name: tensiometre
     types: product
-    parent: matériel médical
+    parent: medical_device
 
 - model: common.category
   fields:
-    name: thermomètre
+    name: thermometre
     types: product
-    parent: matériel médical
+    parent: medical_device
 
 - model: common.category
   fields:
     name: inhalateur
     types: product
-    parent: matériel médical
+    parent: medical_device
 
 - model: common.category
   fields:
     name: bouillotte
     types: product
-    parent: matériel médical
+    parent: medical_device
 
 - model: common.category
   fields:
-    name: couverture chauffante
+    name: couverture_chauffante
     types: product
-    parent: matériel médical
+    parent: medical_device

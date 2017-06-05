@@ -1,6 +1,6 @@
 - model: common.category
   fields:
-    name: instrument de musique
+    name: instrument_de_musique
     types: product
     parent: loisir
 
@@ -8,100 +8,100 @@
   fields:
     name: piano
     types: product
-    parent: instrument de musique
+    parent: instrument_de_musique
 
 - model: common.category
   fields:
     name: clavier
     types: product
-    parent: instrument de musique
+    parent: instrument_de_musique
 
 - model: common.category
   fields:
-    name: instruments à cordes
+    name: instruments_à_cordes
     types: product
-    parent: instrument de musique
+    parent: instrument_de_musique
 
 - model: common.category
   fields:
-    name: instruments à vent
+    name: instruments_à_vent
     types: product
-    parent: instrument de musique
+    parent: instrument_de_musique
 
 - model: common.category
   fields:
-    name: guitare classique
+    name: guitare_classique
     types: product
-    parent: instrument de musique
+    parent: instrument_de_musique
 
 - model: common.category
   fields:
-    name: guitare folk
+    name: guitare_folk
     types: product
-    parent: instrument de musique
+    parent: instrument_de_musique
 
 - model: common.category
   fields:
-    name: guitare électrique
+    name: guitare_electrique
     types: product
-    parent: instrument de musique
+    parent: instrument_de_musique
 
 - model: common.category
   fields:
     name: basse
     types: product
-    parent: instrument de musique
+    parent: instrument_de_musique
 
 - model: common.category
   fields:
     name: batterie
     types: product
-    parent: instrument de musique
+    parent: instrument_de_musique
 
 - model: common.category
   fields:
     name: percussions
     types: product
-    parent: instrument de musique
+    parent: instrument_de_musique
 
 - model: common.category
   fields:
     name: cuivres
     types: product
-    parent: instrument de musique
+    parent: instrument_de_musique
 
 - model: common.category
   fields:
-    name: accordéon
+    name: accordeon
     types: product
-    parent: instrument de musique
+    parent: instrument_de_musique
 
 - model: common.category
   fields:
     name: harmonica
     types: product
-    parent: instrument de musique
+    parent: instrument_de_musique
 
 - model: common.category
   fields:
-    name: luthérie
+    name: lutherie
     types: product
-    parent: instrument de musique
+    parent: instrument_de_musique
 
 - model: common.category
   fields:
-    name: méthodes
+    name: methodes
     types: product
-    parent: instrument de musique
+    parent: instrument_de_musique
 
 - model: common.category
   fields:
     name: partitions
     types: product
-    parent: instrument de musique
+    parent: instrument_de_musique
 
 - model: common.category
   fields:
-    name: métronome
+    name: metronome
     types: product
-    parent: instrument de musique
+    parent: instrument_de_musique

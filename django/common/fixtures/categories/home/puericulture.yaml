@@ -1,137 +1,137 @@
 - model: common.category
   fields:
-    name: puériculture
+    name: puericulture
     types: product
     parent: maison
 
 - model: common.category
   fields:
-    name: vêtements grossesse
+    name: vetements_grossesse
     types: product
-    parent: puériculture
+    parent: puericulture
 
 - model: common.category
   fields:
-    name: vêtements bébé
+    name: vetements_bebe
     types: product
-    parent: puériculture
+    parent: puericulture
 
 - model: common.category
   fields:
-    name: lit bébé
+    name: lit_bebe
     types: product
-    parent: puériculture
+    parent: puericulture
 
 - model: common.category
   fields:
     name: berceau
     types: product
-    parent: puériculture
+    parent: puericulture
 
 - model: common.category
   fields:
     name: poussette
     types: product
-    parent: puériculture
+    parent: puericulture
 
 - model: common.category
   fields:
-    name: landau / nacelle
+    name: landau_/_nacelle
     types: product
-    parent: puériculture
+    parent: puericulture
 
 - model: common.category
   fields:
     name: couffin
     types: product
-    parent: puériculture
+    parent: puericulture
 
 - model: common.category
   fields:
-    name: siège-auto
+    name: siege-auto
     types: product
-    parent: puériculture
+    parent: puericulture
 
 - model: common.category
   fields:
-    name: porte-bébé
+    name: porte-bebe
     types: product
-    parent: puériculture
+    parent: puericulture
 
 - model: common.category
   fields:
-    name: siège de table
+    name: siege_de_table
     types: product
-    parent: puériculture
+    parent: puericulture
 
 - model: common.category
   fields:
-    name: réhausseur
+    name: rehausseur
     types: product
-    parent: puériculture
+    parent: puericulture
 
 - model: common.category
   fields:
-    name: table haute
+    name: table_haute
     types: product
-    parent: puériculture
+    parent: puericulture
 
 - model: common.category
   fields:
     name: parc
     types: product
-    parent: puériculture
+    parent: puericulture
 
 - model: common.category
   fields:
     name: balancelle
     types: product
-    parent: puériculture
+    parent: puericulture
 
 - model: common.category
   fields:
     name: mobiles
     types: product
-    parent: puériculture
+    parent: puericulture
 
 - model: common.category
   fields:
     name: trotteur
     types: product
-    parent: puériculture
+    parent: puericulture
 
 - model: common.category
   fields:
     name: transat
     types: product
-    parent: puériculture
+    parent: puericulture
 
 - model: common.category
   fields:
     name: babyphone
     types: product
-    parent: puériculture
+    parent: puericulture
 
 - model: common.category
   fields:
-    name: chauffe biberons
+    name: chauffe_biberons
     types: product
-    parent: puériculture
+    parent: puericulture
 
 - model: common.category
   fields:
-    name: stérilisateur
+    name: sterilisateur
     types: product
-    parent: puériculture
+    parent: puericulture
 
 - model: common.category
   fields:
     name: biberons
     types: product
-    parent: puériculture
+    parent: puericulture
 
 - model: common.category
   fields:
     name: tire-lait
     types: product
-    parent: puériculture
+    parent: puericulture

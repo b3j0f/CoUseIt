@@ -1,3 +1,3 @@
-{% include 'categories.js' %}
+{# {% include 'categories.js' %} #}
 
 {% include 'map.js' %}

@@ -6,13 +6,13 @@
 
 - model: common.category
   fields:
-    name: ordinateur de bureau
+    name: ordinateur_de_bureau
     types: product
     parent: informatique
 
 - model: common.category
   fields:
-    name: ordinateur portable
+    name: ordinateur_portable
     types: product
     parent: informatique
 
@@ -36,13 +36,13 @@
 
 - model: common.category
   fields:
-    name: écran
+    name: ecran
     types: product
     parent: informatique
 
 - model: common.category
   fields:
-    name: disque dur externe
+    name: disque_dur_externe
     types: product
     parent: informatique
 
@@ -60,7 +60,7 @@
 
 - model: common.category
   fields:
-    name: clef usb
+    name: clef_usb
     types: product
     parent: informatique
 

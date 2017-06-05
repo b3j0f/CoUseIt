@@ -6,13 +6,13 @@
 
 - model: common.category
   fields:
-    name: déchargement
+    name: dechargement
     types: product
     parent: remorque
 
 - model: common.category
   fields:
-    name: bagagère
+    name: bagagere
     types: product
     parent: remorque
 
@@ -24,7 +24,7 @@
 
 - model: common.category
   fields:
-    name: porte voiture
+    name: porte_voiture
     types: product
     parent: remorque
 

@@ -12,13 +12,13 @@
 
 - model: common.typeproperty
   fields:
-    name: design/make/audi
+    name: design&make&audi
     values: a1|a2|a3|tt|a4|a5|a6
     categories: [car]
 
 - model: common.typeproperty
   fields:
-    name: design/car make/tesla
+    name: design&car make&tesla
     values: s|x|3
     categories: [car]
 
@@ -30,13 +30,13 @@
 
 - model: common.typeproperty
   fields:
-    name: motorbike design/yamaha
+    name: motorbike design&yamaha
     values: 1|2
     categories: [motorbike]
 
 - model: common.typeproperty
   fields:
-    name: design motorbike/harley davidson
+    name: design motorbike&harley davidson
     values: 1|2
     categories: [motorbike]
 
@@ -78,7 +78,7 @@
 
 - model: common.typeproperty
   fields:
-    name: classe d'énergie
+    name: classe d'energie
     values: A|B|C|D|E|F|G|H|I|vierge
     categories: [property]
 

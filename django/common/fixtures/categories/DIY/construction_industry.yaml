@@ -1,83 +1,83 @@
 - model: common.category
   fields:
-    name: construction industry
+    name: construction_industry
     types: product
     parent: DIY
 
 - model: common.category
   fields:
-    name: DIY furniture
+    name: DIY_furniture
     types: product
-    parent: construction industry
+    parent: construction_industry
 
 - model: common.category
   fields:
     name: jackhammer
     types: product
-    parent: construction industry
+    parent: construction_industry
 
 - model: common.category
   fields:
     name: compactor
     types: product
-    parent: construction industry
+    parent: construction_industry
 
 - model: common.category
   fields:
     name: dumper
     types: product
-    parent: construction industry
+    parent: construction_industry
 
 - model: common.category
   fields:
-    name: cement mixer
+    name: cement_mixer
     types: product
-    parent: construction industry
+    parent: construction_industry
 
 - model: common.category
   fields:
-    name: vibrating needle
+    name: vibrating_needle
     types: product
-    parent: construction industry
+    parent: construction_industry
 
 - model: common.category
   fields:
-    name: ground slicer
+    name: ground_slicer
     types: product
-    parent: construction industry
+    parent: construction_industry
 
 - model: common.category
   fields:
     name: ruler
     types: product
-    parent: construction industry
+    parent: construction_industry
 
 - model: common.category
   fields:
     name: compressor
     types: product
-    parent: construction industry
+    parent: construction_industry
 
 - model: common.category
   fields:
     name: excavator
     types: product
-    parent: construction industry
+    parent: construction_industry
 
 - model: common.category
   fields:
     name: sandblasting
     types: product
-    parent: construction industry
+    parent: construction_industry
 
 - model: common.category
   fields:
     name: tractor
     types: product
-    parent: construction industry
+    parent: construction_industry
 
 - model: common.category
   fields:
     name: cutter
     types: product
-    parent: construction industry
+    parent: construction_industry

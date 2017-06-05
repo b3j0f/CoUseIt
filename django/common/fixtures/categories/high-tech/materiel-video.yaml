@@ -1,101 +1,101 @@
 - model: common.category
   fields:
-    name: matériel vidéo
+    name: video_device
     types: product
     parent: high-tech
 
 - model: common.category
   fields:
-    name: caméra HD
+    name: camera_HD
     types: product
-    parent: matériel vidéo
+    parent: video_device
 
 - model: common.category
   fields:
-    name: caméra argentique
+    name: camera_argentique
     types: product
-    parent: matériel vidéo
+    parent: video_device
 
 - model: common.category
   fields:
     name: camescope
     types: product
-    parent: matériel vidéo
+    parent: video_device
 
 - model: common.category
   fields:
     name: projecteur
     types: product
-    parent: matériel vidéo
+    parent: video_device
 
 - model: common.category
   fields:
-    name: vidéo numérique
+    name: video_numerique
     types: product
-    parent: matériel vidéo
+    parent: video_device
 
 - model: common.category
   fields:
-    name: vidéo analogique
+    name: video_analogique
     types: product
-    parent: matériel vidéo
+    parent: video_device
 
 - model: common.category
   fields:
-    name: télévision
+    name: television
     types: product
-    parent: matériel vidéo
+    parent: video_device
 
 - model: common.category
   fields:
-    name: écran
+    name: ecran
     types: product
-    parent: matériel vidéo
+    parent: video_device
 
 - model: common.category
   fields:
-    name: lecteur vidéo
+    name: lecteur_video
     types: product
-    parent: matériel vidéo
+    parent: video_device
 
 - model: common.category
   fields:
     name: toile
     types: product
-    parent: matériel vidéo
+    parent: video_device
 
 - model: common.category
   fields:
     name: connectique
     types: product
-    parent: matériel vidéo
+    parent: video_device
 
 - model: common.category
   fields:
-    name: magnétoscope
+    name: magnetoscope
     types: product
-    parent: matériel vidéo
+    parent: video_device
 
 - model: common.category
   fields:
-    name: enregistreur DVD
+    name: enregistreur_DVD
     types: product
-    parent: matériel vidéo
+    parent: video_device
 
 - model: common.category
   fields:
-    name: caméra 35 mm
+    name: camera_35_mm
     types: product
-    parent: matériel vidéo
+    parent: video_device
 
 - model: common.category
   fields:
-    name: home cinéma
+    name: home_cinema
     types: product
-    parent: matériel vidéo
+    parent: video_device
 
 - model: common.category
   fields:
-    name: télévision satellite
+    name: television_satellite
     types: product
-    parent: matériel vidéo
+    parent: video_device

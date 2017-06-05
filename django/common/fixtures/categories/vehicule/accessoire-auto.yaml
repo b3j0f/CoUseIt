@@ -1,101 +1,101 @@
 - model: common.category
   fields:
-    name: accessoire auto
+    name: accessoire_auto
     types: product
     parent: vehicule
 
 - model: common.category
   fields:
-    name: coffre de toit
+    name: coffre_de_toit
     types: product
-    parent: accessoire auto
+    parent: accessoire_auto
 
 - model: common.category
   fields:
     name: galerie
     types: product
-    parent: accessoire auto
+    parent: accessoire_auto
 
 - model: common.category
   fields:
-    name: barres de toit
+    name: barres_de_toit
     types: product
-    parent: accessoire auto
+    parent: accessoire_auto
 
 - model: common.category
   fields:
     name: porte-skis
     types: product
-    parent: accessoire auto
+    parent: accessoire_auto
 
 - model: common.category
   fields:
     name: outils
     types: product
-    parent: accessoire auto
+    parent: accessoire_auto
 
 - model: common.category
   fields:
     name: booster
     types: product
-    parent: accessoire auto
+    parent: accessoire_auto
 
 - model: common.category
   fields:
-    name: porte-vélo
+    name: porte-velo
     types: product
-    parent: accessoire auto
+    parent: accessoire_auto
 
 - model: common.category
   fields:
     name: chaines
     types: product
-    parent: accessoire auto
+    parent: accessoire_auto
 
 - model: common.category
   fields:
-    name: siège extra
+    name: siege_extra
     types: product
-    parent: accessoire auto
+    parent: accessoire_auto
 
 - model: common.category
   fields:
     name: treuil
     types: product
-    parent: accessoire auto
+    parent: accessoire_auto
 
 - model: common.category
   fields:
-    name: plaques de désensablement
+    name: plaques_de_desensablement
     types: product
-    parent: accessoire auto
+    parent: accessoire_auto
 
 - model: common.category
   fields:
     name: sono
     types: product
-    parent: accessoire auto
+    parent: accessoire_auto
 
 - model: common.category
   fields:
-    name: vidéo et écran embarqué
+    name: video_et_ecran_embarque
     types: product
-    parent: accessoire auto
+    parent: accessoire_auto
 
 - model: common.category
   fields:
-    name: valise diagnostique
+    name: valise_diagnostique
     types: product
-    parent: accessoire auto
+    parent: accessoire_auto
 
 - model: common.category
   fields:
     name: parking
     types: product
-    parent: accessoire auto
+    parent: accessoire_auto
 
 - model: common.category
   fields:
-    name: avertisseur de radars
+    name: avertisseur_de_radars
     types: product
-    parent: accessoire auto
+    parent: accessoire_auto

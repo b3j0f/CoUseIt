@@ -1,4 +1,4 @@
 - model: common.category
   fields:
-    name: maison
+    name: stock
     types: product, stock

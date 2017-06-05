@@ -6,7 +6,7 @@
 
 - model: common.category
   fields:
-    name: nettoyeur haute pression
+    name: nettoyeur_haute_pression
     types: product
     parent: maintenance
 
@@ -36,7 +36,7 @@
 
 - model: common.category
   fields:
-    name: déboucheur canalisations
+    name: sewer_cleaning
     types: product
     parent: maintenance
 
@@ -48,6 +48,6 @@
 
 - model: common.category
   fields:
-    name: générateur eau chaude
+    name: hot_water_boile
     types: product
     parent: maintenance

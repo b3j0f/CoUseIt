@@ -12,7 +12,7 @@
 
 - model: common.category
   fields:
-    name: poids lourds
+    name: poids_lourds
     types: product
     parent: GPS
 
@@ -30,6 +30,6 @@
 
 - model: common.category
   fields:
-    name: randonnée
+    name: randonnee
     types: product
     parent: GPS

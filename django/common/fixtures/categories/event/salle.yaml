@@ -2,47 +2,47 @@
   fields:
     name: salle
     types: product
-    parent: évènement
+    parent: event
 
 - model: common.category
   fields:
-    name: salle de réception
+    name: salle_de_reception
     types: product
     parent: salle
 
 - model: common.category
   fields:
-    name: salle de séminaire
+    name: salle_de_seminaire
     types: product
     parent: salle
 
 - model: common.category
   fields:
-    name: salle de conférence
+    name: salle_de_conference
     types: product
     parent: salle
 
 - model: common.category
   fields:
-    name: salle d'exposition
+    name: exhibition_hall
     types: product
     parent: salle
 
 - model: common.category
   fields:
-    name: salle de danse
+    name: salle_de_danse
     types: product
     parent: salle
 
 - model: common.category
   fields:
-    name: salle atypique
+    name: salle_atypique
     types: product
     parent: salle
 
 - model: common.category
   fields:
-    name: salle des fêtes
+    name: salle_des_fetes
     types: product
     parent: salle
 
@@ -60,7 +60,7 @@
 
 - model: common.category
   fields:
-    name: discothèque
+    name: discotheque
     types: product
     parent: salle
 

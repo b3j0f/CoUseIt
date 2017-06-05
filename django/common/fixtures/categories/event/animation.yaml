@@ -2,7 +2,7 @@
   fields:
     name: animation
     types: product
-    parent: évènement
+    parent: event
 
 - model: common.category
   fields:
@@ -12,19 +12,19 @@
 
 - model: common.category
   fields:
-    name: jeu gonflable
+    name: jeu_gonflable
     types: product
     parent: animation
 
 - model: common.category
   fields:
-    name: machine à mousse
+    name: machine_à_mousse
     types: product
     parent: animation
 
 - model: common.category
   fields:
-    name: babyfoot humain
+    name: babyfoot_humain
     types: product
     parent: animation
 
@@ -36,7 +36,7 @@
 
 - model: common.category
   fields:
-    name: modèle
+    name: modele
     types: product
     parent: animation
 

@@ -12,18 +12,18 @@
 
 - model: common.category
   fields:
-    name: 2/3 pièces
+    name: 2_/_3_pieces
     types: product
     parent: appartement
 
 - model: common.category
   fields:
-    name: 4/5 pièces
+    name: 4_/_5_pieces
     types: product
     parent: appartement
 
 - model: common.category
   fields:
-    name: 5 pièces et +
+    name: 5_pieces_et_+
     types: product
     parent: appartement

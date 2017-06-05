@@ -2,11 +2,11 @@
   fields:
     name: mobilier
     types: product
-    parent: évènement
+    parent: event
 
 - model: common.category
   fields:
-    name: mobilier divers
+    name: mobilier_divers
     types: product
     parent: mobilier
 
@@ -24,7 +24,7 @@
 
 - model: common.category
   fields:
-    name: tente réception
+    name: tente_reception
     types: product
     parent: mobilier
 
@@ -54,13 +54,13 @@
 
 - model: common.category
   fields:
-    name: meuble jardin
+    name: meuble_jardin
     types: product
     parent: mobilier
 
 - model: common.category
   fields:
-    name: salon et foire
+    name: salon_/_foire
     types: product
     parent: mobilier
 
@@ -78,7 +78,7 @@
 
 - model: common.category
   fields:
-    name: revêtement
+    name: revetement
     types: product
     parent: mobilier
 
@@ -90,13 +90,13 @@
 
 - model: common.category
   fields:
-    name: tréteaux
+    name: treteaux
     types: product
     parent: mobilier
 
 - model: common.category
   fields:
-    name: chariot mobile
+    name: chariot_mobile
     types: product
     parent: mobilier
 

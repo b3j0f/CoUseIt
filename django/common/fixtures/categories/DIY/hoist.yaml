@@ -12,7 +12,7 @@
 
 - model: common.category
   fields:
-    name: cherry picker
+    name: cherry_picker
     types: product
     parent: hoist
 
@@ -24,7 +24,7 @@
 
 - model: common.category
   fields:
-    name: aerial lift truck
+    name: aerial_lift_truck
     types: product
     parent: hoist
 
@@ -42,6 +42,6 @@
 
 - model: common.category
   fields:
-    name: all-terrain telescope
+    name: all-terrain_telescope
     types: product
     parent: hoist

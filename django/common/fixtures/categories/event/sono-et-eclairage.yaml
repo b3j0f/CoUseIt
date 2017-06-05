@@ -1,131 +1,131 @@
 - model: common.category
   fields:
-    name: sono et éclairage
+    name: sono_/_eclairage
     types: product
-    parent: évènement
+    parent: event
 
 - model: common.category
   fields:
-    name: matériel sono
+    name: materiel_sono
     types: product
-    parent: sono et éclairage
+    parent: sono_/_eclairage
 
 - model: common.category
   fields:
-    name: matériel éclairage
+    name: materiel_eclairage
     types: product
-    parent: sono et éclairage
+    parent: sono_/_eclairage
 
 - model: common.category
   fields:
-    name: armoire électrique
+    name: armoire_electrique
     types: product
-    parent: sono et éclairage
+    parent: sono_/_eclairage
 
 - model: common.category
   fields:
     name: enceinte
     types: product
-    parent: sono et éclairage
+    parent: sono_/_eclairage
 
 - model: common.category
   fields:
     name: micro
     types: product
-    parent: sono et éclairage
+    parent: sono_/_eclairage
 
 - model: common.category
   fields:
-    name: effets spéciaux
+    name: effets_speciaux
     types: product
-    parent: sono et éclairage
+    parent: sono_/_eclairage
 
 - model: common.category
   fields:
-    name: matériel DJ
+    name: materiel_DJ
     types: product
-    parent: sono et éclairage
+    parent: sono_/_eclairage
 
 - model: common.category
   fields:
     name: spots
     types: product
-    parent: sono et éclairage
+    parent: sono_/_eclairage
 
 - model: common.category
   fields:
-    name: table de mixage
+    name: table_de_mixage
     types: product
-    parent: sono et éclairage
+    parent: sono_/_eclairage
 
 - model: common.category
   fields:
-    name: structure lumière
+    name: structure_lumiere
     types: product
-    parent: sono et éclairage
+    parent: sono_/_eclairage
 
 - model: common.category
   fields:
-    name: kits audio
+    name: kits_audio
     types: product
-    parent: sono et éclairage
+    parent: sono_/_eclairage
 
 - model: common.category
   fields:
     name: ampli
     types: product
-    parent: sono et éclairage
+    parent: sono_/_eclairage
 
 - model: common.category
   fields:
     name: stroboscope
     types: product
-    parent: sono et éclairage
+    parent: sono_/_eclairage
 
 - model: common.category
   fields:
-    name: boule à facettes
+    name: boule_à_facettes
     types: product
-    parent: sono et éclairage
+    parent: sono_/_eclairage
 
 - model: common.category
   fields:
-    name: karaoké
+    name: karaoke
     types: product
-    parent: sono et éclairage
+    parent: sono_/_eclairage
 
 - model: common.category
   fields:
-    name: lumière noire
+    name: lumiere_noire
     types: product
-    parent: sono et éclairage
+    parent: sono_/_eclairage
 
 - model: common.category
   fields:
-    name: guirlande lumineuse
+    name: guirlande_lumineuse
     types: product
-    parent: sono et éclairage
+    parent: sono_/_eclairage
 
 - model: common.category
   fields:
-    name: néons
+    name: neons
     types: product
-    parent: sono et éclairage
+    parent: sono_/_eclairage
 
 - model: common.category
   fields:
     name: talkie-walkie
     types: product
-    parent: sono et éclairage
+    parent: sono_/_eclairage
 
 - model: common.category
   fields:
     name: porte-voix
     types: product
-    parent: sono et éclairage
+    parent: sono_/_eclairage
 
 - model: common.category
   fields:
     name: tourne-disque
     types: product
-    parent: sono et éclairage
+    parent: sono_/_eclairage

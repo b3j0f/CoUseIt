@@ -2,23 +2,23 @@
   fields:
     name: cuisine
     types: product
-    parent: évènement
+    parent: event
 
 - model: common.category
   fields:
-    name: appareil à crêpes
+    name: appareil_à_crepes
     types: product
     parent: cuisine
 
 - model: common.category
   fields:
-    name: appareil à fondue
+    name: appareil_à_fondue
     types: product
     parent: cuisine
 
 - model: common.category
   fields:
-    name: appareil à raclette
+    name: appareil_à_raclette
     types: product
     parent: cuisine
 
@@ -48,7 +48,7 @@
 
 - model: common.category
   fields:
-    name: barbe à papa
+    name: barbe_à_papa
     types: product
     parent: cuisine
 
@@ -60,7 +60,7 @@
 
 - model: common.category
   fields:
-    name: corn flakes
+    name: corn_flakes
     types: product
     parent: cuisine
 
@@ -72,7 +72,7 @@
 
 - model: common.category
   fields:
-    name: réfrigérateur
+    name: refrigerateur
     types: product
     parent: cuisine
 
@@ -84,7 +84,7 @@
 
 - model: common.category
   fields:
-    name: tireuse à bière
+    name: tireuse_à_biere
     types: product
     parent: cuisine
 
@@ -96,7 +96,7 @@
 
 - model: common.category
   fields:
-    name: machine à glaces
+    name: machine_à_glaces
     types: product
     parent: cuisine
 
@@ -114,7 +114,7 @@
 
 - model: common.category
   fields:
-    name: congélateur
+    name: congelateur
     types: product
     parent: cuisine
 
@@ -126,6 +126,6 @@
 
 - model: common.category
   fields:
-    name: machine à glaçons
+    name: machine_à_glacons
     types: product
     parent: cuisine

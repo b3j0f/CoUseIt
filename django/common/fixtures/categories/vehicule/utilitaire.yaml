@@ -6,7 +6,7 @@
 
 - model: common.category
   fields:
-    name: camion benne
+    name: camion_benne
     types: product
     parent: utilitaire
 
@@ -24,7 +24,7 @@
 
 - model: common.category
   fields:
-    name: poids lourd
+    name: poids_lourd
     types: product
     parent: utilitaire
 
@@ -36,24 +36,24 @@
 
 - model: common.category
   fields:
-    name: véhicule frigorifique
+    name: vehicule_frigorifique
     types: product
     parent: utilitaire
 
 - model: common.category
   fields:
-    name: camion porte-voiture
+    name: camion_porte-voiture
     types: product
     parent: utilitaire
 
 - model: common.category
   fields:
-    name: sans permis
+    name: sans_permis
     types: product
     parent: utilitaire
 
 - model: common.category
   fields:
-    name: transformé
+    name: transforme
     types: product
     parent: utilitaire

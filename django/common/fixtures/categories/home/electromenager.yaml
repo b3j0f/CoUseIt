@@ -1,150 +1,161 @@
 - model: common.category
   fields:
-    name: électroménager
-    types: product
+    name: electromenager
+    types: product, stock
     parent: maison
 
 - model: common.category
   fields:
-    name: machine à café
+    name: machine_à_cafe
     types: product
-    parent: électroménager
+    parent: electromenager
 
 - model: common.category
   fields:
-    name: bouilloire électrique
+    name: bouilloire_electrique
     types: product
-    parent: électroménager
+    parent: electromenager
 
 - model: common.category
   fields:
     name: grille-pain
     types: product
-    parent: électroménager
+    parent: electromenager
 
 - model: common.category
   fields:
     name: gaufrier
     types: product
-    parent: électroménager
+    parent: electromenager
 
 - model: common.category
   fields:
-    name: appareil à raclette
+    name: appareil_à_raclette
     types: product
-    parent: électroménager
+    parent: electromenager
 
 - model: common.category
   fields:
-    name: appareil à fondue
+    name: appareil_à_fondue
     types: product
-    parent: électroménager
+    parent: electromenager
 
 - model: common.category
   fields:
     name: plancha
     types: product
-    parent: électroménager
+    parent: electromenager
 
 - model: common.category
   fields:
     name: barbecue
     types: product
-    parent: électroménager
+    parent: electromenager
 
 - model: common.category
   fields:
     name: robot cooking
     types: product
-    parent: électroménager
+    parent: electromenager
 
 - model: common.category
   fields:
     name: cuit-vapeur
     types: product
-    parent: électroménager
+    parent: electromenager
 
 - model: common.category
   fields:
     name: mixer
     types: product
-    parent: électroménager
+    parent: electromenager
 
 - model: common.category
   fields:
     name: centrifugeuse
     types: product
-    parent: électroménager
+    parent: electromenager
 
 - model: common.category
   fields:
     name: presse-agrumes
     types: product
-    parent: électroménager
+    parent: electromenager
 
 - model: common.category
   fields:
-    name: robot électroménager
+    name: robot_electromenager
     types: product
-    parent: électroménager
+    parent: electromenager
 
 - model: common.category
   fields:
-    name: plaque de cuisson
+    name: plaque_de_cuisson
     types: product
-    parent: électroménager
+    parent: electromenager
 
 - model: common.category
   fields:
     name: lave-linge
     types: product
-    parent: électroménager
+    parent: electromenager
 
 - model: common.category
   fields:
     name: lave-vaisselle
     types: product
-    parent: électroménager
+    parent: electromenager
 
 - model: common.category
   fields:
-    name: sèche-linge
+    name: seche-linge
     types: product
-    parent: électroménager
+    parent: electromenager
 
 - model: common.category
   fields:
-    name: nettoyeur vapeur
+    name: nettoyeur_vapeur
     types: product
-    parent: électroménager
+    parent: electromenager
 
 - model: common.category
   fields:
     name: aspirateur
     types: product
-    parent: électroménager
+    parent: electromenager
 
 - model: common.category
   fields:
-    name: aspirateur de table
+    name: aspirateur_de_table
     types: product
-    parent: électroménager
+    parent: electromenager
 
 - model: common.category
   fields:
-    name: centrale vapeur
+    name: centrale_vapeur
     types: product
-    parent: électroménager
+    parent: electromenager
 
 - model: common.category
   fields:
-    name: fer à repasser
+    name: fer_à_repasser
     types: product
-    parent: électroménager
+    parent: electromenager
 
 - model: common.category
   fields:
-    name: table à repasser
+    name: table_à_repasser
     types: product
-    parent: électroménager
+    parent: electromenager
 
+- model: common.category
+  fields:
+    name: fridge
+    types: product, stock
+    parent: electromenager
+
+- model: common.category
+  fields:
+    name: freezer
+    types: product, stock
+    parent: electromenager

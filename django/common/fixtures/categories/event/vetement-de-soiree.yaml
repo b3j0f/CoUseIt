@@ -1,53 +1,53 @@
 - model: common.category
   fields:
-    name: vêtement de soirée
+    name: evening_wear
     types: product
-    parent: évènement
+    parent: event
 
 - model: common.category
   fields:
-    name: déguisement
+    name: deguisement
     types: product
-    parent: vêtement de soirée
+    parent: evening_wear
 
 - model: common.category
   fields:
-    name: robe de soirée
+    name: robe_de_soiree
     types: product
-    parent: vêtement de soirée
+    parent: evening_wear
 
 - model: common.category
   fields:
-    name: robe de mariée
+    name: robe_de_mariee
     types: product
-    parent: vêtement de soirée
+    parent: evening_wear
 
 - model: common.category
   fields:
-    name: vêtement cérémonie
+    name: vetement_ceremonie
     types: product
-    parent: vêtement de soirée
+    parent: evening_wear
 
 - model: common.category
   fields:
     name: costume
     types: product
-    parent: vêtement de soirée
+    parent: evening_wear
 
 - model: common.category
   fields:
     name: smoking
     types: product
-    parent: vêtement de soirée
+    parent: evening_wear
 
 - model: common.category
   fields:
-    name: queue de pie
+    name: queue_de_pie
     types: product
-    parent: vêtement de soirée
+    parent: evening_wear
 
 - model: common.category
   fields:
-    name: haute couture
+    name: haute_couture
     types: product
-    parent: vêtement de soirée
+    parent: evening_wear

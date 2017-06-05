@@ -12,19 +12,19 @@
 
 - model: common.category
   fields:
-    name: tronçonneuse
+    name: chainsaw
     types: product
     parent: jardinage
 
 - model: common.category
   fields:
-    name: débroussailleuse
+    name: brushcutter
     types: product
     parent: jardinage
 
 - model: common.category
   fields:
-    name: souffleur à feuilles
+    name: leaf_blower
     types: product
     parent: jardinage
 
@@ -36,7 +36,7 @@
 
 - model: common.category
   fields:
-    name: tarière
+    name: auger
     types: product
     parent: jardinage
 
@@ -60,19 +60,19 @@
 
 - model: common.category
   fields:
-    name: pulvérisateur
+    name: sprayer
     types: product
     parent: jardinage
 
 - model: common.category
   fields:
-    name: équipement semoir
+    name: seeder_device
     types: product
     parent: jardinage
 
 - model: common.category
   fields:
-    name: tondeuse auto-portée
+    name: zero-turn_mower
     types: product
     parent: jardinage
 
@@ -96,6 +96,6 @@
 
 - model: common.category
   fields:
-    name: déserbeur thermique
+    name: thermal_weeder
     types: product
     parent: jardinage

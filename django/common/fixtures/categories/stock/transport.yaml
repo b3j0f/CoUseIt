@@ -1,0 +1,23 @@
+- model: common.category
+  fields:
+    name: transport
+    parent: stock
+    types: product, stock
+
+- model: common.category
+  fields:
+    name: parking
+    parent: transport
+    types: product, stock
+
+- model: common.category
+  fields:
+    name: airport
+    parent: transport
+    types: product, stock
+
+- model: common.category
+  fields:
+    name: port
+    parent: transport
+    types: product, stock

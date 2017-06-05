@@ -1,23 +1,23 @@
 - model: common.category
   fields:
-    name: camping car
+    name: camping_car
     types: product
     parent: vacance
 
 - model: common.category
   fields:
-    name: intégrale
+    name: integrale
     types: product
-    parent: camping car
+    parent: camping_car
 
 - model: common.category
   fields:
-    name: profilé
+    name: profile
     types: product
-    parent: camping car
+    parent: camping_car
 
 - model: common.category
   fields:
     name: capucine
     types: product
-    parent: camping car
+    parent: camping_car

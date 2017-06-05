@@ -147,7 +147,7 @@
                 <a href="/" class="brand-logo{% if page == 'home' %} active{% endif %}">
                     Co-Use It
                 </a>
-                <ul id="nav-lechangement" class="right hide-on-med-and-down">
+                <ul id="nav-couseit" class="right hide-on-med-and-down">
                     <li class="{% if action == 'give' %}active{% endif %} purple"><a href="/give/">Co-Buy It</a></li>
                     <li class="{% if action == 'share' %}active{% endif %} blue"><a href="/share/">Co-Share It</a></li>
                     <li class="{% if action == 'stock' %}active{% endif %} teal"><a href="/stock/">Co-Stock It</a></li>
@@ -213,13 +213,13 @@
                     <ul>
                         {% if page == 'search' %}
                         <li>
-                            <a href="/{{ action }}/edit" class="btn-floating btn-large red pulse">
+                            <a href="/{{ action }}/edit" class="btn-floating btn-large red pulse tooltipped" data-position="left" data-delay="50" data-tooltip="{% blocktrans %}Add {{ action }}{% endblocktrans %}">
                                 <i class="material-icons">add</i>
                             </a>
                         </li>
                         {% endif %}
                     </ul>
-                    <script src="https://liberapay.com/lechangement/widgets/receiving.js"></script>
+                    <script src="https://liberapay.com/couseit/widgets/receiving.js"></script>
                     <ul class="section table-of-contents">
                         {% block tableofcontents %}
                         {% endblock %}
@@ -267,7 +267,7 @@
         <div class="row">
             <div class="col l6 s12">
                 {% trans 'Give' %}
-                <script src="https://liberapay.com/lechangement/widgets/receiving.js"></script>
+                <script src="https://liberapay.com/couseit/widgets/receiving.js"></script>
                 <form name="newsletter" id="newsletter" action="/newsletter" method="post">
                     <div class="input-field col s8">
                         <i class="material-icons prefix">email</i>
@@ -292,11 +292,11 @@
                     </li>
                     <li>
                         <!-- Place this tag where you want the button to render. -->
-                        <a class="github-button" href="https://github.com/b3j0f/lechangement/subscription" data-style="mega" data-count-href="/b3j0f/lechangement/watchers" data-count-api="/repos/b3j0f/lechangement#subscribers_count" data-count-aria-label="# watchers on GitHub" aria-label="Watch b3j0f/lechangement on GitHub">{% trans 'Sources' %}</a>
+                        <a class="github-button" href="https://github.com/b3j0f/couseit/subscription" data-style="mega" data-count-href="/b3j0f/couseit/watchers" data-count-api="/repos/b3j0f/couseit#subscribers_count" data-count-aria-label="# watchers on GitHub" aria-label="Watch b3j0f/couseit on GitHub">{% trans 'Sources' %}</a>
                     </li>
                     <li>
                         <a class="twitter-follow-button"
-                        href="https://twitter.com/lechangement007"></a>
+                        href="https://twitter.com/couseit007"></a>
                     </li>
                     <li>
                         <g:follow href="https://plus.google.com/communities/114161877128649492848"></g:follow>

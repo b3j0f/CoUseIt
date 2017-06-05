@@ -1,47 +1,47 @@
 - model: common.category
   fields:
-    name: téléphone et PDA
+    name: telephone_/_PDA
     types: product
     parent: high-tech
 
 - model: common.category
   fields:
-    name: téléphone portable
+    name: telephone_portable
     types: product
-    parent: téléphone et PDA
+    parent: telephone_/_PDA
 
 - model: common.category
   fields:
-    name: téléphone satellite
+    name: telephone_satellite
     types: product
-    parent: téléphone et PDA
+    parent: telephone_/_PDA
 
 - model: common.category
   fields:
-    name: assistant personnel
+    name: assistant_personnel
     types: product
-    parent: téléphone et PDA
+    parent: telephone_/_PDA
 
 - model: common.category
   fields:
     name: talkie-walkie
     types: product
-    parent: téléphone et PDA
+    parent: telephone_/_PDA
 
 - model: common.category
   fields:
-    name: chargeur téléphone
+    name: chargeur_telephone
     types: product
-    parent: téléphone et PDA
+    parent: telephone_/_PDA
 
 - model: common.category
   fields:
     name: fax
     types: product
-    parent: téléphone et PDA
+    parent: telephone_/_PDA
 
 - model: common.category
   fields:
-    name: voix sur IP
+    name: voix_sur_IP
     types: product
-    parent: téléphone et PDA
+    parent: telephone_/_PDA

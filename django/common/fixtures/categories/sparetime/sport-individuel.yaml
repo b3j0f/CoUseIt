@@ -1,6 +1,6 @@
 - model: common.category
   fields:
-    name: sport individuel
+    name: sport_individuel
     types: product
     parent: loisir
 
@@ -8,106 +8,106 @@
   fields:
     name: fitness
     types: product
-    parent: sport individuel
+    parent: sport_individuel
 
 - model: common.category
   fields:
     name: musculation
     types: product
-    parent: sport individuel
+    parent: sport_individuel
 
 - model: common.category
   fields:
     name: tennis
     types: product
-    parent: sport individuel
+    parent: sport_individuel
 
 - model: common.category
   fields:
     name: ping-pong
     types: product
-    parent: sport individuel
+    parent: sport_individuel
 
 - model: common.category
   fields:
-    name: table ping-pong
+    name: table_ping-pong
     types: product
-    parent: sport individuel
+    parent: sport_individuel
 
 - model: common.category
   fields:
     name: golf
     types: product
-    parent: sport individuel
+    parent: sport_individuel
 
 - model: common.category
   fields:
     name: boxe
     types: product
-    parent: sport individuel
+    parent: sport_individuel
 
 - model: common.category
   fields:
-    name: arts martiaux
+    name: arts_martiaux
     types: product
-    parent: sport individuel
+    parent: sport_individuel
 
 - model: common.category
   fields:
-    name: sport de combat
+    name: sport_de_combat
     types: product
-    parent: sport individuel
+    parent: sport_individuel
 
 - model: common.category
   fields:
-    name: sport moteur
+    name: sport_moteur
     types: product
-    parent: sport individuel
+    parent: sport_individuel
 
 - model: common.category
   fields:
-    name: vélo d'intérieur
+    name: indoor_cycling
     types: product
-    parent: sport individuel
+    parent: sport_individuel
 
 - model: common.category
   fields:
-    name: plongée
+    name: plongee
     types: product
-    parent: sport individuel
+    parent: sport_individuel
 
 - model: common.category
   fields:
     name: badmington
     types: product
-    parent: sport individuel
+    parent: sport_individuel
 
 - model: common.category
   fields:
     name: danse
     types: product
-    parent: sport individuel
+    parent: sport_individuel
 
 - model: common.category
   fields:
     name: raquette
     types: product
-    parent: sport individuel
+    parent: sport_individuel
 
 - model: common.category
   fields:
     name: squash
     types: product
-    parent: sport individuel
+    parent: sport_individuel
 
 - model: common.category
   fields:
     name: gymnastique
     types: product
-    parent: sport individuel
+    parent: sport_individuel
 
 - model: common.category
   fields:
-    name: aérobic
+    name: aerobic
     types: product
-    parent: sport individuel
+    parent: sport_individuel

@@ -1,65 +1,65 @@
 - model: common.category
   fields:
-    name: soudure/plomberie
+    name: soudure_/_plomberie
     types: product
     parent: DIY
 
 - model: common.category
   fields:
-    name: détartrage
+    name: detartrage
     types: product
-    parent: soudure/plomberie
+    parent: soudure_/_plomberie
 
 - model: common.category
   fields:
-    name: groupe de soudure
+    name: groupe_de_soudure
     types: product
-    parent: soudure/plomberie
+    parent: soudure_/_plomberie
 
 - model: common.category
   fields:
     name: cintreuse
     types: product
-    parent: soudure/plomberie
+    parent: soudure_/_plomberie
 
 - model: common.category
   fields:
-    name: obturateur canalisation
+    name: obturateur_canalisation
     types: product
-    parent: soudure/plomberie
+    parent: soudure_/_plomberie
 
 - model: common.category
   fields:
     name: chalumeau
     types: product
-    parent: soudure/plomberie
+    parent: soudure_/_plomberie
 
 - model: common.category
   fields:
-    name: gèle-tube
+    name: gele-tube
     types: product
-    parent: soudure/plomberie
+    parent: soudure_/_plomberie
 
 - model: common.category
   fields:
-    name: plieuse à zinc
+    name: plieuse_à_zinc
     types: product
-    parent: soudure/plomberie
+    parent: soudure_/_plomberie
 
 - model: common.category
   fields:
     name: taillant
     types: product
-    parent: soudure/plomberie
+    parent: soudure_/_plomberie
 
 - model: common.category
   fields:
     name: zingueur
     types: product
-    parent: soudure/plomberie
+    parent: soudure_/_plomberie
 
 - model: common.category
   fields:
-    name: scie abrasive
+    name: scie_abrasive
     types: product
-    parent: soudure/plomberie
+    parent: soudure_/_plomberie

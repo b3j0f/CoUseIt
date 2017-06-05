@@ -1,6 +1,6 @@
 - model: common.category
   fields:
-    name: sport d'équipe
+    name: team_sport
     types: product
     parent: loisir
 
@@ -8,40 +8,40 @@
   fields:
     name: football
     types: product
-    parent: sport d'équipe
+    parent: team_sport
 
 - model: common.category
   fields:
     name: rugby
     types: product
-    parent: sport d'équipe
+    parent: team_sport
 
 - model: common.category
   fields:
     name: basketball
     types: product
-    parent: sport d'équipe
+    parent: team_sport
 
 - model: common.category
   fields:
     name: volleyball
     types: product
-    parent: sport d'équipe
+    parent: team_sport
 
 - model: common.category
   fields:
     name: baseball
     types: product
-    parent: sport d'équipe
+    parent: team_sport
 
 - model: common.category
   fields:
     name: paintball
     types: product
-    parent: sport d'équipe
+    parent: team_sport
 
 - model: common.category
   fields:
     name: airsoft
     types: product
-    parent: sport d'équipe
+    parent: team_sport

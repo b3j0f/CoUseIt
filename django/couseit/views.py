@@ -19,13 +19,39 @@ from uuid import uuid4 as uuid
 
 from collections import namedtuple
 
-CatPropValues = namedtuple('CatPropValues', ('name', 'propvalues'))
-
 _MODELSBYACTION = {
     'give': Give,
     'share': Share,
     'stock': Stock
 }
+
+CatPropValues = namedtuple(
+    'CatPropValues', ('name', 'propvalues', 'display_name', 'children')
+)
+
+
+def getcategories(categories, types=None):
+    """Get categories."""
+    result = []
+
+    for category in categories:
+        propvalues = category.allpropertieswvalues
+
+        if types is None:
+            query = category.children.all()
+
+        else:
+            query = category.children.filter(types__contains=types)
+
+        children = getcategories(categories=query, types=types)
+
+        result.append(
+            CatPropValues(
+                category.name, propvalues, category.display_name, children
+            )
+        )
+
+    return result
 
 
 def requirelogin(func=None):
@@ -56,20 +82,14 @@ def basecontext(request, page='home', action=None, tableofcontents=False):
     accountcount = Account.objects.count()
 
     categories = []
-    catpropvalues = []
 
-    topcategories = []
-    lowcategories = []
+    commontype = 'stock' if action == 'stock' else 'product'
 
-    for category in Category.objects.all():
-        categories.append(category)
-        if category.parent is None:
-            propvalues = category.allpropertieswvalues
-            catpropvalues.append(CatPropValues(category.name, propvalues))
-            topcategories.append(category)
+    query = Category.objects.filter(
+        types__contains=commontype, parent__isnull=True
+    )
 
-        elif category.children.count() == 0:
-            lowcategories.append(category)
+    categories = getcategories(categories=query, types=commontype)
 
     if 'next' in request.GET:
         nextpage = request.GET['next']
@@ -79,17 +99,13 @@ def basecontext(request, page='home', action=None, tableofcontents=False):
         if action:
             nextpage = '/{0}{1}'.format(action, nextpage)
 
-    commontype = 'stock' if action == 'stock' else 'product'
-
     result = {
         'action': action, 'page': page, 'next': nextpage, 'api': settings.API,
         'commontype': commontype,
         'productcount': productcount, 'stockcount': stockcount,
-        'accountcount': accountcount, 'catpropvalues': catpropvalues,
+        'accountcount': accountcount,
         'tableofcontents': tableofcontents,
-        'categories': list(categories),
-        'topcategories': topcategories,
-        'lowcategories': lowcategories,
+        'categories': categories,
         'DEBUG': settings.DEBUG
     }
 

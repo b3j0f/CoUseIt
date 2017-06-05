@@ -36,16 +36,26 @@
 				</div>
 
 				<div id="new-common" class="col s12">
+
 					<div class="row">
+
 						<div class="col l12">
+
 							<div class="row">
-								<div class="col s12 center" id="categories"></div>
+
+								<div class="col s12 center">
+									{% include 'categories.html' %}
+								</div>
 
 								<div class="col s12 input-field">
 									<i class="material-icons prefix">title</i>
 									<input type="text" name="name" id="name" onchange="updateProperty('name')" value="{{ common.id }}" class="maxlength" data-length="50" />
 									<label for="name">{% trans 'Name' %}</label>
 								</div>
+
+								{% if common %}
+								<div class="col s12">{% blocktrans %}Created the {{ common.created }}{% endblocktrans %}
+								{% endif %}
 
 								<div class="col s2 input-field">
 									<input id="quantity" type="number" min="1" value="{% if common.quantity %}{{ common.quantity }}{% else %}1{% endif %}" name="quantity" />
@@ -63,8 +73,13 @@
 								</div>
 
 								<div class="col s12 input-field">
-									<div class="chips" id="owners"></div>
+									<div class="chips tooltipped" id="owners" data-tooltip="{% blocktrans %}Users able to modify this {{ commontype }}{% endblocktrans %}"></div>
 									<label for="owners">{% trans 'Owners' %}</label>
+								</div>
+
+								<div class="col s12 input-field">
+									<div class="chips tooltipped" id="suppliers" data-tooltip="{% blocktrans %}Users able to modify this {{ commontype }}{% endblocktrans %}"></div>
+									<label for="supplyers">{% trans 'Supplyers' %}</label>
 								</div>
 
 								<div class="col s10 input-field">

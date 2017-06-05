@@ -1,6 +1,6 @@
 - model: common.category
   fields:
-    name: console de jeu
+    name: console_de_jeu
     types: product
     parent: high-tech
 
@@ -8,40 +8,40 @@
   fields:
     name: PC
     types: product
-    parent: console de jeu
+    parent: console_de_jeu
 
 - model: common.category
   fields:
     name: Mac
     types: product
-    parent: console de jeu
+    parent: console_de_jeu
 
 - model: common.category
   fields:
     name: SNK
     types: product
-    parent: console de jeu
+    parent: console_de_jeu
 
 - model: common.category
   fields:
-    name: Séga
+    name: Sega
     types: product
-    parent: console de jeu
+    parent: console_de_jeu
 
 - model: common.category
   fields:
     name: Sony
     types: product
-    parent: console de jeu
+    parent: console_de_jeu
 
 - model: common.category
   fields:
     name: Nintendo
     types: product
-    parent: console de jeu
+    parent: console_de_jeu
 
 - model: common.category
   fields:
     name: Microsoft
     types: product
-    parent: console de jeu
+    parent: console_de_jeu

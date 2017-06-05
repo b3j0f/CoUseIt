@@ -12,7 +12,7 @@
 
 - model: common.category
   fields:
-    name: tronçonneuse
+    name: tronconneuse
     types: product
     parent: outil
 
@@ -42,7 +42,7 @@
 
 - model: common.category
   fields:
-    name: découpeuse
+    name: decoupeuse
     types: product
     parent: outil
 
@@ -54,7 +54,7 @@
 
 - model: common.category
   fields:
-    name: maçonnerie
+    name: maconnerie
     types: product
     parent: outil
 
@@ -78,19 +78,19 @@
 
 - model: common.category
   fields:
-    name: visseuse-dévisseuse
+    name: visseuse-devisseuse
     types: product
     parent: outil
 
 - model: common.category
   fields:
-    name: clé et jeu de clé
+    name: cle_/_jeu_de_cle
     types: product
     parent: outil
 
 - model: common.category
   fields:
-    name: établi
+    name: etabli
     types: product
     parent: outil
 

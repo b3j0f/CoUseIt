@@ -1,59 +1,59 @@
 - model: common.category
   fields:
-    name: accessoire maison
+    name: accessoire_maison
     types: product
     parent: maison
 
 - model: common.category
   fields:
-    name: éveil
+    name: eveil
     types: product
-    parent: accessoire maison
+    parent: accessoire_maison
 
 - model: common.category
   fields:
     name: bain
     types: product
-    parent: accessoire maison
+    parent: accessoire_maison
 
 - model: common.category
   fields:
     name: toilette
     types: product
-    parent: accessoire maison
+    parent: accessoire_maison
 
 - model: common.category
   fields:
-    name: linge lit
+    name: linge_lit
     types: product
-    parent: accessoire maison
+    parent: accessoire_maison
 
 - model: common.category
   fields:
-    name: linge bain
+    name: linge_bain
     types: product
-    parent: accessoire maison
+    parent: accessoire_maison
 
 - model: common.category
   fields:
     name: jouets
     types: product
-    parent: accessoire maison
+    parent: accessoire_maison
 
 - model: common.category
   fields:
     name: vaisselle
     types: product
-    parent: accessoire maison
+    parent: accessoire_maison
 
 - model: common.category
   fields:
-    name: tente de plage
+    name: tente_de_plage
     types: product
-    parent: accessoire maison
+    parent: accessoire_maison
 
 - model: common.category
   fields:
-    name: coussin d'allaitement
+    name: breastfeeding_cushion
     types: product
-    parent: accessoire maison
+    parent: accessoire_maison

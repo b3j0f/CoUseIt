@@ -6,13 +6,13 @@
 
 - model: common.category
   fields:
-    name: bateau à moteur
+    name: bateau_à_moteur
     types: product
     parent: bateau
 
 - model: common.category
   fields:
-    name: canoe kayak
+    name: canoe_kayak
     types: product
     parent: bateau
 
@@ -24,13 +24,13 @@
 
 - model: common.category
   fields:
-    name: scooter des mers
+    name: scooter_des_mers
     types: product
     parent: bateau
 
 - model: common.category
   fields:
-    name: péniche
+    name: peniche
     types: product
     parent: bateau
 
@@ -42,7 +42,7 @@
 
 - model: common.category
   fields:
-    name: bateau électrique
+    name: bateau_electrique
     types: product
     parent: bateau
 
@@ -60,12 +60,12 @@
 
 - model: common.category
   fields:
-    name: pédalo
+    name: pedalo
     types: product
     parent: bateau
 
 - model: common.category
   fields:
-    name: char à voile
+    name: char_à_voile
     types: product
     parent: bateau

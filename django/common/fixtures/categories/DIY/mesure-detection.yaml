@@ -1,6 +1,6 @@
 - model: common.category
   fields:
-    name: mesure/détection
+    name: mesure_/_detection
     types: product
     parent: DIY
 
@@ -8,40 +8,40 @@
   fields:
     name: laser
     types: product
-    parent: mesure/détection
+    parent: mesure_/_detection
 
 - model: common.category
   fields:
-    name: détecteurs
+    name: detecteurs
     types: product
-    parent: mesure/détection
+    parent: mesure_/_detection
 
 - model: common.category
   fields:
     name: multifaisceaux
     types: product
-    parent: mesure/détection
+    parent: mesure_/_detection
 
 - model: common.category
   fields:
-    name: compressiomètre
+    name: compressiometre
     types: product
-    parent: mesure/détection
+    parent: mesure_/_detection
 
 - model: common.category
   fields:
-    name: théodolite
+    name: theodolite
     types: product
-    parent: mesure/détection
+    parent: mesure_/_detection
 
 - model: common.category
   fields:
-    name: sonomètre
+    name: sonometre
     types: product
-    parent: mesure/détection
+    parent: mesure_/_detection
 
 - model: common.category
   fields:
-    name: hygromètre
+    name: hygrometre
     types: product
-    parent: mesure/détection
+    parent: mesure_/_detection

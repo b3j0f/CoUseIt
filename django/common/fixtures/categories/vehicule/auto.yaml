@@ -36,13 +36,13 @@
 
 - model: common.category
   fields:
-    name: évènement
+    name: evenement
     types: product
     parent: auto
 
 - model: common.category
   fields:
-    name: avec chauffeur
+    name: avec_chauffeur
     types: product
     parent: auto
 

@@ -1,0 +1,23 @@
+- model: common.category
+  fields:
+    name: compartment
+    parent: stock
+    types: product, stock
+
+- model: common.category
+  fields:
+    name: cellar
+    parent: compartment
+    types: product, stock
+
+- model: common.category
+  fields:
+    name: warehouse
+    parent: compartment
+    types: product, stock
+
+- model: common.category
+  fields:
+    name: attic
+    parent: compartment
+    types: product, stock

@@ -12,7 +12,7 @@
 
 - model: common.category
   fields:
-    name: lève-matériaux
+    name: material-lift
     types: product
     parent: manutention
 

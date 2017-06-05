@@ -1,89 +1,89 @@
 - model: common.category
   fields:
-    name: soins du corps
+    name: soins_du_corps
     types: product
     parent: maison
 
 - model: common.category
   fields:
-    name: épilateur
+    name: epilateur
     types: product
-    parent: soins du corps
+    parent: soins_du_corps
 
 - model: common.category
   fields:
-    name: rasoir électrique
+    name: rasoir_electrique
     types: product
-    parent: soins du corps
+    parent: soins_du_corps
 
 - model: common.category
   fields:
     name: lisseur
     types: product
-    parent: soins du corps
+    parent: soins_du_corps
 
 - model: common.category
   fields:
-    name: fer à friser
+    name: fer_à_friser
     types: product
-    parent: soins du corps
+    parent: soins_du_corps
 
 - model: common.category
   fields:
     name: multistyler
     types: product
-    parent: soins du corps
+    parent: soins_du_corps
 
 - model: common.category
   fields:
-    name: sèche cheveux
+    name: seche_cheveux
     types: product
-    parent: soins du corps
+    parent: soins_du_corps
 
 - model: common.category
   fields:
-    name: tondeuse cheveux
+    name: tondeuse_cheveux
     types: product
-    parent: soins du corps
+    parent: soins_du_corps
 
 - model: common.category
   fields:
-    name: pèse-personne
+    name: pese-personne
     types: product
-    parent: soins du corps
+    parent: soins_du_corps
 
 - model: common.category
   fields:
     name: hydromasseur
     types: product
-    parent: soins du corps
+    parent: soins_du_corps
 
 - model: common.category
   fields:
-    name: ceinture fitness
+    name: ceinture_fitness
     types: product
-    parent: soins du corps
+    parent: soins_du_corps
 
 - model: common.category
   fields:
-    name: pédiluve
+    name: pediluve
     types: product
-    parent: soins du corps
+    parent: soins_du_corps
 
 - model: common.category
   fields:
-    name: fauteuil massant
+    name: fauteuil_massant
     types: product
-    parent: soins du corps
+    parent: soins_du_corps
 
 - model: common.category
   fields:
-    name: spa gonflable
+    name: spa_gonflable
     types: product
-    parent: soins du corps
+    parent: soins_du_corps
 
 - model: common.category
   fields:
-    name: table de massage
+    name: table_de_massage
     types: product
-    parent: soins du corps
+    parent: soins_du_corps

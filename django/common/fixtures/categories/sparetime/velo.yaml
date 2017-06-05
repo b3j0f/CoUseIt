@@ -1,59 +1,59 @@
 - model: common.category
   fields:
-    name: vélo
+    name: velo
     types: product
     parent: loisir
 
 - model: common.category
   fields:
-    name: accessoires cyclisme
+    name: accessoires_cyclisme
     types: product
-    parent: vélo
+    parent: velo
 
 - model: common.category
   fields:
     name: VTT
     types: product
-    parent: vélo
+    parent: velo
 
 - model: common.category
   fields:
     name: VTC
     types: product
-    parent: vélo
+    parent: velo
 
 - model: common.category
   fields:
-    name: vélo de course
+    name: velo_de_course
     types: product
-    parent: vélo
+    parent: velo
 
 - model: common.category
   fields:
-    name: vélo de ville
+    name: velo_de_ville
     types: product
-    parent: vélo
+    parent: velo
 
 - model: common.category
   fields:
-    name: vélo électrique
+    name: velo_electrique
     types: product
-    parent: vélo
+    parent: velo
 
 - model: common.category
   fields:
     name: tandem
     types: product
-    parent: vélo
+    parent: velo
 
 - model: common.category
   fields:
     name: tricycle
     types: product
-    parent: vélo
+    parent: velo
 
 - model: common.category
   fields:
     name: BMX
     types: product
-    parent: vélo
+    parent: velo

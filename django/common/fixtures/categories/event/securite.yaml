@@ -1,53 +1,53 @@
 - model: common.category
   fields:
-    name: sécurité
+    name: securite
     types: product
-    parent: évènement
+    parent: event
 
 - model: common.category
   fields:
-    name: équipement sécurité
+    name: equipement_securite
     types: product
-    parent: sécurité
+    parent: securite
 
 - model: common.category
   fields:
-    name: barrière
+    name: barriere
     types: product
-    parent: sécurité
+    parent: securite
 
 - model: common.category
   fields:
     name: signalsation
     types: product
-    parent: sécurité
+    parent: securite
 
 - model: common.category
   fields:
     name: extincteur
     types: product
-    parent: sécurité
+    parent: securite
 
 - model: common.category
   fields:
-    name: système d'alarme
+    name: alarm_system
     types: product
-    parent: sécurité
+    parent: securite
 
 - model: common.category
   fields:
-    name: caméra de surveillance
+    name: security_camera
     types: product
-    parent: sécurité
+    parent: securite
 
 - model: common.category
   fields:
-    name: détecteur de fumée
+    name: detecteur_de_fumee
     types: product
-    parent: sécurité
+    parent: securite
 
 - model: common.category
   fields:
-    name: file d'attente
+    name: queue
     types: product
-    parent: sécurité
+    parent: securite

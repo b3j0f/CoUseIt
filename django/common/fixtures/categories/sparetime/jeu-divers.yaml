@@ -1,161 +1,161 @@
 - model: common.category
   fields:
-    name: jeu divers
+    name: jeu_divers
     types: product
     parent: loisir
 
 - model: common.category
   fields:
-    name: jeux de société
+    name: jeux_de_societe
     types: product
-    parent: jeu divers
+    parent: jeu_divers
 
 - model: common.category
   fields:
-    name: jeux d'extérieur
+    name: outside_games
     types: product
-    parent: jeu divers
+    parent: jeu_divers
 
 - model: common.category
   fields:
-    name: jeux électronique
+    name: jeux_electronique
     types: product
-    parent: jeu divers
+    parent: jeu_divers
 
 - model: common.category
   fields:
     name: casino
     types: product
-    parent: jeu divers
+    parent: jeu_divers
 
 - model: common.category
   fields:
-    name: machines à sous
+    name: machines_à_sous
     types: product
-    parent: jeu divers
+    parent: jeu_divers
 
 - model: common.category
   fields:
     name: poker
     types: product
-    parent: jeu divers
+    parent: jeu_divers
 
 - model: common.category
   fields:
     name: billard
     types: product
-    parent: jeu divers
+    parent: jeu_divers
 
 - model: common.category
   fields:
     name: baby-foot
     types: product
-    parent: jeu divers
+    parent: jeu_divers
 
 - model: common.category
   fields:
     name: flipper
     types: product
-    parent: jeu divers
+    parent: jeu_divers
 
 - model: common.category
   fields:
     name: kicker
     types: product
-    parent: jeu divers
+    parent: jeu_divers
 
 - model: common.category
   fields:
     name: arcade
     types: product
-    parent: jeu divers
+    parent: jeu_divers
 
 - model: common.category
   fields:
-    name: flèches
+    name: fleches
     types: product
-    parent: jeu divers
+    parent: jeu_divers
 
 - model: common.category
   fields:
     name: cible
     types: product
-    parent: jeu divers
+    parent: jeu_divers
 
 - model: common.category
   fields:
     name: scrapbooking
     types: product
-    parent: jeu divers
+    parent: jeu_divers
 
 - model: common.category
   fields:
-    name: pétanque
+    name: petanque
     types: product
-    parent: jeu divers
+    parent: jeu_divers
 
 - model: common.category
   fields:
     name: puzzle
     types: product
-    parent: jeu divers
+    parent: jeu_divers
 
 - model: common.category
   fields:
-    name: légo
+    name: lego
     types: product
-    parent: jeu divers
+    parent: jeu_divers
 
 - model: common.category
   fields:
     name: playmobil
     types: product
-    parent: jeu divers
+    parent: jeu_divers
 
 - model: common.category
   fields:
     name: meccano
     types: product
-    parent: jeu divers
+    parent: jeu_divers
 
 - model: common.category
   fields:
-    name: poupée
+    name: poupee
     types: product
-    parent: jeu divers
+    parent: jeu_divers
 
 - model: common.category
   fields:
     name: marionnette
     types: product
-    parent: jeu divers
+    parent: jeu_divers
 
 - model: common.category
   fields:
     name: loto
     types: product
-    parent: jeu divers
+    parent: jeu_divers
 
 - model: common.category
   fields:
-    name: circuit électrique
+    name: circuit_electrique
     types: product
-    parent: jeu divers
+    parent: jeu_divers
 
 - model: common.category
   fields:
-    name: objet téléguidé
+    name: objet_teleguide
     types: product
-    parent: jeu divers
+    parent: jeu_divers
 
 - model: common.category
   fields:
-    name: modélisme
+    name: modelisme
     types: product
-    parent: jeu divers
+    parent: jeu_divers
 
 - model: common.category
   fields:
-    name: tir à l'arc
+    name: archery
     types: product
-    parent: jeu divers
+    parent: jeu_divers

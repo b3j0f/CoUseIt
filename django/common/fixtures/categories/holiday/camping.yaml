@@ -18,7 +18,7 @@
 
 - model: common.category
   fields:
-    name: caravane résidentielle
+    name: caravane_residentielle
     types: product
     parent: camping
 

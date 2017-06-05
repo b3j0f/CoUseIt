@@ -65,7 +65,7 @@ var common = {
     professional: {% if common.professional %}true{% else %}false{% endif %}
 };
 
-var owner_material_chip = {
+var owners_material_chip = {
     placeholder: '{% trans '+pseudo' %}',
     secondaryPlaceholder: '{% trans '+pseudo' %}',
     data: [],
@@ -80,6 +80,30 @@ var owner_material_chip = {
     }
 };
 
+var supplyers_material_chip = {
+    placeholder: '{% trans '+pseudo' %}',
+    secondaryPlaceholder: '{% trans '+pseudo' %}',
+    data: [],
+    autocompleteOptions: {
+        data: {
+            {% for account in accounts %}
+            '{{ account.user.name }}': '{{ account.avatar.furl }}'
+            {% endfor %}
+        },
+        limit: Infinity,
+        minLength: 1
+    },
+    data: [
+        {% for supplyer in common.supplyers %}
+        {
+            tag: '{{ supplyer.user.username }}',
+            image: '{{ supplyer.avatar.furl }}',
+            id: {{ supplyer.id }}
+        },
+        {% endfor %}
+    ]
+};
+
 {% if common %}
 $('#owners').material_chip({
     placeholder: 'Entrez un pseudo',
@@ -89,7 +113,7 @@ $('#owners').material_chip({
         {% if owner.id != user.id %}
         {
             tag: '{{ owner.pseudo }}',
-            image: '{{ owner.media.url }}',
+            image: '{{ owner.avatar.furl }}',
             id: {{ owner.id }}
         },
         {% endif %}
@@ -98,7 +122,7 @@ $('#owners').material_chip({
     autocompleteOptions: {
       data: {
         {% for user in users %}
-        '{{ user.pseudo }}': '{{ user.media.url }}',
+        '{{ user.pseudo }}': '{{ user.avatar.furl }}',
         {% endfor %}
       },
       limit: Infinity,

@@ -84,6 +84,10 @@ fixtures:
 	$(LOADDATA) categories/event/sono-et-eclairage
 	$(LOADDATA) categories/event/vetement-de-soiree
 
+	$(LOADDATA) categories/stock/parent
+	$(LOADDATA) categories/stock/compartment
+	$(LOADDATA) categories/stock/transport
+
 	$(LOADDATA) status
 	$(LOADDATA) properties
 
