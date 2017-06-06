@@ -55,8 +55,19 @@ INSTALLED_APPS = [
     'rest_framework',
     'address',
     'account',
-    'common'
+    'common',
+    'raven.contrib.django.raven_compat'
 ]
+
+RAVEN_CONFIG = {
+    'dsn': 'https://{0}@sentry.io/{1}'.format(
+        '9d8882c0cec2403bb17ebaafae8dcbec:b8ae9f026d344ea39aa5c39592b68549',
+        '100956'
+    ),
+    # If you are using git, you can also automatically configure the
+    # release based on the git info.
+    # 'release': raven.fetch_git_sha(os.path.dirname(os.pardir)),
+}
 
 SITE_ID = 1
 
@@ -152,7 +163,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 # reCaptcha
-reCAPTCHA_SITE_KEY = '6Ld9dA4UAAAAADMvh_ZnhfJp4P2hNUgE_fcSdDZt'
+reCAPTCHA_SITE_KEY = '6LeFSCQUAAAAADrckBEVzYASaRt2Epjgjsit2ZuV'
 reCAPTCHA_SECRET_KEY = os.getenv('reCAPTCHA_SECRET_KEY', '')
 
 # Authentication system

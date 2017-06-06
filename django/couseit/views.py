@@ -13,11 +13,13 @@ from common.models import (
     Product, Using, Stat, Category, Stock, Give, Share
 )
 
-from .utils import sendemail
+from .utils import sendemail, getclientip
 
 from uuid import uuid4 as uuid
 
 from collections import namedtuple
+
+import requests
 
 _MODELSBYACTION = {
     'give': Give,
@@ -104,7 +106,7 @@ def basecontext(request, page='home', action=None, tableofcontents=False):
         'commontype': commontype,
         'productcount': productcount, 'stockcount': stockcount,
         'accountcount': accountcount,
-        'tableofcontents': tableofcontents,
+        'tableofcontents': tableofcontents, 'errors': [], 'successes': [],
         'categories': categories,
         'DEBUG': settings.DEBUG
     }
@@ -145,7 +147,7 @@ def loginview(request):
                 user = authenticate(username=user.username, password=password)
 
                 if user is None:
-                    context['errors'] = ['Mauvais mot de passe !']
+                    context['errors'] += ['Mauvais mot de passe !']
                     context['csrf_token'] = request.POST['csrfmiddlewaretoken']
                     context['email'] = email
                     user = None
@@ -182,7 +184,7 @@ def resetpwdview(request):
 
         email = request.GET.get('email', request.POST.get('email'))
         if email is None:
-            context['errors'] = ['Email manquant !']
+            context['errors'] += ['Email manquant !']
             context['page'] = 'home'
             result = render(request, 'home.html', context=context)
 
@@ -193,7 +195,7 @@ def resetpwdview(request):
                 user = User.objects.get(email=email)
 
             except User.DoesNotExist:
-                context['errors'] = [
+                context['errors'] += [
                     'Email {0} non enregistré !'.format(email)
                 ]
                 context['page'] = 'home'
@@ -221,7 +223,7 @@ def resetpwdview(request):
                     )
                     sendemail(subject, msg, html, email)
 
-                    context['successes'] = [
+                    context['successes'] += [
                         'Changement de mot de passe envoyé !'.format(email)
                     ]
                     result = render(request, 'resetpwd.html', context=context)
@@ -241,7 +243,7 @@ def resetpwdview(request):
                             'django.contrib.auth.backends.ModelBackend'
                         )
 
-                        context['successes'] = ['Mot de passe changé !']
+                        context['successes'] += ['Mot de passe changé !']
                         context['page'] = 'home'
                         result = rendernextpage(request, context=context)
 
@@ -298,6 +300,22 @@ def editview(request, action=None):
     context = appcontext(
         request, page='edit', action=action, tableofcontents=True
     )
+
+    if request.method == 'POST':
+        response = requests.post(
+            url='https://www.google.com/recaptcha/api/siteverify',
+            secret=settings.reCAPTCHA_SECRET_KEY,
+            remoteip=getclientip(request),
+            response=request.POST['g-recaptcha-response']
+        )
+        if response['success']:
+            pass  # TODO
+
+        else:
+            context['errors'] += [
+                'Veuillez ne pas utiliser de robot'
+            ]
+
     return render(request, 'edit.html', context=context)
 
 
