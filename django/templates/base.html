@@ -89,6 +89,9 @@
     <!-- local -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
 
+    <!-- javascript catalogue -->
+    <script type="text/javascript" src="{% url 'javascript-catalog' %}"></script>
+
     {% if page %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/' %}{{ page }}.css" />
     {% endif %}

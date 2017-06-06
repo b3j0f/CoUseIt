@@ -6,7 +6,7 @@ LOADDATA := $(DJANGO) loaddata
 PYTHON := python2.7
 
 .PHONY: all
-all: migrations migrate fixtures
+all: migrations migrate fixtures lang
 
 .PHONY: migrations
 migrations:
@@ -128,3 +128,11 @@ clean:
 .PHONY: clean-hard
 clean-hard: clean
 	rm -rf */migrations/0* ; $(DJANGO) dumpdata > dumped ; $(DJANGO) flush ; rm -rf db.sqlite3 ; rm -rf venv
+
+.PHONY: update
+update: clean-hard all
+
+.PHONY: lang
+lang:
+	$(DJANGO) makemessages
+	$(DJANGO) compilemessages

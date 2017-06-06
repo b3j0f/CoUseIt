@@ -8,9 +8,9 @@
 
   {% if user.is_authenticated %}
 
-  {% trans '' %}Vous êtes déjà connecté en tant que {{ user.email }}.
+  {% blocktrans %}You are logged in such as {{ user.email }}{% endblocktrans %}
 
-  Voulez-vous vous <a href="/logout">déconnecter</a> ?
+  {% blocktrans %}Would you like to <a href="/logout">disconnect</a> ?{% endblocktrans %}
 
   {% else %}
 
