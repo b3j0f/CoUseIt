@@ -64,5 +64,5 @@ application supplémentaires:
 
 Automatiser les achats en gérant le pot commun et en permettant ensuite aux revendeurs de finaliser la transaction
 	- ce mode "pull" nous permet de quantifier le volume des transactions avec la plateforme et nous évite de faire du spécifique par revendeur.
-
+	- faciliter la réduction des prix à l'aide de la répartition des achats par lieu et par quantité vers les grossistes et les commerçants
 
