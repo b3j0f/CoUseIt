@@ -1,14 +1,16 @@
 """View module."""
 
 from .models import (
-    Category, Product, State, Proposal, Location, Supply, Condition, Request,
-    Using, Media, Stock, Common, Service
+    Category, Product, State, Proposal, Location, Supplying, Condition,
+    Request, Using, Media, Stock, Common, Service, Giving, Sharing, Stocking,
+    Providing
 )
 from .serializers import (
     CategorySerializer, ProductSerializer, StateSerializer, ProposalSerializer,
     MediaSerializer, UsingSerializer, RequestSerializer, ConditionSerializer,
-    SupplySerializer, LocationSerializer, StockSerializer, CommonSerializer,
-    ServiceSerializer
+    SupplyingSerializer, LocationSerializer, StockSerializer, CommonSerializer,
+    ServiceSerializer, GivingSerializer, SharingSerializer, StockingSerializer,
+    ProvidingSerializer
 )
 from .permissions import IsOwnerOrReadOnly, IsSupplierOrReadOnly
 
@@ -32,11 +34,11 @@ class LocationViewSet(ModelViewSet):
     }
 
 
-class SupplyViewSet(ModelViewSet):
-    """Supply view set."""
+class SupplyingViewSet(ModelViewSet):
+    """Supplying view set."""
 
-    queryset = Supply.objects.all()
-    serializer_class = SupplySerializer
+    queryset = Supplying.objects.all()
+    serializer_class = SupplyingSerializer
     filter_fields = {
         'id': ['exact'],
         'products': ['exact'],
@@ -48,6 +50,34 @@ class SupplyViewSet(ModelViewSet):
         'duedate': ['lge', 'lte', 'exact'],
         'period': ['icontains']
     }
+
+
+class GivingViewSet(SupplyingViewSet):
+    """Giving view set."""
+
+    queryset = Giving.objects.all()
+    serializer_class = GivingSerializer
+
+
+class SharingViewSet(SupplyingViewSet):
+    """Sharing view set."""
+
+    queryset = Sharing.objects.all()
+    serializer_class = SharingSerializer
+
+
+class StockingViewSet(SupplyingViewSet):
+    """Stocking view set."""
+
+    queryset = Stocking.objects.all()
+    serializer_class = StockingSerializer
+
+
+class ProvidingViewSet(SupplyingViewSet):
+    """Providing view set."""
+
+    queryset = Providing.objects.all()
+    serializer_class = ProvidingSerializer
 
 
 class ConditionViewSet(ModelViewSet):

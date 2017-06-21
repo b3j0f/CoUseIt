@@ -90,6 +90,7 @@ fixtures:
 
 	$(LOADDATA) status
 	$(LOADDATA) properties
+	$(LOADDATA) currencies
 
 .PHONY: superuser
 superuser:

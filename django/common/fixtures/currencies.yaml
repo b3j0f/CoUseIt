@@ -1,0 +1,28 @@
+- model: common.currency
+  fields:
+    name: euros
+
+- model: common.currency
+  fields:
+    name: dollars
+
+- model: common.currency
+  fields:
+    name: pounds
+
+- model: common.currency
+  fields:
+    name: yens
+
+- model: common.currency
+  fields:
+    name: bitcoin
+
+- model: common.currency
+  fields:
+    name: ems
+    description: equilibrary monetary system
+
+- model: common.currency
+  fields:
+    name: free_currency

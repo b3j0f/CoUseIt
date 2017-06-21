@@ -29,14 +29,14 @@ from rest_framework.routers import DefaultRouter
 
 from .views import (
     homeview, aboutview, loginview, logoutview, resetpwdview, editview,
-    accountview, faqview, statsview, searchview
+    accountview, faqview, statsview, searchview, quicksearchview
 )
 
 from account.views import UserViewSet, AccountViewSet
 from common.views import (
-    CategoryViewSet, ProductViewSet, SupplyViewSet, ConditionViewSet,
+    CategoryViewSet, ProductViewSet, SupplyingViewSet, ConditionViewSet,
     StateViewSet, RequestViewSet, UsingViewSet, MediaViewSet, LocationViewSet,
-    ProposalViewSet, StockViewSet
+    ProposalViewSet, StockViewSet, ServiceViewSet
 )
 
 router = DefaultRouter()
@@ -49,10 +49,11 @@ router.register(r'conditions', ConditionViewSet)
 router.register(r'requests', RequestViewSet)
 router.register(r'usings', UsingViewSet)
 router.register(r'locations', LocationViewSet)
-router.register(r'supplyings', SupplyViewSet)
+router.register(r'supplyings', SupplyingViewSet)
 router.register(r'medias', MediaViewSet)
 router.register(r'proposals', ProposalViewSet)
 router.register(r'stocks', StockViewSet)
+router.register(r'services', ServiceViewSet)
 
 urlpatterns = [
     url(
@@ -71,8 +72,12 @@ urlpatterns = [
     url(r'^resetpwd', resetpwdview),
     url(r'^account', accountview),
     url(r'^stats', statsview),
-    url(r'^(?P<action>(give)|(share)|(stock))/edit', editview),
-    url(r'^(?P<action>(give)|(share)|(stock))/(search)?', searchview),
+    url(r'^quicksearch', quicksearchview),
+    url(r'^(?P<action>(give)|(share)|(stock)|(provide))/edit', editview),
+    url(
+        r'^(?P<action>(give)|(share)|(stock)|(provide))/(search)?',
+        searchview
+    ),
 ] + static(
     settings.STATIC_URL, document_root=settings.STATIC_ROOT
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

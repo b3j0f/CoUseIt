@@ -1,8 +1,9 @@
 """Serialization module."""
 
 from .models import (
-    Product, Location, Media, Supply, Condition, Request, State, Using,
-    Category, Proposal, VEvent, Duration, Stock, Service, Common
+    Product, Location, Media, Supplying, Condition, Request, State, Using,
+    Category, Proposal, VEvent, Duration, Stock, Service, Common,
+    Giving, Sharing, Stocking, Providing
 )
 
 from rest_framework.serializers import HyperlinkedModelSerializer
@@ -96,19 +97,55 @@ class MediaSerializer(HyperlinkedModelSerializer):
         fields = ['product', 'media', 'state']
 
 
-class SupplySerializer(HyperlinkedModelSerializer):
-    """Supply serializer."""
+class SupplyingSerializer(HyperlinkedModelSerializer):
+    """Supplying serializer."""
 
     permission_classes = (IsSupplierOrReadOnly,)
 
     class Meta:
-        """Supply serializer meta class."""
+        """Supplying serializer meta class."""
 
-        model = Supply
+        model = Supplying
         fields = [
             'product', 'dates', 'name', 'description', 'duedate', 'startdate',
             'amount', 'period', 'conditions', 'requests'
         ]
+
+
+class SharingSerializer(SupplyingSerializer):
+    """Sharing serializer."""
+
+    class Meta:
+        """Sharing serializer meta class."""
+
+        model = Sharing
+
+
+class StockingSerializer(SupplyingSerializer):
+    """Stocking serializer."""
+
+    class Meta:
+        """Stocking serializer meta class."""
+
+        model = Stocking
+
+
+class GivingSerializer(SupplyingSerializer):
+    """Giving serializer."""
+
+    class Meta:
+        """Giving serializer meta class."""
+
+        model = Giving
+
+
+class ProvidingSerializer(SupplyingSerializer):
+    """Providing serializer."""
+
+    class Meta:
+        """Providing serializer meta class."""
+
+        model = Providing
 
 
 class ConditionSerializer(HyperlinkedModelSerializer):
@@ -120,7 +157,7 @@ class ConditionSerializer(HyperlinkedModelSerializer):
         """Condition serializer meta class."""
 
         model = Condition
-        fields = ['type', 'amount', 'description', 'supply']
+        fields = ['type', 'amount', 'description', 'supplying']
 
 
 class RequestSerializer(HyperlinkedModelSerializer):

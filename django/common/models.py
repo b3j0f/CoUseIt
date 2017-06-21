@@ -18,6 +18,8 @@ from datetime import date
 
 from collections import namedtuple
 
+PropertyProps = namedtuple('PropertyProps', ('name', 'unit', 'values'))
+
 
 @python_2_unicode_compatible
 class Category(models.Model):
@@ -130,7 +132,6 @@ class Common(MessageElement):
         db_index=True
     )
     professional = models.BooleanField(db_index=True, blank=True, default=True)
-
     medias = models.ManyToManyField(
         Media, blank=True, default=[], related_name='+'
     )
@@ -154,23 +155,45 @@ class Common(MessageElement):
         """Last request."""
         return self.requests.order_by('-datetime').first()
 
+    @property
+    def _self(self):
+        """Get child reference."""
+        result = self
+        for attr in ('_stock', '_service', '_package', '_product'):
+            try:
+                result = getattr(self, attr)
+
+            except AttributeError:
+                continue
+
+            else:
+                break
+
+        return result
+
 
 class Product(Common):
     """Product model."""
 
+    base = models.OneToOneField(
+        Common, parent_link=True, related_name='_product', blank=True
+    )
+
     quantity = models.IntegerField(default=1, blank=True)
 
     tostock = models.BooleanField(default=False, blank=True, db_index=True)
+    stock = models.ForeignKey('Stock', blank=True, default=None)
 
 
 class Stock(Product):
     """Product stock model."""
 
-    parent = models.ForeignKey(
-        'self', blank=True, default=None, related_name='stocks'
+    _base = models.OneToOneField(
+        Product, parent_link=True, related_name='_stock', blank=True
     )
-    pamount = models.IntegerField(default=1, blank=True)
-    pcategory = models.ForeignKey(
+
+    capacity = models.IntegerField(default=1, blank=True)
+    contentcategory = models.ForeignKey(
         Category, blank=True, null=False, db_index=True
     )
 
@@ -178,9 +201,23 @@ class Stock(Product):
 class Service(Common):
     """Service model."""
 
+    base = models.OneToOneField(
+        Common, parent_link=True, related_name='_service', blank=True
+    )
+
+
+class Package(Product):
+    """Package of commons."""
+
+    _base = models.OneToOneField(
+        Product, parent_link=True, related_name='_package', blank=True
+    )
+
+    commons = models.ManyToManyField(Common)
+
 
 @python_2_unicode_compatible
-class Supply(MessageElement):
+class Supplying(MessageElement):
     """Common use condition."""
 
     common = models.ForeignKey(Common, related_name='supplyings')
@@ -198,7 +235,13 @@ class Supply(MessageElement):
     maxusers = models.IntegerField(default=float('inf'), blank=True)
     bid = models.BooleanField(default=True, blank=True)
 
+    sharedwith = models.ManyToManyField(Account, blank=True, default=[])
     public = models.BooleanField(default=True, blank=True)
+    enable = models.BooleanField(default=True, blank=True)
+
+    suppliers = models.ManyToManyField(
+        Account, related_name='supplyings', blank=True
+    )
 
     class Meta:
         """Meta class."""
@@ -206,7 +249,7 @@ class Supply(MessageElement):
         default_related_name = 'supplyings'
         get_latest_by = 'dates'
         order_with_respect_to = 'common'
-        verbose_name = 'supply'
+        verbose_name = 'supplying'
         verbose_name_plural = 'supplyings'
 
     def __str__(self):
@@ -219,21 +262,25 @@ class Supply(MessageElement):
         result = {}
 
         for cond in self.conditions:
-            if cond.kind in result:
-                result[cond.kind] += cond.amount
+            if cond.currency.name in result:
+                result[cond.currency.name] += cond.amount
 
             else:
-                result[cond.kind] = cond.amount
+                result[cond.currency.name] = cond.amount
 
         return result
 
 
-class Give(Supply):
-    """Give model."""
+class Giving(Supplying):
+    """Giving model."""
 
 
-class Share(Supply):
-    """Share model."""
+class Providing(Supplying):
+    """Providing model."""
+
+
+class Sharing(Supplying):
+    """Sharing model."""
 
     minduration = models.IntegerField(null=True, default=None, blank=True)
     maxduration = models.IntegerField(null=True, default=None, blank=True)
@@ -242,6 +289,7 @@ class Share(Supply):
         default=None, max_length=50, null=True,
         choices=(
             ('u', 'unlimited'),
+            ('h', 'hours'),
             ('d', 'days'),
             ('w', 'weeks'),
             ('e', 'weekends'),
@@ -249,6 +297,10 @@ class Share(Supply):
             ('y', 'years')
         )
     )
+
+
+class Stocking(Supplying):
+    """Stocking model."""
 
 
 @python_2_unicode_compatible
@@ -264,33 +316,27 @@ class Currency(models.Model):
 
 @python_2_unicode_compatible
 class Condition(models.Model):
-    """Supply condition item."""
+    """Supplying condition item."""
 
     class Meta:
         """Meta class."""
 
         default_related_name = 'conditions'
         verbose_name = 'condition'
-        order_with_respect_to = 'supply'
+        order_with_respect_to = 'supplying'
         verbose_name_plural = 'conditions'
 
     currency = models.ForeignKey(Currency, blank=True, default=None)
-    metric = models.CharField(max_length=50, blank=True, default=None)
     amount = models.FloatField(default=1, blank=True)
     description = models.TextField(blank=True, default=None, null=True)
-    supply = models.ForeignKey(Supply, related_name='conditions', null=True)
-    maxbid = models.ForeignKey(
-        Supply, related_name='maxbidconditions', null=True
+    supplying = models.ForeignKey(
+        Supplying, related_name='conditions', null=True
     )
+    maxbid = models.FloatField(default=None, null=True)
 
     def __str__(self):
         """Representation."""
-        return tostr(self, 'supply', 'amount', 'metric')
-
-    @property
-    def kind(self):
-        """Get kind."""
-        return self.currency if self.currency else self.metric
+        return tostr(self, 'supplying', 'amount', 'currency', 'maxbid')
 
 
 @python_2_unicode_compatible
@@ -322,11 +368,10 @@ class Request(MessageElement):
 
     # specific common
     supplyment = models.ForeignKey(
-        Supply, blank=True, default=None, related_name='requests'
+        Supplying, blank=True, default=None, related_name='requests'
     )
     # money/metric quantity
     currency = models.ForeignKey(Currency, blank=True, default=None)
-    metric = models.CharField(max_length=50, default=None, blank=True)
     amount = models.FloatField(default=None, blank=True)
     # description common type
     description = models.CharField(blank=True, default=None, max_length=255)
@@ -355,11 +400,6 @@ class Request(MessageElement):
         return tostr(self, 'accounts', '')
 
     @property
-    def kind(self):
-        """Get kind."""
-        return self.currency if self.currency else self.metric
-
-    @property
     def objective(self):
         """Objective."""
         result = None
@@ -368,7 +408,7 @@ class Request(MessageElement):
             result = self.supplyment.objective
 
         else:
-            result = {self.kind: self.amount}
+            result = {self.currency.name: self.amount}
 
         if self.common_amount > 1:
             for key in result:
@@ -476,85 +516,6 @@ class Enjoynment(models.Model):
         """Representation."""
         return tostr(self, 'account', 'request', 'value')
 
-PropertyProps = namedtuple('PropertyProps', ('name', 'unit', 'values'))
-
-
-@python_2_unicode_compatible
-class TypeProperty(models.Model):
-    """Type Property model."""
-
-    name = models.CharField(max_length=50, primary_key=True)
-    unit = models.CharField(max_length=50, blank=True, null=True)
-    values = models.TextField(blank=True, null=True)
-    categories = models.ManyToManyField(
-        Category, related_name='properties', blank=True
-    )
-
-    def __str__(self):
-        """Representation."""
-        return tostr(self, 'name', 'categories', 'unit', 'values')
-
-    @property
-    def allvalues(self):
-        """Get an array of values.
-
-        Values are strings separated by:
-        - '|'
-        - '-' which designates a range of integer values.
-
-        :rtype: list
-        """
-        result = []
-
-        if self.values is not None:
-            result = self.values.split('|')
-
-            if len(result) == 1:
-                result = result[0].split('-')
-
-                minval = result[0]
-                maxval = result[1]
-
-                minplus = '+' in minval
-                maxplus = '+' in maxval
-
-                result = [
-                    str(val) for val in range(int(minval), int(maxval) + 1)
-                ]
-
-                if minplus:
-                    result[0] = minval
-
-                if maxplus:
-                    result[-1] = maxval
-
-        return result
-
-
-@python_2_unicode_compatible
-class Property(models.Model):
-    """Common property."""
-
-    common = models.ForeignKey(Common, related_name='properties')
-    type = models.ForeignKey(TypeProperty, related_name='properties')
-    value = models.CharField(max_length=50)
-
-    def __str__(self):
-        """Representation."""
-        return tostr(self, 'common', 'type', 'value')
-
-
-@python_2_unicode_compatible
-class CustomProperty(Property):
-    """Custom property."""
-
-    unit = models.CharField(max_length=50)
-    description = models.TextField(blank=True, null=True)
-
-    def __str__(self):
-        """Representation."""
-        return tostr(self, 'common', 'type', 'value', 'unit', 'description')
-
 
 @python_2_unicode_compatible
 class Duration(models.Model):
@@ -622,6 +583,114 @@ class Status(models.Model):
     def __str__(self):
         """Representation."""
         return tostr(self, 'name', 'description')
+
+
+@python_2_unicode_compatible
+class PropertyType(models.Model):
+    """Property type model."""
+
+    name = models.CharField(max_length=50, primary_key=True)
+    type = models.CharField(max_length=50)
+    unit = models.CharField(max_length=50, blank=True, null=True)
+    values = models.TextField(blank=True, null=True)
+    attrs = models.ManyToManyField('self', blank=True, default=[])
+    categories = models.ManyToManyField(
+        Category, related_name='properties', blank=True
+    )
+
+    def __str__(self):
+        """Representation."""
+        return tostr(self, 'name', 'type', 'categories', 'unit', 'values')
+
+    @property
+    def _self(self):
+        """Child instance."""
+        result = self
+
+        for field in []:
+            result = getattr(self, field)
+            if result is not None:
+                break
+
+        return result
+
+    @property
+    def attrvalues(self):
+        """Get attr values."""
+        result = {}
+
+        values = self.values.split('|')
+
+        for attr in self.attrs:
+            result[attr.name] = values.pop(0)
+
+        return result
+
+    @property
+    def allvalues(self):
+        """Get an array of values.
+
+        Values are strings separated by:
+        - '|'
+        - '-' which designates a range of integer values.
+
+        :rtype: list
+        """
+        result = []
+
+        if self.values is not None:
+            result = self.values.split('|')
+
+            if len(result) == 1:
+                result = result[0].split('-')
+
+                minval = result[0]
+                maxval = result[1]
+
+                minplus = '+' in minval
+                maxplus = '+' in maxval
+
+                result = [
+                    str(val) for val in range(int(minval), int(maxval) + 1)
+                ]
+
+                if minplus:
+                    result[0] = minval
+
+                if maxplus:
+                    result[-1] = maxval
+
+        return result
+
+    @property
+    def display_name(self):
+        """Return display name."""
+        return self.name.replace('_', ' ')
+
+
+@python_2_unicode_compatible
+class Property(models.Model):
+    """Common property."""
+
+    common = models.ForeignKey(Common, related_name='properties')
+    type = models.ForeignKey(PropertyType, related_name='properties')
+    value = models.CharField(max_length=50, blank=True, default=None)
+
+    def __str__(self):
+        """Representation."""
+        return tostr(self, 'common', 'type', 'value')
+
+
+@python_2_unicode_compatible
+class CustomProperty(Property):
+    """Custom property."""
+
+    unit = models.CharField(max_length=50)
+    description = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        """Representation."""
+        return tostr(self, 'common', 'type', 'value', 'unit', 'description')
 
 
 @python_2_unicode_compatible

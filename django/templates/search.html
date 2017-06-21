@@ -16,22 +16,21 @@
 
 	<form action="/search" method="post" accept-charset="utf-8">
 
-		<div class="card row">
-
-		<div class="col s12 center">
-			{% include 'categories.html' %}
-		</div>
+		<div class="card-panel row">
+			<div class="col s12 center">
+				{% include 'categories.html' %}
+			</div>
 
 			<div class="col l6 s12 input-field">
 				<div class="row">
 					<div class="col s12 input-field">
-						<input type="text" name="keywords" id="keywords" placeholder="appareil photo nikon 87XZ" />
-						<label for="keywords">{% trans 'What ?' %}</label>
+						<input type="text" name="what" id="what" value="{{ what }}" placeholder="appareil photo nikon 87XZ" />
+						<label for="what">{% trans 'What ?' %}</label>
 					</div>
 				</div>
 
 				<div class="col s8 input-field">
-					<input type="text" name="where" id="where" placeholder="17 rue d'arras, Lille" />
+					<input type="text" name="where" id="where" placeholder="17 rue d'arras, Lille" value="{{ where }}" />
 					<label for="where">{% trans 'Where ?' %}</label>
 				</div>
 				<div class="col s2 input-field">
@@ -45,7 +44,7 @@
 				</div>
 
 				<div class="col s6 input-field">
-					<input type="date" class="datepicker" id="when" name="when" />
+					<input type="date" class="datepicker" id="when" name="when" value="{{ when }}" />
 					<label for="when">{% trans 'When ?' %}</label>
 				</div>
 				<div class="col s6">

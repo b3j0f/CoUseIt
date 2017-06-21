@@ -55,11 +55,22 @@ for(var _type in types) {
 $('.' + type).show();
 
 var common = {
+    {% include 'common.js' with common=common %}
+};
+
+var supplyings = {
+    {% for supply in supplyings %}
+    '{{ supply.id }}'
+    {% endfor %}
+}
+
+var common = {
     name: '{{ common.name }}',
     shortdescription: '{{ common.shortdescription }}',
     description: '{{ common.description }}',
     created: '{{ common.created }}',
     owners: [{% for owner in common.owners.all %}'{{ owner.id }}', {% endfor %}],
+    suppliers: [{% for supplyer in common.suppliers.all %}'{{ supplyer.id }}', {% endfor %}],
     users: [{% for user in common.users.all %}'{{ user.id }}', {% endfor %}],
     category: '{{ common.category }}',
     professional: {% if common.professional %}true{% else %}false{% endif %}
@@ -94,13 +105,13 @@ var supplyers_material_chip = {
         minLength: 1
     },
     data: [
-        {% for supplyer in common.supplyers %}
-        {
-            tag: '{{ supplyer.user.username }}',
-            image: '{{ supplyer.avatar.furl }}',
-            id: {{ supplyer.id }}
-        },
-        {% endfor %}
+    {% for supplyer in common.suppliers %}
+    {
+        tag: '{{ supplyer.user.username }}',
+        image: '{{ supplyer.avatar.furl }}',
+        id: {{ supplyer.id }}
+    },
+    {% endfor %}
     ]
 };
 
@@ -109,25 +120,25 @@ $('#owners').material_chip({
     placeholder: 'Entrez un pseudo',
     secondaryPlaceholder: '+pseudo',
     data: [
-        {% for owner in common.owner %}
-        {% if owner.id != user.id %}
-        {
-            tag: '{{ owner.pseudo }}',
-            image: '{{ owner.avatar.furl }}',
-            id: {{ owner.id }}
-        },
-        {% endif %}
-        {% endfor %}
+    {% for owner in common.owner %}
+    {% if owner.id != user.id %}
+    {
+        tag: '{{ owner.pseudo }}',
+        image: '{{ owner.avatar.furl }}',
+        id: {{ owner.id }}
+    },
+    {% endif %}
+    {% endfor %}
     ],
     autocompleteOptions: {
       data: {
         {% for user in users %}
         '{{ user.pseudo }}': '{{ user.avatar.furl }}',
         {% endfor %}
-      },
-      limit: Infinity,
-      minLength: 1
-    }
+    },
+    limit: Infinity,
+    minLength: 1
+}
 });
 for(var prop in common) {
     try {
@@ -137,48 +148,12 @@ for(var prop in common) {
 }
 {% endif %}
 
-var supplyings = {
-    {% for supply in common.supplyings.all %}
-    '{{ supply.id }}'': {
-        name: '{{ supply.name }}',
-        description: '{{ supply.description }}',
-        start: '{{ supply.start }}',
-        stop: '{{ supply.stop }}',
-        dates: [{% for date in supply.dates.all %}'{{ date }}', {% endfor %}],
-        amount: {{ supply.amount }},
-        period: '{{ supply.period }}',
-        peruser: {% if supply.peruser %}true{% else %}false{% endif %},
-        minusers: {{ supply.minusers }},
-        maxusers: parseInt('{{ supply.maxusers }}'),
-        bid: {% if supply.bid %}true{% else %}false{% endif %},
-        conditions: {
-            {% for condition in supply.conditions.all %}
-                '{{ condition.id }}': {
-                    type: '{{ condition.type }}',
-                    amount: {{ condition.amount }},
-                    description: '{{ condition.description }}'
-                }
-            {% endfor %}
-        },
-        maxbidconditions: {
-            {% for condition in supply.maxbidconditions.all %}
-                '{{ condition.id }}': {
-                    type: '{{ condition.type }}',
-                    amount: {{ condition.amount }},
-                    description: '{{ condition.description }}'
-                }
-            {% endfor %}
-        }
-    }
-    {% endfor %}
-};
-
 function adddropify() {
     var id = 'medias-' + newId();
-    $('#medias .row')[0].insertAdjacentHTML(
-        'beforeEnd',
-        '<div class="col l3 m4 s12"><input type="file" multi=true id="'+ id +'" name="media-' + id + '" class="dropify" data-allowed-file-extensions="jpg jpeg" accept=".jpg,.jpeg" capture="true" data-max-file-size-preview="3M" /></div>'
-        );
+    var dom = '<div class="col l3 m4 s12">';
+    dom += '<input type="file" multi=true id="'+ id +'" name="media-' + id + '" class="dropify" data-allowed-file-extensions="jpg jpeg" accept=".jpg,.jpeg" capture="true" data-max-file-size-preview="5M" />';
+    dom += '</div>';
+    $('#medias .row')[0].insertAdjacentHTML('beforeEnd', dom);
 
     var drEvent = $('#'+id).dropify({
         messages: {
@@ -214,13 +189,9 @@ function adddropify() {
 }
 
 {% for media in product.medias.all %}
-
 adddropify();
-
 {% empty %}
-
 adddropify();
-
 {% endfor %}
 
 function refreshcarousel() {
@@ -277,131 +248,187 @@ var defaultproperties = {
     }
 };
 
-var lowcategories = {
-    //{% for lowcategory in lowcategories %}
-    '{{ lowcategory.name }}': '{{ lowcategory.media.media.path.url }}',
-    //{% endfor %}
-};
-
-function newEntrySet(divid, entrysettype, entrysetid) {
-    if (entrysetid === undefined) {
-        entrysetid = newId();
-    }
-    var html = '<table class="bordered striped highlight centered entryset ' + entrysettype + '" id="entryset-' + entrysettype + '-' + entrysetid + '"><thead><tr>';
-    html += '<td>Type</td><td>Montant</td>';
-    html += '<td>' + (entrysettype === 'supply' ? ('<a onclick="newEntrySet(\'' + divid + '\', undefined);" class="btn-floating blue" ><i class="material-icons">add</i></a>') : '') + '</td>';
-    html += '</tr></thead>';
-    html += '<tbody id="entry-content-' + new Date().getTime() + '"></tbody></table>';
-    document.getElementById(divid).insertAdjacentHTML('beforeEnd', html);
-    return $('#' + divid)[0];
-}
-
-function newEntry(entrysetid, entryid, type, amount) {
-    if (entryid === undefined) {
-        entryid = newId();
-    }
-    var html = '<tr class="' + entrysetid + '" id="entry-' + entryid + '">';
-    html += '<td><input onchange="updateEntry(this);" class="entry-type" type="text" name="entry-type-' + entrysetid + '-' + entryid + '" value="' + type + '" placeholder="€, voiture, ..." /></td>';
-    html += '<td><input onchange="updateEntry(this);" class="entry-amount" type="number" name="entry-amount-' + entrysetid + '-' + entryid + '" value="' + amount + '" placeholder="10" /></td>';
-    html += '<td><a onclick="removeEntry(this);" class="btn-floating red"><i class="material-icons">remove</i></a></td></tr>';
-    $('entry-type-' + entryid).autocomplete(
-    {
-        data: lowcategories,
-        minLength: 1
-    });
-}
-
-function updateEntry(elt) {
-    var cls = elt.name.replace(elt.type === 'text' ? 'type' : 'amount', 'group');
-    var empty = false;
-    var jqcls = $(cls);
-    for(var i =0; i<jqcls.length; i++) {
-        var input = jqcls[i];
-        empty = !Boolean(input.value);
-    }
-    if (emtpy) {
-        removeEntry(elt);
-    } else {
-        var entryid = elt.parentNode.parentNode.parentNode.parentNode.id;
-        var tds = $('#' + entryid + ' td');
-        var tdslength = tds.length;
-        [tds[tdslength - 2], tds[trslength - 3]].forEach(function(td) {
-            empty = !Boolean(td.value);
-        });
-        if (empty) {
-            newEntry(entrysettype);
-        }
-    }
-}
-
-function removeEntry(elt) {
-    var body = elt.parentNode.parentNode.parentNode;
-    elt.remove();
-    if (body.childElementCount === 0) {
-        newEntry(body.parentNode.id);
-    }
-}
-
-function newSupply(supplytype, supplyid) {
-    if (supplyid === undefined) {
-        supplyid = newId();
-    }
-    var supply = supplyings[supplyid];
-
-    var html = '<li id="supply-' + supplyid + '" class="collapsible supply-' + supplytype + ' data-collapsible="expandable">';
-
-    html += '<div class="collapsible-header row">';
-
-    html += '<div class="col s8 input-field">';
-    html += '<input id="supply-name-' + supplyid + '" type="text" name="supply-name-' + supplyid + '" placeholder="Condition par voiture" />';
-    html += '<label for="supply-name-' + supplyid + '">nom</label>'
-    html += '</div>';
-
-    html += '<div class="col offset-s2 s2>';
-    html += '<a class="btn waves-effect waves-light" onclick="removeSupply(this);">';
-    html += '<i class="material-icons">remove</i></a>';
-    html += '</div>';
-
-    html += '</div>';
-
-    html += '<div class="collapsible-body row">';
-
-    html += '<div class="col s8>';
-    html += '<textarea name="supply-description-' + supplyid + '" placeholder="Description..."></textarea>';
-    html += '</div>';
-
-    html += '<div class="col s4>';
-    html += '<input type="number" placeholder="1" value="1" name="supply-description-' + supplyid + '" placeholder="Description..."></textarea>';
-    html += '</div>';
-
-    html += '<div class="col s4>';
-    html += '<input type="date" class="datepicker" id="supply-start-' + supplyid + '" name="supply-start-' + supplyid + '" />';
-    html += '<label for="supply-start-' + supplyid + '"><i class="material-icons">date_range</i>début</label>';
-    html += '</div>';
-
-    html += '<div class="col s4>';
-    html += '<input type="date" class="datepicker" id="supply-stop-' + supplyid + '" name="supply-stop-' + supplyid + '" />';
-    html += '<label for="supply-stop-' + supplyid + '"><i class="material-icons">date_range</i>fin</label>';
-    html += '</div>';
-
-    html += '<div class="col s4>';
-    html += '<input type="date" class="datepicker" id="supply-dates-' + supplyid + '" name="supply-dates-' + supplyid + '" />';
-    html += '<label for="supply-dates-' + supplyid + '"><i class="material-icons">date_range</i>dates</label>';
-    html += '</div>';
-
-    html += '<div id="conds-' + supplyid + '" class="col s12></div>';
-
-    html += '</div>';
-
-    html += '</li>';
-
-    document.getElementById(supplytype).insertAdjacentHTML('beforeEnd', html);
-    newEntrySet('conds-' + supplyid);
-}
-
 function newId() {
     return new Date().getTime();
 }
+
+function newSupply(supply) {
+    if (supply === undefined) {
+        supply = {
+            id: newId('supply'),
+            public: true,
+            enable: true,
+            conditions: []
+        };
+    }
+    var dom = '<div class="supply col s12" id="supply-' + supply.id + '">\
+    <ul class="collapsible" data-collapsible="accordion">\
+    <li>\
+    <div class="collapsible-header input-field">\
+    <input type="text" id="supply-' + supply.id + '-name" name="supply-' + supply.id + '-name" />\
+    <i class="material-icons right">settings</i>\
+    <a onclick="cancelSupply(\'' + supply.id + '\');">\
+    <i class="material-icons right">close</i>\
+    </a>\
+    </div>\
+    <div class="collapsible-body">\
+    <div class="row">\
+    <div class="col s4 input-field">\
+    <input type="checkbox" id="supply-' + supply.id + '-public" name="supply-' + supply.id + '-public" checked="' + supply.checked + '" />\
+    <label for="supply-' + supply.id + '-public">\
+    {% trans 'Public' %}\
+    </label>\
+    </div>\
+    <div class="col s4 input-field">\
+    <input type="checkbox" id="supply-' + supply.id + '-enable" name="supply-' + supply.id + '-enable" checked="' + supply.enable + '" />\
+    <label for="supply-' + supply.id + '-enable">\
+    {% trans 'Enable' %}\
+    </label>\
+    </div>\
+    <div class="col s12 input-field">\
+    <div class="chips tooltipped" name="supply-' + supply.id + '-suppliers" id="supply-' + supply.id + '-suppliers" data-tooltip="{% trans 'Users able to supply this condition' %}"></div>\
+    <label for="supply-' + supply.id + '-supplyers">\
+    {% trans 'Supplyers' %}\
+    </label>\
+    </div>\
+    <div class="col s12 input-field">\
+    <div class="chips tooltipped" name="supply-' + supply.id + '-sharedwith" id="supply-' + supply.id + '-sharedwith" data-tooltip="{% trans 'Users to notify' %}"></div>\
+    <label for="supply-' + supply.id + '-sharedwith">\
+    {% trans 'Shared with' %}\
+    </label>\
+    </div>\
+    <div class="col s12 input-field">\
+    <textarea class="materialize-textarea" name="supply-' + supply.id + '-description" id="supply-' + supply.id + '-description">' + supply.description + '</textarea>\
+    <label for="supply-' + supplyid + '-description">\
+    <i class="material-icons left">doc</i>\
+    Description\
+    </label>\
+    </div>\
+    <div class="col s4 input-field">\
+    <input type="number" name="supply-' + supply.id + '-amount" id="supply-' + supply.id + '-amount" value="' + supply.amount + '" />\
+    <label for="supply-' + supply.id + '-amount">\
+    <i class="material-icons left">amount</i>\
+    {% trans 'Amount' %}\
+    </label>\
+    </div>\
+    <div class="col s4 input-field">\
+    <input type="date" class="datepicker" name="supply-' + supply.id + '-startdate" value="' + supply.startdate + '" />\
+    <label for="supply-' + supply.id + '-startdate">\
+    <i class="material-icons left">date</i>\
+    {% trans 'Start date' %}\
+    </label>\
+    </div>\
+    <div class="col s4 input-field">\
+    <input type="date" class="datepicker" name="supply-' + supply.id + '-duedate" id="supply-' + supply.id + '-duedate" value="' + supply.duedate + '" />\
+    <label for="supply-' + supply.id + '-duedate">\
+    <i class="material-icons left">date</i>\
+    {% trans 'Due date' %}\
+    </label>\
+    </div>\
+    <div class="col s3 input-field">\
+    <input type="checkbox" name="supply-' + supply.id + '-peruser" id="supply-' + supply.id + '-peruser" value="' + supply.peruser + '" />\
+    <label for="supply-' + supply.id + '-peruser">\
+    <i class="material-icons left">group</i>\
+    {% trans 'condition per user' %}\
+    </label>\
+    </div>\
+    <div class="col s3 input-field">\
+    <input type="number" name="supply-' + supply.id + '-minusers" id="supply-' + supply.id + '-minusers" value="' + supply.minusers + '" />\
+    <label for="supply-' + supply.id + '-minusers">\
+    <i class="material-icons left">group</i>\
+    {% trans 'Min users' %}\
+    </label>\
+    </div>\
+    <div class="col s3 input-field">\
+    <input type="number" name="supply-' + supply.id + '-maxusers" id="supply-' + supply.id + '-maxusers" value="' + supply.maxusers + '" />\
+    <label for="supply-' + supply.id + '-maxusers">\
+    <i class="material-icons left">group</i>\
+    {% trans 'Max users' %}\
+    </label>\
+    </div>\
+    <div class="col s3 input-field">\
+    <input type="checkbox" name="supply-' + supply.id + '-bid" id="supply-' + supply.id + '-bid" value="' + supply.bid + '" />\
+    <label for="supply-' + supply.id + '-bid">\
+    <i class="material-icons left">bid</i>\
+    {% trans 'bid' %}\
+    </label>\
+    </div>\
+    <div class="col s4 input-field share">\
+    <input type="number" name="supply-' + supply.id + '-minduration" id="supply-' + supply.id + '-minduration" value="' + supply.minduration + '" />\
+    <label for="supply-' + supply.id + '-minduration">\
+    <i class="material-icons left">group</i>\
+    {% trans 'Min duration users' %}\
+    </label>\
+    </div>\
+    <div class="col s4 input-field share">\
+    <input type="number" name="supply-' + supply.id + '-maxduration" id="supply-' + supply.id + '-maxduration" value="' + supply.maxduration + '" />\
+    <label for="supply-' + supply.id + '-maxduration">\
+    <i class="material-icons left">group</i>\
+    {% trans 'Max duration users' %}\
+    </label>\
+    </div>\
+    <div class="col s4 input-field share">\
+    <select name="supply-' + supply.id + '-period" id="supply-' + supply.id + '-period">\
+    {% for choice in choices %}\
+    <option name="supply-' + supply.id + '-period-{{ choice }}" id="supply-' + supply.id + '-period-{{ choice }}" ' + ((supply.choice === '{{ choice }}')? 'selected' : '') + '>{% trans choice %}</option>\
+    {% endfor %}\
+    </select>\
+    </div>\
+    <h5>{% trans 'Price' %}</h5>';
+    Object.values(supply.conditions).forEach(function(condition) {
+        dom += '<div class="row">\
+        <div class="col s3 input-field">\
+        <input type="number" name="supply-' + supply.id + '-condition-' + condition.id + '-amount" id="supply-' + supply.id + '-condition-' + condition.id + '-amount" value="' + condition.amount + '" />\
+        <label for="supply-' + supply.id + '-condition-' + condition.id + '-amount">\
+        <i class="material-icons left">amount</i>\
+        {% trans 'Amount' %}\
+        </label>\
+        </div>\
+        <div class="col s3 input-field">\
+        <input type="text" name="supply-' + supply.id + '-condition-' + condition.id + '-currency" id="supply-' + supply.id + '-condition-' + condition.id + '-currency" value="' + condition.currency + '" />\
+        <script type="javascript">\
+        $(\'#supply-' + supply.id + '-condition-' + condition.id + '-currency' + '\').autocomplete(\
+        {\
+            data: {\
+                {% for currency in currencies %}\
+                '{% trans currency %}'\
+                {% endfor %}\
+            },\
+            minLength: 0\
+        });\
+        </script>\
+        <label for="supply-' + supply.id + '-condition-' + condition.id + '-currency">\
+        <i class="material-icons left">currency</i>\
+        {% trans 'Currency' %}\
+        </label>\
+        </div>\
+        <div class="col s3 input-field">\
+        <input type="number" name="supply-' + supply.id + '-maxbid" id="supply-' + supply.id + '-maxbid" value="' + condition.maxbid + '" />\
+        <label for="supply-' + supply.id + '-maxbid">\
+        <i class="material-icons left">maxbid</i>\
+        {% trans 'Max bid' %}\
+        </label>\
+        </div>\
+        <div class="col s12 input-field">\
+        <textarea class="materialize-textarea" name="supply-' + supply.id + '-conditino-id-description" id="supply-' + supply.id + '-condition-' + condition.id + '-description">' + condition.description + '</textarea>\
+        <label for="supply-' + supply.id + '-condition-' + condition.id + '-description">\
+        <i class="material-icons">\
+        description\
+        </i>\
+        {% trans 'Description' %}\
+        </label>\
+        </div>\
+        </div>'
+    });
+    dom += '</div></div></li></ul></div>';
+    document.getElementById('conditions').insertAdjacentHTML('endbefore', dom);
+}
+
+Object.values(common.supplyings).forEach(function(supply) {
+    newSupply(supply);
+});
+newSupply();
+
 
 function selectCommon(commonid) {
     var dom = document.getElementById('select-common-' + commonid);
@@ -413,7 +440,5 @@ function selectCommon(commonid) {
     selection.appendChild(dom);
     document.getElementById('id').setAttribute('value', commonid);
 }
-
-{% include 'categories.js' %}
 
 {% include 'map.js' %}

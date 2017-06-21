@@ -1,135 +1,195 @@
-- model: common.typeproperty
+- model: common.propertytype
+  fields:
+    name: min
+    type: number
+
+- model: common.propertytype
+  fields:
+    name: max
+    type: number
+
+- model: common.propertytype
+  fields:
+    name: step
+    type: number
+
+- model: common.propertytype
+  fields:
+    name: int
+    type: number
+    attrs: [min, max, step]
+
+- model: common.propertytype
+  fields:
+    name: float
+    type: number
+    attrs: [min, max, step]
+
+- model: common.propertytype
+  fields:
+    name: text
+    type: text
+
+- model: common.propertytype
+  fields:
+    name: choice
+    type: choice
+
+- model: common.propertytype
   fields:
     name: kilometers
     unit: km
+    type: number
     categories: [vehicule, auto, motorbike, caravanning, utility_vehicule]
 
-- model: common.typeproperty
+- model: common.propertytype
   fields:
     name: make
+    type: choice
     values: audi|bmw|citroen|fiat|tesla|ford|mercedes|opel|peugeot|renault|volkswagen
     categories: [car]
 
-- model: common.typeproperty
+- model: common.propertytype
   fields:
     name: design&make&audi
+    type: choice
     values: a1|a2|a3|tt|a4|a5|a6
     categories: [car]
 
-- model: common.typeproperty
+- model: common.propertytype
   fields:
-    name: design&car make&tesla
+    name: design&car_make&tesla
+    type: choice
     values: s|x|3
     categories: [car]
 
-- model: common.typeproperty
+- model: common.propertytype
   fields:
-    name: make motorbike
-    values: yamaha|harley davidson
+    name: make_motorbike
+    type: choice
+    values: yamaha|harley_davidson
     categories: [motorbike]
 
-- model: common.typeproperty
+- model: common.propertytype
   fields:
-    name: motorbike design&yamaha
+    name: motorbike_design&yamaha
+    type: choice
     values: 1|2
     categories: [motorbike]
 
-- model: common.typeproperty
+- model: common.propertytype
   fields:
-    name: design motorbike&harley davidson
+    name: design_motorbike&harley_davidson
+    type: choice
     values: 1|2
     categories: [motorbike]
 
-- model: common.typeproperty
+- model: common.propertytype
   fields:
     name: year
-    values: +1960-present
-    categories: [car, motorbike, caravanning, utility vehicule]
+    type: year
+    values: +1960-now
+    categories: [car, motorbike, caravanning, utility_vehicule]
 
-- model: common.typeproperty
+- model: common.propertytype
   fields:
     name: fuel
+    type: choice
     values: gas|diesel|LPG|electric|other
-    categories: [car, motorbike, utility vehicule]
+    categories: [car, motorbike, utility_vehicule]
 
-- model: common.typeproperty
+- model: common.propertytype
   fields:
-    name: boîte de vitesse
+    name: engine_box
+    type: choice
     values: manual|automatic
     categories: [car, motorbike]
 
-- model: common.typeproperty
+- model: common.propertytype
   fields:
-    name: engine size
+    name: engine_size
+    type: number
     unit: cm3
     categories: [motorbike]
 
-- model: common.typeproperty
+- model: common.propertytype
   fields:
     name: surface
+    type: number
     unit: m2
     categories: [property]
 
-- model: common.typeproperty
+- model: common.propertytype
   fields:
     name: room
+    type: number
     unit: rooms
     categories: [property]
 
-- model: common.typeproperty
+- model: common.propertytype
   fields:
-    name: classe d'energie
+    name: energy_class
+    type: choice
     values: A|B|C|D|E|F|G|H|I|vierge
     categories: [property]
 
-- model: common.typeproperty
+- model: common.propertytype
   fields:
-    name: greenhouse gas
+    name: greenhouse_gas
+    type: choice
     values: A|B|C|D|E|F|G|H|I|vierge
     categories: [property]
 
-- model: common.typeproperty
+- model: common.propertytype
   fields:
-    name: furnished accomodation
+    name: furnished_accomodation
+    type: choice
     values: yes|no
     categories: [location]
 
-- model: common.typeproperty
+- model: common.propertytype
   fields:
-    name: accomodation type
+    name: accomodation_type
+    type: choice
     values: house|appartement|terrain|parking|other
-    categories: [vente immobilière, location]
+    categories: [vente_immobilière, renting]
 
-- model: common.typeproperty
+- model: common.propertytype
   fields:
-    name: people capacity
+    name: people_capacity
+    type: number
     unit: people
-    categories: [vacance]
+    categories: [holiday]
 
-- model: common.typeproperty
+- model: common.propertytype
   fields:
-    name: swimming pool
+    name: swimming_pool
+    type: choice
     values: yes|no
 
-- model: common.typeproperty
+- model: common.propertytype
   fields:
-    name: clothes type
+    name: clothes_type
+    type: choice
     values: woman|man|child
     categories: [shoe]
 
-- model: common.typeproperty
+- model: common.propertytype
   fields:
-    name: shoe size
+    name: shoe_size
+    type: number
     values: 16-+50
     categories: [shoe]
 
-- model: common.typeproperty
+- model: common.propertytype
   fields:
-    name: baby size
+    name: baby_size
+    type: number
     values: 0-36
-    unit: mois
+    unit: months
 
-- model: common.typeproperty
+- model: common.propertytype
   fields:
-    name: animal type
-    values: chien|chat|other|accessoire
+    name: animal_type
+    type: choice
+    values: dog|cat|other|accessory

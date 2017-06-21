@@ -8,270 +8,315 @@
 	{% if common %}{% trans 'Modify' %}{% else %}{% trans 'Add' %}{% endif %} {{ action }}
 </h2>
 
-<div id="edit">
-	<form method="post" enctype="multipart/form-data" action="/{{ action }}/supply">
-		{% csrf_token %}
-		<input type="hidden" name="id" value="{{ common.id }}" />
-		<input type="hidden" name="type" />
-		<input type="hidden" name="owners" />
+<form method="post" enctype="multipart/form-data" action="/{{ action }}/supply">
+	{% csrf_token %}
+	<input type="hidden" name="common-id" value="{{ common.id }}" />
+	<input type="hidden" name="common-owners" value="{{ common.owners }}" />
+	<input type="hidden" name="common-supplyers" value="{{ common.supplyers }}" />
 
-		<div class="section commons scrollspy" name="{% trans 'Commons' %}" id="commons">
-			<h5>
-				{% trans 'Choose' %} {% if action == 'stock' %}{% trans 'stocks' %}{% else %}{% trans 'products' %}{% endif %}
-			</h5>
+	<div class="section commons scrollspy" name="{% trans 'Commons' %}" id="commons">
 
-			<div class="divider"></div>
+		<h5>
+			{% trans 'Choose' %} {% if action == 'stock' %}{% trans 'stocks' %}{% else %}{% trans 'goods' %}{% endif %}
+		</h5>
 
-			<div class="row">
-				<div class="col s12">
-					<ul id="tabs-common" class="tabs">
-						<li class="tab col s6">
-							<a href="#new-common">
-								{% trans 'new' %} {% if action == 'stock' %}{% trans 'stock' %}{% else %}{% trans 'product' %}{% endif %}
-							</a>
-						</li>
-						<li class="tab col s6">
-							<a {% if user.commons.count %}class="active"{% endif %} href="#select-common">{% trans 'select' %}  {% if action == 'stock' %}{% trans 'stock' %}{% else %}{% trans 'product' %}{% endif %}
-							</a>
-						</li>
-					</ul>
-				</div>
+		<div class="divider"></div>
 
-				<div id="new-common" class="col s12">
-
-					<div class="row">
-
-						<div class="col l12">
-
-							<div class="row">
-
-								<div class="col s12 center">
-									{% include 'categories.html' %}
-								</div>
-
-								<div class="col s12 input-field">
-									<i class="material-icons prefix">title</i>
-									<input type="text" name="name" id="name" onchange="updateProperty('name')" value="{{ common.id }}" class="maxlength" data-length="50" />
-									<label for="name">{% trans 'Name' %}</label>
-								</div>
-
-								{% if common %}
-								<div class="col s12">{% blocktrans %}Created the {{ common.created }}{% endblocktrans %}
-								{% endif %}
-
-								<div class="col s2 input-field">
-									<input id="quantity" type="number" min="1" value="{% if common.quantity %}{{ common.quantity }}{% else %}1{% endif %}" name="quantity" />
-									<label for="quantity">{% trans 'Quantity' %}</label>
-								</div>
-
-								<div class="col s4 input-field">
-									<input type="checkbox" id="public" name="public" {% if common.public or not common %}checked="true"{% endif %}/>
-									<label for="public">{% trans 'Public' %}</label>
-								</div>
-
-								<div class="col s6 input-field">
-									<input type="checkbox" id="pro" name="pro" {% if common.professional %}checked="true"{% endif %}/>
-									<label for="pro">{% trans 'Professional' %}</label>
-								</div>
-
-								<div class="col s12 input-field">
-									<div class="chips tooltipped" id="owners" data-tooltip="{% blocktrans %}Users able to modify this {{ commontype }}{% endblocktrans %}"></div>
-									<label for="owners">{% trans 'Owners' %}</label>
-								</div>
-
-								<div class="col s12 input-field">
-									<div class="chips tooltipped" id="suppliers" data-tooltip="{% blocktrans %}Users able to modify this {{ commontype }}{% endblocktrans %}"></div>
-									<label for="supplyers">{% trans 'Supplyers' %}</label>
-								</div>
-
-								<div class="col s10 input-field">
-									<i class="material-icons left">subtitles</i>
-									<input type="text" name="shortdescription" placeholder="10 millions de pixels, carte mémoire 2 Go" id="shortdescription" onchange="updateProperty('shortdescription')" value="{{ common.shortdescription }}" data-length="120" class="maxlength" />
-									<label for="shortdescription">{% trans 'Short description' %}</label>
-								</div>
-
-								<div class="col s12 input-field">
-									<i class="material-icons left">description</i>
-									<textarea id="description" name="description" class="materialize-textarea maxlength" onchange="updateProperty('description')" data-length="255">{{ common.description }}</textarea>
-									<label for="description">{% trans 'Description' %}</label>
-								</div>
-
-								<div class="col s12" id="medias">
-									<h5>
-										<i class="material-icons left">add_a_photo</i>
-										{% trans 'Pictures/Videos' %}
-									</h5>
-									<div class="row">
-									</div>
-								</div>
-
-								<div class="col s12 input-field">
-									{% if action == 'give' %}
-									{% trans 'Default number of buyers' %}
-									{% else %}
-									{% trans 'Default number of users' %}
-									{% endif %}
-									<div class="row">
-										<div class="col s2 input-field">
-											<input type="number" name="min" placeholder="1" value="1" />
-											<label>{% trans 'min' %}</label>
-										</div>
-										<div class="col s2 input-field">
-											<input type="number" name="max" placeholder="infinity" />
-											<label>{% trans 'max' %}</label>
-										</div>
-									</div>
-								</div>
-
-								<div class="service col s12 input-field">
-									{% trans 'Default duration' %}
-									<input type="number" name="minduration" placeholder="1" value="1" id="minduration" />
-									<label for="minduration">{% trans 'Minimum' %}</label>
-									<input type="number" name="maxduration" placeholder="1" value="1" id="maxduration" />
-									<label for="maxduration">{% trans 'Maximum' %}</label>
-								</div>
-
-								<div class="col s12 section stock" id="conditions">
-									<ul class="collapsible stock" data-collapsible="expandable">
-										<li id="capacities" class="stock">
-											<div class="collapsible-header">
-												<i class="material-icons">move_to_inbox</i>
-												{% trans 'Capabilities' %}
-											</div>
-											<div class="collapsible-body">
-												<ul class="collection">
-													<li class="collection-item">
-													</li>
-												</ul>
-											</div>
-										</li>
-									</ul>
-									<ul class="collapsible common stock" data-collapsible="expandable">
-										<li id="gives">
-											<div class="collapsible-header">
-												<i class="material-icons">trending_flat</i>
-												<div id="givecount">0</div>
-												{% trans 'buying conditions' %}
-											</div>
-											<div class="collapsible-body">
-												<ul class="collection">
-													<li class="collection-item">
-													</li>
-												</ul>
-											</div>
-											<a class="btn-block waves-effect waves-light" onclick="newSupply('give');">
-												<i class="material-icons">add</i>
-											</a>
-										</li>
-									</ul>
-									<ul class="collapsible common stock service" data-collapsible="expandable">
-										<li id="shares">
-											<div class="collapsible-header">
-												<i class="material-icons">trending_flat</i>
-												<div id="sharecount">0</div>
-												{% trans 'sharing conditions' %}
-											</div>
-											<div class="collapsible-body">
-												<ul class="collection">
-													<li class="collection-item">
-													</li>
-												</ul>
-											</div>
-											<a class="btn-block waves-effect waves-light" onclick="newSupply('share');">
-												<i class="material-icons">add</i>
-											</a>
-										</li>
-									</ul>
-								</div>
-
-								<div class="col s12 input-field section">
-									<h5>
-										<i class="material-icons left">location_on</i>
-										{% trans 'Address' %}
-									</h5>
-									<div class="row">
-										<div class="col s1">
-											<a class="btn-floating left tooltipped" data-tooltip="Géolocalisation" onclick="geoloc();">
-												<i class="material-icons left">my_location</i>
-											</a>
-										</div>
-										<div class="col s11">
-											<input id="address" type="text" placeholder="55 rue du chat, Miaou-ville" name="address" />
-										</div>
-									</div>
-									<div id="map" class="map"></div>
-								</div>
-
-								<div class="divider"></div>
-
-								<div class="col s12 input-field section">
-									<input type="date" class="datepicker" id="startdate" name="startdate" />
-									<label for="start">{% trans 'Availability' %}</label>
-									<ul class="collapsible" data-collapsible="expandable">
-										<li id="shares">
-											<div class="collapsible-header">
-												<i class="material-icons">date_range</i>
-												Planning
-											</div>
-											<div class="collapsible-body">
-												<div class="calendar" id="calendar"></div>
-											</div>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div id="select-common" class="col s12">
-					<div class="row">
-						<div class="col s12 row" id="select-commons">
-							<h5>{% blocktrans %}Selected {{ commontype }}{% endblocktrans %}</h5>
-						</div>
-						{% for common in user.account.commons %}
-						<div class="col s4" id="select-common-{{ common.id }}">
-							<div class="card">
-								<div class="card-image" onclick="selectCommon('{{ common.id }}');">
-									<img src="{{ common.brochure.furl }}" />
-									<span class="card-title">{{ common.name }}</span>
-								</div>
-							</div>
-						</div>
-						{% empty %}
-						{% trans 'You don\'t have any ' %}
-						{% if action == 'stock' %}{% trans 'stock' %}{% else %}{% trans 'product' %}{% endif %}
-						{% endfor %}
-					</div>
-				</div>
+		<div class="row">
+			<div class="col s12">
+				<ul id="tabs-common" class="tabs">
+					<li class="tab col s6">
+						<a href="#new-common">
+							{% trans 'new' %} {% if action == 'stock' %}{% trans 'stock' %}{% else %}{% trans 'good' %}{% endif %}
+						</a>
+					</li>
+					<li class="tab col s6">
+						<a {% if user.commons.count %}class="active"{% endif %} href="#select-common">{% trans 'select' %}  {% if action == 'stock' %}{% trans 'stocks' %}{% else %}{% trans 'goods' %}{% endif %}
+						</a>
+					</li>
+				</ul>
 			</div>
-		</div>
 
-		<div class="section conditions scrollspy" name="{% blocktrans with action=action.title %}{{ action }} conditions{% endblocktrans %}" id="conditions">
-			<h5>{% blocktrans with action=action.title %}{{ action }} conditions{% endblocktrans %}</h5>
-			<div class="divider"></div>
-		</div>
+			<div id="new-common" class="col s12">
 
-		<div class="col s12 center">
-			<a class="btn-large waves-effect waves-light update" href="#demo">{% trans 'Modify' %}</a>
-			<a class="btn-large waves-effect waves-light add" href="#demo">{% trans 'Add' %}</a>
-		</div>
-
-		<div class="modal" id="demo">
-			<div class="modal-content">
 				<div class="row">
-					{% include 'show.html' %}
+
+					<div class="col l12 center">
+
+						{% include 'categories.html' with name="category" %}
+
+						<div class="col s12 input-field">
+							<i class="material-icons prefix">title</i>
+							<input type="text" name="name" id="name" onchange="updateProperty('name')" value="{{ common.name }}" class="maxlength" data-length="50" />
+							<label for="name">{% trans 'Name' %}</label>
+						</div>
+
+						{% if common %}
+						<div class="col s12">
+							{% blocktrans %}Created the {{ common.created }}{% endblocktrans %}
+						</div>
+						{% endif %}
+
+						<div id="properties">
+						</div>
+
+						<div class="col s2 input-field">
+							<input id="quantity" type="number" min="1" value="{% if common.quantity %}{{ common.quantity }}{% else %}1{% endif %}" name="quantity" />
+							<label for="quantity">
+								{% trans 'Quantity' %}
+							</label>
+						</div>
+
+						<div class="col s2 input-field stock">
+							<input id="capacity" type="number" min="1" value="{% if common.capacity %}{{ common.capacity }}{% else %}1{% endif %}" name="capacity" />
+							<label for="capacity">
+								{% trans 'Capacity' %}
+							</label>
+						</div>
+
+						<div class="col s12 stock">
+							{% include 'categories.html' with name='content_category' %}
+						</div>
+
+						<div class="col s6 input-field product">
+							<input type="checkbox" id="tostock" name="tostock" {% if common.tostock %}checked="true"{% endif %}/>
+							<label for="tostock">
+								{% trans 'To stock' %}
+							</label>
+						</div>
+
+						<div class="col s6 input-field">
+							<input type="checkbox" id="pro" name="pro" {% if common.professional %}checked="true"{% endif %}/>
+							<label for="pro">
+								{% trans 'Professional' %}
+							</label>
+						</div>
+
+						<div class="col s12 input-field">
+							<div class="chips tooltipped" id="owners" data-tooltip="{% blocktrans %}Users able to modify this {{ commontype }}{% endblocktrans %}"></div>
+							<label for="owners">
+								{% trans 'Owners' %}
+							</label>
+						</div>
+
+						<div class="col s12 input-field">
+							<div class="chips tooltipped" id="suppliers" data-tooltip="{% blocktrans %}Users able to supply this {{ commontype }}{% endblocktrans %}"></div>
+							<label for="supplyers">
+								{% trans 'Supplyers' %}
+							</label>
+						</div>
+
+						<div class="col s10 input-field">
+							<i class="material-icons left">subtitles</i>
+							<input type="text" name="shortdescription" placeholder="10 millions de pixels, carte mémoire 2 Go" id="shortdescription" onchange="updateProperty('shortdescription')" value="{{ common.shortdescription }}" data-length="120" class="maxlength" />
+							<label for="shortdescription">
+								{% trans 'Short description' %}
+							</label>
+						</div>
+
+						<div class="col s12 input-field">
+							<i class="material-icons left">description</i>
+							<textarea id="description" name="description" class="materialize-textarea maxlength" onchange="updateProperty('description')" data-length="255">
+								{{ common.description }}
+							</textarea>
+							<label for="description">
+								{% trans 'Description' %}
+							</label>
+						</div>
+
+						<div class="col s12" id="medias">
+							<h5>
+								<i class="material-icons left">add_a_photo</i>
+								{% trans 'Pictures/Videos' %}
+							</h5>
+							<div class="row">
+							</div>
+						</div>
+
+						<div class="col s12 input-field">
+							{% if action == 'give' %}
+							{% trans 'Default number of buyers' %}
+							{% else %}
+							{% trans 'Default number of users' %}
+							{% endif %}
+							<div class="row">
+								<div class="col s2 input-field">
+									<input type="number" name="min" placeholder="1" value="1" />
+									<label>
+										{% trans 'min' %}
+									</label>
+								</div>
+								<div class="col s2 input-field">
+									<input type="number" name="max" placeholder="infinity" />
+									<label>
+										{% trans 'max' %}
+									</label>
+								</div>
+							</div>
+						</div>
+
+						<div class="service col s12 input-field">
+							{% trans 'Default duration' %}
+							<input type="number" name="minduration" placeholder="1" value="1" id="minduration" />
+							<label for="minduration">
+								{% trans 'Minimum' %}
+							</label>
+							<input type="number" name="maxduration" placeholder="1" value="1" id="maxduration" />
+							<label for="maxduration">
+								{% trans 'Maximum' %}
+							</label>
+						</div>
+
+						<div class="col s12 section stock" id="conditions">
+							<ul class="collapsible stock" data-collapsible="expandable">
+								<li id="capacities" class="stock">
+									<div class="collapsible-header">
+										<i class="material-icons">move_to_inbox</i>
+										{% trans 'Capabilities' %}
+									</div>
+									<div class="collapsible-body">
+										<ul class="collection">
+											<li class="collection-item">
+											</li>
+										</ul>
+									</div>
+								</li>
+							</ul>
+							<ul class="collapsible common stock" data-collapsible="expandable">
+								<li id="gives">
+									<div class="collapsible-header">
+										<i class="material-icons">trending_flat</i>
+										<div id="givecount">0</div>
+										{% trans 'buying conditions' %}
+									</div>
+									<div class="collapsible-body">
+										<ul class="collection">
+											<li class="collection-item">
+											</li>
+										</ul>
+									</div>
+									<a class="btn-block waves-effect waves-light" onclick="newSupply('give');">
+										<i class="material-icons">add</i>
+									</a>
+								</li>
+							</ul>
+							<ul class="collapsible common stock service" data-collapsible="expandable">
+								<li id="shares">
+									<div class="collapsible-header">
+										<i class="material-icons">trending_flat</i>
+										<div id="sharecount">0</div>
+										{% trans 'sharing conditions' %}
+									</div>
+									<div class="collapsible-body">
+										<ul class="collection">
+											<li class="collection-item">
+											</li>
+										</ul>
+									</div>
+									<a class="btn-block waves-effect waves-light" onclick="newSupply('share');">
+										<i class="material-icons">add</i>
+									</a>
+								</li>
+							</ul>
+						</div>
+
+						<div class="col s12 input-field section">
+							<h5>
+								<i class="material-icons left">location_on</i>
+								{% trans 'Address' %}
+							</h5>
+							<div class="row">
+								<div class="col s1">
+									<a class="btn-floating left tooltipped" data-tooltip="Géolocalisation" onclick="geoloc();">
+										<i class="material-icons left">my_location</i>
+									</a>
+								</div>
+								<div class="col s11">
+									<input id="address" type="text" placeholder="55 rue du chat, Miaou-ville" name="address" />
+								</div>
+							</div>
+							<div id="map" class="map"></div>
+						</div>
+
+						<div class="divider"></div>
+
+						<div class="col s12 input-field section">
+							<input type="date" class="datepicker" id="startdate" name="startdate" />
+							<label for="start">
+								{% trans 'Availability' %}
+							</label>
+							<ul class="collapsible" data-collapsible="expandable">
+								<li id="shares">
+									<div class="collapsible-header">
+										<i class="material-icons">date_range</i>
+										Planning
+									</div>
+									<div class="collapsible-body">
+										<div class="calendar" id="calendar"></div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div class="modal-footer">
-				{% trans 'Validate information ?' %}
-				<button class="modal-action modal-close waves-effect waves-green btn-flat">{% trans 'Yes' %}</button>
-				<a class="modal-close waves-red btn-flat">{% trans 'No' %}</a>
+
+			<div id="select-common" class="col s12 scrollspy" name="{% trans 'selected products' %}">
+
+				<input type="hidden" name="selection" value="{{ common.id }}" />
+
+				<div class="row">
+					<div class="col s12 row" id="select-commons">
+						<h5>{% blocktrans %}Selected {{ commontype }}{% endblocktrans %}</h5>
+					</div>
+					{% for common in user.account.commons %}
+					<div class="col s4" id="select-common-{{ common.id }}">
+						<div class="card">
+							<div class="card-image" onclick="selectCommon('{{ common.id }}');">
+								<img src="{{ common.brochure.furl }}" />
+								<span class="card-title">{{ common.name }}</span>
+							</div>
+						</div>
+					</div>
+					{% empty %}
+					{% trans 'You don\'t have any ' %}
+					{% if action == 'stock' %}{% trans 'stock' %}{% else %}{% trans 'good' %}{% endif %}
+					{% endfor %}
+				</div>
 			</div>
 		</div>
-		<div class="g-recaptcha" data-sitekey="6LeFSCQUAAAAADrckBEVzYASaRt2Epjgjsit2ZuV"></div>
-	</form>
-</div>
+	</div>
+
+	<div class="section conditions scrollspy" name="{% blocktrans with action=action.title %}{{ action }} conditions{% endblocktrans %}" id="conditions">
+		<h5>{% blocktrans with action=action.title %}{{ action }} conditions{% endblocktrans %}</h5>
+		<div class="divider"></div>
+	</div>
+
+	<div class="g-recaptcha" data-sitekey="6LeFSCQUAAAAADrckBEVzYASaRt2Epjgjsit2ZuV"></div>
+
+	<div class="col s12 center">
+		<a class="btn-large waves-effect waves-light update" href="#demo">{% trans 'Modify' %}</a>
+		<a class="btn-large waves-effect waves-light add" href="#demo">{% trans 'Add' %}</a>
+	</div>
+
+	<div class="modal" id="demo">
+		<div class="modal-content">
+			<div class="row">
+				{% include 'show.html' %}
+			</div>
+		</div>
+		<div class="modal-footer">
+			{% trans 'Validate information ?' %}
+			<button class="modal-action modal-close waves-effect waves-green btn-flat">
+				{% trans 'Yes' %}
+			</button>
+			<a class="modal-close waves-red btn-flat">
+				{% trans 'No' %}
+			</a>
+		</div>
+	</div>
+
+</form>
 
 <script type="text/javascript">
 	{% include 'edit.js' %}

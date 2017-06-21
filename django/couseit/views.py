@@ -10,7 +10,8 @@ from django.contrib.auth import authenticate, login, logout
 
 from account.models import Account
 from common.models import (
-    Product, Using, Stat, Category, Stock, Give, Share
+    Product, Using, Stat, Category, Stock, Stocking, Giving, Sharing, Common,
+    Currency, Condition, Providing, Service
 )
 
 from .utils import sendemail, getclientip
@@ -22,9 +23,10 @@ from collections import namedtuple
 import requests
 
 _MODELSBYACTION = {
-    'give': Give,
-    'share': Share,
-    'stock': Stock
+    'give': (Product, Giving),
+    'share': (Product, Sharing),
+    'stock': (Stock, Stocking),
+    'provide': (Service, Providing)
 }
 
 CatPropValues = namedtuple(
@@ -92,6 +94,7 @@ def basecontext(request, page='home', action=None, tableofcontents=False):
     )
 
     categories = getcategories(categories=query, types=commontype)
+    currencies = Currency.objects.all()
 
     if 'next' in request.GET:
         nextpage = request.GET['next']
@@ -107,7 +110,7 @@ def basecontext(request, page='home', action=None, tableofcontents=False):
         'productcount': productcount, 'stockcount': stockcount,
         'accountcount': accountcount,
         'tableofcontents': tableofcontents, 'errors': [], 'successes': [],
-        'categories': categories,
+        'categories': categories, 'currencies': currencies,
         'DEBUG': settings.DEBUG
     }
 
@@ -294,6 +297,11 @@ def homeview(request):
     return render(request, 'home.html', context=context)
 
 
+def getcommontype(action):
+    """Get common type from action."""
+    return action if action == 'stock' else 'product'
+
+
 @requirelogin
 def editview(request, action=None):
     """Edit view."""
@@ -302,14 +310,115 @@ def editview(request, action=None):
     )
 
     if request.method == 'POST':
+        payload = {
+            'secret': settings.reCAPTCHA_SECRET_KEY,
+            'remoteip': getclientip(request),
+            'response': request.POST['g-recaptcha-response']
+        }
         response = requests.post(
             url='https://www.google.com/recaptcha/api/siteverify',
-            secret=settings.reCAPTCHA_SECRET_KEY,
-            remoteip=getclientip(request),
-            response=request.POST['g-recaptcha-response']
+            data=payload
         )
-        if response['success']:
-            pass  # TODO
+        if response.json()['success']:
+
+            commonmodel, actionmodel = _MODELSBYACTION[action]
+
+            common = {}
+            supplyings = {}
+
+            for name in request.POST:
+                value = request.POST[name]
+                splittedname = name.split('-')
+
+                splittednamelen = len(splittedname)
+
+                if splittednamelen > 0 and splittedname[0] == 'supplying':
+                    name = splittedname[0]
+
+                    if name == 'common':
+                        attr = splittedname[1]
+                        common[attr] = splittedname[2]
+
+                    elif name == 'supplying':
+                        supplying = supplyings.setdefault(
+                            splittedname[1], {
+                                'id': splittedname[1],
+                                'conditions': {}
+                            }
+                        )
+
+                        if splittedname[2] == 'condition':
+                            condition = supplying['conditions'].setdefault(
+                                splittedname[3], {'id': splittedname[3]}
+                            )
+                            condition[splittedname[4]] = value
+
+                        else:
+                            supplying[splittedname[3]] = value
+
+            commonmodel.update_or_create(id=common['id'], **common)
+
+            for supplyid in supplyings:
+                supply = supplyings[supplyid]
+                conditions = supply.pop('conditions')
+
+                actionmodel.update_or_create(id=supplyid, **supply)
+
+                for conditionid in conditions:
+                    condition = conditions[conditionid]
+
+                    Condition.update_or_create(id=conditionid, **condition)
+
+            commons = []
+
+            if request.POST['addnew']:
+                commonid = request.POST['common-id']
+
+                model = globals()[getcommontype(action).title()]
+
+                if commonid is None:
+                    common = model()
+
+                else:
+                    common = model.objects.get(id=commonid)
+
+                def setattrs(*attrs, **kwargs):
+                    """Set attrs to the common."""
+                    for attr in attrs:
+                        value = request.POST['common-{0}'.format(attr)]
+                        setattr(common, attr, value)
+
+                    for kwarg in kwargs:
+                        value = request.POST['common-{0}'.format(attr)]
+                        try:
+                            value = kwargs[kwarg](value)
+                        except TypeError:
+                            continue
+                        else:
+                            setattr(common, kwarg, value)
+
+                setattrs(
+                    'name', 'description', 'shortdescription', 'owners',
+                    'suppliers', 'users', 'category', 'professional', 'medias',
+                    'quantity', 'tostock', 'category'
+                )
+                if model is Stock:
+                    setattr('pamount', 'pcategory')
+
+                model.save()
+                commons.append(model)
+
+                # get common information
+            selection = request.POST['selection'].split(',')
+
+            commons += list(Common.objects.filter(id__in=selection))
+
+            category = request.POST['category']
+            name = request.POST['name']
+            quantity = request.POST['quantity']
+
+            common.category = category
+            common.quantity = quantity
 
         else:
             context['errors'] += [
@@ -353,3 +462,19 @@ def statsview(request):
         duration=Sum(F('endts') - F('startts'))
     )['duration']
     return render(request, 'stats.html', context=context)
+
+
+def quicksearchview(request):
+    """Quick search view."""
+    action = request.GET['action']
+    what = request.GET['what']
+    where = request.GET['where']
+    when = request.GET['when']
+
+    context = appcontext(
+        request, page='search', action=action, tableofcontents=True
+    )
+    context['what'] = what
+    context['where'] = where
+    context['when'] = when
+    return render(request, 'search.html', context=context)
